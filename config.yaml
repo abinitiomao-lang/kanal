@@ -1,0 +1,72 @@
+# Все секреты — только в GitHub Secrets / env. Здесь только несекретные настройки.
+
+channel:
+  name: "Sleepy Science"          # обновится после выбора в боте
+  name_candidates:
+    - "Sleepy Science"
+    - "Drift & Learn"
+    - "The Quiet Classroom"
+    - "Slow Facts for Sleep"
+    - "Midnight Lessons"
+  language: en
+  category_id: "27"               # Education
+  made_for_kids: false
+  synthetic_media: true           # отметка «altered or synthetic content»
+
+# До прохождения аудита YouTube API все загрузки залочены как private.
+# true  => «Опубликовать» = бот отдаёт файл + метаданные для ручной загрузки в Studio.
+# false => «Опубликовать» = videos.update privacyStatus=public.
+pre_audit_mode: true
+
+subjects: [physics, chemistry, biology, history, geography, astronomy, earth science, human body, ancient civilizations, oceans]
+
+models:
+  writer: claude-haiku-5-5        # сценарии
+  checker: claude-sonnet-5-5      # фактчек (второй проход)
+  writer_effort: low
+  checker_effort: medium
+
+budget:
+  monthly_usd: 50
+  warn_at: 0.8                    # предупреждение в бот при 80%
+  fixed_monthly:                  # подписки, учитываются целиком
+    elevenlabs_creator: 22
+
+long:
+  every_days: 3
+  target_minutes: 165             # с запасом: LLM часто пишет короче просимого
+  chapters: 12
+  words_per_minute: 140           # замерено: Kokoro af_heart, speed 0.85, с паузами
+  image_every_seconds: 150
+  render_groups: 6                # параллельные job'ы рендера
+  fps: 24
+  width: 1920
+  height: 1080
+  video_bitrate: "900k"           # статика + медленный зум, этого хватает
+  audio_bitrate: "128k"
+  kokoro_voice: "af_heart"
+  kokoro_speed: 0.85
+  ambient_db: -30
+  fade_out_seconds: 30
+
+shorts:
+  per_day: 3
+  min_seconds: 30
+  max_seconds: 55
+  fps: 30
+  width: 1080
+  height: 1920
+  eleven_model: eleven_flash_v2_5
+  eleven_voice_id: "JBFqnCBsd6RMkjVDRZzb"   # заменить на выбранный голос
+  images_per_short: 8
+  use_pexels: true                # только если задан PEXELS_API_KEY
+
+images:
+  model: "fal-ai/flux/schnell"
+  usd_per_image: 0.006            # ~2 MP при $0.003/MP
+  style: >-
+    soft painterly digital illustration, dark navy blue and warm amber palette,
+    gentle glow, calm, dreamy, cinematic lighting, no text, no letters, no watermark
+
+bot:
+  poll_seconds: 240               # сколько job бота слушает Telegram за один запуск

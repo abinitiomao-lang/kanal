@@ -1,0 +1,16 @@
+name: setup
+description: Python, ffmpeg, зависимости, git-идентичность для ветки state
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+        cache: pip
+    - shell: bash
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y -qq ffmpeg fonts-dejavu-core > /dev/null
+        pip install -q -r requirements.txt
+        git config --global user.name kanal-bot
+        git config --global user.email kanal-bot@users.noreply.github.com

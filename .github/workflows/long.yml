@@ -1,0 +1,83 @@
+name: long
+# Длинное видео: сценарий+картинки → параллельный рендер глав → склейка и загрузка.
+on:
+  workflow_dispatch:
+    inputs:
+      item_id:
+        required: true
+concurrency:
+  group: long-${{ inputs.item_id }}
+permissions:
+  contents: write
+env:
+  KANAL_WORK: ${{ github.workspace }}/work
+  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+  GH_TOKEN: ${{ github.token }}
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  TELEGRAM_OWNER_ID: ${{ secrets.TELEGRAM_OWNER_ID }}
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    outputs:
+      groups: ${{ steps.g.outputs.groups }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli long-prepare "${{ inputs.item_id }}"
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+      - id: g
+        run: echo "groups=$(python -m kanal.cli groups)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prep
+          path: work/long/${{ inputs.item_id }}/
+          retention-days: 3
+
+  render:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    timeout-minutes: 340
+    strategy:
+      fail-fast: true
+      matrix:
+        group: ${{ fromJSON(needs.prepare.outputs.groups) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - uses: actions/cache@v4
+        with:
+          path: models
+          key: kokoro-v1.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: prep
+          path: work/long/${{ inputs.item_id }}/
+      - run: python -m kanal.cli long-render "${{ inputs.item_id }}" ${{ matrix.group }} ${{ strategy.job-total }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chapters-${{ matrix.group }}
+          path: |
+            work/long/${{ inputs.item_id }}/chapter_*.mp4
+            work/long/${{ inputs.item_id }}/chapter_*.flac
+          retention-days: 2
+          compression-level: 0
+
+  assemble:
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - uses: actions/download-artifact@v4
+        with:
+          path: work/long/${{ inputs.item_id }}/
+          merge-multiple: true
+      - run: python -m kanal.cli long-assemble "${{ inputs.item_id }}"
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}

@@ -1,0 +1,31 @@
+name: short
+on:
+  workflow_dispatch:
+    inputs:
+      item_id:
+        required: true
+concurrency:
+  group: short-${{ inputs.item_id }}
+permissions:
+  contents: write
+jobs:
+  produce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      KANAL_WORK: ${{ github.workspace }}/work
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      GH_TOKEN: ${{ github.token }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+      FAL_KEY: ${{ secrets.FAL_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_OWNER_ID: ${{ secrets.TELEGRAM_OWNER_ID }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli short "${{ inputs.item_id }}"
