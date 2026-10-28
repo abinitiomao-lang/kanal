@@ -49,9 +49,9 @@ def _pexels():
 def _music():
     from . import audio
     from .config import CFG
-    p = audio.music(CFG["long"]["music_style"] + ". Mood: the deep ocean at night.", 45,
+    p = audio.music(CFG["long"]["music_style"] + ". Mood: the deep ocean at night.", 60,
                     workdir("selftest") / "music.mp3")
-    telegram.send_document(p, "🎵 Пример фоновой музыки для длинных видео (45 с).")
+    telegram.send_document(p, "🎵 Пример фоновой музыки для длинных видео (60 с), стиль — медитативный эмбиент 432 Гц.")
     return "пример отправлен"
 
 

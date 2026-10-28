@@ -51,8 +51,9 @@ long:
   music_tracks: 2                 # треков на видео, чередуются
   music_seconds: 180              # ~900 кредитов ElevenLabs за минуту → 2×3 мин ≈ 5400 кредитов
   music_style: >-
-    calm instrumental sleep music, soft felt piano and warm ambient pads, very slow, gentle,
-    no drums, no percussion, no vocals, no sudden changes, peaceful and dreamy
+    deep meditative sleep ambient soundscape in 432 Hz tuning, slowly evolving warm synth pads and soft drones,
+    gentle shimmering bell and chime tones far in the background, airy spacious reverb, hypnotic and weightless,
+    no beat, no rhythm, no drums, no piano melody, no vocals, no sudden changes, healing frequency meditation music
   fade_out_seconds: 30
 
 shorts:
