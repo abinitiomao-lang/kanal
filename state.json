@@ -212,6 +212,18 @@
    "duration": 46.8,
    "narration": "A teaspoon of neutron star weighs about a billion tonnes. Let's unpack that. A neutron star is what's left when a massive star runs out of fuel and collapses. Its core crushes down until protons and electrons are squeezed into neutrons. Now picture about one and a half times the Sun's mass. Packed into a ball roughly 20 kilometers across. Roughly the size of a city. Your teaspoon of sugar weighs about five grams. This one weighs about two and a half times as much as all the people on Earth combined. Mount Everest, by comparison, is roughly 160 times heavier than that teaspoon. Some neutron stars spin hundreds of times a second. Wait, it gets weirder: they can sweep beams of radio waves like lighthouses. It's just matter squeezed beyond anything on Earth. Mind-bending, right? Follow for more weird science.",
    "factcheck": "🔎 Фактчек: найдено 2, осталось 1\n⚠️ «Mount Everest, by comparison, is roughly 160 times heavier than that teaspoon.» — The ~160 billion tonne figure for Everest is a low, loosely sourced estimate. Simple geometry (a cone about 10 km in radius and 3.5 km above its base, at rock d"
+  },
+  "S102819104db3": {
+   "kind": "short",
+   "topic": "Daniel Kahneman's planning fallacy: we keep believing the next project will go faster than the last one, even when it never has.",
+   "status": "queued",
+   "created": "2026-10-28T19:10:25+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "tale",
+   "book": "kahneman",
+   "feedback": []
   }
  },
  "images": [
