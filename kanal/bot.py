@@ -69,7 +69,7 @@ def propose_shorts() -> None:
         d = t.model_dump()
         d["long_ref"] = long_ids[t.related_long] if 0 <= t.related_long < len(long_ids) else None
         d["book"] = t.book if t.book in books else None
-        d["format"] = style.rotate(len(shorts) + n)
+        d["format"] = style.for_book(d["book"]) or style.rotate(len(shorts) + n)
         topics.append(d)
     fmts = style.load()["formats"]
     text = f"⚡️ <b>Темы шортсов</b> — выбери до {per}:\n\n" + "\n".join(

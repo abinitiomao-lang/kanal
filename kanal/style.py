@@ -12,10 +12,17 @@ def load() -> dict:
 
 
 def get(key: str | None) -> tuple[str, dict]:
+    """(ключ, формат); в image уже дописана общая рисовка art."""
     d = load()
     if key not in d["formats"]:
         key = d["rotation"][0]
-    return key, d["formats"][key]
+    fmt = dict(d["formats"][key])
+    fmt["image"] = f"{fmt['image']}, {d['art']}"
+    return key, fmt
+
+
+def for_book(book: str | None) -> str | None:
+    return load()["book_formats"].get(book) if book else None
 
 
 def rotate(n: int) -> str:

@@ -1,4 +1,5 @@
 """Производство: шортс (одним job'ом) и длинное видео (prepare → render×N → assemble)."""
+import hashlib
 import html
 import json
 import re
@@ -72,7 +73,7 @@ def produce_short(item_id: str) -> None:
     long_title, long_url = _long_link(item)
 
     n_short = sum(1 for i in state.load()["items"].values() if i["kind"] == "short")
-    fkey, fmt = style.get(item.get("format") or style.rotate(n_short))
+    fkey, fmt = style.get(item.get("format") or style.for_book(item.get("book")) or style.rotate(n_short))
     book = next((b for b in writer.load_series() if b["id"] == item.get("book")), None)
     script = writer.short_script(item["topic"], long_title, _feedback(item), fmt, book)
     narration, issues, found = writer.checked(script.narration)
@@ -99,7 +100,8 @@ def produce_short(item_id: str) -> None:
     starts = [s for i, s in enumerate(starts) if i == 0 or s - starts[i - 1] >= 1.2]
     bounds = starts + [dur + 0.3]
 
-    look = (fkey, fmt["image"])
+    # метка стиля в библиотеке = формат + хэш промпта: после правки стиля старые картинки не подмешиваются
+    look = (f"{fkey}-{hashlib.sha1(fmt['image'].encode()).hexdigest()[:8]}", fmt["image"])
     framed = fmt["layout"] == "framed"
     panel = (S["width"], fmt["frame"]["panel"]["h"]) if framed else None
     hero = f"{script.character}. " if script.character else ""  # один и тот же герой во всех кадрах

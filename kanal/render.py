@@ -259,10 +259,28 @@ def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -
     d = ImageDraw.Draw(img)
     # мягкий световой конус сверху, как в референсе
     glow = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(glow).polygon([(W * 0.42, 0), (W * 0.58, 0), (W * 0.78, P["y"]), (W * 0.22, P["y"])], fill=38)
+    if sum(rgb(F["bg"])) < 300:
+        ImageDraw.Draw(glow).polygon([(W * 0.42, 0), (W * 0.58, 0), (W * 0.78, P["y"]), (W * 0.22, P["y"])],
+                                     fill=38)
     from PIL import ImageFilter
     img = Image.composite(Image.new("RGB", (W, H), rgb(F["line"])), img, glow.filter(ImageFilter.GaussianBlur(40)))
     d = ImageDraw.Draw(img)
+    if F.get("stars"):  # чернильные точки и жёлтые звёздочки по бумаге (вне панели)
+        rnd = random.Random(title)
+        text_bands = [(P["y"] - 10, P["y"] + P["h"] + 10), (280, 580), (P["y"] + P["h"] + 40, P["y"] + P["h"] + 260),
+                      (H - 175, H - 95)]  # панель, заголовок, субтитры, подвал
+        for _ in range(220):
+            x, y = rnd.uniform(0, W), rnd.uniform(0, H)
+            if any(a < y < b for a, b in text_bands):
+                continue
+            r = rnd.uniform(1, 2.6)
+            d.ellipse([x - r, y - r, x + r, y + r], fill=rgb(F["line"]))
+        for _ in range(16):
+            x, y = rnd.uniform(40, W - 40), rnd.choice([rnd.uniform(40, 280), rnd.uniform(H - 330, H - 40)])
+            r = rnd.uniform(12, 22)
+            k = r * 0.28
+            d.polygon([(x, y - r), (x + k, y - k), (x + r, y), (x + k, y + k), (x, y + r), (x - k, y + k),
+                       (x - r, y), (x - k, y - k)], fill=rgb(F["stars"]), outline=rgb(F["line"]))
     mono = ImageFont.truetype(str(FONTS / "SpaceMono-Regular.ttf"), 30)
     serif = ImageFont.truetype(str(FONTS / "Lora.ttf"), 76)
     try:

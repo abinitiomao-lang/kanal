@@ -1,9 +1,30 @@
-# Единый дизайн ВСЕХ шортсов (выбор владельца 2026-10-28: оба формата, чередуются; язык EN).
+# Единый дизайн ВСЕХ шортсов (выбор владельца 2026-10-28: оба формата, язык EN; формат закреплён за книгой).
+# Рисовка — по референсам владельца (Шурецкая/ispiration_style_img): тату-флэш от руки, пастельные переливы.
 # Шортс = одна идея из книги владельца (assets/book_series.yaml) или факт из нашего длинного видео.
 # Длинные видео сюда не относятся (config.yaml → images.style).
 # Цвета — RGB hex; шрифты — файлы из assets/fonts, font_name — имя семейства для субтитров (libass).
 
-rotation: [tale, series]          # по очереди при предложении тем
+# Одна книга — один формат: вся серия шортсов по книге выглядит одинаково.
+book_formats:
+  kahneman: series
+  drive: series
+  berne: series
+  litvak: series
+  flow: tale
+  fisher: tale
+  nvc: tale
+  perry: tale
+  laporte: tale
+  sher: tale
+rotation: [tale, series]          # для фактов не из книг — по очереди
+
+# Общая рисовка обоих форматов (дописывается к промпту формата).
+art: >-
+  whimsical hand-drawn tattoo flash illustration, fine black ink linework, grainy colored pencil and
+  risograph texture fill, iridescent pastel palette of lilac, periwinkle blue, baby pink, mint green and
+  butter yellow with small red accents, folk fairytale charm, tiny black speckles and little yellow
+  four-point stars scattered on a clean white paper background, one large central subject,
+  no text, no letters, no watermark
 
 formats:
   # A. Сказка-метафора: идея из книги прожита одним героем (референс — «ведьма и две кружки»).
@@ -12,9 +33,7 @@ formats:
     layout: full                   # картинка на весь экран 9:16
     orient: portrait
     image: >-
-      photorealistic cinematic film still, moody fairytale atmosphere, warm candlelight against cool blue
-      mist, shallow depth of field, anamorphic lens, rich color grading, highly detailed, 9:16 vertical
-      composition, main subject large and in the upper two thirds, no text, no letters, no watermark
+      vertical 9:16 composition, the main subject large and in the upper two thirds
     motion: slow                   # медленный наезд/отъезд, без тряски
     whoosh: false
     voice: {stability: 0.55, similarity_boost: 0.75, style: 0.2, speed: 0.95}
@@ -22,13 +41,13 @@ formats:
       mode: word                   # по одному слову, мелко, внизу
       font_name: "Fira Sans SemiBold"
       size: 66
-      color: "F4EFE6"
-      outline: "000000"
+      color: "1C1A22"              # чернила на белой бумаге
+      outline: "FFFFFF"
       y: 0.80                      # доля высоты кадра
     script: >-
       Tell this idea as a quiet 35-50 second micro-story (80-110 words) — an allegory, not a lecture.
-      One protagonist (a person, creature or object in a slightly magical, timeless world: a witch in a misty
-      forest, a lighthouse keeper, an old clockmaker, a fox who keeps a lantern...). Present tense, sensory,
+      One protagonist from a whimsical fairytale world (a blue cat, a moth who collects moonlight, a little
+      fairy gardener, an anglerfish with a lantern, a swallow, a witch who keeps two cups...). Present tense, sensory,
       short sentences, gentle and a little bittersweet. The first line is an intriguing hook (a rule of this
       world or a strange habit). The idea is never named until the last two lines, which reveal it simply and
       credit the book, e.g. "Daniel Kahneman called this ... — an idea from Thinking, Fast and Slow."
@@ -41,24 +60,24 @@ formats:
     layout: framed                 # шапка, картинка-панель, текст под ней, подвал
     orient: landscape
     image: >-
-      painterly digital illustration, cinematic, deep teal shadows and warm amber light, soft volumetric glow,
-      clean readable composition with one clear subject, wide shot, no text, no letters, no watermark
+      wide horizontal composition, one clear subject
     motion: slow
     whoosh: false
     voice: {stability: 0.45, similarity_boost: 0.75, style: 0.3, speed: 1.0}
     frame:
-      bg: "0E1517"
-      line: "C9A45C"               # золотые линии вокруг панели
-      kicker: "5FC9B4"             # маленькая надпись над заголовком
-      title: "F4EFE6"
-      footer: "B8B2A6"
+      bg: "FBF7EF"                 # бумага
+      line: "1C1A22"               # чернильные линии вокруг панели
+      kicker: "D9468F"             # маленькая надпись над заголовком
+      title: "1C1A22"
+      footer: "6E6878"
+      stars: "F2C230"              # точки и звёздочки по бумаге, как в референсах
       panel: {y: 640, h: 720}      # панель 1080×720
     subs:
       mode: phrase                 # фраза целиком под панелью
       font_name: "Fira Sans SemiBold"
       size: 58
-      color: "F4EFE6"
-      outline: "0E1517"
+      color: "1C1A22"
+      outline: "FBF7EF"
       y: 1420                      # верх блока субтитров, px
     script: >-
       Frame this idea with a playful narrative device and keep it for the whole Short: e.g. a documentary
