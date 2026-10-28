@@ -739,6 +739,55 @@
    "orient": "landscape",
    "style": "series-1bad1887",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4774dc1ba76b.jpg"
+  },
+  {
+   "id": "daf7419660d3",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. a crumpled paper letter with sharp creased corners held between two fingers, small glowing paper lanterns blurred in the dusk behind it",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/daf7419660d3.jpg"
+  },
+  {
+   "id": "b0cd21eed4a3",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. a slim blue cat with a silver bell on a red ribbon collar sitting on an old grey stone mill wall, tail curled around its paws",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/b0cd21eed4a3.jpg"
+  },
+  {
+   "id": "ac195e0004b3",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. a villager in a brown apron shouting with mouth wide open, one arm raised, gripping a closed wooden garden gate",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ac195e0004b3.jpg"
+  },
+  {
+   "id": "ba07dd32fe20",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. the blue cat on the stone wall with ears forward and calm eyes, not moving, looking down at the shouting villager",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ba07dd32fe20.jpg"
+  },
+  {
+   "id": "472322e0c9a5",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. the blue cat climbs down the wall and sits quietly beside the wooden gate, head tilted, a small lantern drifting in the air above",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/472322e0c9a5.jpg"
+  },
+  {
+   "id": "eb905f9410c5",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. an open human hand held out palm up, a soft glowing lantern resting in its center, the shadow of a fold of cloth beside it",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/eb905f9410c5.jpg"
+  },
+  {
+   "id": "38e1ba9164be",
+   "prompt": "Mira, a slim blue cat with large amber eyes, a silver bell on a red ribbon collar, sitting on an old grey stone mill wall in a village of paper lanterns at dusk. an old open book with blank pages lying on a wooden table, a lantern glowing beside it and the blue cat's paw resting on the edge",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/38e1ba9164be.jpg"
   }
  ],
  "costs": {
