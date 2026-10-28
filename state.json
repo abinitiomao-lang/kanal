@@ -216,7 +216,7 @@
   "S102819104db3": {
    "kind": "short",
    "topic": "Daniel Kahneman's planning fallacy: we keep believing the next project will go faster than the last one, even when it never has.",
-   "status": "awaiting_approval",
+   "status": "rejected",
    "created": "2026-10-28T19:10:25+00:00",
    "long_ref": null,
    "series": null,
@@ -224,7 +224,7 @@
    "format": "tale",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-10-28T19:13:43+00:00",
+   "updated": "2026-10-28T20:27:32+00:00",
    "video_id": "yEejhg_GVIw",
    "title": "The Clockmaker Who Always Promises Friday #shorts",
    "description": "A quiet allegory about the planning fallacy, an idea Daniel Kahneman and Amos Tversky described in their research and that Kahneman explores in Thinking, Fast and Slow. Some other studies he cites there, such as priming and ego-depletion work, later failed to replicate, but the planning fallacy has held up well.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
