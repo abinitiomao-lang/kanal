@@ -71,6 +71,49 @@
    "msg": 29,
    "picked": [],
    "created": "2026-10-28T17:31:00+00:00"
+  },
+  "p102817458368": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Wombats produce cube-shaped droppings, which researchers have linked to how their intestines shape the soft waste as it passes through.",
+     "subject": "Biology: wombats",
+     "related_long": -1,
+     "source": "",
+     "long_ref": null
+    },
+    {
+     "fact": "Cleopatra lived closer in time to the Moon landing in 1969 than to the building of the Great Pyramid of Giza.",
+     "subject": "History: ancient Egypt",
+     "related_long": -1,
+     "source": "",
+     "long_ref": null
+    },
+    {
+     "fact": "A teaspoon of neutron star material would weigh roughly a billion tonnes on Earth.",
+     "subject": "Astronomy: neutron stars",
+     "related_long": -1,
+     "source": "",
+     "long_ref": null
+    },
+    {
+     "fact": "Daniel Kahneman's idea (evidence is mixed): losing something hurts roughly twice as much as gaining the same amount feels good.",
+     "subject": "Psychology: loss aversion",
+     "related_long": -1,
+     "source": "Thinking, Fast and Slow by Daniel Kahneman",
+     "long_ref": null
+    },
+    {
+     "fact": "Daniel Pink describes early experiments with the candle problem, where people offered cash rewards were slower to solve it than those offered nothing.",
+     "subject": "Psychology: motivation and rewards",
+     "related_long": -1,
+     "source": "Drive: The Surprising Truth About What Motivates Us by Daniel Pink",
+     "long_ref": null
+    }
+   ],
+   "msg": 31,
+   "picked": [],
+   "created": "2026-10-28T17:45:44+00:00"
   }
  },
  "items": {},
