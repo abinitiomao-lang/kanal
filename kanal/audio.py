@@ -60,7 +60,7 @@ def kokoro(text: str, out: Path) -> float:
     return len(audio) / SR
 
 
-def eleven(text: str, out: Path) -> tuple[float, list[dict]]:
+def eleven(text: str, out: Path, settings: dict | None = None) -> tuple[float, list[dict]]:
     """ElevenLabs Flash с таймингами. Возвращает (длительность, [{word,start,end}])."""
     S = CFG["shorts"]
     r = requests.post(
@@ -68,7 +68,8 @@ def eleven(text: str, out: Path) -> tuple[float, list[dict]]:
         params={"output_format": "mp3_44100_128"},
         headers={"xi-api-key": secret("ELEVENLABS_API_KEY")},
         json={"text": text, "model_id": S["eleven_model"],
-              "voice_settings": {"stability": 0.35, "similarity_boost": 0.75, "style": 0.35, "speed": 1.08}},
+              "voice_settings": settings or {"stability": 0.35, "similarity_boost": 0.75, "style": 0.35,
+                                             "speed": 1.08}},
         timeout=180,
     )
     if r.status_code != 200:

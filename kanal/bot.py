@@ -53,28 +53,30 @@ def propose_long() -> None:
 
 
 def propose_shorts() -> None:
+    from . import style
     st = state.load()
     longs = sorted(((k, v) for k, v in st["items"].items() if v["kind"] == "long" and v.get("short_facts")
                     and v["status"] != "rejected"), key=lambda kv: kv[1]["created"], reverse=True)[:6]
-    if not longs:
-        telegram.send("⚡️ Шортсы делаются из фактов длинных видео — темы появятся, когда будет готов сценарий "
-                      "первого длинного (выбери его в /long).")
-        return
     long_ids = [k for k, _ in longs]
-    used = [i["topic"] for i in st["items"].values() if i["kind"] == "short"]
-    ideas = writer.propose_shorts([{"title": v["title"], "facts": v["short_facts"]} for _, v in longs], used)
+    shorts = [i for i in st["items"].values() if i["kind"] == "short"]
+    ideas = writer.propose_shorts([{"title": v["title"], "facts": v["short_facts"]} for _, v in longs],
+                                  [i["topic"] for i in shorts])
+    books = {b["id"] for b in writer.load_series()}
     pid = new_id("p")
     per = CFG["shorts"]["per_day"]
-    text = f"⚡️ <b>Темы шортсов</b> — выбери до {per}:\n\n" + "\n".join(
-        f"{n + 1}. {html.escape(t.fact)}" for n, t in enumerate(ideas))
-    rows = [[(f"{n + 1}. {t.fact[:45]}", f"S:{pid}:{n}")] for n, t in enumerate(ideas)]
-    rows.append([("🔄 Другие факты", f"X:{pid}:short")])
-    msg = telegram.send(text, rows)
     topics = []
-    for t in ideas:
+    for n, t in enumerate(ideas):
         d = t.model_dump()
         d["long_ref"] = long_ids[t.related_long] if 0 <= t.related_long < len(long_ids) else None
+        d["book"] = t.book if t.book in books else None
+        d["format"] = style.rotate(len(shorts) + n)
         topics.append(d)
+    fmts = style.load()["formats"]
+    text = f"⚡️ <b>Темы шортсов</b> — выбери до {per}:\n\n" + "\n".join(
+        f"{n + 1}. {fmts[t['format']]['label']} {html.escape(t['fact'])}" for n, t in enumerate(topics))
+    rows = [[(f"{n + 1}. {t['fact'][:45]}", f"S:{pid}:{n}")] for n, t in enumerate(topics)]
+    rows.append([("🔄 Другие идеи", f"X:{pid}:short")])
+    msg = telegram.send(text, rows)
 
     def fn(s):
         s["proposals"][pid] = {"kind": "short", "topics": topics, "msg": msg["message_id"], "picked": [],
@@ -113,6 +115,7 @@ def on_pick(kind: str, pid: str, n: int, msg_id: int) -> str:
         s["proposals"][pid]["picked"].append(n)
         s["items"][item_id] = {"kind": kind, "topic": topic, "status": "queued", "created": state.now(),
                                "long_ref": t.get("long_ref"), "series": t.get("series"), "part": t.get("part"),
+                               "format": t.get("format"), "book": t.get("book"),
                                "feedback": []}
     state.update(fn, f"pick {item_id}")
     picked = prop["picked"] + [n]
@@ -220,16 +223,6 @@ def on_name(n: int) -> str:
     return name
 
 
-def on_style(key: str) -> str:
-    from . import style
-    st = style.load()["styles"].get(key)
-    if not st:
-        return "Стиль не найден"
-    state.update(lambda s: s.__setitem__("short_style", key), f"short style {key}")
-    telegram.send(f"🎨 Дизайн шортсов: <b>{html.escape(st['label'])}</b>. Все следующие шортсы — в нём.")
-    return st["label"]
-
-
 def status_text() -> str:
     st = state.load()
     active = [(k, v) for k, v in st["items"].items() if v["status"] not in ("published", "rejected")]
@@ -264,9 +257,6 @@ def handle(u: dict) -> None:
                 res = on_reject(rest)
             elif kind == "D":
                 res = on_redo(rest)
-            elif kind == "Y":
-                telegram.edit_markup(msg_id)
-                res = on_style(rest)
             elif kind == "N":
                 telegram.edit_markup(msg_id)
                 res = on_name(int(rest))

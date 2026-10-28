@@ -71,11 +71,14 @@ def produce_short(item_id: str) -> None:
     S = CFG["shorts"]
     long_title, long_url = _long_link(item)
 
-    script = writer.short_script(item["topic"], long_title, _feedback(item))
+    n_short = sum(1 for i in state.load()["items"].values() if i["kind"] == "short")
+    fkey, fmt = style.get(item.get("format") or style.rotate(n_short))
+    book = next((b for b in writer.load_series() if b["id"] == item.get("book")), None)
+    script = writer.short_script(item["topic"], long_title, _feedback(item), fmt, book)
     narration, issues, found = writer.checked(script.narration)
 
     voice = W / "voice.mp3"
-    dur, words = audio.eleven(narration, voice)
+    dur, words = audio.eleven(narration, voice, fmt["voice"])
     if dur > S["max_seconds"]:  # слегка ускоряем, сохраняя тайминги слов
         k = min(dur / (S["max_seconds"] - 0.5), 1.15)
         sped = W / "voice_fast.mp3"
@@ -96,27 +99,41 @@ def produce_short(item_id: str) -> None:
     starts = [s for i, s in enumerate(starts) if i == 0 or s - starts[i - 1] >= 1.2]
     bounds = starts + [dur + 0.3]
 
-    key, st, rules = style.active()
-    look = (key, style.image_style(st, rules))
+    look = (fkey, fmt["image"])
+    framed = fmt["layout"] == "framed"
+    panel = (S["width"], fmt["frame"]["panel"]["h"]) if framed else None
+    hero = f"{script.character}. " if script.character else ""  # один и тот же герой во всех кадрах
     lib = images.Library()
     segs = []
     for i in range(len(starts)):
         sc = script.scenes[min(i, len(script.scenes) - 1)]
         seconds = bounds[i + 1] - bounds[i]
         src, is_video = None, False
-        if S["use_pexels"] and stock.enabled() and i % 3 == 2:
+        if S["use_pexels"] and stock.enabled() and i % 3 == 2 and fmt["motion"] == "punchy":
             src = stock.vertical_clip(sc.stock_query, W / f"clip_{i}.mp4", seconds)
             is_video = src is not None
         if src is None:
-            src = lib.get(sc.visual, "portrait", W / f"img_{i}.jpg", style=look)
+            # с героем библиотеку не переиспользуем: он должен быть тем же самым в этом ролике
+            src = lib.get(hero + sc.visual, fmt["orient"], W / f"img_{i}.jpg", allow_reuse=not hero, style=look)
         seg = W / f"seg_{i:02d}.mp4"
-        render.short_segment(src, seg, seconds, hash(item_id) % 1000 + i, is_video)
+        render.short_segment(src, seg, seconds, hash(item_id) % 1000 + i, is_video, panel, fmt["motion"])
         segs.append(seg)
 
-    ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", st["subs"])
+    ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", fmt["subs"])
     amb = audio.ambient(W / "amb.wav", 20, seed=len(item_id))
     out = W / "short.mp4"
-    render.assemble_short(segs, starts[1:], voice, ass, amb, audio.whoosh(W / "whoosh.wav"), out, W)
+    template = None
+    if framed:
+        idea_n = 1 + sum(1 for i in state.load()["items"].values()
+                         if i["kind"] == "short" and i.get("book") and i.get("book") == item.get("book")
+                         and i.get("status") in ("published", "awaiting_approval"))
+        footer = f"{book['author']} · {book['book'][:38]} · idea {idea_n}" if book else "weird science, explained"
+        template = render.frame_template(fmt, script.kicker or "IDEAS FROM GREAT BOOKS",
+                                         script.header_title or script.title.replace("#shorts", ""), footer,
+                                         W / "frame.png")
+    render.assemble_short(segs, starts[1:], voice, ass, amb,
+                          audio.whoosh(W / "whoosh.wav") if fmt["whoosh"] else None, out, W,
+                          template, fmt["frame"]["panel"]["y"] if framed else 0)
 
     desc = script.description.strip()
     if long_url:
@@ -127,6 +144,7 @@ def produce_short(item_id: str) -> None:
     lib.commit(item_id)
     llm.flush(item_id)
     state.set_item(item_id, status="awaiting_approval", video_id=vid, title=script.title, description=desc,
+                   format=fkey,
                    tags=script.tags, duration=audio.probe_duration(out), narration=narration,
                    factcheck=_issues_text([i.model_dump() for i in issues], found))
     telegram.send_document(out, f"▶️ Превью шортса {item_id}")

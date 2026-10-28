@@ -1,7 +1,6 @@
-"""Дизайн шортсов из assets/short_style.yaml; выбор владельца (state.short_style) перекрывает `active`."""
+"""Дизайн шортсов из assets/short_style.yaml: форматы tale / series, чередуются."""
 import yaml
 
-from . import state
 from .config import ROOT
 
 FILE = ROOT / "assets" / "short_style.yaml"
@@ -12,19 +11,23 @@ def load() -> dict:
         return yaml.safe_load(f)
 
 
-def active() -> tuple[str, dict, str]:
-    """(ключ, стиль, общие правила)."""
+def get(key: str | None) -> tuple[str, dict]:
     d = load()
-    key = state.load().get("short_style") or d["active"]
-    if key not in d["styles"]:
-        key = d["active"]
-    return key, d["styles"][key], d["rules"]
+    if key not in d["formats"]:
+        key = d["rotation"][0]
+    return key, d["formats"][key]
 
 
-def image_style(st: dict, rules: str) -> str:
-    return f"{st['prompt']}, {rules}"
+def rotate(n: int) -> str:
+    """Формат для n-го шортса по порядку."""
+    r = load()["rotation"]
+    return r[n % len(r)]
 
 
 def ass_color(rgb: str, alpha: str = "00") -> str:
     """'FFE500' → '&H0000E5FF' (ASS хранит AABBGGRR)."""
     return f"&H{alpha}{rgb[4:6]}{rgb[2:4]}{rgb[0:2]}".upper()
+
+
+def rgb(h: str) -> tuple[int, int, int]:
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))

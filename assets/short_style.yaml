@@ -1,61 +1,70 @@
-# Единый дизайн ВСЕХ шортсов: стиль картинок + субтитры. Длинные видео сюда не относятся (config.yaml → images.style).
-# Активный стиль выбирает владелец кнопкой в Telegram (кадр-сравнение: workflow `styles`) — выбор хранится
-# в state.json (short_style) и перекрывает `active` ниже.
-# Цвета — RGB hex. font — файл из assets/fonts (имя семейства для субтитров берётся из font_name).
+# Единый дизайн ВСЕХ шортсов (выбор владельца 2026-10-28: оба формата, чередуются; язык EN).
+# Шортс = одна идея из книги владельца (assets/book_series.yaml) или факт из нашего длинного видео.
+# Длинные видео сюда не относятся (config.yaml → images.style).
+# Цвета — RGB hex; шрифты — файлы из assets/fonts, font_name — имя семейства для субтитров (libass).
 
-active: cgi3d
+rotation: [tale, series]          # по очереди при предложении тем
 
-# Общие правила для любой картинки шортса (дописываются к промпту сцены и к стилю).
-rules: >-
-  vertical 9:16 composition, ONE large clear subject filling most of the frame and placed in the upper
-  two thirds, simple uncluttered background, bright saturated colors, strong contrast, sharp focus,
-  readable at a glance on a phone, no text, no letters, no numbers, no watermark, no logo
+formats:
+  # A. Сказка-метафора: идея из книги прожита одним героем (референс — «ведьма и две кружки»).
+  tale:
+    label: "🕯 Сказка"
+    layout: full                   # картинка на весь экран 9:16
+    orient: portrait
+    image: >-
+      photorealistic cinematic film still, moody fairytale atmosphere, warm candlelight against cool blue
+      mist, shallow depth of field, anamorphic lens, rich color grading, highly detailed, 9:16 vertical
+      composition, main subject large and in the upper two thirds, no text, no letters, no watermark
+    motion: slow                   # медленный наезд/отъезд, без тряски
+    whoosh: false
+    voice: {stability: 0.55, similarity_boost: 0.75, style: 0.2, speed: 0.95}
+    subs:
+      mode: word                   # по одному слову, мелко, внизу
+      font_name: "Fira Sans SemiBold"
+      size: 66
+      color: "F4EFE6"
+      outline: "000000"
+      y: 0.80                      # доля высоты кадра
+    script: >-
+      Tell this idea as a quiet 35-50 second micro-story (80-110 words) — an allegory, not a lecture.
+      One protagonist (a person, creature or object in a slightly magical, timeless world: a witch in a misty
+      forest, a lighthouse keeper, an old clockmaker, a fox who keeps a lantern...). Present tense, sensory,
+      short sentences, gentle and a little bittersweet. The first line is an intriguing hook (a rule of this
+      world or a strange habit). The idea is never named until the last two lines, which reveal it simply and
+      credit the book, e.g. "Daniel Kahneman called this ... — an idea from Thinking, Fast and Slow."
+      Give `character`: a fixed visual description of the protagonist and setting (clothes, hair, age,
+      colours, place) that will be repeated in every image so the hero looks the same in all scenes.
 
-styles:
-  cgi3d:
-    label: "3D-рендер"
-    ref: "как Zack D. Films — гиперреалистичный CGI крупным планом"
-    prompt: >-
-      hyper-detailed 3D CGI render, Blender Cycles, dramatic cinematic studio lighting, glossy realistic
-      materials, extreme close-up, vivid colors, slightly exaggerated scale
-    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FFE500", outline: "000000"}
-
-  flat:
-    label: "Яркий флэт"
-    ref: "как Kurzgesagt — векторная графика, сочные цвета"
-    prompt: >-
-      flat vector illustration, bold simple geometric shapes, vibrant saturated palette of deep purple,
-      cyan, hot pink and orange, soft gradients, clean edges, playful science explainer style
-    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "35F0FF", outline: "2A0F4F"}
-
-  photo:
-    label: "Кино-фото"
-    ref: "как документальные каналы — фотореализм, свет как в кино"
-    prompt: >-
-      photorealistic cinematic photograph, documentary nature photography quality, 35mm lens, shallow depth
-      of field, dramatic rim light, rich color grading
-    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FF9A1F", outline: "000000"}
-
-  clay:
-    label: "Пластилин"
-    ref: "игрушечная миниатюра — мило и запоминается"
-    prompt: >-
-      cute claymation diorama, handmade plasticine figures with fingerprints, tilt-shift miniature look,
-      soft bright studio light, cheerful candy colors
-    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FF5FB0", outline: "3B1250"}
-
-  comic:
-    label: "Комикс"
-    ref: "поп-арт — жирный контур, точки, взрывные цвета"
-    prompt: >-
-      bold pop-art comic book panel, thick black ink outlines, halftone dots, flat bright primary colors,
-      dynamic action composition, speed lines
-    subs: {font: Bangers-Regular.ttf, font_name: Bangers, text: "FFFFFF", highlight: "FFE14D", outline: "000000"}
-
-  neon:
-    label: "Неон"
-    ref: "светящиеся линии на чёрном — контраст в ленте"
-    prompt: >-
-      glowing neon line art on a pure black background, electric magenta and cyan light tubes, synthwave
-      glow, minimal and striking
-    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FF3BE0", outline: "000000"}
+  # B. Серия в рамке: постоянный шаблон + сюжетная рамка (референс — «Future Historians» + «День N»).
+  series:
+    label: "🗂 Серия"
+    layout: framed                 # шапка, картинка-панель, текст под ней, подвал
+    orient: landscape
+    image: >-
+      painterly digital illustration, cinematic, deep teal shadows and warm amber light, soft volumetric glow,
+      clean readable composition with one clear subject, wide shot, no text, no letters, no watermark
+    motion: slow
+    whoosh: false
+    voice: {stability: 0.45, similarity_boost: 0.75, style: 0.3, speed: 1.0}
+    frame:
+      bg: "0E1517"
+      line: "C9A45C"               # золотые линии вокруг панели
+      kicker: "5FC9B4"             # маленькая надпись над заголовком
+      title: "F4EFE6"
+      footer: "B8B2A6"
+      panel: {y: 640, h: 720}      # панель 1080×720
+    subs:
+      mode: phrase                 # фраза целиком под панелью
+      font_name: "Fira Sans SemiBold"
+      size: 58
+      color: "F4EFE6"
+      outline: "0E1517"
+      y: 1420                      # верх блока субтитров, px
+    script: >-
+      Frame this idea with a playful narrative device and keep it for the whole Short: e.g. a documentary
+      from the year 2126 where historians study our strange habits, an alien anthropologist's field notes,
+      a museum label from the future, a nature documentary about humans. Dry, witty, precise documentary
+      tone, 90-120 words, short sentences, concrete everyday examples the viewer recognises in themselves.
+      The last line credits the book and author naturally. Give `kicker` (max 5 words, e.g. "A DOCUMENTARY
+      FROM THE YEAR 2126") and `header_title` (max 8 words, the hook, e.g. "Historians are confused by
+      this 2020s habit").

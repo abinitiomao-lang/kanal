@@ -69,9 +69,10 @@ def propose_long(used: list[str]) -> list[Topic]:
 
 
 class ShortIdea(BaseModel):
-    fact: str = Field(description="the surprising fact in one sentence")
+    fact: str = Field(description="the idea or surprising fact in one sentence")
     subject: str
-    related_long: int = Field(description="index in the provided long-video list this relates to, or -1")
+    related_long: int = Field(description="index in the provided long-video list this comes from, or -1")
+    book: str = Field(default="", description="book id from the book list this idea comes from, or empty")
 
 
 class ShortIdeas(BaseModel):
@@ -79,17 +80,21 @@ class ShortIdeas(BaseModel):
 
 
 def propose_shorts(longs: list[dict], used_facts: list[str]) -> list[ShortIdea]:
-    """Шортсы только из фактов, уже рассказанных в наших длинных видео (longs: [{title, facts}])."""
+    """Идеи шортсов: из книг владельца (assets/book_series.yaml) и из фактов наших длинных видео."""
+    books = "\n\n".join(f"Book id={b['id']}: {b['book']} by {b['author']} (evidence: {b['evidence']})\n"
+                         + "\n".join(f"- {pt}" for part in b["parts"] for pt in part["points"])
+                         for b in load_series())
     listing = "\n\n".join(f"Video {i}: {v['title']}\n" + "\n".join(f"- {f}" for f in v["facts"])
                            for i, v in enumerate(longs))
     prompt = (
-        "Pick 5 ideas for 30-55 second YouTube Shorts, each taken from the facts our long videos already cover:\n"
-        f"{listing}\n\n"
-        "Choose the most scroll-stopping ones (the 'wait, WHAT?' reaction): surprising experiments, counter-"
-        "intuitive findings, things viewers can test on themselves. Rephrase each as one punchy sentence, keep it "
-        "accurate, and when it is an author's model rather than research, say so (e.g. 'Eric Berne claimed...'). "
-        "Set related_long to the video number it comes from. Spread across videos when possible.\n"
-        f"Avoid these already used facts: {used_facts[-80:] or 'none'}."
+        "Pick 5 ideas for 35-55 second YouTube Shorts. Sources — key ideas of these books:\n"
+        f"{books}\n\n" + (f"and facts our long videos already cover:\n{listing}\n\n" if longs else "")
+        + "Choose the most scroll-stopping ones (the 'wait, that's me!' reaction): everyday habits explained, "
+        "counter-intuitive findings, things viewers recognise in themselves. Rephrase each as one punchy sentence "
+        "that names the author, keep it accurate, and when it is an author's model rather than research, say so "
+        "(e.g. 'Eric Berne claimed...'). Set book to the book id (or related_long to the video number). "
+        "Use 5 different books.\n"
+        f"Avoid these already used ideas: {used_facts[-80:] or 'none'}."
     )
     return llm.json(prompt, ShortIdeas, system=CHANNEL_VOICE).ideas[:5]
 
@@ -230,31 +235,38 @@ def long_chapter(outline: Outline, idx: int, feedback: str = "") -> str:
 class Scene(BaseModel):
     words: str = Field(description="the exact narration fragment this visual covers")
     visual: str = Field(description="image prompt describing ONLY what is in the frame: one big concrete subject "
-                        "and its action, close-up, nothing tiny or abstract, no text. Do NOT mention art style, "
-                        "colors, lighting or mood — the channel's visual style is added automatically")
+                        "and its action, close-up or medium shot, no text. Do NOT mention art style, colors, "
+                        "lighting or mood — the channel's visual style is added automatically")
     stock_query: str = Field(description="2-3 word stock video search query")
 
 
 class ShortScript(BaseModel):
-    hook_text: str = Field(description="on-screen hook for the first 1.5 s, max 6 words, ALL CAPS")
-    narration: str = Field(description="full voiceover, 95-130 words, starts with the hook sentence")
+    hook_text: str = Field(default="", description="on-screen hook for the first 1.5 s, max 6 words, ALL CAPS")
+    narration: str = Field(description="full voiceover, starts with the hook sentence")
     scenes: list[Scene]
     title: str = Field(description="YouTube Shorts title, <70 chars, curiosity-driven, ends with #shorts")
-    description: str
+    description: str = Field(description="2-3 sentences; credits the book and author when based on a book")
     tags: list[str]
+    character: str = Field(default="", description="tale format: fixed visual description of the protagonist")
+    kicker: str = Field(default="", description="series format: tiny caps line above the title")
+    header_title: str = Field(default="", description="series format: on-screen title, max 8 words")
 
 
-def short_script(fact: str, long_title: str | None, feedback: str = "") -> ShortScript:
+def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dict | None = None,
+                 book: dict | None = None) -> ShortScript:
+    """fmt — формат из assets/short_style.yaml (tale/series), book — запись из book_series.yaml."""
     n = CFG["shorts"]["images_per_short"]
+    src = (f"The idea comes from the book '{book['book']}' by {book['author']} (evidence: {book['evidence']}). "
+           "Retell it in your own words; credit the author. " if book else "")
+    how = fmt["script"] if fmt else (
+        "Audience: ADHD-style, short attention. First sentence is a hook that lands in under 1.5 seconds. "
+        "Then rapid, punchy sentences, one idea each, and a satisfying last line. 95-130 words.")
     return llm.json(
-        f"Write a YouTube Short about this fact: {fact}\n"
-        "Audience: ADHD-style, short attention. First sentence is a hook that lands in under 1.5 seconds "
-        "(e.g. 'Your body glows in the dark.'). Then rapid, punchy, conversational sentences, one idea each, "
-        "a twist or 'wait, it gets weirder' beat, and a satisfying last line. 95-130 words total, spoken fast. "
-        "Funny is good; wrong is not — every claim must be true. "
+        f"Write a YouTube Short about this idea: {fact}\n{src}\n{how}\n"
+        "Funny or moving is good; wrong is not — every claim must be true. "
         + (f"End by mentioning the full calm 'fall asleep learning' video on this topic on our channel ('{long_title}'). "
-           if long_title else "End with a short line inviting them to follow for more weird science. ")
-        + f"Split into {n}-{n + 4} scenes (about 3-5 seconds each) with vivid visuals."
+           if long_title else "")
+        + f"Split into {n - 2}-{n + 2} scenes (about 4-6 seconds each)."
         + (f" Owner feedback on previous version: {feedback}" if feedback else ""),
         ShortScript, system=CHANNEL_VOICE)
 

@@ -130,9 +130,12 @@ def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambien
 
 # ---------------- шортс ----------------
 
-def short_segment(src: Path, out: Path, seconds: float, idx: int, is_video: bool) -> None:
+def short_segment(src: Path, out: Path, seconds: float, idx: int, is_video: bool,
+                  size: tuple[int, int] | None = None, motion: str = "punchy") -> None:
+    """motion: punchy — резкий зум и тряска; slow — медленный наезд/отъезд без тряски."""
     S = CFG["shorts"]
-    w, h, fps = S["width"], S["height"], S["fps"]
+    fps = S["fps"]
+    w, h = size or (S["width"], S["height"])
     frames = max(1, round(seconds * fps))
     rnd = random.Random(idx)
     fill = f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h}"
@@ -142,8 +145,9 @@ def short_segment(src: Path, out: Path, seconds: float, idx: int, is_video: bool
         args = ["-i", str(src), "-vf", vf]
     else:
         zin = rnd.random() < 0.7
-        z = f"1.0+0.22*on/{frames}" if zin else f"1.22-0.22*on/{frames}"
-        shake = rnd.random() < 0.35
+        amp = 0.22 if motion == "punchy" else 0.08
+        z = f"1.0+{amp}*on/{frames}" if zin else f"{1 + amp}-{amp}*on/{frames}"
+        shake = motion == "punchy" and rnd.random() < 0.35
         sx = "+12*sin(on*1.9)" if shake else ""
         sy = "+9*cos(on*2.3)" if shake else ""
         vf = (f"scale={w * 2}:{h * 2}:force_original_aspect_ratio=increase,crop={w * 2}:{h * 2},"
@@ -161,26 +165,67 @@ def _ass_time(t: float) -> str:
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict) -> Path:
-    """subs — блок субтитров стиля из assets/short_style.yaml."""
-    from .style import ass_color
+def _ass_head(styles: list[str]) -> str:
     S = CFG["shorts"]
-    fn, txt, hi, ol = subs["font_name"], ass_color(subs["text"]), ass_color(subs["highlight"]), ass_color(subs["outline"])
-    head = f"""[Script Info]
+    return f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {S['width']}
 PlayResY: {S['height']}
-WrapStyle: 2
+WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Word,{fn},118,{txt},{txt},{ol},&H96000000,0,0,0,0,100,100,1,0,1,7,3,5,60,60,0,1
-Style: Hook,{fn},104,{hi},{txt},{ol},&HC8000000,0,0,0,0,100,100,1,0,3,18,0,8,70,70,260,1
+""" + "\n".join(styles) + """
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
-    lines = [f"Dialogue: 1,{_ass_time(0)},{_ass_time(1.6)},Hook,,0,0,0,,{{\\fad(0,150)}}{hook.upper()}"]
+
+
+def _clean(w: str) -> str:
+    return w.replace("{", "").replace("}", "")
+
+
+def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = None) -> Path:
+    """Субтитры шортса. subs (assets/short_style.yaml): mode word — по слову, мелко; phrase — фраза под панелью.
+    Без subs — старые крупные караоке-слова с подсветкой."""
+    from .style import ass_color
+    S = CFG["shorts"]
+    W, H = S["width"], S["height"]
+    if subs and subs["mode"] in ("word", "phrase"):
+        c, ol = ass_color(subs["color"]), ass_color(subs["outline"])
+        lines = []
+        if subs["mode"] == "word":
+            head = _ass_head([f"Style: Sub,{subs['font_name']},{subs['size']},{c},{c},{ol},&H64000000,"
+                              "0,0,0,0,100,100,1,0,1,3,2,5,60,60,0,1"])
+            pos = f"{{\\pos({W // 2},{int(H * subs['y'])})\\fad(60,60)}}"
+            for i, wd in enumerate(words):
+                end = words[i + 1]["start"] if i + 1 < len(words) else wd["end"] + 0.4
+                lines.append(f"Dialogue: 0,{_ass_time(wd['start'])},{_ass_time(max(end, wd['start'] + 0.15))},"
+                             f"Sub,,0,0,0,,{pos}{_clean(wd['word'])}")
+        else:
+            head = _ass_head([f"Style: Sub,{subs['font_name']},{subs['size']},{c},{c},{ol},&H00000000,"
+                              f"0,0,0,0,100,100,0,0,1,2,0,8,90,90,{subs['y']},1"])
+            groups, cur = [], []
+            for wd in words:
+                cur.append(wd)
+                if len(cur) >= 7 or (len(cur) >= 3 and wd["word"][-1] in ".,!?;:—"):
+                    groups.append(cur)
+                    cur = []
+            if cur:
+                groups.append(cur)
+            for gi, g in enumerate(groups):
+                end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.5
+                text = " ".join(_clean(w["word"]) for w in g)
+                lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Sub,,0,0,0,,"
+                             f"{{\\fad(80,0)}}{text}")
+        out.write_text(head + "\n".join(lines) + "\n")
+        return out
+
+    head = _ass_head([
+        "Style: Word,Anton,118,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,7,3,5,60,60,0,1",
+        "Style: Hook,Anton,104,&H0000E5FF,&H00FFFFFF,&H00000000,&HC8000000,0,0,0,0,100,100,1,0,3,18,0,8,70,70,260,1"])
+    lines = [f"Dialogue: 1,{_ass_time(0)},{_ass_time(1.6)},Hook,,0,0,0,,{{\\fad(0,150)}}{hook.upper()}"] if hook else []
     # группы по 1–3 слова, разрыв на пунктуации
     groups, cur = [], []
     for wd in words:
@@ -190,29 +235,79 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             cur = []
     if cur:
         groups.append(cur)
-    pos = f"{{\\pos({S['width'] // 2},{int(S['height'] * 0.66)})}}"
+    pos = f"{{\\pos({W // 2},{int(H * 0.66)})}}"
     for g in groups:
         g_end = g[-1]["end"] + 0.08
         for i, wd in enumerate(g):
             start = wd["start"]
             end = g[i + 1]["start"] if i + 1 < len(g) else g_end
-            parts = []
-            for j, other in enumerate(g):
-                w = other["word"].upper().replace("{", "").replace("}", "")
-                parts.append(f"{{\\c{hi}&}}{w}{{\\c{txt}&}}" if j == i else w)
+            parts = [f"{{\\c&H0000E5FF&}}{_clean(o['word']).upper()}{{\\c&H00FFFFFF&}}" if j == i
+                     else _clean(o["word"]).upper() for j, o in enumerate(g)]
             pop = "{\\fscx112\\fscy112\\t(0,90,\\fscx100\\fscy100)}" if i == 0 else ""
             lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Word,,0,0,0,,{pos}{pop}{' '.join(parts)}")
     out.write_text(head + "\n".join(lines) + "\n")
     return out
 
 
+def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -> Path:
+    """Статичный фон формата series: надпись-кикер, заголовок, золотые линии вокруг панели, подвал."""
+    from .style import rgb
+    S = CFG["shorts"]
+    W, H = S["width"], S["height"]
+    F, P = fmt["frame"], fmt["frame"]["panel"]
+    img = Image.new("RGB", (W, H), rgb(F["bg"]))
+    d = ImageDraw.Draw(img)
+    # мягкий световой конус сверху, как в референсе
+    glow = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(glow).polygon([(W * 0.42, 0), (W * 0.58, 0), (W * 0.78, P["y"]), (W * 0.22, P["y"])], fill=38)
+    from PIL import ImageFilter
+    img = Image.composite(Image.new("RGB", (W, H), rgb(F["line"])), img, glow.filter(ImageFilter.GaussianBlur(40)))
+    d = ImageDraw.Draw(img)
+    mono = ImageFont.truetype(str(FONTS / "SpaceMono-Regular.ttf"), 30)
+    serif = ImageFont.truetype(str(FONTS / "Lora.ttf"), 76)
+    try:
+        serif.set_variation_by_name("Regular")
+    except Exception:
+        pass
+    small = ImageFont.truetype(str(FONTS / "Lora.ttf"), 30)
+
+    def center(y, text, font, fill):
+        d.text(((W - d.textlength(text, font=font)) / 2, y), text, font=font, fill=fill)
+
+    center(300, kicker.upper()[:40], mono, rgb(F["kicker"]))
+    lines, cur = [], ""
+    for wd in title.split():
+        if cur and d.textlength(f"{cur} {wd}", font=serif) > W - 140:
+            lines.append(cur)
+            cur = wd
+        else:
+            cur = f"{cur} {wd}".strip()
+    lines.append(cur)
+    y = 360 if len(lines) <= 2 else 330
+    for ln in lines[:3]:
+        center(y, ln, serif, rgb(F["title"]))
+        y += 88
+    for yy in (P["y"] - 4, P["y"] + P["h"] + 2):
+        d.rectangle([0, yy, W, yy + 2], fill=rgb(F["line"]))
+    center(H - 150, footer, small, rgb(F["footer"]))
+    img.save(out, "PNG")
+    return out
+
+
 def assemble_short(segments: list[Path], cut_times: list[float], voice: Path, ass: Path, ambient: Path,
-                   whoosh: Path, out: Path, work: Path) -> None:
+                   whoosh: Path | None, out: Path, work: Path, template: Path | None = None,
+                   panel_y: int = 0) -> None:
+    """template — фон 1080×1920 (формат series): видео из сегментов кладётся панелью на высоте panel_y."""
     S = CFG["shorts"]
     video = work / "short_video.mp4"
     concat(segments, video)
-    n = len(cut_times)
-    graph = [f"[0:v]subtitles='{ass}':fontsdir='{FONTS}',format=yuv420p[v]",
+    n = len(cut_times) if whoosh else 0
+    base = "[0:v]"
+    pre = []
+    if template:
+        pre = [f"[4:v][0:v]overlay=0:{panel_y}:shortest=1[base]"]
+        base = "[base]"
+    graph = pre + [f"{base}subtitles='{ass}':fontsdir='{FONTS}',format=yuv420p[v]",
              "[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,loudnorm=I=-14:TP=-1.5[vo]",
              "[2:a]volume=-24dB[amb]"]
     mix = ["[vo]", "[amb]"]
@@ -223,7 +318,8 @@ def assemble_short(segments: list[Path], cut_times: list[float], voice: Path, as
             graph.append(f"[w{i}]adelay={ms}|{ms}[wd{i}]")
             mix.append(f"[wd{i}]")
     graph.append(f"{''.join(mix)}amix=inputs={len(mix)}:duration=first:normalize=0,alimiter=limit=0.95[a]")
-    ff("-i", str(video), "-i", str(voice), "-stream_loop", "-1", "-i", str(ambient), "-i", str(whoosh),
+    extra = ["-i", str(whoosh or ambient)] + (["-loop", "1", "-i", str(template)] if template else [])
+    ff("-i", str(video), "-i", str(voice), "-stream_loop", "-1", "-i", str(ambient), *extra,
        "-filter_complex", ";".join(graph), "-map", "[v]", "-map", "[a]",
        "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-r", str(S["fps"]),
        "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out))
