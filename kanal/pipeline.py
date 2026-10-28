@@ -141,7 +141,8 @@ def long_prepare(item_id: str) -> Path:
     W = workdir("long", item_id)
     fb = _feedback(item)
     A = CFG["animation"]
-    outline = writer.long_outline(item["topic"], fb)
+    book = writer.book_part(item["series"], item["part"]) if item.get("series") else None
+    outline = writer.long_outline(item["topic"], fb, book)
     chapters, all_issues, found = [], [], 0
     for i in range(len(outline.chapters)):
         text, issues, f = writer.checked(writer.long_chapter(outline, i, fb))
@@ -149,6 +150,11 @@ def long_prepare(item_id: str) -> Path:
         all_issues += [x.model_dump() for x in issues]
         chapters.append({"title": outline.chapters[i].title, "text": text})
         print(f"chapter {i + 1}/{len(outline.chapters)}: {len(text.split())} words, issues {f}")
+
+    try:  # материал для шортсов: они делаются только из уже рассказанного в длинных
+        state.set_item(item_id, short_facts=writer.short_facts(chapters))
+    except Exception as e:
+        print(f"WARN short facts failed: {e}")
 
     lib = images.Library()
     hero = lib.generate(outline.hero_image, "landscape", W / "hero.jpg", model=A["hero_model"], usd=A["hero_usd"])

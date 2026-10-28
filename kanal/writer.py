@@ -16,7 +16,8 @@ CHANNEL_VOICE = (
     "is educational. Never invent statistics, dates, names or quotes; prefer well-established textbook facts; "
     "when a number is uncertain, say 'about' or 'roughly'. "
     "When a topic is based on a book, credit the author by name, present models and methods as their ideas "
-    "rather than settled science, and say plainly when later research failed to confirm a famous finding."
+    "rather than settled science, and say plainly when later research failed to confirm a famous finding. "
+    "Retell books in your own words with your own examples; never reproduce their text or long quotes."
 )
 
 
@@ -33,19 +34,28 @@ class Topics(BaseModel):
     topics: list[Topic]
 
 
-def book_ideas(kind: str) -> str:
-    """Случайные идеи из книг владельца (assets/book_seeds.yaml) для подмешивания в предложения тем."""
-    k = CFG.get("book_seeds", {}).get("per_batch", 0)
-    if not k:
-        return ""
-    with open(ROOT / "assets" / "book_seeds.yaml") as f:
-        books = yaml.safe_load(f)
-    pool = [f"- {s['concept']} [from '{b['book']}' by {b['author']}; evidence: {s['evidence']}]"
-            for b in books for s in b["seeds"] if s["for"] in (kind, "both")]
-    picks = random.sample(pool, min(len(pool), k * 4))
-    return (f"\nExactly {k} of the 5 must be based on one of these book ideas (set source to '<book> by <author>'; "
-            "for 'weak' evidence frame it as the author's idea, not a scientific fact):\n" + "\n".join(picks)
-            + "\nThe rest: leave source empty.\n")
+def load_series() -> list[dict]:
+    with open(ROOT / "assets" / "book_series.yaml") as f:
+        return yaml.safe_load(f)
+
+
+def next_book_parts(done: set[tuple[str, int]], limit: int = 10) -> list[dict]:
+    """Следующая не снятая часть каждой книги (по порядку частей), не больше limit книг."""
+    out = []
+    for b in load_series():
+        for n, part in enumerate(b["parts"], 1):
+            if (b["id"], n) not in done:
+                total = len(b["parts"])
+                out.append({"topic": f"{b['book']}, Part {n} of {total}: {part['title']}", "subject": "psychology",
+                            "pitch": ", ".join(part["points"][:4]) + "…", "source": f"{b['book']} by {b['author']}",
+                            "series": b["id"], "part": n, "button": f"{b['author'].split()[-1]} {n}/{total}: {part['title']}"})
+                break
+    return out[:limit]
+
+
+def book_part(series: str, n: int) -> dict:
+    b = next(x for x in load_series() if x["id"] == series)
+    return {**b, "n": n, "total": len(b["parts"]), **b["parts"][n - 1]}
 
 
 def propose_long(used: list[str]) -> list[Topic]:
@@ -53,7 +63,6 @@ def propose_long(used: list[str]) -> list[Topic]:
         f"Propose 5 topics for a 2-3 hour 'fall asleep learning' video. Each must be broad enough for "
         f"{CFG['long']['chapters']} calm chapters, evergreen, searchable (people search e.g. 'fall asleep "
         f"learning about the ocean'). Mix subjects from: {', '.join(CFG['subjects'])}.\n"
-        f"{book_ideas('long')}"
         f"Do NOT repeat or closely overlap these already used topics: {used[-60:] or 'none'}."
     )
     return llm.json(prompt, Topics, system=CHANNEL_VOICE).topics[:5]
@@ -63,27 +72,39 @@ class ShortIdea(BaseModel):
     fact: str = Field(description="the surprising fact in one sentence")
     subject: str
     related_long: int = Field(description="index in the provided long-video list this relates to, or -1")
-    source: str = Field(default="", description="'<book> by <author>' if based on a book idea, else empty")
 
 
 class ShortIdeas(BaseModel):
     ideas: list[ShortIdea]
 
 
-def propose_shorts(long_topics: list[str], used_facts: list[str]) -> list[ShortIdea]:
-    listing = "\n".join(f"{i}: {t}" for i, t in enumerate(long_topics)) or "(none yet)"
+def propose_shorts(longs: list[dict], used_facts: list[str]) -> list[ShortIdea]:
+    """Шортсы только из фактов, уже рассказанных в наших длинных видео (longs: [{title, facts}])."""
+    listing = "\n\n".join(f"Video {i}: {v['title']}\n" + "\n".join(f"- {f}" for f in v["facts"])
+                           for i, v in enumerate(longs))
     prompt = (
-        "Propose 5 ideas for 30-55 second YouTube Shorts. Each is ONE weird, funny or mind-blowing but TRUE "
-        "and verifiable science/history fact that makes someone stop scrolling and say 'wait, WHAT?'. "
-        "Reject anything a 12-year-old already knows from school (e.g. 'the ocean holds 97% of Earth's water', "
-        "'tides are caused by the Moon'). Prefer bizarre animals, absurd history, body weirdness, counter-intuitive "
-        "physics, cosmic scale. Only well-documented facts, no myths or 'fun facts' of dubious origin. "
-        "At least 3 of 5 should relate "
-        f"to one of our long videos so the Short can point to it:\n{listing}\n"
-        f"{book_ideas('short')}"
+        "Pick 5 ideas for 30-55 second YouTube Shorts, each taken from the facts our long videos already cover:\n"
+        f"{listing}\n\n"
+        "Choose the most scroll-stopping ones (the 'wait, WHAT?' reaction): surprising experiments, counter-"
+        "intuitive findings, things viewers can test on themselves. Rephrase each as one punchy sentence, keep it "
+        "accurate, and when it is an author's model rather than research, say so (e.g. 'Eric Berne claimed...'). "
+        "Set related_long to the video number it comes from. Spread across videos when possible.\n"
         f"Avoid these already used facts: {used_facts[-80:] or 'none'}."
     )
     return llm.json(prompt, ShortIdeas, system=CHANNEL_VOICE).ideas[:5]
+
+
+class Facts(BaseModel):
+    facts: list[str] = Field(description="standalone one-sentence facts or ideas from the script")
+
+
+def short_facts(chapters: list[dict]) -> list[str]:
+    """15 самых цепляющих фактов из готового сценария длинного видео — материал для будущих шортсов."""
+    text = "\n\n".join(f"## {c['title']}\n{c['text']}" for c in chapters)
+    return llm.json(
+        "From this sleep-video script, list the 15 most surprising, concrete facts, experiments or ideas that "
+        "would make a great 30-55 second Short. Each one sentence, self-contained, faithful to the script "
+        "(keep attributions like 'according to Kahneman').\n\n" + text, Facts, system=CHANNEL_VOICE).facts[:15]
 
 
 class Names(BaseModel):
@@ -164,12 +185,21 @@ class Outline(BaseModel):
     chapters: list[ChapterPlan]
 
 
-def long_outline(topic: str, feedback: str = "") -> Outline:
+def long_outline(topic: str, feedback: str = "", book: dict | None = None) -> Outline:
     hours = round(CFG["long"]["target_minutes"] / 60, 1)
+    if book:
+        about = (f"part {book['n']} of {book['total']} of a calm retelling of the book '{book['book']}' by "
+                 f"{book['author']}: '{book['title']}'. Cover, in order: {'; '.join(book['points'])}. "
+                 f"How to present the evidence: {book['evidence']}. Retell the ideas in your own words with your own "
+                 f"examples; never reproduce the book's text. Title format: 'Fall Asleep to {book['book']} by "
+                 f"{book['author']} (Part {book['n']} of {book['total']}): <Part title> | {math.ceil(hours)} Hours "
+                 f"Calm Book Summary' — at most 100 characters, shorten the book title if needed.")
+    else:
+        about = (f"{topic}. Title format: "
+                 f"'Fall Asleep Learning: <Topic> | {math.ceil(hours)} Hours of Calm Science Facts'.")
     return llm.json(
-        f"Plan a {hours}-hour sleep-learning video about: {topic}. Exactly {CFG['long']['chapters']} chapters "
-        f"that flow gently from simple to deeper, ending in a soft, reflective chapter. Title format: "
-        f"'Fall Asleep Learning: <Topic> | {math.ceil(hours)} Hours of Calm Science Facts'. "
+        f"Plan a {hours}-hour sleep-learning video: {about} Exactly {CFG['long']['chapters']} chapters "
+        f"that flow gently from simple to deeper, ending in a soft, reflective chapter. "
         f"15-25 tags.{(' Owner feedback on previous version: ' + feedback) if feedback else ''}",
         Outline, system=CHANNEL_VOICE)
 

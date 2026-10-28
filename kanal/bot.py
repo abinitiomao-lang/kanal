@@ -32,18 +32,20 @@ def _budget_ok(extra: float) -> bool:
 
 def propose_long() -> None:
     st = state.load()
-    used = [i["topic"] for i in st["items"].values() if i["kind"] == "long"]
-    topics = writer.propose_long(used)
+    longs = [i for i in st["items"].values() if i["kind"] == "long" and i["status"] != "rejected"]
+    topics = writer.next_book_parts({(i["series"], i["part"]) for i in longs if i.get("series")})
+    if not topics:  # все книги сняты — обычные научные темы
+        topics = [t.model_dump() for t in writer.propose_long([i["topic"] for i in longs])]
     pid = new_id("p")
-    text = "🌙 <b>Темы длинного видео</b> — выбери одну:\n\n" + "\n".join(
-        f"{n + 1}. <b>{html.escape(t.topic)}</b> ({t.subject}) — {html.escape(t.pitch)}"
-        + (f" 📚 <i>{html.escape(t.source)}</i>" if t.source else "") for n, t in enumerate(topics))
-    rows = [[(f"{n + 1}. {t.topic[:40]}", f"L:{pid}:{n}")] for n, t in enumerate(topics)]
+    text = "🌙 <b>Следующее длинное видео</b> — выбери одно:\n\n" + "\n".join(
+        f"{n + 1}. <b>{html.escape(t['topic'])}</b> — {html.escape(t['pitch'])}"
+        + (f" 📚 <i>{html.escape(t['source'])}</i>" if t.get("source") else "") for n, t in enumerate(topics))
+    rows = [[(f"{n + 1}. {t.get('button', t['topic'])[:42]}", f"L:{pid}:{n}")] for n, t in enumerate(topics)]
     rows.append([("🔄 Другие темы", f"X:{pid}:long")])
     msg = telegram.send(text, rows)
 
     def fn(s):
-        s["proposals"][pid] = {"kind": "long", "topics": [t.model_dump() for t in topics], "msg": msg["message_id"],
+        s["proposals"][pid] = {"kind": "long", "topics": topics, "msg": msg["message_id"],
                                "picked": [], "created": state.now()}
         s["last_long_proposal"] = date.today().isoformat()
     state.update(fn, "propose long")
@@ -52,15 +54,19 @@ def propose_long() -> None:
 
 def propose_shorts() -> None:
     st = state.load()
-    longs = sorted(((k, v) for k, v in st["items"].items() if v["kind"] == "long" and v.get("title")
+    longs = sorted(((k, v) for k, v in st["items"].items() if v["kind"] == "long" and v.get("short_facts")
                     and v["status"] != "rejected"), key=lambda kv: kv[1]["created"], reverse=True)[:6]
+    if not longs:
+        telegram.send("⚡️ Шортсы делаются из фактов длинных видео — темы появятся, когда будет готов сценарий "
+                      "первого длинного (выбери его в /long).")
+        return
     long_ids = [k for k, _ in longs]
     used = [i["topic"] for i in st["items"].values() if i["kind"] == "short"]
-    ideas = writer.propose_shorts([v["topic"] for _, v in longs], used)
+    ideas = writer.propose_shorts([{"title": v["title"], "facts": v["short_facts"]} for _, v in longs], used)
     pid = new_id("p")
     per = CFG["shorts"]["per_day"]
     text = f"⚡️ <b>Темы шортсов</b> — выбери до {per}:\n\n" + "\n".join(
-        f"{n + 1}. {html.escape(t.fact)}" + (f" 📚 <i>{html.escape(t.source)}</i>" if t.source else "") for n, t in enumerate(ideas))
+        f"{n + 1}. {html.escape(t.fact)}" for n, t in enumerate(ideas))
     rows = [[(f"{n + 1}. {t.fact[:45]}", f"S:{pid}:{n}")] for n, t in enumerate(ideas)]
     rows.append([("🔄 Другие факты", f"X:{pid}:short")])
     msg = telegram.send(text, rows)
@@ -102,13 +108,12 @@ def on_pick(kind: str, pid: str, n: int, msg_id: int) -> str:
     t = prop["topics"][n]
     item_id = new_id("L" if kind == "long" else "S")
     topic = t["topic"] if kind == "long" else t["fact"]
-    if t.get("source"):
-        topic += f" (based on ideas from {t['source']})"
 
     def fn(s):
         s["proposals"][pid]["picked"].append(n)
         s["items"][item_id] = {"kind": kind, "topic": topic, "status": "queued", "created": state.now(),
-                               "long_ref": t.get("long_ref"), "feedback": []}
+                               "long_ref": t.get("long_ref"), "series": t.get("series"), "part": t.get("part"),
+                               "feedback": []}
     state.update(fn, f"pick {item_id}")
     picked = prop["picked"] + [n]
     if len(picked) >= limit:

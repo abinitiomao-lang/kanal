@@ -1,0 +1,125 @@
+# Серии длинных видео по книгам владельца: пересказ идей своими словами (не чтение текста — авторское право).
+# Книги — в Documents/Шурецкая/mobi, в репозиторий не попадают. До 5 видео на книгу, идут по порядку.
+# evidence: как подавать — strong (наука), mixed (часть не подтвердилась), weak (авторская модель/метод).
+
+- id: kahneman
+  book: "Thinking, Fast and Slow"
+  author: Daniel Kahneman
+  evidence: "mostly strong research (Nobel-winning work with Amos Tversky); priming and ego-depletion studies he cites later failed to replicate — say so"
+  parts:
+    - title: "Two Systems"
+      points: [System 1 and System 2, the bat-and-ball puzzle, the lazy controller and mental effort, cognitive ease, the associative machine, jumping to conclusions, what you see is all there is, the halo effect]
+    - title: "Heuristics and Biases"
+      points: [the law of small numbers, anchoring, the availability heuristic, availability cascades, representativeness, the Linda problem, base rates, regression to the mean]
+    - title: "Overconfidence"
+      points: [the illusion of understanding and hindsight, the illusion of validity, intuitions vs simple formulas, when expert intuition can be trusted, the planning fallacy, the outside view, optimism and the premortem]
+    - title: "Choices"
+      points: [Bernoulli's error, prospect theory, loss aversion, the endowment effect, rare events, risk policies, keeping score and mental accounts, reversals, frames and reality]
+    - title: "Two Selves"
+      points: [the experiencing self and the remembering self, the cold-hand experiment, the peak-end rule and duration neglect, life as a story, experienced well-being, the focusing illusion, conclusions of the book]
+
+- id: flow
+  book: "Flow: The Psychology of Optimal Experience"
+  author: Mihaly Csikszentmihalyi
+  evidence: "flow is well studied; broader claims about consciousness and meaning are the author's philosophy"
+  parts:
+    - title: "Happiness and the Control of Consciousness"
+      points: [happiness revisited, the roots of discontent, the experience sampling method, attention as psychic energy, psychic entropy, the self, order in consciousness]
+    - title: "The Anatomy of Flow"
+      points: [enjoyment vs pleasure, challenge and skill, merging action and awareness, clear goals and feedback, concentration, sense of control, loss of self-consciousness, transformation of time, the autotelic experience]
+    - title: "Flow in the Body, the Mind and at Work"
+      points: [sport, dance and the senses, music, the play of thought, memory and learning, work as flow, the paradox of work and leisure, enjoying solitude]
+    - title: "Relationships, Chaos and the Making of Meaning"
+      points: [family and friends, surviving hardship, transforming tragedy, the autotelic self, meaning, purpose and resolve, harmony and unifying life themes]
+
+- id: berne
+  book: "Games People Play and What Do You Say After You Say Hello?"
+  author: Eric Berne
+  evidence: "transactional analysis is an influential therapeutic model, not empirically validated science — present as Berne's model"
+  parts:
+    - title: "Ego States and Transactions"
+      points: [Parent, Adult and Child ego states, structural analysis, transactions and strokes, complementary and crossed transactions, structuring time, rituals, pastimes]
+    - title: "What Makes a Game"
+      points: [definition of a game, the payoff, why people play, Why Don't You — Yes But, games of everyday life, games in marriage]
+    - title: "More Games and Beyond Games"
+      points: [games at parties, games in therapy, good games, the meaning of games, the players, autonomy, awareness, spontaneity and intimacy]
+    - title: "Life Scripts"
+      points: [what a script is, parental programming, early childhood decisions, fairy tales and scripts, the script apparatus, typical scripts, breaking free from a script]
+
+- id: drive
+  book: "Drive: The Surprising Truth About What Motivates Us"
+  author: Daniel Pink
+  evidence: "built on solid self-determination research; some generalizations are simplified"
+  parts:
+    - title: "Why Carrots and Sticks Fail"
+      points: [motivation 1.0 2.0 and 3.0, Harlow's monkeys and puzzles, Deci's experiments, the candle problem, seven reasons rewards backfire, the daycare late fine, when rewards do work]
+    - title: "Type I and Autonomy"
+      points: [Type I and Type X behavior, self-determination theory, autonomy over task, time, technique and team, results-only work environments, 20 percent time]
+    - title: "Mastery and Purpose"
+      points: [compliance vs engagement, Goldilocks tasks, mastery as a mindset, mastery as pain, mastery as an asymptote, the purpose motive, the good life]
+
+- id: fisher
+  book: "Why We Love: The Nature and Chemistry of Romantic Love"
+  author: Helen Fisher
+  evidence: "fMRI studies are real but small; the three-system model and evolutionary stories are partly speculative"
+  parts:
+    - title: "What Love Is and Animal Attraction"
+      points: [what being in love feels like, love across cultures, intrusive thinking and craving, attraction in animals, mate choice in birds and mammals]
+    - title: "The Chemistry and Web of Love"
+      points: [brain scans of people in love, dopamine and norepinephrine, serotonin and obsessive thinking, lust, romance and attachment, oxytocin, vasopressin and prairie voles]
+    - title: "Lost Love and Lasting Love"
+      points: [the evolution of romantic love, rejection and protest, despair, love and pain in the brain, keeping romance alive, novelty, the triumph of love]
+
+- id: nvc
+  book: "Nonviolent Communication"
+  author: Marshall Rosenberg
+  evidence: "a communication method, not a scientific theory — present as Rosenberg's approach"
+  parts:
+    - title: "Where Nonviolent Communication Comes From"
+      points: [Rosenberg's childhood in Detroit, what makes people violent or compassionate, the giraffe and the jackal, observations vs evaluations, feelings vs thoughts, needs, requests vs demands]
+    - title: "Empathy, Anger and Gratitude"
+      points: [empathic listening, empathy for yourself, the four steps of anger, expressing gratitude, saying no and hearing no]
+    - title: "Families, Schools and Social Change"
+      points: [parenting without punishment, schools and education, mediation and conflict, social change, living the process]
+
+- id: perry
+  book: "How to Stay Sane"
+  author: Philippa Perry
+  evidence: "a psychotherapist's practical guide citing some research (Nun Study, neuroplasticity) — keep research claims careful"
+  parts:
+    - title: "Self-Observation and Relationships"
+      points: [self-observation, the inner critic, mindfulness, the brain as a social organ, attachment, dialogue, mentalization, how to have a good conversation]
+    - title: "Good Stress and Personal Stories"
+      points: [good stress and learning, physical exercise, the Nun Study, neuroplasticity, personal narratives, rewriting the stories we live by]
+
+- id: sher
+  book: "Refuse to Choose!"
+  author: Barbara Sher
+  evidence: "the 'scanner' is Sher's own concept from coaching, not a psychological diagnosis"
+  parts:
+    - title: "Who Scanners Are"
+      points: [what a scanner is, what's wrong with me, scanner panic, fear of commitment, too busy for what I love, can't start, never finishing]
+    - title: "Cyclical Scanners"
+      points: [cyclical scanners, the double agent, the sybil, the plate spinner, the scanner daybook, scheduling many interests]
+    - title: "Sequential Scanners"
+      points: [sequential scanners, the serial specialist, the serial master, jack of all trades, the wanderer, the sampler, the scanner's toolkit]
+
+- id: laporte
+  book: "The Desire Map"
+  author: Danielle LaPorte
+  evidence: "a self-help method — present as LaPorte's approach"
+  parts:
+    - title: "Desire and Feelings"
+      points: [desire as a creative force, chasing feelings rather than things, the power of negative emotions, knowing what you feel, intentions vs goals]
+    - title: "Goals with Soul"
+      points: [core desired feelings, finding your words, life areas, making a plan around feelings, goals with soul, living by feeling]
+
+- id: litvak
+  book: "Psychological Aikido"
+  author: Mikhail Litvak
+  evidence: "a Russian psychotherapist's practical method mixing transactional analysis and behavioral ideas — present as Litvak's approach"
+  parts:
+    - title: "The Principles of Psychological Aikido"
+      points: [the good soldier Švejk method, agreeing instead of fighting, communication and illness, ego states in conflict, accepting criticism calmly]
+    - title: "Aikido at Home and at Work"
+      points: [difficult bosses, family conflicts, raising children, business arguments, keeping your energy, everyday practice]
