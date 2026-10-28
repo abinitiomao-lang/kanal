@@ -524,6 +524,69 @@
    "orient": "portrait",
    "style": "tale-8b5be12c",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5ccb76643071.jpg"
+  },
+  {
+   "id": "7bcc7a468d79",
+   "prompt": "an elderly historian peering at a dusty wallet under a glass display case",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7bcc7a468d79.jpg"
+  },
+  {
+   "id": "1fdfee6e13ec",
+   "prompt": "a coin slipping through an open hand and falling toward a dark floor",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/1fdfee6e13ec.jpg"
+  },
+  {
+   "id": "affe81178e21",
+   "prompt": "an empty leather wallet lying on a wooden table",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/affe81178e21.jpg"
+  },
+  {
+   "id": "5970c2f0c000",
+   "prompt": "a single banknote lying on a city sidewalk",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5970c2f0c000.jpg"
+  },
+  {
+   "id": "9dd01deb25f4",
+   "prompt": "two researchers at a desk filled with notepads and printed charts",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/9dd01deb25f4.jpg"
+  },
+  {
+   "id": "798fa8f881ee",
+   "prompt": "a balance scale tipped sharply toward one heavy side",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/798fa8f881ee.jpg"
+  },
+  {
+   "id": "af989e691868",
+   "prompt": "a cracked smartphone sitting on a shelf beside a stack of old cards",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/af989e691868.jpg"
+  },
+  {
+   "id": "0488c33db0d1",
+   "prompt": "a museum display case holding an old gym membership card",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/0488c33db0d1.jpg"
+  },
+  {
+   "id": "75d52e96cbb0",
+   "prompt": "an open book resting on a wooden desk beside a reading lamp",
+   "orient": "landscape",
+   "style": "series-a6a9a94f",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/75d52e96cbb0.jpg"
   }
  ],
  "costs": {
