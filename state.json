@@ -3,8 +3,19 @@
  "proposals": {},
  "items": {},
  "images": [],
- "costs": {},
- "costs_log": [],
+ "costs": {
+  "2026-10": {
+   "fal": 1.17
+  }
+ },
+ "costs_log": [
+  {
+   "ts": "2026-10-28T13:19:45+00:00",
+   "service": "fal",
+   "usd": 1.17,
+   "note": "preview The Deep Ocean"
+  }
+ ],
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": null,
