@@ -318,6 +318,55 @@
    "prompt": "A calm sleeping viewer's silhouette lit by a soft glow of stars overhead, vertical composition, peaceful night",
    "orient": "portrait",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/e7a1a2a4a4db.jpg"
+  },
+  {
+   "id": "5822967475db",
+   "prompt": "a lone worn sock resting on a glass museum display pedestal, a small brass label in front of it",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5822967475db.jpg"
+  },
+  {
+   "id": "24b8c4055c1a",
+   "prompt": "a hand dropping a coin into a dark pit while a second coin rises gently from the other side of a balance scale",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/24b8c4055c1a.jpg"
+  },
+  {
+   "id": "327e7c54fadf",
+   "prompt": "a single banknote lying on a sidewalk, a person's hand reaching down to pick it up",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/327e7c54fadf.jpg"
+  },
+  {
+   "id": "5a9d34219a7e",
+   "prompt": "an empty wallet lying open on a kitchen table, a person staring at it with a furrowed brow",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5a9d34219a7e.jpg"
+  },
+  {
+   "id": "ff415879db90",
+   "prompt": "an overstuffed kitchen junk drawer spilling tangled cables and old keys across the counter",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ff415879db90.jpg"
+  },
+  {
+   "id": "03e30c6b4ff5",
+   "prompt": "two researchers in lab coats examining a chart with a tilted seesaw diagram, one hand pointing at the tilt",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/03e30c6b4ff5.jpg"
+  },
+  {
+   "id": "1a0a54cc0a18",
+   "prompt": "an open hardcover book resting on a wooden desk beside a folded sock, a reading lamp glowing",
+   "orient": "landscape",
+   "style": "series",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/1a0a54cc0a18.jpg"
   }
  ],
  "costs": {
