@@ -2,14 +2,15 @@
 import os
 import sys
 
-from . import bot, pipeline, state
+from . import bot, pipeline, selftest, state
 from .config import CFG
 
 
 def main() -> None:
     cmd, args = sys.argv[1], sys.argv[2:]
     run_url = os.environ.get("RUN_URL", "")
-    state.ensure_checkout()
+    if cmd not in ("selftest", "groups"):
+        state.ensure_checkout()
     try:
         if cmd == "poll":
             bot.poll(CFG["bot"]["poll_seconds"])
@@ -23,6 +24,8 @@ def main() -> None:
             pipeline.long_render(args[0], int(args[1]), int(args[2]))
         elif cmd == "long-assemble":
             pipeline.long_assemble(args[0])
+        elif cmd == "selftest":
+            selftest.run()
         elif cmd == "groups":
             n = min(CFG["long"]["render_groups"], CFG["long"]["chapters"])
             print("[" + ",".join(str(i) for i in range(n)) + "]")
