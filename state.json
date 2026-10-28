@@ -112,11 +112,24 @@
     }
    ],
    "msg": 31,
-   "picked": [],
+   "picked": [
+    2
+   ],
    "created": "2026-10-28T17:45:44+00:00"
   }
  },
- "items": {},
+ "items": {
+  "S10281800108d": {
+   "kind": "short",
+   "topic": "A teaspoon of neutron star material would weigh roughly a billion tonnes on Earth.",
+   "status": "queued",
+   "created": "2026-10-28T18:00:54+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "feedback": []
+  }
+ },
  "images": [],
  "costs": {
   "2026-10": {
