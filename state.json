@@ -39,39 +39,6 @@
    "picked": [],
    "created": "2026-10-28T17:30:51+00:00"
   },
-  "p10281730bab4": {
-   "kind": "long",
-   "topics": [
-    {
-     "topic": "The Ocean and Its Life",
-     "subject": "oceans",
-     "pitch": "Viewers will learn how the ocean is layered, how currents and tides work, and how marine life survives in its different zones."
-    },
-    {
-     "topic": "How Matter Behaves",
-     "subject": "chemistry",
-     "pitch": "Viewers will learn how atoms bond, how states of matter change, and why everyday substances act the way they do."
-    },
-    {
-     "topic": "Ancient Egypt Through Its Daily Life",
-     "subject": "ancient civilizations",
-     "pitch": "Viewers will learn how ancient Egyptians farmed the Nile valley, built monuments, and organized their society over thousands of years."
-    },
-    {
-     "topic": "Planet Earth's Hidden Machinery",
-     "subject": "earth science",
-     "pitch": "Viewers will learn how plate tectonics, volcanoes, and rock cycles shape the surface of the planet over long spans of time."
-    },
-    {
-     "topic": "Inside the Human Body",
-     "subject": "human body",
-     "pitch": "Viewers will learn how major organ systems such as the heart, lungs, and nervous system work together to keep us alive."
-    }
-   ],
-   "msg": 29,
-   "picked": [],
-   "created": "2026-10-28T17:31:00+00:00"
-  },
   "p102817458368": {
    "kind": "short",
    "topics": [
@@ -272,7 +239,7 @@
  ],
  "awaiting_comment": null,
  "channel_name": null,
- "last_long_proposal": "2026-10-28",
+ "last_long_proposal": null,
  "last_short_proposal": "2026-10-28",
  "budget_warned": null,
  "name_options": [
