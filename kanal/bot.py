@@ -220,6 +220,16 @@ def on_name(n: int) -> str:
     return name
 
 
+def on_style(key: str) -> str:
+    from . import style
+    st = style.load()["styles"].get(key)
+    if not st:
+        return "Стиль не найден"
+    state.update(lambda s: s.__setitem__("short_style", key), f"short style {key}")
+    telegram.send(f"🎨 Дизайн шортсов: <b>{html.escape(st['label'])}</b>. Все следующие шортсы — в нём.")
+    return st["label"]
+
+
 def status_text() -> str:
     st = state.load()
     active = [(k, v) for k, v in st["items"].items() if v["status"] not in ("published", "rejected")]
@@ -254,6 +264,9 @@ def handle(u: dict) -> None:
                 res = on_reject(rest)
             elif kind == "D":
                 res = on_redo(rest)
+            elif kind == "Y":
+                telegram.edit_markup(msg_id)
+                res = on_style(rest)
             elif kind == "N":
                 telegram.edit_markup(msg_id)
                 res = on_name(int(rest))

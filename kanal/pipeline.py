@@ -5,7 +5,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import audio, costs, images, llm, render, state, stock, telegram, writer, youtube
+from . import audio, costs, images, llm, render, state, stock, style, telegram, writer, youtube
 from .config import CFG, workdir
 
 DISCLOSURE = ("Narration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. "
@@ -96,6 +96,8 @@ def produce_short(item_id: str) -> None:
     starts = [s for i, s in enumerate(starts) if i == 0 or s - starts[i - 1] >= 1.2]
     bounds = starts + [dur + 0.3]
 
+    key, st, rules = style.active()
+    look = (key, style.image_style(st, rules))
     lib = images.Library()
     segs = []
     for i in range(len(starts)):
@@ -106,12 +108,12 @@ def produce_short(item_id: str) -> None:
             src = stock.vertical_clip(sc.stock_query, W / f"clip_{i}.mp4", seconds)
             is_video = src is not None
         if src is None:
-            src = lib.get(sc.visual, "portrait", W / f"img_{i}.jpg")
+            src = lib.get(sc.visual, "portrait", W / f"img_{i}.jpg", style=look)
         seg = W / f"seg_{i:02d}.mp4"
         render.short_segment(src, seg, seconds, hash(item_id) % 1000 + i, is_video)
         segs.append(seg)
 
-    ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass")
+    ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", st["subs"])
     amb = audio.ambient(W / "amb.wav", 20, seed=len(item_id))
     out = W / "short.mp4"
     render.assemble_short(segs, starts[1:], voice, ass, amb, audio.whoosh(W / "whoosh.wav"), out, W)

@@ -161,8 +161,11 @@ def _ass_time(t: float) -> str:
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def karaoke_ass(words: list[dict], hook: str, out: Path) -> Path:
+def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict) -> Path:
+    """subs — блок субтитров стиля из assets/short_style.yaml."""
+    from .style import ass_color
     S = CFG["shorts"]
+    fn, txt, hi, ol = subs["font_name"], ass_color(subs["text"]), ass_color(subs["highlight"]), ass_color(subs["outline"])
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {S['width']}
@@ -171,8 +174,8 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Word,Anton,118,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,7,3,5,60,60,0,1
-Style: Hook,Anton,104,&H0000E5FF,&H00FFFFFF,&H00000000,&HC8000000,0,0,0,0,100,100,1,0,3,18,0,8,70,70,260,1
+Style: Word,{fn},118,{txt},{txt},{ol},&H96000000,0,0,0,0,100,100,1,0,1,7,3,5,60,60,0,1
+Style: Hook,{fn},104,{hi},{txt},{ol},&HC8000000,0,0,0,0,100,100,1,0,3,18,0,8,70,70,260,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -195,8 +198,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             end = g[i + 1]["start"] if i + 1 < len(g) else g_end
             parts = []
             for j, other in enumerate(g):
-                txt = other["word"].upper().replace("{", "").replace("}", "")
-                parts.append(f"{{\\c&H0000E5FF&}}{txt}{{\\c&H00FFFFFF&}}" if j == i else txt)
+                w = other["word"].upper().replace("{", "").replace("}", "")
+                parts.append(f"{{\\c{hi}&}}{w}{{\\c{txt}&}}" if j == i else w)
             pop = "{\\fscx112\\fscy112\\t(0,90,\\fscx100\\fscy100)}" if i == 0 else ""
             lines.append(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Word,,0,0,0,,{pos}{pop}{' '.join(parts)}")
     out.write_text(head + "\n".join(lines) + "\n")

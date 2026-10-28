@@ -30,6 +30,8 @@ def main() -> None:
             selftest.voice_samples()
         elif cmd == "preview-loop":
             selftest.preview_loop(" ".join(args))
+        elif cmd == "styles":
+            selftest.style_sheet(*([" ".join(args)] if args else []))
         elif cmd == "groups":
             n = min(CFG["long"]["render_groups"], CFG["long"]["chapters"])
             print("[" + ",".join(str(i) for i in range(n)) + "]")

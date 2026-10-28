@@ -37,30 +37,32 @@ class Library:
         self.spent = 0.0
         self.used: set[str] = set()
 
-    def find(self, prompt: str, orient: str, min_score: float = 0.4) -> dict | None:
+    def find(self, prompt: str, orient: str, min_score: float = 0.4, style: str | None = None) -> dict | None:
         best, best_s = None, min_score
         for e in self.index:
-            if e["orient"] != orient or e["id"] in self.used:
+            if e["orient"] != orient or e["id"] in self.used or e.get("style") != style:
                 continue
             s = _score(prompt, e["prompt"])
             if s > best_s:
                 best, best_s = e, s
         return best
 
-    def get(self, prompt: str, orient: str, out: Path, allow_reuse: bool = True) -> Path:
-        hit = self.find(prompt, orient) if allow_reuse else None
+    def get(self, prompt: str, orient: str, out: Path, allow_reuse: bool = True,
+            style: tuple[str, str] | None = None) -> Path:
+        """style = (ключ, текст стиля) — переиспользуются только картинки того же стиля."""
+        hit = self.find(prompt, orient, style=style[0] if style else None) if allow_reuse else None
         if hit:
             self.used.add(hit["id"])
             r = requests.get(hit["url"], timeout=120)
             r.raise_for_status()
             out.write_bytes(r.content)
             return out
-        return self.generate(prompt, orient, out)
+        return self.generate(prompt, orient, out, style=style)
 
     def generate(self, prompt: str, orient: str, out: Path, model: str | None = None,
-                 usd: float | None = None) -> Path:
+                 usd: float | None = None, style: tuple[str, str] | None = None) -> Path:
         w, h = SIZES[orient]
-        full = f"{prompt}. {CFG['images']['style']}"
+        full = f"{prompt}. {style[1] if style else CFG['images']['style']}"
         r = requests.post(
             f"https://fal.run/{model or CFG['images']['model']}",
             headers={"Authorization": f"Key {secret('FAL_KEY')}"},
@@ -76,6 +78,8 @@ class Library:
         self.last_url = img_url
         self.spent += CFG["images"]["usd_per_image"] if usd is None else usd
         entry = {"id": uuid.uuid4().hex[:12], "prompt": prompt, "orient": orient}
+        if style:
+            entry["style"] = style[0]
         self.new.append((entry, out))
         self.used.add(entry["id"])
         return out

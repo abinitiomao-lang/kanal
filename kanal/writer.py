@@ -229,7 +229,9 @@ def long_chapter(outline: Outline, idx: int, feedback: str = "") -> str:
 
 class Scene(BaseModel):
     words: str = Field(description="the exact narration fragment this visual covers")
-    visual: str = Field(description="image prompt: concrete, striking, vertical composition, no text")
+    visual: str = Field(description="image prompt describing ONLY what is in the frame: one big concrete subject "
+                        "and its action, close-up, nothing tiny or abstract, no text. Do NOT mention art style, "
+                        "colors, lighting or mood — the channel's visual style is added automatically")
     stock_query: str = Field(description="2-3 word stock video search query")
 
 

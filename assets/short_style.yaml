@@ -1,0 +1,61 @@
+# Единый дизайн ВСЕХ шортсов: стиль картинок + субтитры. Длинные видео сюда не относятся (config.yaml → images.style).
+# Активный стиль выбирает владелец кнопкой в Telegram (кадр-сравнение: workflow `styles`) — выбор хранится
+# в state.json (short_style) и перекрывает `active` ниже.
+# Цвета — RGB hex. font — файл из assets/fonts (имя семейства для субтитров берётся из font_name).
+
+active: cgi3d
+
+# Общие правила для любой картинки шортса (дописываются к промпту сцены и к стилю).
+rules: >-
+  vertical 9:16 composition, ONE large clear subject filling most of the frame and placed in the upper
+  two thirds, simple uncluttered background, bright saturated colors, strong contrast, sharp focus,
+  readable at a glance on a phone, no text, no letters, no numbers, no watermark, no logo
+
+styles:
+  cgi3d:
+    label: "3D-рендер"
+    ref: "как Zack D. Films — гиперреалистичный CGI крупным планом"
+    prompt: >-
+      hyper-detailed 3D CGI render, Blender Cycles, dramatic cinematic studio lighting, glossy realistic
+      materials, extreme close-up, vivid colors, slightly exaggerated scale
+    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FFE500", outline: "000000"}
+
+  flat:
+    label: "Яркий флэт"
+    ref: "как Kurzgesagt — векторная графика, сочные цвета"
+    prompt: >-
+      flat vector illustration, bold simple geometric shapes, vibrant saturated palette of deep purple,
+      cyan, hot pink and orange, soft gradients, clean edges, playful science explainer style
+    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "35F0FF", outline: "2A0F4F"}
+
+  photo:
+    label: "Кино-фото"
+    ref: "как документальные каналы — фотореализм, свет как в кино"
+    prompt: >-
+      photorealistic cinematic photograph, documentary nature photography quality, 35mm lens, shallow depth
+      of field, dramatic rim light, rich color grading
+    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FF9A1F", outline: "000000"}
+
+  clay:
+    label: "Пластилин"
+    ref: "игрушечная миниатюра — мило и запоминается"
+    prompt: >-
+      cute claymation diorama, handmade plasticine figures with fingerprints, tilt-shift miniature look,
+      soft bright studio light, cheerful candy colors
+    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FF5FB0", outline: "3B1250"}
+
+  comic:
+    label: "Комикс"
+    ref: "поп-арт — жирный контур, точки, взрывные цвета"
+    prompt: >-
+      bold pop-art comic book panel, thick black ink outlines, halftone dots, flat bright primary colors,
+      dynamic action composition, speed lines
+    subs: {font: Bangers-Regular.ttf, font_name: Bangers, text: "FFFFFF", highlight: "FFE14D", outline: "000000"}
+
+  neon:
+    label: "Неон"
+    ref: "светящиеся линии на чёрном — контраст в ленте"
+    prompt: >-
+      glowing neon line art on a pure black background, electric magenta and cyan light tubes, synthwave
+      glow, minimal and striking
+    subs: {font: Anton-Regular.ttf, font_name: Anton, text: "FFFFFF", highlight: "FF3BE0", outline: "000000"}
