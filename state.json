@@ -272,11 +272,11 @@
  ],
  "costs": {
   "2026-10": {
-   "fal": 1.224,
+   "fal": 1.26,
    "anthropic": 0.04822,
    "elevenlabs": 0,
    "eleven_chars": 816,
-   "images": 9
+   "images": 15
   }
  },
  "costs_log": [
@@ -333,6 +333,12 @@
    "service": "anthropic",
    "usd": 0.04464,
    "note": "S10281800108d"
+  },
+  {
+   "ts": "2026-10-28T18:25:53+00:00",
+   "service": "fal",
+   "usd": 0.036,
+   "note": "style sheet"
   }
  ],
  "awaiting_comment": null,
