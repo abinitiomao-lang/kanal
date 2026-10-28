@@ -27,5 +27,15 @@
  "channel_name": null,
  "last_long_proposal": null,
  "last_short_proposal": null,
- "budget_warned": null
+ "budget_warned": null,
+ "name_options": [
+  "Sleepy Science",
+  "Drift & Learn",
+  "The Quiet Classroom",
+  "Slow Facts for Sleep",
+  "Midnight Lessons",
+  "DreamLecture",
+  "SleepySynapse",
+  "NightNerd Radio"
+ ]
 }
