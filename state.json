@@ -469,6 +469,24 @@
    "ru_glossary": "Kahneman's quote in the Russian edition: «Ничто в жизни не важно настолько, насколько вам кажется, когда вы об этом думаете»; focusing illusion = иллюзия фокусировки; Daniel Kahneman = Даниэль Канеман",
    "updated": "2026-10-28T20:27:53+00:00",
    "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
+  },
+  "S10282028e98f": {
+   "kind": "short",
+   "topic": "Eric Berne's game 'Why Don't You — Yes, But': endless advice is rejected because the hidden goal is to prove no solution exists",
+   "status": "queued",
+   "created": "2026-10-28T20:28:24+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "berne",
+   "feedback": [
+    "Storyboard: 1) a cheerful glowing lightbulb creature offered on an open palm to a grumpy hedgehog with crossed arms; 2) the hedgehog swatting the lightbulb away, broken bulbs piling up; 3) a future archaeologist mole in a space helmet digging up hundreds of speech-bubble fossils; 4) a mountain of rejected lightbulbs with one tiny wilting flower on top; 5) an old owl professor in round glasses moving chess pieces shaped like hedgehogs and lightbulbs; 6) the hedgehog inspecting a perfect lightbulb through a giant magnifying glass, searching for a crack; 7) the archaeologist mole scratching its helmet, surrounded by bulbs"
+   ],
+   "narration_fixed": "You give your friend the perfect advice. They say: yes, but. You try again. Yes, but. Historians of 2126 found millions of these conversations. Ten solutions. Ten yes-buts. Then silence. Psychiatrist Eric Berne explained it in Games People Play. The goal was never to find a solution. It was to prove none exists. The hidden rule: see if you can present a solution I can't find fault with. And historians are still confused why, every single day,",
+   "kicker": "A DOCUMENTARY FROM 2126",
+   "header_title": "Why “Yes, but…” wins every conversation",
+   "ru_glossary": "Games People Play = «Игры, в которые играют люди»; Why Don't You — Yes, But = «Почему бы тебе не… — Да, но…»; see if you can present a solution I can't find fault with = «Попробуйте отыскать решение, в котором я не смогу найти недостаток» (официальный перевод, гл. 8); yes, but = да, но; Historians of 2126 = историки 2126 года"
   }
  },
  "images": [
