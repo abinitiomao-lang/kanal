@@ -453,7 +453,7 @@
   "S10282011eebc": {
    "kind": "short",
    "topic": "Daniel Kahneman's focusing illusion: nothing in life is as important as you think it is when you are thinking about it.",
-   "status": "producing",
+   "status": "failed",
    "created": "2026-10-28T20:11:29+00:00",
    "long_ref": null,
    "series": null,
@@ -467,7 +467,8 @@
    "kicker": "A DOCUMENTARY FROM THE YEAR 2126",
    "header_title": "Historians can't explain this 2020s panic",
    "ru_glossary": "Kahneman's quote in the Russian edition: «Ничто в жизни не важно настолько, насколько вам кажется, когда вы об этом думаете»; focusing illusion = иллюзия фокусировки; Daniel Kahneman = Даниэль Канеман",
-   "updated": "2026-10-28T20:12:17+00:00"
+   "updated": "2026-10-28T20:16:56+00:00",
+   "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
   }
  },
  "images": [
