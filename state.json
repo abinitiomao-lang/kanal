@@ -6,7 +6,7 @@
  "costs": {
   "2026-10": {
    "fal": 1.17,
-   "anthropic": 0.00151
+   "anthropic": 0.00156
   }
  },
  "costs_log": [
@@ -21,6 +21,12 @@
    "service": "anthropic",
    "usd": 0.00151,
    "note": "preview"
+  },
+  {
+   "ts": "2026-10-28T17:30:39+00:00",
+   "service": "anthropic",
+   "usd": 5e-05,
+   "note": "names"
   }
  ],
  "awaiting_comment": null,
