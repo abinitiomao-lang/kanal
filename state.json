@@ -849,6 +849,48 @@
    "orient": "portrait",
    "style": "tale-7321be6c",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/38e1ba9164be.jpg"
+  },
+  {
+   "id": "6ac98feb147a",
+   "prompt": "A hand bending down to pick up a crumpled banknote from a city sidewalk, the person's face lifting into a small smile",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/6ac98feb147a.jpg"
+  },
+  {
+   "id": "51743002a232",
+   "prompt": "A banknote slipping out of an open hand and fluttering down toward a metal street grate, fingers reaching after it",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/51743002a232.jpg"
+  },
+  {
+   "id": "77627744f3d3",
+   "prompt": "A visitor standing in front of a museum glass case holding an old smartphone and a paper coffee cup, leaning in to look",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/77627744f3d3.jpg"
+  },
+  {
+   "id": "ef075c20ba11",
+   "prompt": "A balance scale slowly tilting hard toward one side, a small coin sliding off the lighter pan as the heavier pan sinks",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ef075c20ba11.jpg"
+  },
+  {
+   "id": "276598938791",
+   "prompt": "An open hardcover book lying on a wooden desk, its pages slowly lifting and turning in a gentle breeze",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/276598938791.jpg"
+  },
+  {
+   "id": "cd9bb04cf40b",
+   "prompt": "An elderly researcher in a cardigan bending over a dusty old ledger, tapping a pen against their chin with a puzzled frown",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/cd9bb04cf40b.jpg"
   }
  ],
  "costs": {
