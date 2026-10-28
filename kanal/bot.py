@@ -135,7 +135,7 @@ def on_publish(item_id: str) -> str:
     it = state.get_item(item_id)
     if it.get("status") != "awaiting_approval":
         return f"Статус: {it.get('status')}"
-    if not CFG["pre_audit_mode"]:
+    if not CFG["pre_audit_mode"] and it.get("video_id"):
         privacy = youtube.make_public(it["video_id"])
         if privacy == "public":
             state.set_item(item_id, status="published", public_id=it["video_id"])
@@ -165,7 +165,8 @@ def on_manual_done(item_id: str, public_url: str | None = None) -> None:
     public_id = None
     if public_url:
         public_id = public_url.rstrip("/").split("/")[-1].split("?v=")[-1].split("?")[0]
-    youtube.delete(it["video_id"])  # приватная копия больше не нужна
+    if it.get("video_id"):
+        youtube.delete(it["video_id"])  # приватная копия больше не нужна
     if it.get("release"):
         subprocess.run(["gh", "release", "delete", it["release"], "-y", "--cleanup-tag"], check=False)
     state.set_item(item_id, status="published", public_id=public_id)

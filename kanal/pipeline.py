@@ -50,7 +50,9 @@ def fail(item_id: str, err: Exception, run_url: str = "") -> None:
 def approval_message(item_id: str) -> None:
     it = state.get_item(item_id)
     kind = "Шортс" if it["kind"] == "short" else "Длинное видео"
-    cap = (f"🎬 <b>{kind}</b> готово (приватно): https://youtu.be/{it['video_id']}\n\n"
+    where = (f"(приватно): https://youtu.be/{it['video_id']}" if it.get("video_id") else
+             "— YouTube API упёрся в дневной лимит, файл выше, публикация вручную")
+    cap = (f"🎬 <b>{kind}</b> готово {where}\n\n"
            f"<b>{html.escape(it['title'])}</b>\n\n{html.escape(it['description'][:450])}…\n\n"
            f"🏷 {html.escape(', '.join(it['tags'][:12]))}\n⏱ {it['duration'] / 60:.1f} мин\n"
            f"{it.get('factcheck', '')}\n\n{costs.summary()}")
@@ -167,9 +169,11 @@ def produce_short(item_id: str) -> None:
     desc += f"\n\n{DISCLOSURE}"
     try:
         vid = youtube.upload(out, script.title, desc, script.tags)
-    except Exception as e:  # дневной лимит загрузок и т.п. — готовый ролик не должен пропасть
-        telegram.send_document(out, f"⚠️ {item_id}: YouTube не принял загрузку ({str(e)[:150]}). Вот готовый ролик.")
-        raise
+    except Exception as e:  # дневной лимит загрузок — ролик не теряем, публикуем вручную
+        if "uploadLimitExceeded" not in str(e):
+            raise
+        print(f"WARN upload: {e}")
+        vid = None
 
     lib.commit(item_id)
     llm.flush(item_id)
