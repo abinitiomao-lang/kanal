@@ -1,6 +1,7 @@
 # Единый дизайн ВСЕХ шортсов (выбор владельца 2026-10-28: оба формата, язык EN; формат закреплён за книгой).
 # Рисовка — по референсам владельца (Шурецкая/ispiration_style_img): тату-флэш от руки, пастельные переливы.
-# Шортс = одна идея из книги владельца (assets/book_series.yaml) или факт из нашего длинного видео.
+# Шортс (10–45 с) = один самый интересный факт/идея из книги владельца (assets/book_series.yaml)
+# или факт из нашего длинного видео. Можно одну короткую цитату из книги с указанием автора.
 # Длинные видео сюда не относятся (config.yaml → images.style).
 # Цвета — RGB hex; шрифты — файлы из assets/fonts, font_name — имя семейства для субтитров (libass).
 
@@ -35,9 +36,10 @@ formats:
     orient: portrait
     image: >-
       vertical 9:16 composition, the main subject large and in the upper two thirds
-    motion: slow                   # медленный наезд/отъезд, без тряски
+    motion: dynamic                # заметный наезд + сдвиг, без тряски (владелец: «динамичное видео»)
+    animate_hook: true             # первый кадр оживляется Kling на 5 с, если позволяет бюджет
     whoosh: false
-    voice: {stability: 0.55, similarity_boost: 0.75, style: 0.2, speed: 0.95}
+    voice: {stability: 0.55, similarity_boost: 0.75, style: 0.2, speed: 1.0}
     subs:
       mode: word                   # по одному слову, мелко, внизу
       font_name: "Fira Sans SemiBold"
@@ -45,8 +47,16 @@ formats:
       color: "1C1A22"              # чернила на белой бумаге
       outline: "FFFFFF"
       y: 0.80                      # доля высоты кадра
+    ru_subs: &ru                   # русские субтитры поверх английских: розовый неон, минимализм
+      font_name: "Fira Sans SemiBold"
+      size: 50
+      color: "FF2BB0"              # неоновый розовый
+      glow: "FF7AD1"               # свечение (размытая обводка)
+      glow_width: 5
+      blur: 7
+      y: 1400                      # верх строки, px (над английскими)
     script: >-
-      Tell this idea as a quiet 35-50 second micro-story (80-110 words) — an allegory, not a lecture.
+      Tell this idea as a 15-40 second micro-story (40-95 words) — an allegory, not a lecture.
       One protagonist from a whimsical fairytale world (a blue cat, a moth who collects moonlight, a little
       fairy gardener, an anglerfish with a lantern, a swallow, a witch who keeps two cups...). Present tense, sensory,
       short sentences, gentle and a little bittersweet. The first line is an intriguing hook (a rule of this
@@ -63,7 +73,8 @@ formats:
     image: >-
       horizontal composition, one big subject close-up filling most of the picture, drawn as a whimsical
       character or creature rather than a plain object
-    motion: slow
+    motion: dynamic
+    animate_hook: true
     whoosh: false
     voice: {stability: 0.45, similarity_boost: 0.75, style: 0.3, speed: 1.0}
     frame:
@@ -80,12 +91,16 @@ formats:
       size: 58
       color: "1C1A22"
       outline: "FBF7EF"
-      y: 1420                      # верх блока субтитров, px
+      y: 1500                      # верх блока субтитров, px
+    ru_subs:
+      <<: *ru
+      y: 1395
     script: >-
       Frame this idea with a playful narrative device and keep it for the whole Short: e.g. a documentary
       from the year 2126 where historians study our strange habits, an alien anthropologist's field notes,
       a museum label from the future, a nature documentary about humans. Dry, witty, precise documentary
-      tone, 90-120 words, short sentences, concrete everyday examples the viewer recognises in themselves.
+      tone, 40-95 words (15-40 seconds), short sentences, concrete everyday examples the viewer recognises
+      in themselves.
       The last line credits the book and author naturally. Give `kicker` (max 5 words, e.g. "A DOCUMENTARY
       FROM THE YEAR 2126") and `header_title` (max 8 words, the hook, e.g. "Historians are confused by
       this 2020s habit").

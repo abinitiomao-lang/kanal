@@ -116,12 +116,26 @@ def produce_short(item_id: str) -> None:
             is_video = src is not None
         if src is None:
             # с героем библиотеку не переиспользуем: он должен быть тем же самым в этом ролике
-            src = lib.get(hero + sc.visual, fmt["orient"], W / f"img_{i}.jpg", allow_reuse=not hero, style=look)
+            src = lib.get(hero + sc.visual, fmt["orient"], W / f"img_{i}.jpg",
+                          allow_reuse=not hero and i > 0, style=look)
+            if i == 0 and fmt.get("animate_hook") and seconds <= 5 and not costs.over_budget(0.6 + lib.spent):
+                try:  # первый кадр — живое видео: решает, листнут ли шортс
+                    lib.spent += images.animate_clip(lib.last_url, sc.visual, W / "hook.mp4")
+                    src, is_video = W / "hook.mp4", True
+                except Exception as e:
+                    print(f"WARN hook animation failed: {e}")
         seg = W / f"seg_{i:02d}.mp4"
         render.short_segment(src, seg, seconds, hash(item_id) % 1000 + i, is_video, panel, fmt["motion"])
         segs.append(seg)
 
-    ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", fmt["subs"])
+    ru = ru_cfg = None
+    if fmt.get("ru_subs"):  # русские субтитры поверх английских — по тем же фразам и таймингам
+        ru_cfg = fmt["ru_subs"]
+        try:
+            ru = writer.translate_ru([" ".join(w["word"] for w in g) for g in render.phrase_groups(words)])
+        except Exception as e:
+            print(f"WARN ru subs failed: {e}")
+    ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", fmt["subs"], ru, ru_cfg)
     amb = audio.ambient(W / "amb.wav", 20, seed=len(item_id))
     out = W / "short.mp4"
     template = None

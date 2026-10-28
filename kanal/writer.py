@@ -258,7 +258,9 @@ def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dic
     """fmt — формат из assets/short_style.yaml (tale/series), book — запись из book_series.yaml."""
     n = CFG["shorts"]["images_per_short"]
     src = (f"The idea comes from the book '{book['book']}' by {book['author']} (evidence: {book['evidence']}). "
-           "Retell it in your own words; credit the author. " if book else "")
+           "Pick its most surprising, talked-about angle (what readers quote and argue about). Retell it in your "
+           "own words and credit the author; you may include ONE short memorable quote from the book "
+           "(max 20 words, attributed) only if you are sure of its exact wording. " if book else "")
     how = fmt["script"] if fmt else (
         "Audience: ADHD-style, short attention. First sentence is a hook that lands in under 1.5 seconds. "
         "Then rapid, punchy sentences, one idea each, and a satisfying last line. 95-130 words.")
@@ -267,9 +269,27 @@ def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dic
         "Funny or moving is good; wrong is not — every claim must be true. "
         + (f"End by mentioning the full calm 'fall asleep learning' video on this topic on our channel ('{long_title}'). "
            if long_title else "")
-        + f"Split into {n - 2}-{n + 2} scenes (about 4-6 seconds each)."
+        + f"Split into {n - 2}-{n + 2} scenes (about 2-4 seconds each), each visual showing exactly what is "
+        "said at that moment, with action and movement in the frame."
         + (f" Owner feedback on previous version: {feedback}" if feedback else ""),
         ShortScript, system=CHANNEL_VOICE)
+
+
+class Translation(BaseModel):
+    lines: list[str] = Field(description="Russian translation of each input line, same count and order")
+
+
+def translate_ru(lines: list[str]) -> list[str]:
+    """Русские субтитры: перевод по фразам, число строк сохраняется (тайминги — от английской озвучки)."""
+    numbered = "\n".join(f"{i + 1}. {ln}" for i, ln in enumerate(lines))
+    res = llm.json(
+        "Translate these consecutive subtitle lines of an English YouTube Short into natural, conversational "
+        "Russian for on-screen subtitles. Keep exactly the same number of lines and order; each Russian line "
+        "must match its English line in meaning (do not move words between lines). Short and readable, "
+        "keep book titles in their known Russian editions or in English if unsure, keep author names in Russian "
+        f"spelling.\n\n{numbered}", Translation)
+    out = res.lines[:len(lines)]
+    return out + lines[len(out):]
 
 
 def channel_names() -> list[str]:

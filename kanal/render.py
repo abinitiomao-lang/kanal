@@ -132,7 +132,7 @@ def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambien
 
 def short_segment(src: Path, out: Path, seconds: float, idx: int, is_video: bool,
                   size: tuple[int, int] | None = None, motion: str = "punchy") -> None:
-    """motion: punchy — резкий зум и тряска; slow — медленный наезд/отъезд без тряски."""
+    """motion: punchy — резкий зум и тряска; dynamic — заметный наезд со сдвигом; slow — медленный наезд."""
     S = CFG["shorts"]
     fps = S["fps"]
     w, h = size or (S["width"], S["height"])
@@ -145,11 +145,15 @@ def short_segment(src: Path, out: Path, seconds: float, idx: int, is_video: bool
         args = ["-i", str(src), "-vf", vf]
     else:
         zin = rnd.random() < 0.7
-        amp = 0.22 if motion == "punchy" else 0.08
+        amp = {"punchy": 0.22, "dynamic": 0.16}.get(motion, 0.08)
         z = f"1.0+{amp}*on/{frames}" if zin else f"{1 + amp}-{amp}*on/{frames}"
         shake = motion == "punchy" and rnd.random() < 0.35
         sx = "+12*sin(on*1.9)" if shake else ""
         sy = "+9*cos(on*2.3)" if shake else ""
+        if motion == "dynamic":  # плавный сдвиг в случайную сторону поверх наезда
+            dx, dy = rnd.choice([-1, 1]) * rnd.uniform(0.3, 0.6), rnd.uniform(-0.3, 0.3)
+            sx = f"+{dx:.2f}*(iw-iw/zoom)/2*(2*on/{frames}-1)"
+            sy = f"+{dy:.2f}*(ih-ih/zoom)/2*(2*on/{frames}-1)"
         vf = (f"scale={w * 2}:{h * 2}:force_original_aspect_ratio=increase,crop={w * 2}:{h * 2},"
               f"zoompan=z='{z}':x='(iw-iw/zoom)/2{sx}':y='(ih-ih/zoom)/2{sy}':d={frames}:s={w}x{h}:fps={fps},"
               f"{grade},format=yuv420p")
@@ -186,7 +190,42 @@ def _clean(w: str) -> str:
     return w.replace("{", "").replace("}", "")
 
 
-def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = None) -> Path:
+def phrase_groups(words: list[dict], max_words: int = 7) -> list[list[dict]]:
+    """Фразы для субтитров: до max_words слов, разрыв на пунктуации."""
+    groups, cur = [], []
+    for wd in words:
+        cur.append(wd)
+        if len(cur) >= max_words or (len(cur) >= 3 and wd["word"][-1] in ".,!?;:—"):
+            groups.append(cur)
+            cur = []
+    if cur:
+        groups.append(cur)
+    return groups
+
+
+def _ru_lines(groups: list[list[dict]], ru: list[str], ru_cfg: dict) -> tuple[str, list[str]]:
+    """Русские субтитры: неоновое розовое свечение (размытая обводка) под чистым светлым текстом."""
+    from .style import ass_color
+    c, glow = ass_color(ru_cfg["color"]), ass_color(ru_cfg["glow"])
+    st = (f"Style: Ru,{ru_cfg['font_name']},{ru_cfg['size']},{c},{c},{glow},&H00000000,"
+          f"0,0,0,0,100,100,0.5,0,1,{ru_cfg['glow_width']},0,8,90,90,0,1")
+    lines = []
+    for gi, g in enumerate(groups):
+        end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.5
+        txt = _clean(ru[gi]) if gi < len(ru) else ""
+        if not txt:
+            continue
+        x, y = CFG["shorts"]["width"] // 2, ru_cfg["y"]
+        # слой 0 — широкое свечение, слой 1 — чёткая тонкая обводка того же цвета
+        lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Ru,,0,0,0,,"
+                     f"{{\\pos({x},{y})\\blur{ru_cfg['blur']}\\fad(80,0)}}{txt}")
+        lines.append(f"Dialogue: 1,{_ass_time(g[0]['start'])},{_ass_time(end)},Ru,,0,0,0,,"
+                     f"{{\\pos({x},{y})\\bord1.2\\blur0.6\\fad(80,0)}}{txt}")
+    return st, lines
+
+
+def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = None,
+                ru: list[str] | None = None, ru_cfg: dict | None = None) -> Path:
     """Субтитры шортса. subs (assets/short_style.yaml): mode word — по слову, мелко; phrase — фраза под панелью.
     Без subs — старые крупные караоке-слова с подсветкой."""
     from .style import ass_color
@@ -206,19 +245,16 @@ def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = Non
         else:
             head = _ass_head([f"Style: Sub,{subs['font_name']},{subs['size']},{c},{c},{ol},&H00000000,"
                               f"0,0,0,0,100,100,0,0,1,2,0,8,90,90,{subs['y']},1"])
-            groups, cur = [], []
-            for wd in words:
-                cur.append(wd)
-                if len(cur) >= 7 or (len(cur) >= 3 and wd["word"][-1] in ".,!?;:—"):
-                    groups.append(cur)
-                    cur = []
-            if cur:
-                groups.append(cur)
+            groups = phrase_groups(words)
             for gi, g in enumerate(groups):
                 end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.5
                 text = " ".join(_clean(w["word"]) for w in g)
                 lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Sub,,0,0,0,,"
                              f"{{\\fad(80,0)}}{text}")
+        if ru and ru_cfg:
+            st, ru_l = _ru_lines(phrase_groups(words), ru, ru_cfg)
+            head = head.replace("\n\n[Events]", f"\n{st}\n\n[Events]")
+            lines += ru_l
         out.write_text(head + "\n".join(lines) + "\n")
         return out
 

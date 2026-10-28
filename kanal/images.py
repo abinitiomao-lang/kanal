@@ -116,16 +116,10 @@ class Library:
         self.new = []
 
 
-def animate_loop(image_url: str, motion: str, out: Path) -> float:
-    """Kling: тот же кадр в начале и в конце → бесшовная петля. Возвращает стоимость, $."""
+def _kling(payload: dict, out: Path) -> None:
     A = CFG["animation"]
-    prompt = (f"{motion}. Very slow, gentle, continuous motion, static camera, calm and dreamy, "
-              "subtle floating particles, the scene returns exactly to its starting pose.")
     headers = {"Authorization": f"Key {secret('FAL_KEY')}"}
-    r = requests.post(f"https://queue.fal.run/{A['model']}", headers=headers, timeout=60,
-                      json={"start_image_url": image_url, "end_image_url": image_url, "prompt": prompt,
-                            "duration": str(A["seconds"]), "generate_audio": False,
-                            "negative_prompt": "fast motion, camera shake, zoom, cut, text, blur, distortion"})
+    r = requests.post(f"https://queue.fal.run/{A['model']}", headers=headers, timeout=60, json=payload)
     if r.status_code not in (200, 201, 202):
         raise RuntimeError(f"fal.ai video {r.status_code}: {r.text[:300]}")
     job = r.json()
@@ -140,4 +134,24 @@ def animate_loop(image_url: str, motion: str, out: Path) -> float:
         raise RuntimeError("fal.ai video: таймаут")
     res = requests.get(job["response_url"], headers=headers, timeout=60).json()
     out.write_bytes(requests.get(res["video"]["url"], timeout=300).content)
+
+
+def animate_loop(image_url: str, motion: str, out: Path) -> float:
+    """Kling: тот же кадр в начале и в конце → бесшовная петля. Возвращает стоимость, $."""
+    A = CFG["animation"]
+    prompt = (f"{motion}. Very slow, gentle, continuous motion, static camera, calm and dreamy, "
+              "subtle floating particles, the scene returns exactly to its starting pose.")
+    _kling({"start_image_url": image_url, "end_image_url": image_url, "prompt": prompt,
+            "duration": str(A["seconds"]), "generate_audio": False,
+            "negative_prompt": "fast motion, camera shake, zoom, cut, text, blur, distortion"}, out)
     return A["usd_per_second"] * A["seconds"]
+
+
+def animate_clip(image_url: str, action: str, out: Path, seconds: int = 5) -> float:
+    """Kling: оживить кадр шортса (живое движение героя/предмета). Возвращает стоимость, $."""
+    A = CFG["animation"]
+    _kling({"start_image_url": image_url, "duration": str(seconds), "generate_audio": False,
+            "prompt": f"{action}. Lively expressive motion of the main subject, keep the hand-drawn illustration "
+                      "style and colors exactly, gentle camera push-in.",
+            "negative_prompt": "text, letters, morphing style, photorealism, blur, distortion"}, out)
+    return A["usd_per_second"] * seconds

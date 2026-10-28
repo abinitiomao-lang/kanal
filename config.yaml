@@ -59,8 +59,8 @@ long:
 
 shorts:
   per_day: 3
-  min_seconds: 30
-  max_seconds: 55
+  min_seconds: 10
+  max_seconds: 45               # владелец: шортсы 10–45 с
   fps: 30
   width: 1080
   height: 1920
