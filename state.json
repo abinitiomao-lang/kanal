@@ -131,7 +131,62 @@
    "updated": "2026-10-28T18:03:16+00:00"
   }
  },
- "images": [],
+ "images": [
+  {
+   "id": "96df50ba97f3",
+   "prompt": "Extreme close-up of a silver teaspoon resting on a dark glowing surface, faint blue light at its edges, dramatic vertical composition, cinematic and moody",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/96df50ba97f3.jpg"
+  },
+  {
+   "id": "ec12d039ef82",
+   "prompt": "A giant blue supergiant star swelling then collapsing inward in a burst of light against a black starfield, vertical composition",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ec12d039ef82.jpg"
+  },
+  {
+   "id": "39439e35e725",
+   "prompt": "Abstract illustration of atoms compressing tightly together, particles fusing into a dense glowing grid, dark background, vertical composition",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/39439e35e725.jpg"
+  },
+  {
+   "id": "7453b73d37bb",
+   "prompt": "The Sun shrinking into a small glowing sphere floating above a dark landscape, scale contrast, vertical composition",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7453b73d37bb.jpg"
+  },
+  {
+   "id": "2e852e43c2d6",
+   "prompt": "A small glowing sphere hovering over a night city skyline for scale, vertical composition, moody lighting",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/2e852e43c2d6.jpg"
+  },
+  {
+   "id": "3eeca86f88fd",
+   "prompt": "Snow-capped Mount Everest looming at dusk beside a blurred spinning white light streak, vertical composition",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/3eeca86f88fd.jpg"
+  },
+  {
+   "id": "38dcf22811c1",
+   "prompt": "A glowing neutron star emitting two bright beams of light sweeping across a dark cosmos like a lighthouse, vertical composition",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/38dcf22811c1.jpg"
+  },
+  {
+   "id": "a61dfe42c138",
+   "prompt": "Slow zoom into a dark swirling nebula with faint glowing dust, calm and mysterious, vertical composition",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/a61dfe42c138.jpg"
+  },
+  {
+   "id": "e7a1a2a4a4db",
+   "prompt": "A calm sleeping viewer's silhouette lit by a soft glow of stars overhead, vertical composition, peaceful night",
+   "orient": "portrait",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/e7a1a2a4a4db.jpg"
+  }
+ ],
  "costs": {
   "2026-10": {
    "fal": 1.224,
