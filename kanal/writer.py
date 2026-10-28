@@ -51,7 +51,11 @@ def propose_shorts(long_topics: list[str], used_facts: list[str]) -> list[ShortI
     listing = "\n".join(f"{i}: {t}" for i, t in enumerate(long_topics)) or "(none yet)"
     prompt = (
         "Propose 5 ideas for 30-55 second YouTube Shorts. Each is ONE weird, funny or mind-blowing but TRUE "
-        "and verifiable science/history fact that makes someone stop scrolling. At least 3 of 5 should relate "
+        "and verifiable science/history fact that makes someone stop scrolling and say 'wait, WHAT?'. "
+        "Reject anything a 12-year-old already knows from school (e.g. 'the ocean holds 97% of Earth's water', "
+        "'tides are caused by the Moon'). Prefer bizarre animals, absurd history, body weirdness, counter-intuitive "
+        "physics, cosmic scale. Only well-documented facts, no myths or 'fun facts' of dubious origin. "
+        "At least 3 of 5 should relate "
         f"to one of our long videos so the Short can point to it:\n{listing}\n"
         f"Avoid these already used facts: {used_facts[-80:] or 'none'}."
     )

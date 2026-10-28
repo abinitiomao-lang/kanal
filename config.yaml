@@ -24,7 +24,7 @@ subjects: [physics, chemistry, biology, history, geography, astronomy, earth sci
 models:
   writer: claude-haiku-5-5        # сценарии
   checker: claude-sonnet-5-5      # фактчек (второй проход)
-  writer_effort: low
+  writer_effort: medium
   checker_effort: medium
 
 budget:
