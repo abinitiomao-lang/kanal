@@ -165,7 +165,11 @@ def produce_short(item_id: str) -> None:
     if long_url:
         desc += f"\n\n🌙 Fall asleep learning more: {long_url}"
     desc += f"\n\n{DISCLOSURE}"
-    vid = youtube.upload(out, script.title, desc, script.tags)
+    try:
+        vid = youtube.upload(out, script.title, desc, script.tags)
+    except Exception as e:  # дневной лимит загрузок и т.п. — готовый ролик не должен пропасть
+        telegram.send_document(out, f"⚠️ {item_id}: YouTube не принял загрузку ({str(e)[:150]}). Вот готовый ролик.")
+        raise
 
     lib.commit(item_id)
     llm.flush(item_id)
