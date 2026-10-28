@@ -334,7 +334,7 @@
   "S1028191788b0": {
    "kind": "short",
    "topic": "Daniel Kahneman: losing something tends to hurt about twice as much as gaining the same thing feels good (loss aversion; the exact ratio varies between studies).",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-28T19:17:11+00:00",
    "long_ref": null,
    "series": null,
@@ -344,23 +344,23 @@
    "feedback": [
     "используй для вдохновения то что есть у тебя в доступности локально (например то что в папке img - в названии) \n\nперед созданием длинного видео - как я понимаю тут 1/5 или 1/2 видео, длинные?\n\nнадо создать шортс - с интересным фактом из этой книги (можешь отзывы и цитаты из книги поискать) - и вот шортсы , для их создания (от 10 до 45 секунд) должно быть динамичное видео в тему этого момента"
    ],
-   "updated": "2026-10-28T19:49:16+00:00",
-   "video_id": null,
-   "title": "Why losing $20 hurts more than finding it #shorts",
-   "description": "Psychologists Daniel Kahneman and Amos Tversky found that losses tend to feel roughly twice as strong as equal gains, though the exact ratio varies between studies. The idea is retold here from Daniel Kahneman's book Thinking, Fast and Slow; note that some other studies he cites, such as priming and ego depletion, later failed to replicate.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "updated": "2026-10-28T19:51:10+00:00",
+   "video_id": "PAGW5yINMX4",
+   "title": "Why your brain hates losing your old charger #shorts",
+   "description": "Loss aversion, told as a playful field report from the year 2126. The idea comes from Daniel Kahneman's book Thinking, Fast and Slow, based on research he did with Amos Tversky; the exact loss-to-gain ratio varies between studies. Some priming and ego-depletion findings discussed in the book later failed to replicate.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
     "loss aversion",
     "Daniel Kahneman",
     "Thinking Fast and Slow",
-    "behavioral economics",
     "psychology",
+    "behavioral economics",
+    "science facts",
     "sleep learning",
-    "cognitive bias",
     "shorts"
    ],
-   "duration": 32.5,
-   "narration": "Losing twenty dollars hurts more than finding twenty dollars feels good. Future historians might find this puzzling, though researchers today know it well as a documented effect. Think of the old phone charger you never use. Or the warranty card for a toaster that died years ago, still tucked in a drawer. Psychologists Daniel Kahneman and Amos Tversky measured the pattern in the lab. Losses seemed to weigh roughly twice as heavily as equal gains, though the exact ratio shifts between studies. Our ancestors called it caution, and Daniel Kahneman's book Thinking, Fast and Slow explains the idea.",
-   "factcheck": "🔎 Фактчек: найдено 2, осталось 0",
+   "duration": 42.6,
+   "narration": "Historians of the 2120s are baffled by a habit from our era: keeping old chargers in a drawer for years. They also kept unopened subscriptions, cracked mugs, and shoeboxes of cables. Asked why, the answer was often simple: letting go felt like losing something. Researchers call this loss aversion. In classic experiments by Daniel Kahneman and Amos Tversky, losing a sum of money hurt roughly twice as much as gaining the same sum felt good. The exact ratio varies between studies, so treat the number as a rough guide. Your brain tends to weigh losses more heavily than gains. The idea is explored in Daniel Kahneman's book Thinking, Fast and Slow.",
+   "factcheck": "✅ Фактчек: замечаний нет",
    "release": null
   }
  },
