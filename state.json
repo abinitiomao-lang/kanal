@@ -5,7 +5,8 @@
  "images": [],
  "costs": {
   "2026-10": {
-   "fal": 1.17
+   "fal": 1.17,
+   "anthropic": 0.00151
   }
  },
  "costs_log": [
@@ -14,6 +15,12 @@
    "service": "fal",
    "usd": 1.17,
    "note": "preview The Deep Ocean"
+  },
+  {
+   "ts": "2026-10-28T13:19:47+00:00",
+   "service": "anthropic",
+   "usd": 0.00151,
+   "note": "preview"
   }
  ],
  "awaiting_comment": null,
