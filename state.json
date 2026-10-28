@@ -362,6 +362,18 @@
    "narration": "Historians of the 2120s are baffled by a habit from our era: keeping old chargers in a drawer for years. They also kept unopened subscriptions, cracked mugs, and shoeboxes of cables. Asked why, the answer was often simple: letting go felt like losing something. Researchers call this loss aversion. In classic experiments by Daniel Kahneman and Amos Tversky, losing a sum of money hurt roughly twice as much as gaining the same sum felt good. The exact ratio varies between studies, so treat the number as a rough guide. Your brain tends to weigh losses more heavily than gains. The idea is explored in Daniel Kahneman's book Thinking, Fast and Slow.",
    "factcheck": "✅ Фактчек: замечаний нет",
    "release": null
+  },
+  "S10281959fd99": {
+   "kind": "short",
+   "topic": "Marshall Rosenberg believed that behind every harsh criticism there is an unmet need the person doesn't know how to ask for.",
+   "status": "queued",
+   "created": "2026-10-28T19:59:55+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "tale",
+   "book": "nvc",
+   "feedback": []
   }
  },
  "images": [
