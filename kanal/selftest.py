@@ -90,24 +90,30 @@ def preview_loop(topic: str) -> None:
 
 SAMPLE = ("Your body glows in the dark. Seriously. You give off a faint light right now, about a thousand times "
           "too weak for your eyes to see. Wait, it gets weirder.")
-WANT = ["Brian", "Liam", "Will", "Eric", "Chris", "Jessica", "Laura", "Charlie"]
+# Стандартные (premade) голоса ElevenLabs — список голосов ключу читать не нужно.
+VOICES = [("Brian", "nPczCjzI2devNBz1zQrb", "американский, глубокий"),
+          ("Liam", "TX3LPaxmHKxFdv7VOQHJ", "американский, молодой, энергичный"),
+          ("Will", "bIHbv24MWmeRgasZH58o", "американский, дружелюбный"),
+          ("Eric", "cjVigY5qzO86Huf0OWal", "американский, уверенный"),
+          ("Chris", "iP95p4xoKVk53GoZ742B", "американский, непринуждённый"),
+          ("Jessica", "cgSgspJ2msm6clMCkdW9", "американский, живой, женский"),
+          ("Laura", "FGY2WhTYpPnrIDTdsKH5", "американский, бодрый, женский"),
+          ("Charlie", "IKne3meq5aSn9XLyUdCD", "австралийский, естественный")]
 
 
 def voice_samples() -> None:
     """Один и тот же хук разными стандартными голосами ElevenLabs → Telegram."""
-    import requests
     from . import audio
     from .config import CFG
-    h = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"]}
-    voices = requests.get("https://api.elevenlabs.io/v1/voices", headers=h, timeout=30).json()["voices"]
-    by_name = {v["name"].split(" ")[0].split("-")[0].strip(): v for v in voices}
-    picked = [by_name[n] for n in WANT if n in by_name][:8]
-    telegram.send(f"🎙 <b>Голоса для шортсов</b> — {len(picked)} вариантов одного хука. "
+    telegram.send(f"🎙 <b>Голоса для шортсов</b> — {len(VOICES)} вариантов одного хука. "
                   "Ответь мне номером понравившегося.")
     W = workdir("voices")
-    for i, v in enumerate(picked, 1):
-        CFG["shorts"]["eleven_voice_id"] = v["voice_id"]
-        out = W / f"{i}_{v['name'].split()[0]}.mp3"
-        audio.eleven(SAMPLE, out)
-        desc = ", ".join(x for x in (v.get("labels") or {}).values() if x)
-        telegram.send_document(out, f"{i}. <b>{v['name']}</b> — {desc}\n<code>{v['voice_id']}</code>")
+    for i, (name, vid, desc) in enumerate(VOICES, 1):
+        CFG["shorts"]["eleven_voice_id"] = vid
+        out = W / f"{i}_{name}.mp3"
+        try:
+            audio.eleven(SAMPLE, out)
+        except Exception as e:
+            print(f"{name}: {e}")
+            continue
+        telegram.send_document(out, f"{i}. <b>{name}</b> — {desc}")
