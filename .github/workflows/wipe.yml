@@ -1,0 +1,24 @@
+name: wipe
+# Ручной запуск: показывает все видео канала; с confirm=DELETE — удаляет их все (необратимо).
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "пусто — только список; DELETE — удалить все видео канала"
+        type: string
+        default: ""
+permissions:
+  contents: write
+jobs:
+  wipe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      KANAL_WORK: ${{ github.workspace }}/work
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli wipe "${{ inputs.confirm }}"

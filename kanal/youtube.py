@@ -88,3 +88,37 @@ def delete(video_id: str) -> None:
         _yt().videos().delete(id=video_id).execute()
     except HttpError as e:
         print(f"WARN delete: {e.status_code}")
+
+
+def list_all() -> list[dict]:
+    """Все видео канала (включая private) из плейлиста загрузок."""
+    yt = _yt()
+    check_channel(yt)
+    ch = yt.channels().list(part="contentDetails", mine=True).execute()["items"][0]
+    uploads = ch["contentDetails"]["relatedPlaylists"]["uploads"]
+    out, token = [], None
+    while True:
+        r = yt.playlistItems().list(part="snippet,status", playlistId=uploads, maxResults=50, pageToken=token).execute()
+        out += [{"id": i["snippet"]["resourceId"]["videoId"], "title": i["snippet"]["title"],
+                 "privacy": i["status"]["privacyStatus"]} for i in r["items"]]
+        token = r.get("nextPageToken")
+        if not token:
+            return out
+
+
+def wipe(really: bool) -> None:
+    """Печатает все видео канала; при really=True удаляет их и снимает их с очереди в state."""
+    from . import state
+    vids = list_all()
+    print(f"на канале {len(vids)} видео")
+    for v in vids:
+        print(f"  {v['id']}  {v['privacy']:9}  {v['title']}")
+    if not really:
+        print("dry run — ничего не удалено")
+        return
+    for v in vids:
+        delete(v["id"])
+        print(f"удалено {v['id']}")
+    for k, it in state.load()["items"].items():
+        if it["status"] not in ("published", "rejected"):
+            state.set_item(k, status="rejected")

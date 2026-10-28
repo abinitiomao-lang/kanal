@@ -2,7 +2,7 @@
 import os
 import sys
 
-from . import bot, pipeline, selftest, state
+from . import bot, pipeline, selftest, state, youtube
 from .config import CFG
 
 
@@ -30,6 +30,8 @@ def main() -> None:
             selftest.voice_samples()
         elif cmd == "preview-loop":
             selftest.preview_loop(" ".join(args))
+        elif cmd == "wipe":
+            youtube.wipe(args[:1] == ["DELETE"])
         elif cmd == "groups":
             n = min(CFG["long"]["render_groups"], CFG["long"]["chapters"])
             print("[" + ",".join(str(i) for i in range(n)) + "]")
