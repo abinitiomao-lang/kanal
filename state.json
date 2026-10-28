@@ -229,7 +229,7 @@
   "S10281910472e": {
    "kind": "short",
    "topic": "Daniel Kahneman: losing something tends to hurt about twice as much as gaining the same thing feels good (loss aversion; the exact ratio varies between studies).",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-28T19:10:27+00:00",
    "long_ref": null,
    "series": null,
@@ -237,7 +237,24 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-10-28T19:11:18+00:00"
+   "updated": "2026-10-28T19:13:02+00:00",
+   "video_id": "oHCE1ZUCjh8",
+   "title": "Why Humans Hoarded Dead Cables: Loss Aversion #shorts",
+   "description": "Losses tend to feel about twice as strong as equal gains, a pattern called loss aversion, though the exact ratio varies between studies. Daniel Kahneman and Amos Tversky studied it, and Kahneman explains the idea in Thinking, Fast and Slow; some other effects he cites later failed to replicate. Thanks to Daniel Kahneman for the book this short is based on.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "loss aversion",
+    "Daniel Kahneman",
+    "Thinking Fast and Slow",
+    "behavioral economics",
+    "psychology",
+    "sleep learning",
+    "cognitive biases",
+    "science facts",
+    "shorts"
+   ],
+   "duration": 36.6,
+   "narration": "Museum label, year 2126. Our ancestors refused to throw away a single sock. Why? Losing something tends to hurt roughly twice as much as gaining the same thing feels good. Find twenty dollars and enjoy it for a moment. Lose twenty dollars and it lingers all day. Specimens show drawers full of dead cables, unused gym passes, and cracked mugs kept just in case. Curators debate the exact ratio, since studies vary. The psychologists Daniel Kahneman and Amos Tversky named this loss aversion. Kahneman explored it in his book Thinking, Fast and Slow. Please keep your hands away from the sock.",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S10281912f08b": {
    "kind": "short",
