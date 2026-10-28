@@ -1,6 +1,45 @@
 {
  "tg_offset": 0,
- "proposals": {},
+ "proposals": {
+  "p10281730dc87": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "The mantis shrimp can punch so fast that the water next to its claw boils into a brief bubble that collapses with a flash of light and a small shockwave.",
+     "subject": "Mantis shrimp and cavitation",
+     "related_long": -1,
+     "long_ref": null
+    },
+    {
+     "fact": "Sloths often grow green algae in their fur, which gives them a greenish tint and helps them blend into the canopy.",
+     "subject": "Sloth fur ecosystem",
+     "related_long": -1,
+     "long_ref": null
+    },
+    {
+     "fact": "Cleopatra lived closer in time to the Moon landing in 1969 than to the building of the Great Pyramid of Giza.",
+     "subject": "Ancient Egypt timeline",
+     "related_long": -1,
+     "long_ref": null
+    },
+    {
+     "fact": "Oxford University was already teaching students roughly 200 years before the Aztec capital of Tenochtitlan was founded in 1325.",
+     "subject": "Medieval universities and Mesoamerica",
+     "related_long": -1,
+     "long_ref": null
+    },
+    {
+     "fact": "The footprints left by Apollo astronauts on the Moon could last millions of years, because there is no wind or rain to erode them.",
+     "subject": "Lunar surface and erosion",
+     "related_long": -1,
+     "long_ref": null
+    }
+   ],
+   "msg": 28,
+   "picked": [],
+   "created": "2026-10-28T17:30:51+00:00"
+  }
+ },
  "items": {},
  "images": [],
  "costs": {
@@ -32,7 +71,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": null,
- "last_short_proposal": null,
+ "last_short_proposal": "2026-10-28",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
