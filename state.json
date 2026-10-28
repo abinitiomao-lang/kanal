@@ -459,6 +459,55 @@
    "orient": "portrait",
    "style": "tale",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/12b83742f879.jpg"
+  },
+  {
+   "id": "ac704e0f5572",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. a deep sea trench with a small glowing anglerfish hanging in dark water",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ac704e0f5572.jpg"
+  },
+  {
+   "id": "54e3db0d3197",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. an old anglerfish with a kelp shawl holding a glowing lantern on a stalk, sparks drifting down around her",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/54e3db0d3197.jpg"
+  },
+  {
+   "id": "c836c403c25f",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. a young moth tumbling through dark water, flinging sparks from its wings",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/c836c403c25f.jpg"
+  },
+  {
+   "id": "b64edae3a6f6",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. an anglerfish tilting its lantern toward a small drooping moth wing",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/b64edae3a6f6.jpg"
+  },
+  {
+   "id": "de5dc8339112",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. an anglerfish leaning close to a moth, bubbles rising between them",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/de5dc8339112.jpg"
+  },
+  {
+   "id": "7f1354463261",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. a moth's wings slowing as small sparks fade into dark water",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7f1354463261.jpg"
+  },
+  {
+   "id": "5ccb76643071",
+   "prompt": "Old Nell, an anglerfish with dark grey, wrinkled skin, a faded kelp shawl draped over her shoulders, kind amber eyes, and a round warm-yellow lantern on a thin stalk above her head, living in a coral village in a deep sea trench. a single calm lantern glowing over a still dark sea",
+   "orient": "portrait",
+   "style": "tale-8b5be12c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5ccb76643071.jpg"
   }
  ],
  "costs": {
