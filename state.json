@@ -289,7 +289,7 @@
   "S102819125a27": {
    "kind": "short",
    "topic": "Marshall Rosenberg believed that behind every harsh criticism there is an unmet need the person doesn't know how to ask for.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-28T19:12:57+00:00",
    "long_ref": null,
    "series": null,
@@ -297,7 +297,23 @@
    "format": "tale",
    "book": "nvc",
    "feedback": [],
-   "updated": "2026-10-28T19:13:45+00:00"
+   "updated": "2026-10-28T19:15:57+00:00",
+   "video_id": "dT19jwAWqHg",
+   "title": "Why Harsh Words Hide a Need Nobody Asked For #shorts",
+   "description": "Marshall Rosenberg's approach in his book Nonviolent Communication holds that harsh criticism often masks an unmet need. It is a communication method rather than a settled scientific theory, retold here as a quiet fairytale.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "nonviolent communication",
+    "Marshall Rosenberg",
+    "communication skills",
+    "psychology",
+    "sleep learning",
+    "bedtime story",
+    "empathy",
+    "shorts"
+   ],
+   "duration": 38.71,
+   "narration": "In the trench where the sea forgets the sun, every harsh word leaves a spark. Old Nell the anglerfish hangs her lantern and watches them fall. Tonight a young moth tumbles down, flinging sparks: 'You never listen. You're useless.' Nell tilts her light. Behind the sparks she sees a small, tired wing folding. Nobody ever taught the moth how to ask. So Nell says softly, 'You wanted someone to notice you, didn't you?' The moth's wings slow. The sparks go dark, one by one. Marshall Rosenberg believed every harsh criticism hides an unmet need the person does not know how to ask for. That is the core of his approach in Nonviolent Communication.",
+   "factcheck": "✅ Фактчек: замечаний нет"
   }
  },
  "images": [
