@@ -1,17 +1,22 @@
 """Генерация тем, сценариев и фактчек (второй независимый проход другой моделью)."""
 import math
+import random
+
+import yaml
 
 from pydantic import BaseModel, Field
 
 from . import llm
-from .config import CFG
+from .config import CFG, ROOT
 
 CHANNEL_VOICE = (
     "You write for an English-language YouTube channel of calm, educational sleep-learning videos: "
     "school-level science and history facts (physics, chemistry, biology, history, geography, astronomy, "
-    "earth science) narrated slowly so viewers can drift off while learning. Accuracy matters: the content "
+    "earth science, psychology) narrated slowly so viewers can drift off while learning. Accuracy matters: the content "
     "is educational. Never invent statistics, dates, names or quotes; prefer well-established textbook facts; "
-    "when a number is uncertain, say 'about' or 'roughly'."
+    "when a number is uncertain, say 'about' or 'roughly'. "
+    "When a topic is based on a book, credit the author by name, present models and methods as their ideas "
+    "rather than settled science, and say plainly when later research failed to confirm a famous finding."
 )
 
 
@@ -21,10 +26,26 @@ class Topic(BaseModel):
     topic: str = Field(description="short topic name, 2-6 words")
     subject: str
     pitch: str = Field(description="one sentence: what the viewer will learn")
+    source: str = Field(default="", description="'<book> by <author>' if based on a book idea, else empty")
 
 
 class Topics(BaseModel):
     topics: list[Topic]
+
+
+def book_ideas(kind: str) -> str:
+    """Случайные идеи из книг владельца (assets/book_seeds.yaml) для подмешивания в предложения тем."""
+    k = CFG.get("book_seeds", {}).get("per_batch", 0)
+    if not k:
+        return ""
+    with open(ROOT / "assets" / "book_seeds.yaml") as f:
+        books = yaml.safe_load(f)
+    pool = [f"- {s['concept']} [from '{b['book']}' by {b['author']}; evidence: {s['evidence']}]"
+            for b in books for s in b["seeds"] if s["for"] in (kind, "both")]
+    picks = random.sample(pool, min(len(pool), k * 4))
+    return (f"\nExactly {k} of the 5 must be based on one of these book ideas (set source to '<book> by <author>'; "
+            "for 'weak' evidence frame it as the author's idea, not a scientific fact):\n" + "\n".join(picks)
+            + "\nThe rest: leave source empty.\n")
 
 
 def propose_long(used: list[str]) -> list[Topic]:
@@ -32,6 +53,7 @@ def propose_long(used: list[str]) -> list[Topic]:
         f"Propose 5 topics for a 2-3 hour 'fall asleep learning' video. Each must be broad enough for "
         f"{CFG['long']['chapters']} calm chapters, evergreen, searchable (people search e.g. 'fall asleep "
         f"learning about the ocean'). Mix subjects from: {', '.join(CFG['subjects'])}.\n"
+        f"{book_ideas('long')}"
         f"Do NOT repeat or closely overlap these already used topics: {used[-60:] or 'none'}."
     )
     return llm.json(prompt, Topics, system=CHANNEL_VOICE).topics[:5]
@@ -41,6 +63,7 @@ class ShortIdea(BaseModel):
     fact: str = Field(description="the surprising fact in one sentence")
     subject: str
     related_long: int = Field(description="index in the provided long-video list this relates to, or -1")
+    source: str = Field(default="", description="'<book> by <author>' if based on a book idea, else empty")
 
 
 class ShortIdeas(BaseModel):
@@ -57,6 +80,7 @@ def propose_shorts(long_topics: list[str], used_facts: list[str]) -> list[ShortI
         "physics, cosmic scale. Only well-documented facts, no myths or 'fun facts' of dubious origin. "
         "At least 3 of 5 should relate "
         f"to one of our long videos so the Short can point to it:\n{listing}\n"
+        f"{book_ideas('short')}"
         f"Avoid these already used facts: {used_facts[-80:] or 'none'}."
     )
     return llm.json(prompt, ShortIdeas, system=CHANNEL_VOICE).ideas[:5]
@@ -80,9 +104,10 @@ class FactCheck(BaseModel):
 
 
 CHECKER = (
-    "You are a strict science and history fact-checker for an educational YouTube channel. Check every "
+    "You are a strict science, history and psychology fact-checker for an educational YouTube channel. Check every "
     "factual claim (numbers, dates, names, causal explanations, superlatives like 'largest' or 'first'). "
-    "Flag false, misleading, outdated or popular-myth claims. Do not flag style. If everything is "
+    "Flag false, misleading, outdated or popular-myth claims, including pop-psychology findings that failed "
+    "to replicate (e.g. power posing, ego depletion, behavioral priming) when presented as settled fact. Do not flag style. If everything is "
     "accurate, return an empty list."
 )
 

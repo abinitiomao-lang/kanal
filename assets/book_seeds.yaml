@@ -1,0 +1,90 @@
+# Идеи для тем из книг владельца (только концепции своими словами, без цитат — репо публичный).
+# evidence: strong — подтверждено исследованиями; mixed — часть не воспроизвелась; weak — авторская модель/метод, не наука.
+# for: long / short / both — где тема уместнее.
+
+- book: "Thinking, Fast and Slow"
+  author: Daniel Kahneman
+  seeds:
+    - {concept: "System 1 and System 2: the fast and the slow mind", for: both, evidence: strong}
+    - {concept: "The bat-and-ball puzzle and why smart people get it wrong", for: short, evidence: strong}
+    - {concept: "Anchoring: how a random number changes your estimates", for: both, evidence: strong}
+    - {concept: "Availability: why vivid events feel more common than they are", for: both, evidence: strong}
+    - {concept: "Loss aversion: losing hurts about twice as much as winning pleases", for: both, evidence: mixed}
+    - {concept: "The Linda problem and the conjunction fallacy", for: short, evidence: strong}
+    - {concept: "The planning fallacy: why projects always run late", for: both, evidence: strong}
+    - {concept: "The experiencing self vs the remembering self (peak-end rule, cold-water experiment)", for: both, evidence: strong}
+    - {concept: "Regression to the mean and the flight instructors who praised and punished", for: short, evidence: strong}
+    - {concept: "Framing: the same choice described as lives saved or lives lost", for: both, evidence: strong}
+    - {concept: "Expert intuition: when to trust a gut feeling and when not to", for: long, evidence: strong}
+    - {concept: "Priming and ego depletion: famous effects that later failed to replicate", for: long, evidence: mixed}
+
+- book: "Flow: The Psychology of Optimal Experience"
+  author: Mihaly Csikszentmihalyi
+  seeds:
+    - {concept: "Flow: the state where time disappears", for: both, evidence: strong}
+    - {concept: "The challenge-skill balance: boredom, anxiety and flow", for: both, evidence: strong}
+    - {concept: "The experience sampling method: beepers that asked people how they felt", for: short, evidence: strong}
+    - {concept: "Why people are often happier at work than in free time", for: short, evidence: mixed}
+    - {concept: "Psychic entropy: how attention shapes the quality of life", for: long, evidence: weak}
+    - {concept: "Autotelic personality: doing things for their own sake", for: long, evidence: mixed}
+
+- book: "Drive: The Surprising Truth About What Motivates Us"
+  author: Daniel Pink
+  seeds:
+    - {concept: "The candle problem: when rewards make people slower", for: both, evidence: strong}
+    - {concept: "Intrinsic vs extrinsic motivation and self-determination theory", for: long, evidence: strong}
+    - {concept: "Autonomy, mastery and purpose", for: long, evidence: mixed}
+    - {concept: "The daycare fine that made parents come late more often", for: short, evidence: strong}
+    - {concept: "Monkeys solving puzzles for no reward (Harlow, 1949)", for: short, evidence: strong}
+    - {concept: "Goldilocks tasks: not too easy, not too hard", for: both, evidence: mixed}
+
+- book: "Why We Love: The Nature and Chemistry of Romantic Love"
+  author: Helen Fisher
+  seeds:
+    - {concept: "Brain scans of people newly in love: the reward system lights up", for: both, evidence: strong}
+    - {concept: "Lust, romantic attraction and attachment as three brain systems", for: long, evidence: mixed}
+    - {concept: "Dopamine, norepinephrine and why new love feels like an obsession", for: both, evidence: mixed}
+    - {concept: "Oxytocin, vasopressin and the faithful prairie vole", for: short, evidence: strong}
+    - {concept: "Why rejection hurts: love and physical pain in the brain", for: both, evidence: mixed}
+    - {concept: "Romantic love across cultures and through human evolution", for: long, evidence: mixed}
+
+- book: "Games People Play"
+  author: Eric Berne
+  seeds:
+    - {concept: "Parent, Adult, Child: three ego states in every conversation", for: long, evidence: weak}
+    - {concept: "Transactions and strokes: the small units of social contact", for: long, evidence: weak}
+    - {concept: "Rituals and pastimes: why we make small talk", for: long, evidence: weak}
+    - {concept: "Psychological games like 'Why Don't You — Yes, But'", for: both, evidence: weak}
+
+- book: "Nonviolent Communication"
+  author: Marshall Rosenberg
+  seeds:
+    - {concept: "Observations vs evaluations: describing without judging", for: long, evidence: weak}
+    - {concept: "Feelings and needs: the four steps of nonviolent communication", for: long, evidence: weak}
+    - {concept: "Requests vs demands", for: long, evidence: weak}
+    - {concept: "Empathic listening", for: long, evidence: mixed}
+
+- book: "How to Stay Sane"
+  author: Philippa Perry
+  seeds:
+    - {concept: "Self-observation: noticing your own thoughts", for: long, evidence: mixed}
+    - {concept: "The Nun Study: early writing style and long life", for: short, evidence: strong}
+    - {concept: "Good stress: how challenge keeps the brain growing", for: long, evidence: mixed}
+    - {concept: "Neuroplasticity and learning at any age", for: both, evidence: strong}
+    - {concept: "Personal stories we tell ourselves and how to rewrite them", for: long, evidence: weak}
+
+- book: "Refuse to Choose!"
+  author: Barbara Sher
+  seeds:
+    - {concept: "Scanners: people with many interests instead of one passion", for: long, evidence: weak}
+    - {concept: "Why finishing is not always the point of starting", for: long, evidence: weak}
+
+- book: "The Desire Map"
+  author: Danielle LaPorte
+  seeds:
+    - {concept: "Setting goals by how you want to feel", for: long, evidence: weak}
+
+- book: "Psychological Aikido"
+  author: Mikhail Litvak
+  seeds:
+    - {concept: "Defusing conflict by not fighting back: the aikido approach to arguments", for: long, evidence: weak}

@@ -36,7 +36,8 @@ def propose_long() -> None:
     topics = writer.propose_long(used)
     pid = new_id("p")
     text = "🌙 <b>Темы длинного видео</b> — выбери одну:\n\n" + "\n".join(
-        f"{n + 1}. <b>{html.escape(t.topic)}</b> ({t.subject}) — {html.escape(t.pitch)}" for n, t in enumerate(topics))
+        f"{n + 1}. <b>{html.escape(t.topic)}</b> ({t.subject}) — {html.escape(t.pitch)}"
+        + (f" 📚 <i>{html.escape(t.source)}</i>" if t.source else "") for n, t in enumerate(topics))
     rows = [[(f"{n + 1}. {t.topic[:40]}", f"L:{pid}:{n}")] for n, t in enumerate(topics)]
     rows.append([("🔄 Другие темы", f"X:{pid}:long")])
     msg = telegram.send(text, rows)
@@ -59,7 +60,7 @@ def propose_shorts() -> None:
     pid = new_id("p")
     per = CFG["shorts"]["per_day"]
     text = f"⚡️ <b>Темы шортсов</b> — выбери до {per}:\n\n" + "\n".join(
-        f"{n + 1}. {html.escape(t.fact)}" for n, t in enumerate(ideas))
+        f"{n + 1}. {html.escape(t.fact)}" + (f" 📚 <i>{html.escape(t.source)}</i>" if t.source else "") for n, t in enumerate(ideas))
     rows = [[(f"{n + 1}. {t.fact[:45]}", f"S:{pid}:{n}")] for n, t in enumerate(ideas)]
     rows.append([("🔄 Другие факты", f"X:{pid}:short")])
     msg = telegram.send(text, rows)
@@ -101,6 +102,8 @@ def on_pick(kind: str, pid: str, n: int, msg_id: int) -> str:
     t = prop["topics"][n]
     item_id = new_id("L" if kind == "long" else "S")
     topic = t["topic"] if kind == "long" else t["fact"]
+    if t.get("source"):
+        topic += f" (based on ideas from {t['source']})"
 
     def fn(s):
         s["proposals"][pid]["picked"].append(n)

@@ -19,7 +19,11 @@ channel:
 # false => «Опубликовать» = videos.update privacyStatus=public.
 pre_audit_mode: true
 
-subjects: [physics, chemistry, biology, history, geography, astronomy, earth science, human body, ancient civilizations, oceans]
+subjects: [physics, chemistry, biology, history, geography, astronomy, earth science, human body, ancient civilizations, oceans, psychology]
+
+# Темы из книг владельца (assets/book_seeds.yaml): сколько из 5 предложенных тем брать из книг. 0 — выключить.
+book_seeds:
+  per_batch: 2
 
 models:
   writer: claude-haiku-5-5        # сценарии
