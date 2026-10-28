@@ -473,7 +473,7 @@
   "S10282028e98f": {
    "kind": "short",
    "topic": "Eric Berne's game 'Why Don't You — Yes, But': endless advice is rejected because the hidden goal is to prove no solution exists",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-28T20:28:24+00:00",
    "long_ref": null,
    "series": null,
@@ -487,27 +487,24 @@
    "kicker": "A DOCUMENTARY FROM 2126",
    "header_title": "Why “Yes, but…” wins every conversation",
    "ru_glossary": "Games People Play = «Игры, в которые играют люди»; Why Don't You — Yes, But = «Почему бы тебе не… — Да, но…»; see if you can present a solution I can't find fault with = «Попробуйте отыскать решение, в котором я не смогу найти недостаток» (официальный перевод, гл. 8); yes, but = да, но; Historians of 2126 = историки 2126 года",
-   "updated": "2026-10-28T20:59:47+00:00",
+   "updated": "2026-10-28T21:04:11+00:00",
    "error": "Telegram sendDocument: Bad Request: can't parse entities: Unsupported start tag \"httperror\" at byte offset 66",
    "video_id": null,
-   "title": "Why \"Yes, but…\" Wins Every Conversation #psychology #shorts",
-   "description": "Ever given perfect advice and heard \"yes, but…\" ten times in a row? Eric Berne called it a game.\n\nEric Berne, a psychiatrist, described this pattern as the 'Why Don't You, Yes But' game in Games People Play (1964), a book on transactional analysis. Transactional analysis is a therapy model rather than a tested scientific theory, so treat its explanations as Berne's ideas.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.\n\n#psychology #communication #ericberne #gamespeopleplay #shorts",
+   "title": "Eric Berne's 'Yes, But' Game Explained #psychology #shorts",
+   "description": "Eric Berne describes this pattern in Games People Play, a book from 1964 that introduced transactional analysis, his model of how people interact. Transactional analysis is an influential therapy framework rather than a well-tested science, so treat the game as Berne's idea, not a proven fact.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
-    "yes but",
-    "yes but game",
     "Eric Berne",
     "Games People Play",
-    "psychology",
-    "advice",
-    "communication",
-    "relationships",
     "transactional analysis",
-    "psychology facts",
+    "yes but",
+    "psychology",
+    "communication",
+    "sleep learning",
     "shorts"
    ],
-   "duration": 24.4,
+   "duration": 22.8,
    "narration": "You give your friend the perfect advice. They say: yes, but. You try again. Yes, but. Historians of 2126 found millions of these conversations. Ten solutions. Ten yes-buts. Then silence. Psychiatrist Eric Berne explained it in Games People Play. The goal was never to find a solution. It was to prove none exists. The hidden rule: see if you can present a solution I can't find fault with. And historians are still confused why, every single day,",
-   "factcheck": "🔎 Фактчек: найдено 2, осталось 2\n⚠️ «Historians of 2126 found millions of these conversations.» — This refers to a future date (2126) as if it has already happened; no such historians or findings exist. It is a fabricated claim presented as fact.\n⚠️ «Historians are still confused why, every single day,» — Presupposes the nonexistent future &#x27;historians&#x27; finding; no real historians are confused about this, and Berne&#x27;s explanation is well known in transactional anal"
+   "factcheck": "🔎 Фактчек: найдено 3, осталось 3\n⚠️ «Historians of 2126 found millions of these conversations.» — This is a temporal impossibility. 2126 is in the future, so no historians from that year could have found anything. Presented as fact, it is fabricated.\n⚠️ «And historians are still confused why, every single day,» — This repeats the fabricated premise that historians are studying these conversations and are confused. There is no such historical research or confusion on reco\n⚠️ «The goal was never to find a solution. It was to prove none exists.» — This oversimplifies Berne&#x27;s &#x27;Why Don&#x27;t You... Yes, But&#x27; game. Berne described the player&#x27;s unconscious payoff as rejecting every suggestion to show that the adv"
   }
  },
  "images": [
