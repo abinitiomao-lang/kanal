@@ -288,14 +288,15 @@
   "S102819125a27": {
    "kind": "short",
    "topic": "Marshall Rosenberg believed that behind every harsh criticism there is an unmet need the person doesn't know how to ask for.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-10-28T19:12:57+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "tale",
    "book": "nvc",
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-10-28T19:13:45+00:00"
   }
  },
  "images": [
