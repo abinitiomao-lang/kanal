@@ -132,7 +132,7 @@ def produce_short(item_id: str) -> None:
     if fmt.get("ru_subs"):  # русские субтитры поверх английских — по тем же фразам и таймингам
         ru_cfg = fmt["ru_subs"]
         try:
-            ru = writer.translate_ru([" ".join(w["word"] for w in g) for g in render.phrase_groups(words)])
+            ru = writer.translate_ru([" ".join(w["word"] for w in g) for g in render.phrase_groups(words, 5)])
         except Exception as e:
             print(f"WARN ru subs failed: {e}")
     ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", fmt["subs"], ru, ru_cfg)

@@ -46,7 +46,7 @@ formats:
       size: 66
       color: "1C1A22"              # чернила на белой бумаге
       outline: "FFFFFF"
-      y: 0.80                      # доля высоты кадра
+      y: 0.655                     # доля высоты кадра (~1258 px: выше нижней UI-зоны Shorts)
     ru_subs: &ru                   # русские субтитры поверх английских: розовый неон, минимализм
       font_name: "Fira Sans SemiBold"
       size: 50
@@ -54,16 +54,23 @@ formats:
       glow: "FF7AD1"               # свечение (размытая обводка)
       glow_width: 5
       blur: 7
-      y: 1400                      # верх строки, px (над английскими)
+      y: 1150                      # верх строки, px (над английскими; безопасная полоса 1050–1320)
     script: >-
       Tell this idea as a 15-40 second micro-story (40-95 words) — an allegory, not a lecture.
-      One protagonist from a whimsical fairytale world (a blue cat, a moth who collects moonlight, a little
-      fairy gardener, an anglerfish with a lantern, a swallow, a witch who keeps two cups...). Present tense, sensory,
+      The protagonist is ALWAYS our recurring hero Luna (see `hero`), living a new chapter of her life;
+      other creatures of her world (a moth who collects moonlight, an old anglerfish with a lantern, a swallow,
+      a fairy gardener...) may appear as side characters. Present tense, sensory,
       short sentences, gentle and a little bittersweet. The first line is an intriguing hook (a rule of this
       world or a strange habit). The idea is never named until the last two lines, which reveal it simply and
       credit the book, e.g. "Daniel Kahneman called this ... — an idea from Thinking, Fast and Slow."
-      Give `character`: a fixed visual description of the protagonist and setting (clothes, hair, age,
-      colours, place) that will be repeated in every image so the hero looks the same in all scenes.
+      Give `character`: Luna's fixed description (copy `hero` exactly) plus this story's setting, repeated in
+      every image so she looks the same in all scenes. Make it loop: the last sentence must flow
+      grammatically into the first one, so the Short replays seamlessly.
+
+    # Герой-бренд всех сказок (как в референсах): один и тот же во всех книгах.
+    hero: >-
+      Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her
+      forehead and a little red knitted scarf
 
   # B. Серия в рамке: постоянный шаблон + сюжетная рамка (референс — «Future Historians» + «День N»).
   series:
@@ -84,23 +91,25 @@ formats:
       title: "1C1A22"
       footer: "6E6878"
       stars: "F2C230"              # точки и звёздочки по бумаге, как в референсах
-      panel: {y: 640, h: 720}      # панель 1080×720
+      panel: {y: 470, h: 720}      # панель 1080×720; всё важное выше нижней UI-зоны Shorts (~1320 px)
     subs:
       mode: phrase                 # фраза целиком под панелью
       font_name: "Fira Sans SemiBold"
       size: 58
       color: "1C1A22"
       outline: "FBF7EF"
-      y: 1500                      # верх блока субтитров, px
+      y: 1262                      # верх блока субтитров, px
     ru_subs:
       <<: *ru
-      y: 1395
+      y: 1205
     script: >-
       Frame this idea with a playful narrative device and keep it for the whole Short: e.g. a documentary
       from the year 2126 where historians study our strange habits, an alien anthropologist's field notes,
       a museum label from the future, a nature documentary about humans. Dry, witty, precise documentary
       tone, 40-95 words (15-40 seconds), short sentences, concrete everyday examples the viewer recognises
       in themselves.
-      The last line credits the book and author naturally. Give `kicker` (max 5 words, e.g. "A DOCUMENTARY
+      Cold open on the habit itself (first 1.5 s), then the 2126 framing. The second-to-last line credits
+      the book and author naturally; the last line ("...and historians are still confused") loops back to
+      the opening. Give `kicker` (max 5 words, e.g. "A DOCUMENTARY
       FROM THE YEAR 2126") and `header_title` (max 8 words, the hook, e.g. "Historians are confused by
       this 2020s habit").

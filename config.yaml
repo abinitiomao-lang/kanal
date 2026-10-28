@@ -58,7 +58,7 @@ long:
   fade_out_seconds: 30
 
 shorts:
-  per_day: 3
+  per_day: 2                      # 1–2 в день стабильно (против «mass-produced»; хватает на Kling-хук)
   min_seconds: 10
   max_seconds: 45               # владелец: шортсы 10–45 с
   fps: 30

@@ -245,7 +245,8 @@ class ShortScript(BaseModel):
     hook_text: str = Field(default="", description="on-screen hook for the first 1.5 s, max 6 words, ALL CAPS")
     narration: str = Field(description="full voiceover, starts with the hook sentence")
     scenes: list[Scene]
-    title: str = Field(description="YouTube Shorts title, <70 chars, curiosity-driven, ends with #shorts")
+    title: str = Field(description="YouTube Shorts title, <70 chars, curiosity-driven, includes the searchable "
+                       "author or concept name (e.g. 'Kahneman', 'loss aversion'), ends with 2 topical hashtags")
     description: str = Field(description="2-3 sentences; credits the book and author when based on a book")
     tags: list[str]
     character: str = Field(default="", description="tale format: fixed visual description of the protagonist")
@@ -261,7 +262,7 @@ def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dic
            "Pick its most surprising, talked-about angle (what readers quote and argue about). Retell it in your "
            "own words and credit the author; you may include ONE short memorable quote from the book "
            "(max 20 words, attributed) only if you are sure of its exact wording. " if book else "")
-    how = fmt["script"] if fmt else (
+    how = (fmt["script"] + (f"\nhero: {fmt['hero']}" if fmt.get("hero") else "")) if fmt else (
         "Audience: ADHD-style, short attention. First sentence is a hook that lands in under 1.5 seconds. "
         "Then rapid, punchy sentences, one idea each, and a satisfying last line. 95-130 words.")
     return llm.json(

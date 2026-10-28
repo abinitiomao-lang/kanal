@@ -245,14 +245,14 @@ def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = Non
         else:
             head = _ass_head([f"Style: Sub,{subs['font_name']},{subs['size']},{c},{c},{ol},&H00000000,"
                               f"0,0,0,0,100,100,0,0,1,2,0,8,90,90,{subs['y']},1"])
-            groups = phrase_groups(words)
+            groups = phrase_groups(words, 5)
             for gi, g in enumerate(groups):
                 end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.5
                 text = " ".join(_clean(w["word"]) for w in g)
                 lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Sub,,0,0,0,,"
                              f"{{\\fad(80,0)}}{text}")
         if ru and ru_cfg:
-            st, ru_l = _ru_lines(phrase_groups(words), ru, ru_cfg)
+            st, ru_l = _ru_lines(phrase_groups(words, 5), ru, ru_cfg)
             head = head.replace("\n\n[Events]", f"\n{st}\n\n[Events]")
             lines += ru_l
         out.write_text(head + "\n".join(lines) + "\n")
@@ -303,7 +303,7 @@ def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -
     d = ImageDraw.Draw(img)
     if F.get("stars"):  # чернильные точки и жёлтые звёздочки по бумаге (вне панели)
         rnd = random.Random(title)
-        text_bands = [(P["y"] - 10, P["y"] + P["h"] + 10), (280, 580), (P["y"] + P["h"] + 40, P["y"] + P["h"] + 260),
+        text_bands = [(P["y"] - 10, P["y"] + P["h"] + 10), (P["y"] - 320, P["y"] - 20), (P["y"] + P["h"], 1420),
                       (H - 175, H - 95)]  # панель, заголовок, субтитры, подвал
         for _ in range(220):
             x, y = rnd.uniform(0, W), rnd.uniform(0, H)
@@ -312,7 +312,7 @@ def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -
             r = rnd.uniform(1, 2.6)
             d.ellipse([x - r, y - r, x + r, y + r], fill=rgb(F["line"]))
         for _ in range(16):
-            x, y = rnd.uniform(40, W - 40), rnd.choice([rnd.uniform(40, 280), rnd.uniform(H - 330, H - 40)])
+            x, y = rnd.uniform(40, W - 40), rnd.choice([rnd.uniform(30, P["y"] - 330), rnd.uniform(H - 480, H - 40)])
             r = rnd.uniform(12, 22)
             k = r * 0.28
             d.polygon([(x, y - r), (x + k, y - k), (x + r, y), (x + k, y + k), (x, y + r), (x - k, y + k),
@@ -328,7 +328,8 @@ def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -
     def center(y, text, font, fill):
         d.text(((W - d.textlength(text, font=font)) / 2, y), text, font=font, fill=fill)
 
-    center(300, kicker.upper()[:40], mono, rgb(F["kicker"]))
+    top = P["y"] - 300  # заголовок над панелью
+    center(top, kicker.upper()[:40], mono, rgb(F["kicker"]))
     lines, cur = [], ""
     for wd in title.split():
         if cur and d.textlength(f"{cur} {wd}", font=serif) > W - 140:
@@ -337,13 +338,13 @@ def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -
         else:
             cur = f"{cur} {wd}".strip()
     lines.append(cur)
-    y = 360 if len(lines) <= 2 else 330
+    y = top + 60 if len(lines) <= 2 else top + 30
     for ln in lines[:3]:
         center(y, ln, serif, rgb(F["title"]))
         y += 88
     for yy in (P["y"] - 4, P["y"] + P["h"] + 2):
         d.rectangle([0, yy, W, yy + 2], fill=rgb(F["line"]))
-    center(H - 150, footer, small, rgb(F["footer"]))
+    center(P["y"] + P["h"] + 190, footer, small, rgb(F["footer"]))
     img.save(out, "PNG")
     return out
 
