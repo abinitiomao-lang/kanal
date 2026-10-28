@@ -623,7 +623,7 @@
    "fal": 1.446,
    "anthropic": 0.09174,
    "elevenlabs": 0,
-   "eleven_chars": 3350,
+   "eleven_chars": 3950,
    "images": 46
   }
  },
@@ -759,6 +759,12 @@
    "service": "anthropic",
    "usd": 0.01664,
    "note": "S10281912f08b"
+  },
+  {
+   "ts": "2026-10-28T19:18:27+00:00",
+   "service": "elevenlabs",
+   "usd": 0,
+   "note": "S1028191788b0"
   }
  ],
  "awaiting_comment": null,
