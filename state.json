@@ -417,6 +417,24 @@
    "book": "kahneman",
    "feedback": [],
    "updated": "2026-10-28T20:09:05+00:00"
+  },
+  "S10282011eebc": {
+   "kind": "short",
+   "topic": "Daniel Kahneman's focusing illusion: nothing in life is as important as you think it is when you are thinking about it.",
+   "status": "queued",
+   "created": "2026-10-28T20:11:29+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "kahneman",
+   "feedback": [
+    "Storyboard (hand-drawn, one big subject each): 1) a tiny worried person under a gigantic dark storm cloud hanging only over their head; 2) a 2126 museum vault: a glass cabinet of hundreds of tiny storm clouds in jars, a puzzled robot curator; 3) small storm clouds over a cracked phone, a lopsided haircut, a train pulling away; 4) a sunny palm beach and a snowy town side by side, two students with the same calm faces; 5) an old owl professor in round glasses holding a huge magnifying glass that makes a tiny pebble look like a mountain; 6) the storm cloud shrinking into one little raindrop in an open palm."
+   ],
+   "narration_fixed": "This one thing will ruin your life. Historians of 2126 found millions of them: a text left on read, a bad haircut, a missed train. In the 1990s, students swore Californians were happier, just because of the sunshine. They weren't. Daniel Kahneman called it the focusing illusion: \"Nothing in life is as important as you think it is when you are thinking about it.\" Historians are still confused. Because every time, this one thing...",
+   "kicker": "A DOCUMENTARY FROM THE YEAR 2126",
+   "header_title": "Historians can't explain this 2020s panic",
+   "ru_glossary": "Kahneman's quote in the Russian edition: «Ничто в жизни не важно настолько, насколько вам кажется, когда вы об этом думаете»; focusing illusion = иллюзия фокусировки; Daniel Kahneman = Даниэль Канеман"
   }
  },
  "images": [
