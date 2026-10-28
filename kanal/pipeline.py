@@ -164,10 +164,20 @@ def long_prepare(item_id: str) -> Path:
         loop_len = render.prepare_loop(hero, W / "loop.mp4", is_video=False)
     render.thumbnail(hero, outline.thumbnail_text, "FALL ASLEEP LEARNING", W / "thumb.jpg")
 
+    L = CFG["long"]
+    music_ok = True
+    try:
+        for t in range(L["music_tracks"]):
+            audio.music(f"{L['music_style']}. Mood inspired by: {item['topic']}. Variation {t + 1}.",
+                        L["music_seconds"], W / f"music_{t}.mp3")
+    except Exception as e:
+        print(f"WARN music failed, fallback ambient: {e}")
+        music_ok = False
+
     chapter_list = "\n".join(f"• {c['title']}" for c in chapters)
     desc = f"{outline.description.strip()}\n\nIn this video:\n{chapter_list}\n\n{DISCLOSURE}"
     script = {"item_id": item_id, "title": outline.video_title, "description": desc, "tags": outline.tags,
-              "chapters": chapters, "loop_len": loop_len, "animated": animated,
+              "chapters": chapters, "loop_len": loop_len, "animated": animated, "music": music_ok,
               "factcheck": _issues_text(all_issues, found)}
     (W / "script.json").write_text(json.dumps(script, indent=1, ensure_ascii=False))
     lib.commit(item_id)
@@ -175,7 +185,8 @@ def long_prepare(item_id: str) -> Path:
     state.set_item(item_id, status="rendering", title=outline.video_title)
     telegram.send_document(W / "loop.mp4", f"🎞 Анимация для «{html.escape(outline.video_title)}» "
                            f"({'Kling' if animated else '⚠️ запасной вариант без анимации'}) — она будет "
-                           f"повторяться всё видео.\n📝 Сценарий: "
+                           f"повторяться всё видео.\n🎵 Музыка: {'ElevenLabs' if music_ok else '⚠️ запасной эмбиент'}"
+                           f"\n📝 Сценарий: "
                            f"{sum(len(c['text'].split()) for c in chapters)} слов. {script['factcheck']}\nОзвучиваю…")
     return W
 
@@ -202,8 +213,12 @@ def long_assemble(item_id: str) -> None:
     if missing:
         raise RuntimeError(f"Нет частей: {missing}")
     out = W / "final.mp4"
-    dur = render.assemble_long(W / "loop.mp4", script["loop_len"], voices,
-                               audio.ambient(W / "amb.wav", 120, seed=n), out, W)
+    if script.get("music"):
+        bed = render.music_bed(sorted(W.glob("music_*.mp3")), W / "music_bed.wav")
+        bed_db = CFG["long"]["music_db"]
+    else:
+        bed, bed_db = audio.ambient(W / "amb.wav", 120, seed=n), None
+    dur = render.assemble_long(W / "loop.mp4", script["loop_len"], voices, bed, out, W, bed_db)
     # в заголовке — фактическая длительность, а не плановая
     script["title"] = re.sub(r"\d+(\.\d+)? Hours?", f"{max(1, round(dur / 3600))} Hours", script["title"])
     vid = youtube.upload(out, script["title"], script["description"], script["tags"])

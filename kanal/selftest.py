@@ -46,8 +46,17 @@ def _pexels():
     return "ok"
 
 
+def _music():
+    from . import audio
+    from .config import CFG
+    p = audio.music(CFG["long"]["music_style"] + ". Mood: the deep ocean at night.", 45,
+                    workdir("selftest") / "music.mp3")
+    telegram.send_document(p, "🎵 Пример фоновой музыки для длинных видео (45 с).")
+    return "пример отправлен"
+
+
 CHECKS = [("Anthropic", "ANTHROPIC_API_KEY", _anthropic), ("fal.ai", "FAL_KEY", _fal),
-          ("ElevenLabs", "ELEVENLABS_API_KEY", _eleven), ("YouTube", "YT_REFRESH_TOKEN", _youtube),
+          ("ElevenLabs", "ELEVENLABS_API_KEY", _eleven), ("ElevenLabs Music", "ELEVENLABS_API_KEY", _music), ("YouTube", "YT_REFRESH_TOKEN", _youtube),
           ("Pexels", "PEXELS_API_KEY", _pexels)]
 
 

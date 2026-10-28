@@ -46,7 +46,13 @@ long:
   audio_bitrate: "128k"
   kokoro_voice: "af_heart"
   kokoro_speed: 0.85
-  ambient_db: -30
+  ambient_db: -30                 # запасной генерируемый эмбиент, если музыка не сгенерировалась
+  music_db: -21                   # фоновая музыка под голосом
+  music_tracks: 2                 # треков на видео, чередуются
+  music_seconds: 180              # ~900 кредитов ElevenLabs за минуту → 2×3 мин ≈ 5400 кредитов
+  music_style: >-
+    calm instrumental sleep music, soft felt piano and warm ambient pads, very slow, gentle,
+    no drums, no percussion, no vocals, no sudden changes, peaceful and dreamy
   fade_out_seconds: 30
 
 shorts:
@@ -57,7 +63,7 @@ shorts:
   width: 1080
   height: 1920
   eleven_model: eleven_flash_v2_5
-  eleven_voice_id: "JBFqnCBsd6RMkjVDRZzb"   # заменить на выбранный голос
+  eleven_voice_id: "cjVigY5qzO86Huf0OWal"   # Eric — выбран владельцем 2026-10-28
   images_per_short: 8
   use_pexels: true                # только если задан PEXELS_API_KEY
 

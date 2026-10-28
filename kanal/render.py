@@ -73,8 +73,25 @@ def pad_audio(src: Path, seconds: float, out: Path) -> None:
        "-ar", "24000", "-ac", "1", str(out))
 
 
+def music_bed(tracks: list[Path], out: Path) -> Path:
+    """Треки по очереди, у каждого мягкое появление и затухание → бесшовно зацикливается."""
+    parts = []
+    for i, t in enumerate(tracks):
+        d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                  str(t)], capture_output=True, text=True).stdout)
+        p = out.with_name(f"bed_{i}.wav")
+        ff("-i", str(t), "-af", f"aresample=48000,afade=t=in:d=6,afade=t=out:st={d - 10:.2f}:d=10,"
+           "aformat=channel_layouts=stereo", str(p))
+        parts.append(p)
+    lst = out.with_suffix(".txt")
+    lst.write_text("".join(f"file '{p.resolve()}'\n" for p in parts))
+    ff("-f", "concat", "-safe", "0", "-i", str(lst), str(out))
+    return out
+
+
 def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambient: Path, out: Path,
-                  work: Path) -> float:
+                  work: Path, bed_db: float | None = None) -> float:
+    """ambient — музыкальная подложка (music_bed) или запасной эмбиент; bed_db — её громкость."""
     """Петля повторяется на всю длину озвучки. Перекодируются только вступление (проявление из темноты)
     и концовка (затухание), остальное — копия. Голос сводится с эмбиентом. Возвращает длительность."""
     L = CFG["long"]
@@ -101,7 +118,7 @@ def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambien
     graph = (
         "[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,acompressor=threshold=-20dB:ratio=2.5,"
         "highshelf=f=6000:g=-4,apad[vo];"
-        f"[2:a]volume={L['ambient_db']}dB[amb];"
+        f"[2:a]aresample=48000,volume={L['ambient_db'] if bed_db is None else bed_db}dB[amb];"
         "[vo][amb]amix=inputs=2:duration=first:normalize=0,"
         f"afade=t=out:st={dur - fo:.2f}:d={fo},loudnorm=I=-20:TP=-3:LRA=11[a]"
     )

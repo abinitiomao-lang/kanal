@@ -92,6 +92,18 @@ def eleven(text: str, out: Path) -> tuple[float, list[dict]]:
     return probe_duration(out), words
 
 
+def music(prompt: str, seconds: int, out: Path) -> Path:
+    """ElevenLabs Music — инструментальный трек (коммерческое использование разрешено на платном тарифе)."""
+    r = requests.post("https://api.elevenlabs.io/v1/music", params={"output_format": "mp3_44100_128"},
+                      headers={"xi-api-key": secret("ELEVENLABS_API_KEY")},
+                      json={"prompt": prompt, "music_length_ms": seconds * 1000, "force_instrumental": True},
+                      timeout=600)
+    if r.status_code != 200:
+        raise RuntimeError(f"ElevenLabs music {r.status_code}: {r.text[:300]}")
+    out.write_bytes(r.content)
+    return out
+
+
 def eleven_quota() -> tuple[int, int] | None:
     try:
         r = requests.get("https://api.elevenlabs.io/v1/user/subscription",
