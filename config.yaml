@@ -51,9 +51,10 @@ long:
   music_tracks: 2                 # треков на видео, чередуются
   music_seconds: 180              # ~900 кредитов ElevenLabs за минуту → 2×3 мин ≈ 5400 кредитов
   music_style: >-
-    deep meditative sleep ambient soundscape in 432 Hz tuning, slowly evolving warm synth pads and soft drones,
-    gentle shimmering bell and chime tones far in the background, airy spacious reverb, hypnotic and weightless,
-    no beat, no rhythm, no drums, no piano melody, no vocals, no sudden changes, healing frequency meditation music
+    meditative sleep music in 432 Hz tuning, around 60 BPM. Warm evolving synth pads as the base, with clearly
+    audible soft wind chimes, crystal singing bowls and gentle bell tones ringing out regularly, a slow soft
+    rhythmic pulse from muted hand drums or a deep low heartbeat-like percussion, and a slow repeating arpeggio
+    of soft plucked tones. Calm, hypnotic, steady, spacious reverb, no vocals, no sudden loud changes
   fade_out_seconds: 30
 
 shorts:
