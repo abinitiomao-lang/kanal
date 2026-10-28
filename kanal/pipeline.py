@@ -134,60 +134,62 @@ def produce_short(item_id: str) -> None:
 # ======================= ДЛИННОЕ =======================
 
 def long_prepare(item_id: str) -> Path:
-    """Сценарий по главам + фактчек + все картинки + превью. Результат — work/long/<id>/ (артефакт)."""
+    """Сценарий по главам + фактчек, одна главная картинка + её бесшовная анимация, превью.
+    Результат — work/long/<id>/ (уходит артефактом в следующие job'ы)."""
     item = state.get_item(item_id)
     state.set_item(item_id, status="producing")
     W = workdir("long", item_id)
     fb = _feedback(item)
+    A = CFG["animation"]
     outline = writer.long_outline(item["topic"], fb)
     chapters, all_issues, found = [], [], 0
     for i in range(len(outline.chapters)):
-        ch = writer.long_chapter(outline, i, fb)
-        text, issues, f = writer.checked(ch.text)
+        text, issues, f = writer.checked(writer.long_chapter(outline, i, fb))
         found += f
         all_issues += [x.model_dump() for x in issues]
-        chapters.append({"title": outline.chapters[i].title, "text": text, "scenes": ch.scenes})
+        chapters.append({"title": outline.chapters[i].title, "text": text})
         print(f"chapter {i + 1}/{len(outline.chapters)}: {len(text.split())} words, issues {f}")
 
     lib = images.Library()
-    img_dir = W / "images"
-    img_dir.mkdir(exist_ok=True)
-    for ci, ch in enumerate(chapters):
-        ch["images"] = []
-        for si, scene in enumerate(ch["scenes"]):
-            p = lib.get(scene, "landscape", img_dir / f"c{ci:02d}_{si:02d}.jpg")
-            ch["images"].append(p.name)
-    render.thumbnail(img_dir / chapters[0]["images"][0], outline.thumbnail_text,
-                     "FALL ASLEEP LEARNING", W / "thumb.jpg")
+    hero = lib.generate(outline.hero_image, "landscape", W / "hero.jpg", model=A["hero_model"], usd=A["hero_usd"])
+    animated = True
+    try:
+        if costs.over_budget(A["usd_per_second"] * A["seconds"]):
+            raise RuntimeError("бюджет")
+        lib.spent += images.animate_loop(lib.last_url, outline.motion, W / "anim.mp4")
+        loop_len = render.prepare_loop(W / "anim.mp4", W / "loop.mp4", is_video=True)
+    except Exception as e:
+        print(f"WARN animation failed, static fallback: {e}")
+        animated = False
+        loop_len = render.prepare_loop(hero, W / "loop.mp4", is_video=False)
+    render.thumbnail(hero, outline.thumbnail_text, "FALL ASLEEP LEARNING", W / "thumb.jpg")
 
     chapter_list = "\n".join(f"• {c['title']}" for c in chapters)
-    desc = (f"{outline.description.strip()}\n\nIn this video:\n{chapter_list}\n\n{DISCLOSURE}")
+    desc = f"{outline.description.strip()}\n\nIn this video:\n{chapter_list}\n\n{DISCLOSURE}"
     script = {"item_id": item_id, "title": outline.video_title, "description": desc, "tags": outline.tags,
-              "chapters": chapters, "factcheck": _issues_text(all_issues, found)}
+              "chapters": chapters, "loop_len": loop_len, "animated": animated,
+              "factcheck": _issues_text(all_issues, found)}
     (W / "script.json").write_text(json.dumps(script, indent=1, ensure_ascii=False))
     lib.commit(item_id)
     llm.flush(item_id)
     state.set_item(item_id, status="rendering", title=outline.video_title)
-    telegram.send(f"📝 Сценарий «{html.escape(outline.video_title)}» готов "
-                  f"({sum(len(c['text'].split()) for c in chapters)} слов). {script['factcheck']}\nРендерю…")
+    telegram.send_document(W / "loop.mp4", f"🎞 Анимация для «{html.escape(outline.video_title)}» "
+                           f"({'Kling' if animated else '⚠️ запасной вариант без анимации'}) — она будет "
+                           f"повторяться всё видео.\n📝 Сценарий: "
+                           f"{sum(len(c['text'].split()) for c in chapters)} слов. {script['factcheck']}\nОзвучиваю…")
     return W
 
 
 def long_render(item_id: str, group: int, groups: int) -> None:
-    """Рендер глав group, group+groups, … (параллельные job'ы матрицы)."""
+    """Озвучка глав group, group+groups, … (параллельные job'ы матрицы)."""
     W = workdir("long", item_id)
     script = json.loads((W / "script.json").read_text())
-    fps = CFG["long"]["fps"]
     for ci, ch in enumerate(script["chapters"]):
         if ci % groups != group:
             continue
-        cw = workdir("long", item_id, f"ch{ci:02d}")
-        raw = cw / "voice.wav"
+        raw = workdir("long", item_id, f"ch{ci:02d}") / "voice.wav"
         seconds = audio.kokoro(ch["text"], raw) + 2.0
-        seconds = round(seconds * fps) / fps
         render.pad_audio(raw, seconds, W / f"chapter_{ci:02d}.flac")
-        imgs = [W / "images" / n for n in ch["images"]]
-        render.long_chapter_video(imgs, seconds, W / f"chapter_{ci:02d}.mp4", cw, ci)
         print(f"chapter {ci}: {seconds / 60:.1f} min")
 
 
@@ -195,14 +197,13 @@ def long_assemble(item_id: str) -> None:
     W = workdir("long", item_id)
     script = json.loads((W / "script.json").read_text())
     n = len(script["chapters"])
-    videos = [W / f"chapter_{i:02d}.mp4" for i in range(n)]
     voices = [W / f"chapter_{i:02d}.flac" for i in range(n)]
-    missing = [p.name for p in videos + voices if not p.exists()]
+    missing = [p.name for p in voices if not p.exists()]
     if missing:
         raise RuntimeError(f"Нет частей: {missing}")
     out = W / "final.mp4"
-    render.assemble_long(videos, voices, audio.ambient(W / "amb.wav", 120, seed=n), out, W)
-    dur = audio.probe_duration(out)
+    dur = render.assemble_long(W / "loop.mp4", script["loop_len"], voices,
+                               audio.ambient(W / "amb.wav", 120, seed=n), out, W)
     # в заголовке — фактическая длительность, а не плановая
     script["title"] = re.sub(r"\d+(\.\d+)? Hours?", f"{max(1, round(dur / 3600))} Hours", script["title"])
     vid = youtube.upload(out, script["title"], script["description"], script["tags"])
@@ -213,7 +214,6 @@ def long_assemble(item_id: str) -> None:
         subprocess.run(["gh", "release", "create", release, "--draft", "--title", script["title"][:100],
                         "--notes", "Файл для ручной загрузки в YouTube Studio (до аудита API).",
                         f"{out}#final.mp4", f"{W / 'thumb.jpg'}#thumbnail.jpg"], check=True)
-    # превью кладём в state-артефакт не нужно: путь живёт только в этом job'е → шлём сразу
     state.set_item(item_id, status="awaiting_approval", video_id=vid, title=script["title"],
                    description=script["description"], tags=script["tags"], duration=dur,
                    factcheck=script["factcheck"] + ("" if thumb_ok else "\nℹ️ Превью не установлено "

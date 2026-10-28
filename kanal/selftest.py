@@ -64,3 +64,25 @@ def run() -> None:
             lines.append(f"❌ {name}: {str(e)[:200]}")
     telegram.send("\n".join(lines))
     print("\n".join(lines))
+
+
+def preview_loop(topic: str) -> None:
+    """Пробная анимация для темы: картинка + Kling-петля → в Telegram. Стоит ~$1.2."""
+    from . import images, llm, render, writer
+    from .config import CFG
+    A = CFG["animation"]
+    W = workdir("preview")
+    o = writer.long_outline(topic)
+    lib = images.Library.__new__(images.Library)
+    lib.new, lib.spent, lib.used, lib.index = [], 0.0, set(), []
+    hero = lib.generate(o.hero_image, "landscape", W / "hero.jpg", model=A["hero_model"], usd=A["hero_usd"])
+    telegram.send_photo(hero, f"🖼 Картинка для «{o.video_title}»\nДвижение: {o.motion}\nАнимирую (~3–5 мин)…")
+    spent = lib.spent + images.animate_loop(lib.last_url, o.motion, W / "anim.mp4")
+    render.prepare_loop(W / "anim.mp4", W / "loop.mp4", is_video=True)
+    # три повтора подряд — видно, бесшовный ли стык
+    render.concat([W / "loop.mp4"] * 3, W / "loop_x3.mp4")
+    telegram.send_document(W / "loop_x3.mp4", "🎞 Петля ×3 подряд — так она будет крутиться всё видео. "
+                           "Смотри на стыки на 10-й и 20-й секунде.")
+    from . import costs
+    costs.add("fal", spent, f"preview {topic}")
+    llm.flush("preview")

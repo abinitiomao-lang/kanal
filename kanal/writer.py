@@ -131,12 +131,12 @@ class Outline(BaseModel):
     description: str = Field(description="YouTube description, 3 short paragraphs, calm, no hashtags spam")
     tags: list[str]
     thumbnail_text: str = Field(description="2-4 words for the thumbnail")
+    hero_image: str = Field(description="ONE illustration for the whole video: a single central subject that "
+                            "embodies the topic and can move gently (jellyfish, drifting planet, candle flame, "
+                            "slowly turning globe, floating cell...), dark calm background, no text")
+    motion: str = Field(description="how the subject moves slowly and continuously in a seamless loop, one "
+                        "sentence, e.g. 'the jellyfish pulses softly and drifts in place, tentacles trailing'")
     chapters: list[ChapterPlan]
-
-
-class Chapter(BaseModel):
-    text: str = Field(description="the narration, plain prose, no headings, no lists, no stage directions")
-    scenes: list[str] = Field(description="visual descriptions for illustrations, in narration order")
 
 
 def long_outline(topic: str, feedback: str = "") -> Outline:
@@ -149,15 +149,14 @@ def long_outline(topic: str, feedback: str = "") -> Outline:
         Outline, system=CHANNEL_VOICE)
 
 
-def long_chapter(outline: Outline, idx: int, feedback: str = "") -> Chapter:
+def long_chapter(outline: Outline, idx: int, feedback: str = "") -> str:
     L = CFG["long"]
     seconds = L["target_minutes"] * 60 / L["chapters"]
     words = int(seconds / 60 * L["words_per_minute"])
-    n_scenes = max(2, math.ceil(seconds / L["image_every_seconds"]))
     ch = outline.chapters[idx]
     first, last = idx == 0, idx == len(outline.chapters) - 1
     plan = "\n".join(f"{i + 1}. {c.title}" for i, c in enumerate(outline.chapters))
-    return llm.json(
+    return llm.text(
         f"Video: {outline.video_title}\nChapters:\n{plan}\n\n"
         f"Write chapter {idx + 1}: '{ch.title}', covering: {'; '.join(ch.points)}.\n"
         f"Length: about {words} words (this is important — it fills {seconds / 60:.0f} minutes).\n"
@@ -166,10 +165,9 @@ def long_chapter(outline: Outline, idx: int, feedback: str = "") -> Chapter:
         "lists or headings, no sudden excitement. Explain each fact clearly as a good teacher would. "
         + ("Open with a short calm welcome inviting the listener to get comfortable. " if first else "")
         + ("End by slowly winding down, wishing the listener restful sleep. " if last else "")
-        + f"Also give exactly {n_scenes} scene descriptions for illustrations matching the narration order "
-        "(objects, landscapes, cosmos, cells, historical places — no text, no real people's faces)."
+        + "Output only the narration as plain paragraphs, no title."
         + (f" Owner feedback on previous version: {feedback}" if feedback else ""),
-        Chapter, system=CHANNEL_VOICE, max_tokens=20000)
+        system=CHANNEL_VOICE, max_tokens=20000)
 
 
 # ---------- шортс ----------

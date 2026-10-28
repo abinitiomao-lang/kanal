@@ -1,18 +1,17 @@
 """Рендер через ffmpeg.
 
-Длинное видео: каждая картинка → сегмент с медленным Ken Burns, дрейфом звёзд, виньеткой и затемнением
-в начале/конце (мягкий «вдох» между сценами). Сегменты одной главы склеиваются без перекодирования;
-главы рендерятся параллельными job'ами и склеиваются в конце, аудио сводится целиком (assemble_long).
+Длинное видео: одна анимированная петля (10 с, бесшовная) повторяется на всю длину озвучки —
+перекодируются только вступление и концовка, поэтому 3 часа собираются за минуты.
 
 Шортс: быстрые жёсткие склейки, резкий зум/тряска, караоке-субтитры по словам, хук на первых 1.5 с.
 """
+import math
 import os
 import random
 import subprocess
 from pathlib import Path
 
-import numpy as np
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 from .config import CFG, ROOT
 
@@ -29,49 +28,38 @@ def ff(*args: str) -> None:
 
 # ---------------- длинное видео ----------------
 
-def stars_layer(out: Path, w: int, h: int, seed: int = 7) -> Path:
-    """Прозрачный слой звёзд/пылинок двойной ширины (для бесшовного скролла)."""
-    rng = np.random.default_rng(seed)
-    img = Image.new("RGBA", (w * 2, h), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    for _ in range(int(w * h / 9000)):
-        x, y = rng.integers(0, w), rng.integers(0, h)
-        r = rng.choice([1, 1, 1, 2, 2, 3])
-        a = int(rng.integers(40, 150))
-        col = (255, 236, 200, a) if rng.random() < 0.5 else (200, 220, 255, a)
-        for dx in (0, w):  # дублируем → петля без шва
-            d.ellipse([x + dx - r, y - r, x + dx + r, y + r], fill=col)
-    img = img.filter(ImageFilter.GaussianBlur(0.8))
-    img.save(out)
-    return out
+def _long_enc() -> list[str]:
+    """Одинаковые параметры кодирования для всех кусков → склейка без перекодирования."""
+    L = CFG["long"]
+    return ["-c:v", "libx264", "-preset", "slow", "-b:v", L["video_bitrate"], "-maxrate", "1800k",
+            "-bufsize", "3600k", "-pix_fmt", "yuv420p", "-r", str(L["fps"]), "-video_track_timescale", "24000",
+            "-an"]
 
 
-def long_segment(image: Path, out: Path, frames: int, idx: int, stars: Path) -> None:
+def prepare_loop(src: Path, out: Path, is_video: bool) -> float:
+    """Нормализует петлю под 1080p/24fps с мягкой цветокоррекцией и виньеткой. Возвращает длину, с.
+
+    is_video=False — запасной вариант без анимации: картинка медленно «дышит» (периодический зум,
+    поэтому петля тоже бесшовная)."""
     L = CFG["long"]
     w, h, fps = L["width"], L["height"], L["fps"]
-    rnd = random.Random(idx)
-    zoom_in = idx % 2 == 0
-    z = f"1.0+0.10*on/{frames}" if zoom_in else f"1.10-0.10*on/{frames}"
-    # медленный дрейф центра кадра по горизонтали/вертикали
-    px, py = rnd.choice([-1, 1]) * rnd.uniform(0.02, 0.06), rnd.uniform(-0.03, 0.03)
-    x = f"(iw-iw/zoom)/2 + iw*{px:.3f}*(on/{frames}-0.5)"
-    y = f"(ih-ih/zoom)/2 + ih*{py:.3f}*(on/{frames}-0.5)"
-    fade = min(int(fps * 2.5), frames // 4)
-    speed = rnd.choice([3, 4, 5])
-    graph = (
-        f"[0:v]scale={w * 2}:{h * 2}:force_original_aspect_ratio=increase:flags=lanczos,crop={w * 2}:{h * 2},"
-        f"zoompan=z='{z}':x='{x}':y='{y}':d={frames}:s={w}x{h}:fps={fps},"
-        "eq=brightness=-0.04:saturation=0.85,colorbalance=bs=0.06:rs=0.03:rh=0.04,"
-        "vignette=PI/4.5,format=yuv420p[bg];"
-        f"[1:v]format=rgba[st];"
-        f"[bg][st]overlay=x='-mod(t*{speed},{w})':y=0:shortest=1,"
-        f"fade=t=in:st=0:n={fade},fade=t=out:start_frame={frames - fade}:n={fade},format=yuv420p[v]"
-    )
-    ff("-i", str(image), "-loop", "1", "-framerate", str(fps), "-i", str(stars),
-       "-filter_complex", graph, "-map", "[v]", "-frames:v", str(frames),
-       "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage",
-       "-b:v", L["video_bitrate"], "-maxrate", "1600k", "-bufsize", "3200k",
-       "-g", str(fps * 10), "-r", str(fps), str(out))
+    grade = "eq=brightness=-0.03:saturation=0.9,colorbalance=bs=0.05:rs=0.02,vignette=PI/5"
+    if is_video:
+        seconds = round(float(subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)],
+            capture_output=True, text=True).stdout))
+        frames = seconds * fps
+        ff("-i", str(src), "-vf", f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=lanczos,"
+           f"crop={w}:{h},fps={fps},{grade}", "-frames:v", str(frames), "-g", str(frames), *_long_enc(), str(out))
+    else:
+        seconds = 30
+        frames = seconds * fps
+        z = f"1.06+0.04*sin(2*PI*on/{frames})"
+        ff("-loop", "1", "-i", str(src), "-vf",
+           f"scale={w * 2}:{h * 2}:force_original_aspect_ratio=increase,crop={w * 2}:{h * 2},"
+           f"zoompan=z='{z}':x='(iw-iw/zoom)/2':y='(ih-ih/zoom)/2':d=1:s={w}x{h}:fps={fps},{grade}",
+           "-frames:v", str(frames), "-g", str(frames), *_long_enc(), str(out))
+    return float(seconds)
 
 
 def concat(parts: list[Path], out: Path, extra: list[str] | None = None) -> None:
@@ -80,48 +68,47 @@ def concat(parts: list[Path], out: Path, extra: list[str] | None = None) -> None
     ff("-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", *(extra or []), str(out))
 
 
-def long_chapter_video(images: list[Path], seconds: float, out: Path, work: Path, seed: int) -> None:
-    L = CFG["long"]
-    fps = L["fps"]
-    total = round(seconds * fps)
-    stars = stars_layer(work / "stars.png", L["width"], L["height"], seed)
-    per = total // len(images)
-    parts = []
-    for i, img in enumerate(images):
-        frames = per if i < len(images) - 1 else total - per * (len(images) - 1)
-        part = work / f"seg_{i:02d}.mp4"
-        long_segment(img, part, frames, seed * 100 + i, stars)
-        parts.append(part)
-    concat(parts, out)
+def pad_audio(src: Path, seconds: float, out: Path) -> None:
+    ff("-i", str(src), "-af", f"apad=whole_dur={seconds:.4f}", "-t", f"{seconds:.4f}",
+       "-ar", "24000", "-ac", "1", str(out))
 
 
-def assemble_long(chapter_videos: list[Path], chapter_audio: list[Path], ambient: Path, out: Path,
-                  work: Path) -> None:
-    """Склейка глав без перекодирования видео + сведение голоса с эмбиентом и затуханием в конце."""
+def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambient: Path, out: Path,
+                  work: Path) -> float:
+    """Петля повторяется на всю длину озвучки. Перекодируются только вступление (проявление из темноты)
+    и концовка (затухание), остальное — копия. Голос сводится с эмбиентом. Возвращает длительность."""
     L = CFG["long"]
-    video = work / "video_only.mp4"
-    concat(chapter_videos, video)
     voice = work / "voice_all.flac"
-    concat(chapter_audio, voice)
+    lst = work / "voice_all.txt"  # FLAC перекодируем: при copy в заголовке остаётся длина первой главы
+    lst.write_text("".join(f"file '{p.resolve()}'\n" for p in chapter_audio))
+    ff("-f", "concat", "-safe", "0", "-i", str(lst), "-c:a", "flac", str(voice))
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
-                                str(video)], capture_output=True, text=True).stdout)
+                                str(voice)], capture_output=True, text=True).stdout) + 4.0
     fo = L["fade_out_seconds"]
+    n = math.ceil(dur / loop_len)
+    k_out = min(n - 1, math.ceil((fo + 2) / loop_len))
+    intro = work / "intro.mp4"
+    ff("-i", str(loop), "-vf", "fade=t=in:st=0:d=4", *_long_enc(), "-g", str(int(loop_len * L["fps"])), str(intro))
+    outro_raw = work / "outro_raw.mp4"
+    concat([loop] * k_out, outro_raw)
+    t0 = (n - k_out) * loop_len
+    fade_end = dur - t0
+    outro = work / "outro.mp4"
+    ff("-i", str(outro_raw), "-vf", f"fade=t=out:st={max(0.0, fade_end - fo):.2f}:d={fo}",
+       *_long_enc(), "-g", str(int(loop_len * L["fps"])), str(outro))
+    video = work / "video_only.mp4"
+    concat([intro] + [loop] * (n - 1 - k_out) + [outro], video)
     graph = (
-        f"[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,acompressor=threshold=-20dB:ratio=2.5,"
-        f"highshelf=f=6000:g=-4[vo];"
+        "[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,acompressor=threshold=-20dB:ratio=2.5,"
+        "highshelf=f=6000:g=-4,apad[vo];"
         f"[2:a]volume={L['ambient_db']}dB[amb];"
-        f"[vo][amb]amix=inputs=2:duration=first:normalize=0,"
+        "[vo][amb]amix=inputs=2:duration=first:normalize=0,"
         f"afade=t=out:st={dur - fo:.2f}:d={fo},loudnorm=I=-20:TP=-3:LRA=11[a]"
     )
     ff("-i", str(video), "-i", str(voice), "-stream_loop", "-1", "-i", str(ambient),
        "-filter_complex", graph, "-map", "0:v", "-map", "[a]", "-c:v", "copy",
        "-c:a", "aac", "-b:a", L["audio_bitrate"], "-t", f"{dur:.3f}", "-movflags", "+faststart", str(out))
-
-
-def pad_audio(src: Path, seconds: float, out: Path) -> None:
-    """Подгоняет аудио главы ровно под длину видео главы (кадровая точность)."""
-    ff("-i", str(src), "-af", f"apad=whole_dur={seconds:.4f}", "-t", f"{seconds:.4f}",
-       "-ar", "24000", "-ac", "1", str(out))
+    return dur
 
 
 # ---------------- шортс ----------------

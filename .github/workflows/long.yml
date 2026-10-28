@@ -1,5 +1,5 @@
 name: long
-# Длинное видео: сценарий+картинки → параллельный рендер глав → склейка и загрузка.
+# Длинное видео: сценарий + картинка + анимация → параллельная озвучка глав → сборка и загрузка.
 on:
   workflow_dispatch:
     inputs:
@@ -39,7 +39,7 @@ jobs:
   render:
     needs: prepare
     runs-on: ubuntu-24.04
-    timeout-minutes: 340
+    timeout-minutes: 240
     strategy:
       fail-fast: true
       matrix:
@@ -59,9 +59,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: chapters-${{ matrix.group }}
-          path: |
-            work/long/${{ inputs.item_id }}/chapter_*.mp4
-            work/long/${{ inputs.item_id }}/chapter_*.flac
+          path: work/long/${{ inputs.item_id }}/chapter_*.flac
           retention-days: 2
           compression-level: 0
 

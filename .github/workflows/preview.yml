@@ -1,0 +1,25 @@
+name: preview
+# Пробная анимация для темы (картинка + Kling-петля) → Telegram. ~$1.2.
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        required: true
+        default: "The Deep Ocean"
+permissions:
+  contents: write
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      KANAL_WORK: ${{ github.workspace }}/work
+      GH_TOKEN: ${{ github.token }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      FAL_KEY: ${{ secrets.FAL_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_OWNER_ID: ${{ secrets.TELEGRAM_OWNER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli preview-loop "${{ inputs.topic }}"

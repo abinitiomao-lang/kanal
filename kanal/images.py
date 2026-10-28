@@ -6,6 +6,7 @@
 import io
 import re
 import subprocess
+import time
 import uuid
 from pathlib import Path
 
@@ -56,11 +57,12 @@ class Library:
             return out
         return self.generate(prompt, orient, out)
 
-    def generate(self, prompt: str, orient: str, out: Path) -> Path:
+    def generate(self, prompt: str, orient: str, out: Path, model: str | None = None,
+                 usd: float | None = None) -> Path:
         w, h = SIZES[orient]
         full = f"{prompt}. {CFG['images']['style']}"
         r = requests.post(
-            f"https://fal.run/{CFG['images']['model']}",
+            f"https://fal.run/{model or CFG['images']['model']}",
             headers={"Authorization": f"Key {secret('FAL_KEY')}"},
             json={"prompt": full, "image_size": {"width": w, "height": h}, "num_inference_steps": 4,
                   "num_images": 1, "enable_safety_checker": True, "output_format": "jpeg"},
@@ -71,7 +73,8 @@ class Library:
         img_url = r.json()["images"][0]["url"]
         img = Image.open(io.BytesIO(requests.get(img_url, timeout=120).content)).convert("RGB")
         img.save(out, "JPEG", quality=92)
-        self.spent += CFG["images"]["usd_per_image"]
+        self.last_url = img_url
+        self.spent += CFG["images"]["usd_per_image"] if usd is None else usd
         entry = {"id": uuid.uuid4().hex[:12], "prompt": prompt, "orient": orient}
         self.new.append((entry, out))
         self.used.add(entry["id"])
@@ -107,3 +110,30 @@ class Library:
             st["images"].extend(e for e, _ in self.new)
         state.update(fn, f"library +{len(self.new)}")
         self.new = []
+
+
+def animate_loop(image_url: str, motion: str, out: Path) -> float:
+    """Kling: тот же кадр в начале и в конце → бесшовная петля. Возвращает стоимость, $."""
+    A = CFG["animation"]
+    prompt = (f"{motion}. Very slow, gentle, continuous motion, static camera, calm and dreamy, "
+              "subtle floating particles, the scene returns exactly to its starting pose.")
+    headers = {"Authorization": f"Key {secret('FAL_KEY')}"}
+    r = requests.post(f"https://queue.fal.run/{A['model']}", headers=headers, timeout=60,
+                      json={"start_image_url": image_url, "end_image_url": image_url, "prompt": prompt,
+                            "duration": str(A["seconds"]), "generate_audio": False,
+                            "negative_prompt": "fast motion, camera shake, zoom, cut, text, blur, distortion"})
+    if r.status_code not in (200, 201, 202):
+        raise RuntimeError(f"fal.ai video {r.status_code}: {r.text[:300]}")
+    job = r.json()
+    for _ in range(180):  # до 30 минут
+        time.sleep(10)
+        st = requests.get(job["status_url"], headers=headers, timeout=60).json()
+        if st.get("status") == "COMPLETED":
+            break
+        if st.get("status") not in ("IN_QUEUE", "IN_PROGRESS"):
+            raise RuntimeError(f"fal.ai video status: {st}")
+    else:
+        raise RuntimeError("fal.ai video: таймаут")
+    res = requests.get(job["response_url"], headers=headers, timeout=60).json()
+    out.write_bytes(requests.get(res["video"]["url"], timeout=300).content)
+    return A["usd_per_second"] * A["seconds"]

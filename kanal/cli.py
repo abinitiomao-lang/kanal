@@ -26,6 +26,8 @@ def main() -> None:
             pipeline.long_assemble(args[0])
         elif cmd == "selftest":
             selftest.run()
+        elif cmd == "preview-loop":
+            selftest.preview_loop(" ".join(args))
         elif cmd == "groups":
             n = min(CFG["long"]["render_groups"], CFG["long"]["chapters"])
             print("[" + ",".join(str(i) for i in range(n)) + "]")

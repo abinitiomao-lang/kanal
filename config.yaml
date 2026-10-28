@@ -38,12 +38,11 @@ long:
   target_minutes: 165             # с запасом: LLM часто пишет короче просимого
   chapters: 12
   words_per_minute: 140           # замерено: Kokoro af_heart, speed 0.85, с паузами
-  image_every_seconds: 150
-  render_groups: 6                # параллельные job'ы рендера
+  render_groups: 6                # параллельные job'ы озвучки (Kokoro)
   fps: 24
   width: 1920
   height: 1080
-  video_bitrate: "900k"           # статика + медленный зум, этого хватает
+  video_bitrate: "1100k"          # 3 ч ≈ 1.9 ГБ — влезает в лимит 2 ГБ релиза для ручной загрузки
   audio_bitrate: "128k"
   kokoro_voice: "af_heart"
   kokoro_speed: 0.85
@@ -61,6 +60,14 @@ shorts:
   eleven_voice_id: "JBFqnCBsd6RMkjVDRZzb"   # заменить на выбранный голос
   images_per_short: 8
   use_pexels: true                # только если задан PEXELS_API_KEY
+
+# Длинное: ОДНА картинка на всё видео + 10-секундная бесшовная анимация (старт = финиш), повторяется.
+animation:
+  model: "fal-ai/kling-video/v3/pro/image-to-video"
+  seconds: 10
+  usd_per_second: 0.112           # без звука, fal.ai 2026-10
+  hero_model: "fal-ai/flux/dev"   # главная картинка — моделью получше
+  hero_usd: 0.05
 
 images:
   model: "fal-ai/flux/schnell"
