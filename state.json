@@ -1000,7 +1000,7 @@
    "fal": 3.324,
    "anthropic": 0.14733,
    "elevenlabs": 0,
-   "eleven_chars": 7140,
+   "eleven_chars": 7586,
    "images": 79
   }
  },
@@ -1235,6 +1235,12 @@
   },
   {
    "ts": "2026-10-28T20:29:42+00:00",
+   "service": "elevenlabs",
+   "usd": 0,
+   "note": "S10282028e98f"
+  },
+  {
+   "ts": "2026-10-28T20:37:56+00:00",
    "service": "elevenlabs",
    "usd": 0,
    "note": "S10282028e98f"
