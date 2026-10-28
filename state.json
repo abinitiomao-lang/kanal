@@ -473,7 +473,7 @@
   "S10282028e98f": {
    "kind": "short",
    "topic": "Eric Berne's game 'Why Don't You — Yes, But': endless advice is rejected because the hidden goal is to prove no solution exists",
-   "status": "failed",
+   "status": "producing",
    "created": "2026-10-28T20:28:24+00:00",
    "long_ref": null,
    "series": null,
@@ -487,7 +487,7 @@
    "kicker": "A DOCUMENTARY FROM 2126",
    "header_title": "Why “Yes, but…” wins every conversation",
    "ru_glossary": "Games People Play = «Игры, в которые играют люди»; Why Don't You — Yes, But = «Почему бы тебе не… — Да, но…»; see if you can present a solution I can't find fault with = «Попробуйте отыскать решение, в котором я не смогу найти недостаток» (официальный перевод, гл. 8); yes, but = да, но; Historians of 2126 = историки 2126 года",
-   "updated": "2026-10-28T20:34:18+00:00",
+   "updated": "2026-10-28T20:37:29+00:00",
    "error": "Telegram sendDocument: Bad Request: can't parse entities: Unsupported start tag \"httperror\" at byte offset 66"
   }
  },
