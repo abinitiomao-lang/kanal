@@ -220,7 +220,7 @@ def _ru_lines(groups: list[list[dict]], ru: list[str], ru_cfg: dict) -> tuple[st
         lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Ru,,0,0,0,,"
                      f"{{\\pos({x},{y})\\blur{ru_cfg['blur']}\\fad(80,0)}}{txt}")
         lines.append(f"Dialogue: 1,{_ass_time(g[0]['start'])},{_ass_time(end)},Ru,,0,0,0,,"
-                     f"{{\\pos({x},{y})\\bord1.2\\blur0.6\\fad(80,0)}}{txt}")
+                     f"{{\\pos({x},{y})\\bord2.2\\blur0.8\\fad(80,0)}}{txt}")  # чёткий розовый контур
     return st, lines
 
 

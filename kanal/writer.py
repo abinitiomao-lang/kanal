@@ -255,7 +255,7 @@ class ShortScript(BaseModel):
 
 
 def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dict | None = None,
-                 book: dict | None = None) -> ShortScript:
+                 book: dict | None = None, fixed: str = "") -> ShortScript:
     """fmt — формат из assets/short_style.yaml (tale/series), book — запись из book_series.yaml."""
     n = CFG["shorts"]["images_per_short"]
     src = (f"The idea comes from the book '{book['book']}' by {book['author']} (evidence: {book['evidence']}). "
@@ -265,6 +265,9 @@ def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dic
     how = (fmt["script"] + (f"\nhero: {fmt['hero']}" if fmt.get("hero") else "")) if fmt else (
         "Audience: ADHD-style, short attention. First sentence is a hook that lands in under 1.5 seconds. "
         "Then rapid, punchy sentences, one idea each, and a satisfying last line. 95-130 words.")
+    if fixed:  # готовый сценарий владельца/редактора: не переписывать, только раскадровка и метаданные
+        how += ("\nThe narration is ALREADY WRITTEN — copy it into `narration` exactly, word for word, and build "
+                f"the scenes, title and metadata around it:\n{fixed}")
     return llm.json(
         f"Write a YouTube Short about this idea: {fact}\n{src}\n{how}\n"
         "Funny or moving is good; wrong is not — every claim must be true. "
@@ -280,7 +283,7 @@ class Translation(BaseModel):
     lines: list[str] = Field(description="Russian translation of each input line, same count and order")
 
 
-def translate_ru(lines: list[str]) -> list[str]:
+def translate_ru(lines: list[str], glossary: str = "") -> list[str]:
     """Русские субтитры: перевод по фразам, число строк сохраняется (тайминги — от английской озвучки)."""
     numbered = "\n".join(f"{i + 1}. {ln}" for i, ln in enumerate(lines))
     res = llm.json(
@@ -288,7 +291,8 @@ def translate_ru(lines: list[str]) -> list[str]:
         "Russian for on-screen subtitles. Keep exactly the same number of lines and order; each Russian line "
         "must match its English line in meaning (do not move words between lines). Short and readable, "
         "keep book titles in their known Russian editions or in English if unsure, keep author names in Russian "
-        f"spelling.\n\n{numbered}", Translation)
+        f"spelling.{(' Use exactly this official Russian wording where it applies: ' + glossary) if glossary else ''}"
+        f"\n\n{numbered}", Translation)
     out = res.lines[:len(lines)]
     return out + lines[len(out):]
 

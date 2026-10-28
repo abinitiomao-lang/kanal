@@ -49,11 +49,11 @@ formats:
       y: 0.655                     # доля высоты кадра (~1258 px: выше нижней UI-зоны Shorts)
     ru_subs: &ru                   # русские субтитры поверх английских: розовый неон, минимализм
       font_name: "Fira Sans SemiBold"
-      size: 50
-      color: "FF2BB0"              # неоновый розовый
-      glow: "FF7AD1"               # свечение (размытая обводка)
-      glow_width: 5
-      blur: 7
+      size: 52
+      color: "FFFFFF"              # белый текст (владелец: розовый текст нечитаем)
+      glow: "FF2BB0"               # розовая неоновая подсветка вокруг
+      glow_width: 7
+      blur: 6
       y: 1150                      # верх строки, px (над английскими; безопасная полоса 1050–1320)
     script: >-
       Tell this idea as a 15-40 second micro-story (40-95 words) — an allegory, not a lecture.

@@ -75,8 +75,17 @@ def produce_short(item_id: str) -> None:
     n_short = sum(1 for i in state.load()["items"].values() if i["kind"] == "short")
     fkey, fmt = style.get(item.get("format") or style.for_book(item.get("book")) or style.rotate(n_short))
     book = next((b for b in writer.load_series() if b["id"] == item.get("book")), None)
-    script = writer.short_script(item["topic"], long_title, _feedback(item), fmt, book)
-    narration, issues, found = writer.checked(script.narration)
+    fixed = item.get("narration_fixed", "")
+    script = writer.short_script(item["topic"], long_title, _feedback(item), fmt, book, fixed)
+    if fixed:  # готовый проверенный текст не переписываем — фактчек только для отчёта
+        narration = fixed
+        issues = writer.fact_check(fixed)
+        found = len(issues)
+        for k in ("kicker", "header_title"):
+            if item.get(k):
+                setattr(script, k, item[k])
+    else:
+        narration, issues, found = writer.checked(script.narration)
 
     voice = W / "voice.mp3"
     dur, words = audio.eleven(narration, voice, fmt["voice"])
@@ -132,7 +141,8 @@ def produce_short(item_id: str) -> None:
     if fmt.get("ru_subs"):  # русские субтитры поверх английских — по тем же фразам и таймингам
         ru_cfg = fmt["ru_subs"]
         try:
-            ru = writer.translate_ru([" ".join(w["word"] for w in g) for g in render.phrase_groups(words, 5)])
+            ru = writer.translate_ru([" ".join(w["word"] for w in g) for g in render.phrase_groups(words, 5)],
+                                     item.get("ru_glossary", ""))
         except Exception as e:
             print(f"WARN ru subs failed: {e}")
     ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", fmt["subs"], ru, ru_cfg)
