@@ -616,6 +616,55 @@
    "orient": "landscape",
    "style": "series-a6a9a94f",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/75d52e96cbb0.jpg"
+  },
+  {
+   "id": "e1f27a81e51d",
+   "prompt": "a single twenty dollar bill falling out of an open hand onto a table, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/e1f27a81e51d.jpg"
+  },
+  {
+   "id": "2727c77fd67b",
+   "prompt": "a museum display case holding an old beige desktop computer with a handwritten label, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/2727c77fd67b.jpg"
+  },
+  {
+   "id": "33fd1682d580",
+   "prompt": "a tangled drawer full of old phone chargers, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/33fd1682d580.jpg"
+  },
+  {
+   "id": "3884bcfde16d",
+   "prompt": "a yellowed paper warranty card pinned to a corkboard beside a dead toaster, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/3884bcfde16d.jpg"
+  },
+  {
+   "id": "7ab75dfc044e",
+   "prompt": "a researcher in a lab coat writing notes at a desk beside a scale with coins, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7ab75dfc044e.jpg"
+  },
+  {
+   "id": "d2b220c026c1",
+   "prompt": "a balance scale with a heavy stone on one side and a small feather on the other, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/d2b220c026c1.jpg"
+  },
+  {
+   "id": "cfa8a3567463",
+   "prompt": "an open old hardcover book resting on a wooden desk beside a reading lamp, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/cfa8a3567463.jpg"
   }
  ],
  "costs": {
