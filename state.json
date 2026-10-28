@@ -216,14 +216,15 @@
   "S102819104db3": {
    "kind": "short",
    "topic": "Daniel Kahneman's planning fallacy: we keep believing the next project will go faster than the last one, even when it never has.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-10-28T19:10:25+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "tale",
    "book": "kahneman",
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-10-28T19:11:25+00:00"
   },
   "S10281910472e": {
    "kind": "short",
