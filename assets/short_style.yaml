@@ -22,9 +22,10 @@ rotation: [tale, series]          # для фактов не из книг — �
 art: >-
   whimsical hand-drawn tattoo flash illustration, fine black ink linework, grainy colored pencil and
   risograph texture fill, iridescent pastel palette of lilac, periwinkle blue, baby pink, mint green and
-  butter yellow with small red accents, folk fairytale charm, tiny black speckles and little yellow
-  four-point stars scattered on a clean white paper background, one large central subject,
-  no text, no letters, no watermark
+  butter yellow with small red accents, rich hatching and dense decorative ornament, folk fairytale charm,
+  tiny black speckles and little yellow four-point stars scattered on a flat white paper background,
+  a drawing, not a photo, one large central subject, absolutely no text, no letters, no words, no names,
+  no signature, no watermark
 
 formats:
   # A. Сказка-метафора: идея из книги прожита одним героем (референс — «ведьма и две кружки»).
@@ -60,7 +61,8 @@ formats:
     layout: framed                 # шапка, картинка-панель, текст под ней, подвал
     orient: landscape
     image: >-
-      wide horizontal composition, one clear subject
+      horizontal composition, one big subject close-up filling most of the picture, drawn as a whimsical
+      character or creature rather than a plain object
     motion: slow
     whoosh: false
     voice: {stability: 0.45, similarity_boost: 0.75, style: 0.3, speed: 1.0}
