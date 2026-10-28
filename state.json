@@ -276,7 +276,7 @@
   "S10281912f08b": {
    "kind": "short",
    "topic": "Daniel Kahneman: losing something tends to hurt about twice as much as gaining the same thing feels good (loss aversion; the exact ratio varies between studies).",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-28T19:12:52+00:00",
    "long_ref": null,
    "series": null,
@@ -284,7 +284,23 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-10-28T19:13:58+00:00"
+   "updated": "2026-10-28T19:16:09+00:00",
+   "video_id": "rKCBBPbipYQ",
+   "title": "Why losing a twenty-dollar bill stings more than finding one #shorts",
+   "description": "Daniel Kahneman and Amos Tversky described loss aversion, the tendency for losses to feel roughly twice as strong as equal gains, though the exact ratio varies between studies. This Short retells the idea from Kahneman's book Thinking, Fast and Slow; note that some other studies he cites later failed to replicate.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "loss aversion",
+    "Daniel Kahneman",
+    "Thinking Fast and Slow",
+    "behavioral economics",
+    "psychology",
+    "cognitive bias",
+    "sleep learning",
+    "shorts"
+   ],
+   "duration": 49.9,
+   "narration": "Historians of 2126 still puzzle over one habit from our era. Losing things hurt us far more than gaining them pleased us. Lose a twenty-dollar bill, and the sting lingers all afternoon. Find one, and the joy fades by dinner. Psychologists Daniel Kahneman and Amos Tversky measured this in experiments. Losses often felt roughly twice as painful as equal gains felt good, though the exact ratio varied between studies. So people kept unused gym memberships, broken phones and jobs they disliked, just to avoid the feeling of losing. Our curators find this baffling. The idea comes from Kahneman and Tversky's 1979 paper on prospect theory, \"Prospect Theory: An Analysis of Decision under Risk\". Kahneman later popularized it in Thinking, Fast and Slow (2011).",
+   "factcheck": "🔎 Фактчек: найдено 1, осталось 0"
   },
   "S102819125a27": {
    "kind": "short",
