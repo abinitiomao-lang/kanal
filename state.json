@@ -473,7 +473,7 @@
   "S10282028e98f": {
    "kind": "short",
    "topic": "Eric Berne's game 'Why Don't You — Yes, But': endless advice is rejected because the hidden goal is to prove no solution exists",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-10-28T20:28:24+00:00",
    "long_ref": null,
    "series": null,
@@ -486,7 +486,8 @@
    "narration_fixed": "You give your friend the perfect advice. They say: yes, but. You try again. Yes, but. Historians of 2126 found millions of these conversations. Ten solutions. Ten yes-buts. Then silence. Psychiatrist Eric Berne explained it in Games People Play. The goal was never to find a solution. It was to prove none exists. The hidden rule: see if you can present a solution I can't find fault with. And historians are still confused why, every single day,",
    "kicker": "A DOCUMENTARY FROM 2126",
    "header_title": "Why “Yes, but…” wins every conversation",
-   "ru_glossary": "Games People Play = «Игры, в которые играют люди»; Why Don't You — Yes, But = «Почему бы тебе не… — Да, но…»; see if you can present a solution I can't find fault with = «Попробуйте отыскать решение, в котором я не смогу найти недостаток» (официальный перевод, гл. 8); yes, but = да, но; Historians of 2126 = историки 2126 года"
+   "ru_glossary": "Games People Play = «Игры, в которые играют люди»; Why Don't You — Yes, But = «Почему бы тебе не… — Да, но…»; see if you can present a solution I can't find fault with = «Попробуйте отыскать решение, в котором я не смогу найти недостаток» (официальный перевод, гл. 8); yes, but = да, но; Historians of 2126 = историки 2126 года",
+   "updated": "2026-10-28T20:29:19+00:00"
   }
  },
  "images": [
