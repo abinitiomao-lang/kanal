@@ -86,3 +86,28 @@ def preview_loop(topic: str) -> None:
     from . import costs
     costs.add("fal", spent, f"preview {topic}")
     llm.flush("preview")
+
+
+SAMPLE = ("Your body glows in the dark. Seriously. You give off a faint light right now, about a thousand times "
+          "too weak for your eyes to see. Wait, it gets weirder.")
+WANT = ["Brian", "Liam", "Will", "Eric", "Chris", "Jessica", "Laura", "Charlie"]
+
+
+def voice_samples() -> None:
+    """Один и тот же хук разными стандартными голосами ElevenLabs → Telegram."""
+    import requests
+    from . import audio
+    from .config import CFG
+    h = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"]}
+    voices = requests.get("https://api.elevenlabs.io/v1/voices", headers=h, timeout=30).json()["voices"]
+    by_name = {v["name"].split(" ")[0].split("-")[0].strip(): v for v in voices}
+    picked = [by_name[n] for n in WANT if n in by_name][:8]
+    telegram.send(f"🎙 <b>Голоса для шортсов</b> — {len(picked)} вариантов одного хука. "
+                  "Ответь мне номером понравившегося.")
+    W = workdir("voices")
+    for i, v in enumerate(picked, 1):
+        CFG["shorts"]["eleven_voice_id"] = v["voice_id"]
+        out = W / f"{i}_{v['name'].split()[0]}.mp3"
+        audio.eleven(SAMPLE, out)
+        desc = ", ".join(x for x in (v.get("labels") or {}).values() if x)
+        telegram.send_document(out, f"{i}. <b>{v['name']}</b> — {desc}\n<code>{v['voice_id']}</code>")

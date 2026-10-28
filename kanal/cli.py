@@ -9,7 +9,7 @@ from .config import CFG
 def main() -> None:
     cmd, args = sys.argv[1], sys.argv[2:]
     run_url = os.environ.get("RUN_URL", "")
-    if cmd not in ("selftest", "groups"):
+    if cmd not in ("selftest", "groups", "voices"):
         state.ensure_checkout()
     try:
         if cmd == "poll":
@@ -26,6 +26,8 @@ def main() -> None:
             pipeline.long_assemble(args[0])
         elif cmd == "selftest":
             selftest.run()
+        elif cmd == "voices":
+            selftest.voice_samples()
         elif cmd == "preview-loop":
             selftest.preview_loop(" ".join(args))
         elif cmd == "groups":

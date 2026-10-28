@@ -2,6 +2,12 @@ name: selftest
 # Ручной запуск: проверяет все ключи и шлёт отчёт в Telegram. Ничего не публикует.
 on:
   workflow_dispatch:
+    inputs:
+      what:
+        description: "keys — проверить ключи, voices — образцы голосов ElevenLabs"
+        type: choice
+        options: [keys, voices]
+        default: keys
 permissions:
   contents: read
 jobs:
@@ -22,4 +28,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: python -m kanal.cli selftest
+      - run: python -m kanal.cli ${{ inputs.what == 'voices' && 'voices' || 'selftest' }}
