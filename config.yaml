@@ -1,6 +1,7 @@
 # Все секреты — только в GitHub Secrets / env. Здесь только несекретные настройки.
 
 channel:
+  id: "UCrfBMpzLf5jPt06IBmaGoZA"  # https://www.youtube.com/@SashaMao-e8i — загрузки только сюда
   name: "Sleepy Science"          # обновится после выбора в боте
   name_candidates:
     - "Sleepy Science"

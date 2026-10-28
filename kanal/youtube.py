@@ -19,9 +19,20 @@ def _yt():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
+def check_channel(yt) -> None:
+    """Токен должен принадлежать нашему каналу — иначе видео уйдёт не туда (brand account)."""
+    items = yt.channels().list(part="id,snippet", mine=True).execute().get("items", [])
+    ids = [c["id"] for c in items]
+    if CFG["channel"]["id"] not in ids:
+        raise RuntimeError(f"OAuth-токен выдан для канала {ids}, а нужен {CFG['channel']['id']}. "
+                           "Перевыпусти YT_REFRESH_TOKEN, выбрав правильный канал.")
+
+
 def upload(path: Path, title: str, description: str, tags: list[str]) -> str:
     """Загружает видео как PRIVATE. Возвращает videoId."""
     C = CFG["channel"]
+    yt = _yt()
+    check_channel(yt)
     body = {
         "snippet": {"title": title[:100], "description": description[:4900], "tags": _tags(tags),
                     "categoryId": C["category_id"], "defaultLanguage": C["language"],
@@ -30,7 +41,7 @@ def upload(path: Path, title: str, description: str, tags: list[str]) -> str:
                    "containsSyntheticMedia": C["synthetic_media"], "embeddable": True},
     }
     media = MediaFileUpload(str(path), chunksize=64 * 1024 * 1024, resumable=True, mimetype="video/mp4")
-    req = _yt().videos().insert(part="snippet,status", body=body, media_body=media, notifySubscribers=True)
+    req = yt.videos().insert(part="snippet,status", body=body, media_body=media, notifySubscribers=True)
     resp = None
     while resp is None:
         status, resp = req.next_chunk(num_retries=5)
