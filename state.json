@@ -993,6 +993,48 @@
    "orient": "portrait",
    "style": "tale-7321be6c",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7c51dae5d4ae.jpg"
+  },
+  {
+   "id": "85ad9f7a3221",
+   "prompt": "A cheerful glowing lightbulb creature with tiny arms offered on an open palm to a grumpy hedgehog with crossed arms, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/85ad9f7a3221.jpg"
+  },
+  {
+   "id": "a8c5f66d9fdd",
+   "prompt": "A grumpy hedgehog swatting a glowing lightbulb creature away with one paw, a second lightbulb bouncing off, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/a8c5f66d9fdd.jpg"
+  },
+  {
+   "id": "05c4536fa5ba",
+   "prompt": "A mole archaeologist in a round space helmet digging with a brush, lifting out fossil-like speech bubbles from soil, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/05c4536fa5ba.jpg"
+  },
+  {
+   "id": "ab45cda564e4",
+   "prompt": "A huge mountain of dull rejected lightbulbs, with one tiny wilting flower poking out from the very top, wide shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ab45cda564e4.jpg"
+  },
+  {
+   "id": "624336b2f8fe",
+   "prompt": "An old owl professor in round glasses sliding chess pieces shaped like hedgehogs and lightbulbs across a wooden board, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/624336b2f8fe.jpg"
+  },
+  {
+   "id": "7c95abdb5229",
+   "prompt": "A hedgehog peering through a giant magnifying glass at a perfect glowing lightbulb, searching its surface for a crack, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7c95abdb5229.jpg"
   }
  ],
  "costs": {
