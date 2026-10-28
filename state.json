@@ -334,16 +334,18 @@
   "S1028191788b0": {
    "kind": "short",
    "topic": "Daniel Kahneman: losing something tends to hurt about twice as much as gaining the same thing feels good (loss aversion; the exact ratio varies between studies).",
-   "status": "awaiting_approval",
+   "status": "queued",
    "created": "2026-10-28T19:17:11+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "series",
    "book": "kahneman",
-   "feedback": [],
+   "feedback": [
+    "используй для вдохновения то что есть у тебя в доступности локально (например то что в папке img - в названии) \n\nперед созданием длинного видео - как я понимаю тут 1/5 или 1/2 видео, длинные?\n\nнадо создать шортс - с интересным фактом из этой книги (можешь отзывы и цитаты из книги поискать) - и вот шортсы , для их создания (от 10 до 45 секунд) должно быть динамичное видео в тему этого момента"
+   ],
    "updated": "2026-10-28T19:19:45+00:00",
-   "video_id": "hCa141zbUSI",
+   "video_id": null,
    "title": "Why losing $20 hurts more than finding it #shorts",
    "description": "Psychologists Daniel Kahneman and Amos Tversky found that losses tend to feel roughly twice as strong as equal gains, though the exact ratio varies between studies. The idea is retold here from Daniel Kahneman's book Thinking, Fast and Slow; note that some other studies he cites, such as priming and ego depletion, later failed to replicate.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
@@ -358,7 +360,8 @@
    ],
    "duration": 32.5,
    "narration": "Losing twenty dollars hurts more than finding twenty dollars feels good. Future historians might find this puzzling, though researchers today know it well as a documented effect. Think of the old phone charger you never use. Or the warranty card for a toaster that died years ago, still tucked in a drawer. Psychologists Daniel Kahneman and Amos Tversky measured the pattern in the lab. Losses seemed to weigh roughly twice as heavily as equal gains, though the exact ratio shifts between studies. Our ancestors called it caution, and Daniel Kahneman's book Thinking, Fast and Slow explains the idea.",
-   "factcheck": "🔎 Фактчек: найдено 2, осталось 0"
+   "factcheck": "🔎 Фактчек: найдено 2, осталось 0",
+   "release": null
   }
  },
  "images": [
@@ -844,7 +847,7 @@
    "note": "S1028191788b0"
   }
  ],
- "awaiting_comment": "S1028191788b0",
+ "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-28",
  "last_short_proposal": "2026-10-28",
