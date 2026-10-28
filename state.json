@@ -403,6 +403,18 @@
    "format": "tale",
    "book": "nvc",
    "feedback": []
+  },
+  "S10282008806b": {
+   "kind": "short",
+   "topic": "Daniel Kahneman: losing something tends to hurt about twice as much as gaining the same thing feels good (loss aversion; the exact ratio varies between studies).",
+   "status": "queued",
+   "created": "2026-10-28T20:08:21+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "kahneman",
+   "feedback": []
   }
  },
  "images": [
