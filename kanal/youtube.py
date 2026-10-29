@@ -122,3 +122,23 @@ def wipe(really: bool) -> None:
     for k, it in state.load()["items"].items():
         if it["status"] not in ("published", "rejected"):
             state.set_item(k, status="rejected")
+
+
+def edit(match: str, title: str, description: str, tags: list[str]) -> None:
+    """Меняет название/описание/теги видео по id или по куску названия. Пустые поля не трогает."""
+    vids = [v for v in list_all() if match in (v["id"], ) or match.lower() in v["title"].lower()]
+    if len(vids) != 1:
+        raise SystemExit(f"нашлось {len(vids)} видео по «{match}»: {vids}")
+    yt = _yt()
+    vid = vids[0]["id"]
+    sn = yt.videos().list(part="snippet", id=vid).execute()["items"][0]["snippet"]
+    body = {k: sn[k] for k in ("title", "description", "categoryId", "tags", "defaultLanguage",
+                               "defaultAudioLanguage") if k in sn}
+    if title:
+        body["title"] = title[:100]
+    if description:
+        body["description"] = description[:4900]
+    if tags:
+        body["tags"] = _tags(tags)
+    yt.videos().update(part="snippet", body={"id": vid, "snippet": body}).execute()
+    print(f"обновлено {vid} ({vids[0]['privacy']}): {body['title']}")

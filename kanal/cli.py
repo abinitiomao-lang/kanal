@@ -32,6 +32,10 @@ def main() -> None:
             selftest.preview_loop(" ".join(args))
         elif cmd == "wipe":
             youtube.wipe(args[:1] == ["DELETE"])
+        elif cmd == "edit":
+            e = os.environ
+            youtube.edit(e["EDIT_MATCH"], e.get("EDIT_TITLE", ""), e.get("EDIT_DESC", ""),
+                         [t.strip() for t in e.get("EDIT_TAGS", "").split(",") if t.strip()])
         elif cmd == "groups":
             n = min(CFG["long"]["render_groups"], CFG["long"]["chapters"])
             print("[" + ",".join(str(i) for i in range(n)) + "]")

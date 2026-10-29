@@ -1,0 +1,26 @@
+name: edit
+# Ручной запуск: меняет название/описание/теги уже загруженного видео (по id или куску названия).
+on:
+  workflow_dispatch:
+    inputs:
+      match: {description: "id видео или кусок текущего названия", type: string, required: true}
+      title: {description: "новое название (пусто — не менять)", type: string, default: ""}
+      description: {description: "новое описание (пусто — не менять)", type: string, default: ""}
+      tags: {description: "теги через запятую (пусто — не менять)", type: string, default: ""}
+jobs:
+  edit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      KANAL_WORK: ${{ github.workspace }}/work
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      EDIT_MATCH: ${{ inputs.match }}
+      EDIT_TITLE: ${{ inputs.title }}
+      EDIT_DESC: ${{ inputs.description }}
+      EDIT_TAGS: ${{ inputs.tags }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli edit
