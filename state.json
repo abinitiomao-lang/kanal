@@ -553,6 +553,24 @@
    "duration": 22.8,
    "narration": "You give your friend the perfect advice. They say: yes, but. You try again. Yes, but. Historians of 2126 found millions of these conversations. Ten solutions. Ten yes-buts. Then silence. Psychiatrist Eric Berne explained it in Games People Play. The goal was never to find a solution. It was to prove none exists. The hidden rule: see if you can present a solution I can't find fault with. And historians are still confused why, every single day,",
    "factcheck": "🔎 Фактчек: найдено 3, осталось 3\n⚠️ «Historians of 2126 found millions of these conversations.» — This is a temporal impossibility. 2126 is in the future, so no historians from that year could have found anything. Presented as fact, it is fabricated.\n⚠️ «And historians are still confused why, every single day,» — This repeats the fabricated premise that historians are studying these conversations and are confused. There is no such historical research or confusion on reco\n⚠️ «The goal was never to find a solution. It was to prove none exists.» — This oversimplifies Berne&#x27;s &#x27;Why Don&#x27;t You... Yes, But&#x27; game. Berne described the player&#x27;s unconscious payoff as rejecting every suggestion to show that the adv"
+  },
+  "S102922413241": {
+   "kind": "short",
+   "topic": "Csikszentmihalyi's paradox of work: people feel flow at work about twice as often as in free time, yet say they'd rather not work",
+   "status": "queued",
+   "created": "2026-10-29T22:41:05+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "tale",
+   "book": "flow",
+   "feedback": [
+    "Storyboard: 1) Luna the cat at a round window gazing dreamily at a calendar-shaped cloud with a big glowing Saturday sun; 2) Luna in a tiny bakery wrestling a huge stubborn dough creature with flour flying, ovens glowing behind; 3) Luna humming with eyes half-closed, musical notes rising like steam from golden crescent-moon loaves; 4) Luna curled on an enormous soft sofa, a dusty sunbeam, a sleepy snail on the armrest; 5) Luna slumped and grumpy at dusk, a grey little raincloud hovering over her head; 6) an old owl professor in round glasses holding a lantern with two flames, one bright and one dim; 7) Luna back at the bakery door on Monday morning, looking up at a weekend-dream cloud"
+   ],
+   "narration_fixed": "Everyone in Luna's village dreams of the weekend. All week Luna bakes moon-bread: stubborn dough, hot ovens, no time to think. She hums without noticing. Saturday comes. She curls up on the sofa. By evening: bored, grumpy, wishing for more Saturdays. In flow studies, workers felt flow at work twice as often as in free time, yet said they'd rather not work. Mihaly Csikszentmihalyi called it the paradox of work, in his book Flow. And still,",
+   "kicker": "",
+   "header_title": "",
+   "ru_glossary": "Flow = «Поток»; paradox of work = «парадокс работы» (название раздела гл. 7); they'd rather not work = «предпочли бы не работать» (официальный перевод: «чаще всего они говорили, что предпочли бы не работать»); flow = состояние потока; moon-bread = лунный хлеб"
   }
  },
  "images": [
