@@ -126,9 +126,12 @@ def wipe(really: bool) -> None:
 
 def edit(match: str, title: str, description: str, tags: list[str]) -> None:
     """Меняет название/описание/теги видео по id или по куску названия. Пустые поля не трогает."""
-    vids = [v for v in list_all() if match in (v["id"], ) or match.lower() in v["title"].lower()]
+    every = list_all()
+    vids = [v for v in every if match == v["id"] or match.lower() in v["title"].lower()]
     if len(vids) != 1:
-        raise SystemExit(f"нашлось {len(vids)} видео по «{match}»: {vids}")
+        for v in every:
+            print(f"  {v['id']}  {v['privacy']:9}  {v['title']}")
+        raise SystemExit(f"нашлось {len(vids)} видео по «{match}»")
     yt = _yt()
     vid = vids[0]["id"]
     sn = yt.videos().list(part="snippet", id=vid).execute()["items"][0]["snippet"]
