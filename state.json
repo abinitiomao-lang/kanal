@@ -181,6 +181,54 @@
    "msg": 34,
    "picked": [],
    "created": "2026-10-28T18:10:58+00:00"
+  },
+  "p10290647ba14": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Eric Berne proposed that everyone shifts between Parent, Adult and Child ego states, and that many everyday arguments are really two of these states talking past each other; this is his model, not a tested scientific theory.",
+     "subject": "Parent, Adult and Child ego states",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling studies found that many people reported more flow at work than in their leisure time, yet said they would rather be doing something else.",
+     "subject": "The paradox of work and leisure",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink retells a daycare study where fining parents for late pickups made lateness rise, a reminder that adding a price to a behavior can change what people think it means.",
+     "subject": "The daycare late fine",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Helen Fisher's brain-scan studies of people newly in love show activity in dopamine-rich reward areas, though these scans involved small groups and the wider story she builds on them is partly speculative.",
+     "subject": "Brain scans of people in love",
+     "related_long": -1,
+     "book": "fisher",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Barbara Sher uses the word 'scanner' for people whose many interests make it hard to commit to one path, a coaching term from her own work rather than a psychological diagnosis.",
+     "subject": "What a scanner is",
+     "related_long": -1,
+     "book": "sher",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 70,
+   "picked": [],
+   "created": "2026-10-29T06:47:25+00:00"
   }
  },
  "items": {
@@ -1358,7 +1406,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-28",
- "last_short_proposal": "2026-10-28",
+ "last_short_proposal": "2026-10-29",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
