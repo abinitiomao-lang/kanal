@@ -1139,6 +1139,55 @@
    "orient": "landscape",
    "style": "series-1bad1887",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/40452d67905a.jpg"
+  },
+  {
+   "id": "5eeb1bccb6bd",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. Luna the small cat with a little red knitted scarf gazing dreamily out a round window at a calendar-shaped cloud with a big sun marked Saturday, medium shot",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5eeb1bccb6bd.jpg"
+  },
+  {
+   "id": "423cd9395462",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. Luna the small cat wrestling a huge stubborn dough creature in a tiny bakery, flour flying through the air, ovens glowing behind her, medium shot",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/423cd9395462.jpg"
+  },
+  {
+   "id": "53a41238bd6a",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. Luna the small cat with eyes half closed humming, musical notes rising like steam from freshly baked crescent-moon loaves on a tray, close-up",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/53a41238bd6a.jpg"
+  },
+  {
+   "id": "e13faec44b05",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. Luna the small cat curled up asleep on an enormous soft sofa, a dusty sunbeam falling across it, a sleepy snail resting on the armrest, medium shot",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/e13faec44b05.jpg"
+  },
+  {
+   "id": "745578c22bad",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. Luna the small cat slumped and grumpy at dusk on a sofa, a grey little raincloud hovering over her head, medium shot",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/745578c22bad.jpg"
+  },
+  {
+   "id": "7bcf38424207",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. an old owl professor wearing round glasses holding a lantern with two flames, one bright and one dim, close-up",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7bcf38424207.jpg"
+  },
+  {
+   "id": "bfdbbed55a13",
+   "prompt": "Luna, a small periwinkle-blue cat with lilac stripes, big golden eyes, a pink crescent-moon mark on her forehead and a little red knitted scarf; setting: a small hillside village with a tiny moon-bread bakery and a round window. Luna the small cat standing at a bakery door on a Monday morning, looking up at a weekend-dream cloud drifting above, medium shot",
+   "orient": "portrait",
+   "style": "tale-7321be6c",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/bfdbbed55a13.jpg"
   }
  ],
  "costs": {
