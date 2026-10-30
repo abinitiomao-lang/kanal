@@ -658,14 +658,15 @@
   "S103006511587": {
    "kind": "short",
    "topic": "Daniel Pink describes a daycare study in which charging parents a fine for picking up children late made late pickups increase, not decrease, a result the original researchers reported and that shows how a payment can change how people see a task.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-10-30T06:51:04+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "series",
    "book": "drive",
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-10-30T06:51:52+00:00"
   }
  },
  "images": [
