@@ -275,7 +275,9 @@
     }
    ],
    "msg": 75,
-   "picked": [],
+   "picked": [
+    1
+   ],
    "created": "2026-10-30T06:48:56+00:00"
   }
  },
@@ -638,6 +640,18 @@
    "narration": "Everyone in Luna's village dreams of the weekend. All week Luna bakes moon-bread: stubborn dough, hot ovens, no time to think. She hums without noticing. Saturday comes. She curls up on the sofa. By evening: bored, grumpy, wishing for more Saturdays. In flow studies, workers felt flow at work twice as often as in free time, yet said they'd rather not work. Mihaly Csikszentmihalyi called it the paradox of work, in his book Flow. And still,",
    "factcheck": "🔎 Фактчек: найдено 1, осталось 1\n⚠️ «In flow studies, workers felt flow at work twice as often as in free time, yet said they&#x27;d rather not work.» — The figure is understated. In Csikszentmihalyi and LeFevre&#x27;s 1989 study, about 54% of work-time reports were in flow versus about 18% of leisure-time reports, w",
    "public_id": "pmwRo_SKLXY"
+  },
+  "S103006509760": {
+   "kind": "short",
+   "topic": "Eric Berne claimed that many people unconsciously follow a childhood-made life plan he called a script, and that this plan can quietly shape their relationships and choices; this is Berne's model, not a tested scientific finding.",
+   "status": "queued",
+   "created": "2026-10-30T06:50:59+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "berne",
+   "feedback": []
   }
  },
  "images": [
