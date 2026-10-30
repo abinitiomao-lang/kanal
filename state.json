@@ -674,7 +674,7 @@
   "S103006511587": {
    "kind": "short",
    "topic": "Daniel Pink describes a daycare study in which charging parents a fine for picking up children late made late pickups increase, not decrease, a result the original researchers reported and that shows how a payment can change how people see a task.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-30T06:51:04+00:00",
    "long_ref": null,
    "series": null,
@@ -682,7 +682,23 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-10-30T06:51:52+00:00"
+   "updated": "2026-10-30T06:54:09+00:00",
+   "video_id": "hMyxtasaSf8",
+   "title": "Daniel Pink's Late Fee Experiment Backfired #Psychology #Shorts",
+   "description": "A daycare that fined late parents found lateness went up, a result Daniel Pink retells in his book Drive. Pink argues that payments can change how people see a task, turning a favor into a transaction; this is a simplified popular account of self-determination research.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Daniel Pink",
+    "Drive",
+    "motivation",
+    "psychology",
+    "behavioral economics",
+    "extrinsic rewards",
+    "sleep learning",
+    "documentary"
+   ],
+   "duration": 56.3,
+   "narration": "Ten minutes late for pickup, and you feel fine about it. Why? You paid the fine. A field study from the late 1990s, published in 2000 by Uri Gneezy and Aldo Rustichini, examined ten daycare centers in Haifa, Israel, that began fining parents for late pickups. Late arrivals rose, and stayed high after the fine was removed. Economists Gneezy and Rustichini proposed that the fine turned a social obligation into a market transaction, which parents felt entitled to buy. A price feels settled. The study is best known from Gneezy and Rustichini's 2000 paper and is popularized in Freakonomics by Levitt and Dubner. Ten minutes late for pickup, and historians are still confused.\n\n---\n*Note for your review (not part of the script): The final line still says \"historians are still confused.\" It has the same kind of attribution problem as the second item you flagged, since the interpretation comes from economists, not historians. I left it unchanged because you asked for only the listed fixes. You may want to change \"historians\" to \"economists\" as well.*",
+   "factcheck": "🔎 Фактчек: найдено 3, осталось 0"
   }
  },
  "images": [
