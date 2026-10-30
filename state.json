@@ -645,7 +645,7 @@
   "S103006509760": {
    "kind": "short",
    "topic": "Eric Berne claimed that many people unconsciously follow a childhood-made life plan he called a script, and that this plan can quietly shape their relationships and choices; this is Berne's model, not a tested scientific finding.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-10-30T06:50:59+00:00",
    "long_ref": null,
    "series": null,
@@ -653,7 +653,23 @@
    "format": "series",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-10-30T06:51:38+00:00"
+   "updated": "2026-10-30T06:53:11+00:00",
+   "video_id": "pvU6CcQgGtU",
+   "title": "Eric Berne's life script, explained by 2126 #psychology #shorts",
+   "description": "Psychiatrist Eric Berne proposed in Games People Play that many of us follow a life script written in childhood, shaping relationships and choices. This is Berne's model from transactional analysis, not a proven scientific finding.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Eric Berne",
+    "Games People Play",
+    "transactional analysis",
+    "life script",
+    "psychology",
+    "shorts",
+    "sleep learning",
+    "history"
+   ],
+   "duration": 34.4,
+   "narration": "Ever notice you keep ending up in the same argument, with the same kind of partner? Today, psychologists still debate why people repeat relationship patterns. They call it a life script: a plan we write as children and follow without noticing. Psychiatrist Eric Berne developed the idea within transactional analysis, and he laid it out most fully in What Do You Say After You Say Hello? (1972). His earlier book, Games People Play (1964), is about social games. Scripts remain a theoretical concept with weak empirical support, and psychologists continue to debate it.",
+   "factcheck": "🔎 Фактчек: найдено 3, осталось 0"
   },
   "S103006511587": {
    "kind": "short",
