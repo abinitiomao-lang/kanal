@@ -229,6 +229,54 @@
    "msg": 70,
    "picked": [],
    "created": "2026-10-29T06:47:25+00:00"
+  },
+  "p10300648e902": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle: if a bat and ball cost $1.10 together and the bat costs $1 more than the ball, the quick answer of 10 cents is wrong, and the ball is 5 cents.",
+     "subject": "Kahneman's System 1 and System 2 thinking",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Eric Berne claimed that many people unconsciously follow a childhood-made life plan he called a script, and that this plan can quietly shape their relationships and choices; this is Berne's model, not a tested scientific finding.",
+     "subject": "Berne's life scripts",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's flow model proposes that when a task's challenge is far above your skill you feel anxiety, and when your skill is far above the challenge you feel boredom, with the best experience sitting in between; this is his model, and it is well studied but still debated in its details.",
+     "subject": "Csikszentmihalyi's challenge and skill balance",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink describes a daycare study in which charging parents a fine for picking up children late made late pickups increase, not decrease, a result the original researchers reported and that shows how a payment can change how people see a task.",
+     "subject": "Pink on rewards backfiring",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Helen Fisher argues that the early stage of falling in love, with its intrusive thinking about one person, reflects a dopamine-linked craving system in the brain; her brain-scan studies are real but small, so treat this as her interpretation.",
+     "subject": "Fisher on intrusive thinking in love",
+     "related_long": -1,
+     "book": "fisher",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 75,
+   "picked": [],
+   "created": "2026-10-30T06:48:56+00:00"
   }
  },
  "items": {
@@ -1516,7 +1564,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-28",
- "last_short_proposal": "2026-10-29",
+ "last_short_proposal": "2026-10-30",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
