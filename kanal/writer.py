@@ -143,16 +143,20 @@ def fact_check(text: str) -> list[Issue]:
     return [i for i in res.issues if i.severity in ("high", "medium")]
 
 
+class Fixed(BaseModel):
+    script: str = Field(description="the corrected script ONLY: words to be read aloud, no notes or comments")
+
+
 def _fix(text: str, issues: list[Issue], extra: str = "") -> str:
     notes = "\n".join(f"- \"{i.claim}\" → {i.problem}. Correct: {i.correction}" for i in issues)
-    fixed = llm.text(
+    limit = round(len(text.split()) * 1.1) + 3
+    fixed = llm.json(
         f"Rewrite the script below fixing ONLY these factual problems, keeping length, tone and structure. "
-        f"{extra}Return only the corrected script text.\n\nProblems:\n{notes}\n\nScript:\n{text}",
-        system=CHANNEL_VOICE)
-    first, _, rest = fixed.partition("\n")
-    if first.rstrip().endswith(":") and len(first) < 80 and rest:  # «Here is the corrected script:»
-        fixed = rest.strip()
-    return fixed
+        f"Prefer softening or removing a wrong claim over adding citations, dates or caveats; "
+        f"stay under {limit} words. {extra}Every word of `script` is read aloud on air, so never put notes, "
+        f"comments or explanations there.\n\nProblems:\n{notes}\n\nScript:\n{text}",
+        Fixed, system=CHANNEL_VOICE).script.strip()
+    return fixed if len(fixed.split()) <= limit * 1.3 else text
 
 
 def checked(text: str, rounds: int = 2) -> tuple[str, list[Issue], int]:
