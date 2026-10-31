@@ -328,6 +328,104 @@
    "msg": 84,
    "picked": [],
    "created": "2026-10-31T06:45:00+00:00"
+  },
+  "p103106455253": {
+   "kind": "long",
+   "topics": [
+    {
+     "topic": "Thinking, Fast and Slow, Part 1 of 5: Two Systems",
+     "subject": "psychology",
+     "pitch": "System 1 and System 2, the bat-and-ball puzzle, the lazy controller and mental effort, cognitive ease…",
+     "source": "Thinking, Fast and Slow by Daniel Kahneman",
+     "series": "kahneman",
+     "part": 1,
+     "button": "Kahneman 1/5: Two Systems"
+    },
+    {
+     "topic": "Flow: The Psychology of Optimal Experience, Part 1 of 4: Happiness and the Control of Consciousness",
+     "subject": "psychology",
+     "pitch": "happiness revisited, the roots of discontent, the experience sampling method, attention as psychic energy…",
+     "source": "Flow: The Psychology of Optimal Experience by Mihaly Csikszentmihalyi",
+     "series": "flow",
+     "part": 1,
+     "button": "Csikszentmihalyi 1/4: Happiness and the Control of Consciousness"
+    },
+    {
+     "topic": "Games People Play and What Do You Say After You Say Hello?, Part 1 of 4: Ego States and Transactions",
+     "subject": "psychology",
+     "pitch": "Parent, Adult and Child ego states, structural analysis, transactions and strokes…",
+     "source": "Games People Play and What Do You Say After You Say Hello? by Eric Berne",
+     "series": "berne",
+     "part": 1,
+     "button": "Berne 1/4: Ego States and Transactions"
+    },
+    {
+     "topic": "Drive: The Surprising Truth About What Motivates Us, Part 1 of 3: Why Carrots and Sticks Fail",
+     "subject": "psychology",
+     "pitch": "motivation 1.0 2.0 and 3.0, Harlow's monkeys and puzzles, Deci's experiments, the candle problem…",
+     "source": "Drive: The Surprising Truth About What Motivates Us by Daniel Pink",
+     "series": "drive",
+     "part": 1,
+     "button": "Pink 1/3: Why Carrots and Sticks Fail"
+    },
+    {
+     "topic": "Why We Love: The Nature and Chemistry of Romantic Love, Part 1 of 3: What Love Is and Animal Attraction",
+     "subject": "psychology",
+     "pitch": "what being in love feels like, love across cultures, intrusive thinking and craving, attraction in animals…",
+     "source": "Why We Love: The Nature and Chemistry of Romantic Love by Helen Fisher",
+     "series": "fisher",
+     "part": 1,
+     "button": "Fisher 1/3: What Love Is and Animal Attraction"
+    },
+    {
+     "topic": "Nonviolent Communication, Part 1 of 3: Where Nonviolent Communication Comes From",
+     "subject": "psychology",
+     "pitch": "Rosenberg's childhood in Detroit, what makes people violent or compassionate, the giraffe and the jackal, observations vs evaluations…",
+     "source": "Nonviolent Communication by Marshall Rosenberg",
+     "series": "nvc",
+     "part": 1,
+     "button": "Rosenberg 1/3: Where Nonviolent Communication Comes From"
+    },
+    {
+     "topic": "How to Stay Sane, Part 1 of 2: Self-Observation and Relationships",
+     "subject": "psychology",
+     "pitch": "self-observation, the inner critic, mindfulness, the brain as a social organ…",
+     "source": "How to Stay Sane by Philippa Perry",
+     "series": "perry",
+     "part": 1,
+     "button": "Perry 1/2: Self-Observation and Relationships"
+    },
+    {
+     "topic": "Refuse to Choose!, Part 1 of 3: Who Scanners Are",
+     "subject": "psychology",
+     "pitch": "what a scanner is, what's wrong with me, scanner panic, fear of commitment…",
+     "source": "Refuse to Choose! by Barbara Sher",
+     "series": "sher",
+     "part": 1,
+     "button": "Sher 1/3: Who Scanners Are"
+    },
+    {
+     "topic": "The Desire Map, Part 1 of 2: Desire and Feelings",
+     "subject": "psychology",
+     "pitch": "desire as a creative force, chasing feelings rather than things, the power of negative emotions, knowing what you feel…",
+     "source": "The Desire Map by Danielle LaPorte",
+     "series": "laporte",
+     "part": 1,
+     "button": "LaPorte 1/2: Desire and Feelings"
+    },
+    {
+     "topic": "Psychological Aikido, Part 1 of 2: The Principles of Psychological Aikido",
+     "subject": "psychology",
+     "pitch": "the good soldier Švejk method, agreeing instead of fighting, communication and illness, ego states in conflict…",
+     "source": "Psychological Aikido by Mikhail Litvak",
+     "series": "litvak",
+     "part": 1,
+     "button": "Litvak 1/2: The Principles of Psychological Aikido"
+    }
+   ],
+   "msg": 85,
+   "picked": [],
+   "created": "2026-10-31T06:45:04+00:00"
   }
  },
  "items": {
@@ -1804,7 +1902,7 @@
  ],
  "awaiting_comment": null,
  "channel_name": null,
- "last_long_proposal": "2026-10-28",
+ "last_long_proposal": "2026-10-31",
  "last_short_proposal": "2026-10-31",
  "budget_warned": null,
  "name_options": [
