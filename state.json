@@ -280,6 +280,54 @@
     3
    ],
    "created": "2026-10-30T06:48:56+00:00"
+  },
+  "p1031064489c0": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "In Daniel Kahneman's bat-and-ball puzzle, the bat and ball cost $1.10 together and the bat costs $1 more than the ball, so most people's quick answer of 10 cents is wrong; the ball costs 5 cents. He used it to show how the fast, intuitive System 1 answers before the slower System 2 checks.",
+     "subject": "Psychology: intuitive thinking",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi proposed that flow tends to appear when a task's challenge and your skill are both high and roughly matched, which is why an easy task bores you and a task far beyond you creates anxiety; this is his model, supported by a body of studies on experience.",
+     "subject": "Psychology: focus and enjoyment",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Eric Berne described three ego states, Parent, Adult and Child, and claimed that we shift between them in everyday conversations; this is his transactional analysis model, which is influential in therapy but not scientifically validated.",
+     "subject": "Psychology: communication",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Helen Fisher's brain scans of people who had recently fallen in love showed activity in reward-related areas that use dopamine, a finding she links to craving and obsessive thoughts about a partner; these scans involved small groups, so the picture is still preliminary.",
+     "subject": "Biology: romantic love",
+     "related_long": -1,
+     "book": "fisher",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Edward Deci's experiments suggested that paying people for puzzles they already enjoyed could make them less interested in those puzzles afterward, an effect Daniel Pink brings into his discussion of motivation; later research shows the effect depends heavily on how a reward is framed.",
+     "subject": "Psychology: motivation",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    }
+   ],
+   "msg": 84,
+   "picked": [],
+   "created": "2026-10-31T06:45:00+00:00"
   }
  },
  "items": {
@@ -1751,7 +1799,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-28",
- "last_short_proposal": "2026-10-30",
+ "last_short_proposal": "2026-10-31",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
