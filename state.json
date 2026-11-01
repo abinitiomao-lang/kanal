@@ -426,6 +426,54 @@
    "msg": 85,
    "picked": [],
    "created": "2026-10-31T06:45:04+00:00"
+  },
+  "p110113039b15": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle shows how a quick, confident answer can be wrong: the ball costs five cents, not ten, yet most people's gut says ten.",
+     "subject": "Kahneman: System 1 jumps to an answer that feels right, while System 2 has to be switched on to check it",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi found that people are most likely to feel 'flow', a state of deep absorption, when a task's challenge and their skill are both high; when challenge outruns skill they feel anxious, and when skill outruns challenge they feel bored.",
+     "subject": "Csikszentmihalyi's flow model, based on well-studied experience sampling",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Eric Berne called small talk about the weather a 'ritual', a predictable exchange of greetings that keeps social contact safe; this is Berne's model of social behaviour, not a tested scientific finding.",
+     "subject": "Eric Berne's transactional analysis: rituals and pastimes",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Daniel Pink describes the candle problem, where offering a cash reward for solving it fast seemed to make people slower, a result that later researchers have debated.",
+     "subject": "Pink's Drive: why rewards can narrow thinking",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Philippa Perry describes the Nun Study, in which the way some nuns wrote in early adulthood was linked to how their later years turned out, a reminder that our personal narratives can carry more signal than we expect; the link is a research association, not proof of cause.",
+     "subject": "Perry's How to Stay Sane: personal narratives and the stories we live by",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 86,
+   "picked": [],
+   "created": "2026-11-01T13:03:12+00:00"
   }
  },
  "items": {
@@ -1903,7 +1951,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-31",
- "last_short_proposal": "2026-10-31",
+ "last_short_proposal": "2026-11-01",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
