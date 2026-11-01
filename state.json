@@ -1602,6 +1602,9 @@
    "elevenlabs": 0,
    "eleven_chars": 10099,
    "images": 107
+  },
+  "2026-11": {
+   "anthropic": 0.0014
   }
  },
  "costs_log": [
@@ -1945,6 +1948,12 @@
    "ts": "2026-10-31T06:45:02+00:00",
    "service": "anthropic",
    "usd": 0.00125,
+   "note": "proposals"
+  },
+  {
+   "ts": "2026-11-01T13:03:13+00:00",
+   "service": "anthropic",
+   "usd": 0.0014,
    "note": "proposals"
   }
  ],
