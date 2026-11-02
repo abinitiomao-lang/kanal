@@ -1652,7 +1652,7 @@
    "images": 107
   },
   "2026-11": {
-   "anthropic": 0.0014
+   "anthropic": 0.00297
   }
  },
  "costs_log": [
@@ -2002,6 +2002,12 @@
    "ts": "2026-11-01T13:03:13+00:00",
    "service": "anthropic",
    "usd": 0.0014,
+   "note": "proposals"
+  },
+  {
+   "ts": "2026-11-02T15:25:30+00:00",
+   "service": "anthropic",
+   "usd": 0.00157,
    "note": "proposals"
   }
  ],
