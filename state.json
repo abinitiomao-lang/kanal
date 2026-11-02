@@ -474,6 +474,54 @@
    "msg": 86,
    "picked": [],
    "created": "2026-11-01T13:03:12+00:00"
+  },
+  "p11021525c9e3": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle shows how fast intuition can mislead: if a bat and ball cost $1.10 together and the bat costs $1 more than the ball, the quick answer of 10 cents is wrong, because the ball costs 5 cents.",
+     "subject": "Thinking fast and slow",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling studies suggested that people often report their best moments while working at a demanding challenge, not while relaxing and doing nothing.",
+     "subject": "Flow and optimal experience",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Eric Berne described pastimes as predictable conversations, like chatting about the weather, that people use to pass time safely; this is part of his transactional analysis model, not a tested scientific finding.",
+     "subject": "Everyday conversation",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Daniel Pink describes Sam Glucksberg's candle-problem experiment, in which offering cash for speed made people slower at the puzzle, a result that challenges the belief that rewards always boost performance.",
+     "subject": "Motivation and rewards",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Barbara Sher's term 'scanner' describes people whose many interests make it hard to commit to one path; it is a coaching concept she developed, not a psychological diagnosis.",
+     "subject": "Too many interests",
+     "related_long": -1,
+     "book": "sher",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 87,
+   "picked": [],
+   "created": "2026-11-02T15:25:28+00:00"
   }
  },
  "items": {
@@ -1960,7 +2008,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-31",
- "last_short_proposal": "2026-11-01",
+ "last_short_proposal": "2026-11-02",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
