@@ -39,6 +39,9 @@ def main() -> None:
         elif cmd == "schedule":
             for item_id in args:
                 print(item_id, bot.on_schedule(item_id))
+        elif cmd == "yt-status":
+            for v in args:
+                print(v, youtube.status(v))
         elif cmd == "try-public":
             print(f"{args[0]}: privacyStatus после update = {youtube.make_public(args[0])}")
         elif cmd == "groups":

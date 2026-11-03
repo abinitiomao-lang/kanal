@@ -89,8 +89,14 @@ def schedule(video_id: str, when) -> dict:
     yt = _yt()
     cur = yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
     cur.update(privacyStatus="private", publishAt=when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    yt.videos().update(part="status", body={"id": video_id, "status": cur}).execute()
-    return yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
+    print(f"schedule {video_id}: send {cur}")
+    try:
+        yt.videos().update(part="status", body={"id": video_id, "status": cur}).execute()
+    except HttpError as e:
+        print(f"WARN schedule {video_id}: {e}")
+    out = yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
+    print(f"schedule {video_id}: got {out}")
+    return out
 
 
 def delete(video_id: str) -> None:
