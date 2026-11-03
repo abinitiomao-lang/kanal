@@ -720,7 +720,8 @@
     4,
     1,
     0,
-    2
+    2,
+    3
    ],
    "created": "2026-11-03T19:56:15+00:00"
   }
@@ -1327,6 +1328,18 @@
    "part": null,
    "format": "tale",
    "book": "sher",
+   "feedback": []
+  },
+  "S11032237126a": {
+   "kind": "short",
+   "topic": "Philippa Perry suggests that your inner critic is a voice you can learn to notice and observe, instead of treating its harsh judgments as the truth.",
+   "status": "queued",
+   "created": "2026-11-03T22:37:59+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "tale",
+   "book": "perry",
    "feedback": []
   }
  },
