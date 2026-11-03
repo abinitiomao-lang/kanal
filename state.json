@@ -717,7 +717,8 @@
    ],
    "msg": 103,
    "picked": [
-    4
+    4,
+    1
    ],
    "created": "2026-11-03T19:56:15+00:00"
   }
@@ -1210,6 +1211,18 @@
    "part": null,
    "format": "tale",
    "book": "fisher",
+   "feedback": []
+  },
+  "S110319572bd7": {
+   "kind": "short",
+   "topic": "Eric Berne's transactional analysis model proposes that each of us switches between three ego states, Parent, Adult and Child, and that this model is an influential therapy framework rather than a scientifically tested finding.",
+   "status": "queued",
+   "created": "2026-11-03T19:57:30+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "berne",
    "feedback": []
   }
  },
