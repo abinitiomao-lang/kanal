@@ -718,7 +718,8 @@
    "msg": 103,
    "picked": [
     4,
-    1
+    1,
+    0
    ],
    "created": "2026-11-03T19:56:15+00:00"
   }
@@ -1302,6 +1303,18 @@
    "factcheck": "📜 Дословный текст классики — фактчек не нужен",
    "release": "video-L11032019c1a5",
    "thumb_path": "/home/runner/work/kanal/kanal/work/long/L11032019c1a5/thumb.jpg"
+  },
+  "S11032237eadc": {
+   "kind": "short",
+   "topic": "Daniel Kahneman describes anchoring: in a 1974 study with Amos Tversky, a random number people had just seen, even one obviously unrelated, pulled their numerical guesses toward it.",
+   "status": "queued",
+   "created": "2026-11-03T22:37:50+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "kahneman",
+   "feedback": []
   }
  },
  "images": [
