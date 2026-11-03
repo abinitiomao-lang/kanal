@@ -1323,7 +1323,7 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-11-03T22:56:41+00:00",
+   "updated": "2026-11-03T23:14:51+00:00",
    "error": null,
    "video_id": "1UeNxqJKhiw",
    "title": "Kahneman: random numbers steer your guesses #psychology #science",
@@ -1340,7 +1340,8 @@
    ],
    "duration": 24.5,
    "narration": "You just saw a random number. Now you must guess a price. Your guess drifts toward it, even though it means nothing. Archivists of 2126 will file this under habit. They will find it at auctions, on price tags and in dinner-table bets. Psychologists Amos Tversky and Daniel Kahneman identified it in 1974. Kahneman later popularized it in Thinking, Fast and Slow. Modern experiments document this bias well.",
-   "factcheck": "🔎 Фактчек: найдено 2, осталось 0"
+   "factcheck": "🔎 Фактчек: найдено 2, осталось 0",
+   "publish_at": null
   },
   "S11032237c85d": {
    "kind": "short",
