@@ -1932,6 +1932,55 @@
    "prompt": "A single soft ember glowing above a calm dark lake, its light reflecting gently on still water, no text",
    "orient": "landscape",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/ee376cabf3eb.jpg"
+  },
+  {
+   "id": "aabe2380a0d2",
+   "prompt": "Close-up of a woman in a kitchen nodding while shaking her head, mid-sentence, hand raised in a dismissive wave",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/aabe2380a0d2.jpg"
+  },
+  {
+   "id": "9ab4d128d18a",
+   "prompt": "Slow pan across a dusty archive shelf of old paper files, one drawer sliding open with a soft pull",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/9ab4d128d18a.jpg"
+  },
+  {
+   "id": "87d643144227",
+   "prompt": "Medium shot of a man's profile with three translucent faces stacked over his head, each one fading in and out in turn",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/87d643144227.jpg"
+  },
+  {
+   "id": "a1bd2bf1c8ac",
+   "prompt": "Man at a desk wagging a finger, then slumping forward with arms folded and lips pouting",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/a1bd2bf1c8ac.jpg"
+  },
+  {
+   "id": "98166477fbee",
+   "prompt": "Hands turning the pages of a worn paperback book on a wooden desk, slow push-in on the open pages",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/98166477fbee.jpg"
+  },
+  {
+   "id": "5e300a59894e",
+   "prompt": "A glass beaker of liquid on a lab bench, a gloved hand tilting it slowly and the liquid sloshing",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5e300a59894e.jpg"
+  },
+  {
+   "id": "c939105a4b39",
+   "prompt": "Two people at a café table, one pointing across the table while the other shrugs with palms up, both leaning back",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/c939105a4b39.jpg"
   }
  ],
  "costs": {
