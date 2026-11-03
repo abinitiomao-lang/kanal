@@ -1,0 +1,20 @@
+name: yt-status
+# Ручной запуск: печатает status видео (privacy, publishAt) — для проверки расписания.
+on:
+  workflow_dispatch:
+    inputs:
+      video_ids: {description: "id видео через пробел", type: string, required: true}
+jobs:
+  yt-status:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      KANAL_WORK: ${{ github.workspace }}/work
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      VIDEO_IDS: ${{ inputs.video_ids }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli yt-status $VIDEO_IDS
