@@ -666,7 +666,9 @@
     }
    ],
    "msg": 90,
-   "picked": [],
+   "picked": [
+    8
+   ],
    "created": "2026-11-03T13:58:17+00:00"
   }
  },
@@ -1087,6 +1089,18 @@
    "duration": 56.3,
    "narration": "Ten minutes late for pickup, and you feel fine about it. Why? You paid the fine. A field study from the late 1990s, published in 2000 by Uri Gneezy and Aldo Rustichini, examined ten daycare centers in Haifa, Israel, that began fining parents for late pickups. Late arrivals rose, and stayed high after the fine was removed. Economists Gneezy and Rustichini proposed that the fine turned a social obligation into a market transaction, which parents felt entitled to buy. A price feels settled. The study is best known from Gneezy and Rustichini's 2000 paper and is popularized in Freakonomics by Levitt and Dubner. Ten minutes late for pickup, and historians are still confused.\n\n---\n*Note for your review (not part of the script): The final line still says \"historians are still confused.\" It has the same kind of attribution problem as the second item you flagged, since the interpretation comes from economists, not historians. I left it unchanged because you asked for only the listed fixes. You may want to change \"historians\" to \"economists\" as well.*",
    "factcheck": "🔎 Фактчек: найдено 3, осталось 0"
+  },
+  "L1103140530a9": {
+   "kind": "long",
+   "topic": "The Desire Map, Part 1 of 2: Desire and Feelings",
+   "status": "queued",
+   "created": "2026-11-03T14:05:07+00:00",
+   "long_ref": null,
+   "series": "laporte",
+   "part": 1,
+   "format": null,
+   "book": null,
+   "feedback": []
   }
  },
  "images": [
