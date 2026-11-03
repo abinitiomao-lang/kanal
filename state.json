@@ -1231,7 +1231,7 @@
   "S110319577761": {
    "kind": "short",
    "topic": "Helen Fisher proposes that romantic love involves three brain systems, lust, romantic attraction and attachment, though this three-system model is partly speculative and based on small brain-scan studies.",
-   "status": "awaiting_upload",
+   "status": "queued",
    "created": "2026-11-03T19:57:19+00:00",
    "long_ref": null,
    "series": null,
@@ -1259,7 +1259,7 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "Ncx2SbqYhPE",
    "publish_at": null,
-   "release": "short-S110319577761",
+   "release": null,
    "ru_subs": [
     "Любовь растёт из трёх семян, и скорость у них разная.",
     "В теплице феи-садовницы Луна разглядывает горшки.",
