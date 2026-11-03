@@ -315,6 +315,10 @@ class ShortScript(BaseModel):
     character: str = Field(default="", description="tale format: fixed visual description of the protagonist")
     kicker: str = Field(default="", description="series format: tiny caps line above the title")
     header_title: str = Field(default="", description="series format: on-screen title, max 8 words")
+    music_mood: str = Field(default="", description="background music for THIS story in 8-15 words: instruments, "
+                            "tempo, feeling (e.g. 'slow music box and soft strings, tender, a little wistful')")
+    music_level: str = Field(default="soft", description="how loud the music sits under the voice: quiet "
+                             "(barely there, intimate or sad), soft (default) or present (playful, upbeat)")
     cast: list[Role] = Field(default=[], description="scene format only")
     lines: list[Line] = Field(default=[], description="scene format only: the dialogue in order")
 
@@ -340,26 +344,147 @@ def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dic
            f"{CFG['channel']['name']} ('{long_title}'). " if long_title else "")
         + f"Split into {n - 2}-{n + 2} scenes (about 2-4 seconds each), each visual showing exactly what is "
         "said at that moment, with action and movement in the frame."
-        + (f" Owner feedback on previous version: {feedback}" if feedback else ""),
-        ShortScript, system=CHANNEL_VOICE)
+        + (f" Owner feedback on previous version: {feedback}" if feedback else "")
+        + (f" Music: {fmt['music']}" if fmt and fmt.get("music") else ""),
+        ShortScript, system=CHANNEL_VOICE, role="screenwriter")
 
 
-class Translation(BaseModel):
-    lines: list[str] = Field(description="Russian translation of each input line, same count and order")
+# ---------- редакция шортсов: 3 черновика → редактор → финал ----------
+
+SCREENWRITER = (
+    CHANNEL_VOICE + " You are the head writer of the channel's Shorts. Shorts are written for the ear: one idea, "
+    "one concrete everyday situation the viewer recognises in themselves, a hook that lands in the first 1.5 "
+    "seconds, a turn, and a payoff that makes people replay or comment. Every sentence must earn its place. "
+    "No filler ('Have you ever wondered', 'In today's video', 'Let's dive in', 'fascinating'), no lists, "
+    "no rhetorical questions in a row, no moralising, no vague abstractions. Prefer concrete nouns and verbs."
+)
+
+EDITOR = (
+    "You are a ruthless story editor for viral educational YouTube Shorts in English. You judge scripts the way "
+    "a viewer's thumb does: would I stop scrolling in 1.5 s, do I understand the idea without effort, do I "
+    "feel something, is the last line worth replaying for? You also guard accuracy and the credit to the author."
+)
 
 
-def translate_ru(lines: list[str], glossary: str = "") -> list[str]:
-    """Русские субтитры: перевод по фразам, число строк сохраняется (тайминги — от английской озвучки)."""
-    numbered = "\n".join(f"{i + 1}. {ln}" for i, ln in enumerate(lines))
-    res = llm.json(
-        "Translate these consecutive subtitle lines of an English YouTube Short into natural, conversational "
-        "Russian for on-screen subtitles. Keep exactly the same number of lines and order; each Russian line "
-        "must match its English line in meaning (do not move words between lines). Short and readable, "
-        "keep book titles in their known Russian editions or in English if unsure, keep author names in Russian "
-        f"spelling.{(' Use exactly this official Russian wording where it applies: ' + glossary) if glossary else ''}"
-        f"\n\n{numbered}", Translation)
-    out = res.lines[:len(lines)]
-    return out + lines[len(out):]
+class Draft(BaseModel):
+    angle: str = Field(description="the angle in one line: what everyday situation carries the idea")
+    narration: str = Field(description="the full voiceover text")
+
+
+class Drafts(BaseModel):
+    drafts: list[Draft]
+
+
+class Review(BaseModel):
+    scores: list[int] = Field(description="1-10 for each draft, same order")
+    best: int = Field(description="0-based index of the strongest draft")
+    notes: list[str] = Field(description="3-6 concrete fixes for the chosen draft: weak words, lost beats, "
+                             "a sharper hook, a clearer payoff, rhythm for the voice")
+    final: str = Field(description="the chosen draft rewritten with all notes applied, ready to be read aloud: "
+                       "plain words only, no stage directions, no emojis")
+
+
+def short_room(fact: str, long_title: str | None, feedback: str = "", fmt: dict | None = None,
+               book: dict | None = None) -> str:
+    """Редакция: сценарист пишет 3 разных черновика, редактор выбирает лучший и доводит. Возвращает текст озвучки."""
+    how = (fmt["script"] + (f"\nhero: {fmt['hero']}" if fmt.get("hero") else "")) if fmt else (
+        "15-40 seconds, 40-95 words, short punchy sentences.")
+    src = (f"The idea comes from '{book['book']}' by {book['author']} (evidence: {book['evidence']}). Retell it "
+           "in your own words and credit the author by name; at most one short quote only if you are sure of its "
+           "exact wording. " if book else "")
+    link = (f"End with one short line inviting viewers to the full bedtime broadcast on {CFG['channel']['name']} "
+            f"('{long_title}'). " if long_title else "")
+    fb = f"Owner feedback on the previous version (must be addressed): {feedback}\n" if feedback else ""
+    brief = f"Idea: {fact}\n{src}\nFormat rules:\n{how}\n{link}{fb}"
+    drafts = llm.json(
+        brief + "\nWrite 3 genuinely different drafts: each with its own angle, opening image and payoff "
+        "(not three rewordings). Every claim must be true. Write for a calm male English voice: sentences "
+        "of 4-14 words, natural contractions, punctuation that shows where to breathe.",
+        Drafts, system=SCREENWRITER, role="screenwriter").drafts[:3]
+    listing = "\n\n".join(f"Draft {i}: ({d.angle})\n{d.narration}" for i, d in enumerate(drafts))
+    review = llm.json(
+        brief + f"\nScore these drafts 1-10 (hook in 1.5 s, one clear idea, recognisable situation, emotional "
+        "payoff, rhythm for voice, accuracy, credit to the author, follows the format rules), pick the best and "
+        f"rewrite it into the final version. Keep it within the format's word limit.\n\n{listing}",
+        Review, system=EDITOR, role="checker")
+    final = review.final.strip()
+    words = len(final.split())
+    return final if 25 <= words <= 140 else drafts[min(review.best, len(drafts) - 1)].narration.strip()
+
+
+# ---------- русские субтитры ----------
+
+RU_SUBTITLER = (
+    "Ты профессиональный редактор русских субтитров (уровень Netflix/«Кинопоиска»). Пишешь грамотно, по "
+    "правилам русской орфографии и пунктуации, живым разговорным языком, без кальки с английского. "
+    "Субтитры читают за секунды: коротко, ясно, без лишних слов."
+)
+
+RU_RULES = (
+    "Правила:\n"
+    "1. Каждое английское предложение → одно-два русских предложения с тем же смыслом и интонацией; "
+    "перевод художественный, не дословный.\n"
+    "2. Разбей перевод каждого предложения на строки-«титры» по 2-6 слов (не длиннее 32 символов). Разрывы "
+    "только на естественных границах: не отрывай предлог, союз, частицу «не» от следующего слова, "
+    "прилагательное от существительного, имя от фамилии.\n"
+    "3. Заглавная буква — только в начале предложения и в именах; продолжение предложения на новой строке "
+    "начинается со строчной. Пунктуация полная (запятые, тире, кавычки «ёлочки»), точку в конце "
+    "последней строки предложения можно опустить, но ?, ! и … оставь.\n"
+    "4. Ни одного латинского слова. Имена и фамилии — по-русски в принятом написании (Канеман, Дэниел Пинк, "
+    "Эрик Берн, Чиксентмихайи, Филиппа Перри, Барбара Шер). Выдуманные имена и названия — переведи по "
+    "смыслу или транслитерируй (Moonmere → Лунное озеро, Luna → Луна).\n"
+    "5. Названия книг — как в русских изданиях («Думай медленно… решай быстро», «Игры, в которые играют "
+    "люди», «Драйв», «Поток», «Как сохранить рассудок», «Почему мы любим», «Ненасильственное общение», "
+    "«Отказываюсь выбирать», «Карта желаний»); если не уверен — переведи смысл.\n"
+    "6. Числа — цифрами, валюта по-русски («1,10 доллара»)."
+)
+
+
+class RuSentence(BaseModel):
+    chunks: list[str] = Field(description="Russian subtitle lines for this English sentence, in order")
+
+
+class RuSubs(BaseModel):
+    sentences: list[RuSentence] = Field(description="one entry per input English sentence, same count and order")
+
+
+def _ru_check(subs: list[list[str]]) -> list[str]:
+    import re
+    probs = []
+    for i, chunks in enumerate(subs):
+        for j, c in enumerate(chunks):
+            if re.search(r"[A-Za-z]", c):
+                probs.append(f"предложение {i + 1}, строка {j + 1}: латиница «{c}»")
+            if len(c) > 38:
+                probs.append(f"предложение {i + 1}, строка {j + 1}: слишком длинно ({len(c)} симв.)")
+        if chunks and chunks[0][:1].islower():
+            probs.append(f"предложение {i + 1}: начинается со строчной «{chunks[0]}»")
+    return probs
+
+
+def ru_subtitles(sentences: list[str], glossary: str = "") -> list[list[str]]:
+    """Русские субтитры по предложениям: перевод → корректура → автопроверка (латиница, длина, заглавные)."""
+    numbered = "\n".join(f"{i + 1}. {s}" for i, s in enumerate(sentences))
+    gl = f"\nОбязательная терминология: {glossary}" if glossary else ""
+    res = llm.json(f"Переведи озвучку короткого ролика в русские субтитры.\n{RU_RULES}{gl}\n\n"
+                   f"Английские предложения ({len(sentences)}):\n{numbered}",
+                   RuSubs, system=RU_SUBTITLER, role="screenwriter")
+    subs = [s.chunks for s in res.sentences]
+    for _ in range(2):  # корректор: грамматика, пунктуация, найденные проверкой ошибки
+        probs = _ru_check(subs)
+        draft = "\n".join(f"{i + 1}. " + " | ".join(c) for i, c in enumerate(subs))
+        res = llm.json(
+            f"Ты корректор. Проверь русские субтитры: орфография, пунктуация, согласование, падежи, естественность, "
+            f"соответствие английскому смыслу и правила ниже. Исправь всё, сохрани число предложений "
+            f"({len(sentences)}) и порядок; строки внутри предложения разделены « | ».\n{RU_RULES}{gl}\n"
+            + (("Автопроверка нашла:\n- " + "\n- ".join(probs) + "\n") if probs else "")
+            + f"\nАнглийский оригинал:\n{numbered}\n\nСубтитры:\n{draft}",
+            RuSubs, system=RU_SUBTITLER, role="checker")
+        subs = [s.chunks for s in res.sentences]
+        if not _ru_check(subs):
+            break
+    subs = (subs + [[]] * len(sentences))[:len(sentences)]
+    return [[c.strip() for c in chunks if c.strip()] for chunks in subs]
 
 
 def channel_names() -> list[str]:

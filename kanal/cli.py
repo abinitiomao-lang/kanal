@@ -36,6 +36,10 @@ def main() -> None:
             e = os.environ
             youtube.edit(e["EDIT_MATCH"], e.get("EDIT_TITLE", ""), e.get("EDIT_DESC", ""),
                          [t.strip() for t in e.get("EDIT_TAGS", "").split(",") if t.strip()])
+        elif cmd == "redo":  # переделать заново (старое видео удаляется, время в плане снимается)
+            for item_id in args:
+                state.set_item(item_id, publish_at=None)
+                bot.on_comment(item_id, os.environ.get("REDO_NOTE", "-"))
         elif cmd == "schedule":
             for item_id in args:
                 print(item_id, bot.on_schedule(item_id))

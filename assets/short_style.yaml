@@ -40,6 +40,9 @@ formats:
     animate_hook: false            # экономный режим (владелец 2026-11-03): без Kling в шортсах, ~$5/мес на fal
     whoosh: false
     voice: {stability: 0.55, similarity_boost: 0.75, style: 0.2, speed: 1.0}
+    music: >-
+      soft storybook lullaby: music box, celesta, warm felt piano and light strings, slow, tender, dreamy
+    music_level: quiet
     subs:
       mode: word                   # по одному слову, мелко, внизу
       font_name: "Fira Sans SemiBold"
@@ -84,6 +87,9 @@ formats:
     animate_hook: false            # экономный режим (владелец 2026-11-03): без Kling в шортсах, ~$5/мес на fal
     whoosh: false
     voice: {stability: 0.45, similarity_boost: 0.75, style: 0.3, speed: 1.0}
+    music: >-
+      witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo
+    music_level: soft
     frame:
       bg: "FBF7EF"                 # бумага
       line: "1C1A22"               # чернильные линии вокруг панели
@@ -130,6 +136,10 @@ formats:
     animate_hook: false            # экономный режим (владелец 2026-11-03): без Kling в шортсах, ~$5/мес на fal
     whoosh: false
     dialogue: true
+    music: >-
+      emotional cinematic film score: sparse piano, low cello swells, intimate and tense, slow
+    music_level: quiet
+    music_offset_db: -2            # под диалогом музыка тише
     voice: {stability: 0.3, similarity_boost: 0.75, style: 0.6, speed: 1.0}
     host_voice: {stability: 0.5, similarity_boost: 0.75, style: 0.25, speed: 1.0}
     voices:                        # стандартные голоса ElevenLabs (проверены в selftest voices)

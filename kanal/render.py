@@ -217,28 +217,61 @@ def phrase_groups(words: list[dict], max_words: int = 7) -> list[list[dict]]:
     return groups
 
 
-def _ru_lines(groups: list[list[dict]], ru: list[str], ru_cfg: dict) -> tuple[str, list[str]]:
+def sentence_groups(words: list[dict]) -> list[list[dict]]:
+    """Слова озвучки по предложениям (разрыв после . ! ? …) — единица перевода русских субтитров."""
+    groups, cur = [], []
+    for wd in words:
+        cur.append(wd)
+        if wd["word"].rstrip("\"'»”)").endswith((".", "!", "?", "…")):
+            groups.append(cur)
+            cur = []
+    if cur:
+        groups.append(cur)
+    return groups
+
+
+def ru_events(groups: list[list[dict]], ru: list[list[str]]) -> list[tuple[float, float, str]]:
+    """Тайминги русских титров: время предложения делится между его строками пропорционально длине,
+    с привязкой к началам реальных английских слов."""
+    events = []
+    for gi, g in enumerate(groups):
+        chunks = ru[gi] if gi < len(ru) else []
+        if not chunks:
+            continue
+        s_end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.5
+        s_end = min(s_end, g[-1]["end"] + 0.7)  # в долгой паузе экран чистый
+        total = sum(len(c) for c in chunks)
+        acc, starts = 0, []
+        for c in chunks:
+            t = g[0]["start"] + (g[-1]["end"] - g[0]["start"]) * acc / total
+            near = min(g, key=lambda w: abs(w["start"] - t))["start"]  # ровно на начало слова
+            starts.append(max(near, starts[-1] + 0.35) if starts else g[0]["start"])
+            acc += len(c)
+        for i, c in enumerate(chunks):
+            t1 = starts[i + 1] if i + 1 < len(starts) else s_end
+            events.append((starts[i], max(t1, starts[i] + 0.4), c))
+    return events
+
+
+def _ru_lines(events: list[tuple[float, float, str]], ru_cfg: dict) -> tuple[str, list[str]]:
     """Русские субтитры: неоновое розовое свечение (размытая обводка) под чистым светлым текстом."""
     from .style import ass_color
     c, glow = ass_color(ru_cfg["color"]), ass_color(ru_cfg["glow"])
     st = (f"Style: Ru,{ru_cfg['font_name']},{ru_cfg['size']},{c},{c},{glow},&H00000000,"
           f"0,0,0,0,100,100,0.5,0,1,{ru_cfg['glow_width']},0,8,90,90,0,1")
     lines = []
-    for gi, g in enumerate(groups):
-        end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.5
-        txt = _clean(ru[gi]) if gi < len(ru) else ""
-        if not txt:
-            continue
-        x, y = CFG["shorts"]["width"] // 2, ru_cfg["y"]
+    x, y = CFG["shorts"]["width"] // 2, ru_cfg["y"]
+    for t0, t1, txt in events:
+        txt = _clean(txt)
         # слой 0 — широкое свечение, слой 1 — чёткая тонкая обводка того же цвета
-        lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Ru,,0,0,0,,"
+        lines.append(f"Dialogue: 0,{_ass_time(t0)},{_ass_time(t1)},Ru,,0,0,0,,"
                      f"{{\\pos({x},{y})\\blur{ru_cfg['blur']}\\fad(80,0)}}{txt}")
-        lines.append(f"Dialogue: 1,{_ass_time(g[0]['start'])},{_ass_time(end)},Ru,,0,0,0,,"
+        lines.append(f"Dialogue: 1,{_ass_time(t0)},{_ass_time(t1)},Ru,,0,0,0,,"
                      f"{{\\pos({x},{y})\\bord2.2\\blur0.8\\fad(80,0)}}{txt}")  # чёткий розовый контур
     return st, lines
 
 
-def _neon_ass(words: list[dict], out: Path, subs: dict, ru: list[str] | None, ru_cfg: dict | None) -> Path:
+def _neon_ass(words: list[dict], out: Path, subs: dict, ru: list | None, ru_cfg: dict | None) -> Path:
     """Формат scene: 1–2 слова капсом, цвет по говорящему (spk), неоновое свечение — как в эдитах из фильмов."""
     from .style import ass_color
     S = CFG["shorts"]
@@ -268,7 +301,7 @@ def _neon_ass(words: list[dict], out: Path, subs: dict, ru: list[str] | None, ru
         lines.append(f"Dialogue: 1,{t0},{t1},Neon,,0,0,0,,{{\\pos({x},{y})\\1c{col}\\3c&H00101010&"
                      f"\\bord1.5\\blur0.6{pop}}}{text}")  # чёткая буква
     if ru and ru_cfg:
-        st, ru_l = _ru_lines(phrase_groups(words, 5), ru, ru_cfg)
+        st, ru_l = _ru_lines(ru, ru_cfg)
         head = head.replace("\n\n[Events]", f"\n{st}\n\n[Events]")
         lines += ru_l
     out.write_text(head + "\n".join(lines) + "\n")
@@ -276,8 +309,8 @@ def _neon_ass(words: list[dict], out: Path, subs: dict, ru: list[str] | None, ru
 
 
 def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = None,
-                ru: list[str] | None = None, ru_cfg: dict | None = None) -> Path:
-    """Субтитры шортса. subs (assets/short_style.yaml): mode word — по слову, мелко; phrase — фраза под панелью.
+                ru: list | None = None, ru_cfg: dict | None = None) -> Path:
+    """Субтитры шортса. ru — события русских титров из ru_events(). subs (assets/short_style.yaml): mode word — по слову, мелко; phrase — фраза под панелью.
     Без subs — старые крупные караоке-слова с подсветкой."""
     from .style import ass_color
     S = CFG["shorts"]
@@ -305,7 +338,7 @@ def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = Non
                 lines.append(f"Dialogue: 0,{_ass_time(g[0]['start'])},{_ass_time(end)},Sub,,0,0,0,,"
                              f"{{\\fad(80,0)}}{text}")
         if ru and ru_cfg:
-            st, ru_l = _ru_lines(phrase_groups(words, 5), ru, ru_cfg)
+            st, ru_l = _ru_lines(ru, ru_cfg)
             head = head.replace("\n\n[Events]", f"\n{st}\n\n[Events]")
             lines += ru_l
         out.write_text(head + "\n".join(lines) + "\n")
@@ -404,8 +437,9 @@ def frame_template(fmt: dict, kicker: str, title: str, footer: str, out: Path) -
 
 def assemble_short(segments: list[Path], cut_times: list[float], voice: Path, ass: Path, ambient: Path,
                    whoosh: Path | None, out: Path, work: Path, template: Path | None = None,
-                   panel_y: int = 0) -> None:
-    """template — фон 1080×1920 (формат series): видео из сегментов кладётся панелью на высоте panel_y."""
+                   panel_y: int = 0, bed_db: float = -24) -> None:
+    """template — фон 1080×1920 (формат series): видео из сегментов кладётся панелью на высоте panel_y.
+    ambient — музыка или эмбиент; bed_db — её громкость, под голосом она дополнительно приглушается."""
     S = CFG["shorts"]
     video = work / "short_video.mp4"
     concat(segments, video)
@@ -416,8 +450,10 @@ def assemble_short(segments: list[Path], cut_times: list[float], voice: Path, as
         pre = [f"[4:v][0:v]overlay=0:{panel_y}:shortest=1[base]"]
         base = "[base]"
     graph = pre + [f"{base}subtitles='{ass}':fontsdir='{FONTS}',format=yuv420p[v]",
-             "[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,loudnorm=I=-14:TP=-1.5[vo]",
-             "[2:a]volume=-24dB[amb]"]
+             "[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,loudnorm=I=-14:TP=-1.5,asplit=2[vo][key]",
+             f"[2:a]aresample=48000,volume={bed_db}dB,afade=t=in:d=0.6[bed]",
+             # дакинг: музыка уходит на ~4-6 дБ, пока звучит голос, и возвращается в паузах
+             "[bed][key]sidechaincompress=threshold=0.04:ratio=4:attack=30:release=450:makeup=1[amb]"]
     mix = ["[vo]", "[amb]"]
     if n:
         graph.append(f"[3:a]volume=-6dB,asplit={n}" + "".join(f"[w{i}]" for i in range(n)))

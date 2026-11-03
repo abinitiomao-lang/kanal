@@ -40,8 +40,10 @@ subjects: [physics, chemistry, biology, history, geography, astronomy, earth sci
 models:
   writer: claude-haiku-5-5        # сценарии
   checker: claude-sonnet-5-5      # фактчек (второй проход)
+  screenwriter: claude-sonnet-5-5  # редакция шортсов и русские субтитры (2026-11-04: Haiku писал слабо)
   writer_effort: medium
   checker_effort: medium
+  screenwriter_effort: high
 
 budget:
   monthly_usd: 50
@@ -85,9 +87,12 @@ shorts:
   fps: 30
   width: 1080
   height: 1920
-  eleven_model: eleven_flash_v2_5
+  eleven_model: eleven_multilingual_v2   # 2026-11-04: живее и чище Flash (×2 кредита, шортсы короткие)
   eleven_voice_id: "cjVigY5qzO86Huf0OWal"   # Eric — выбран владельцем 2026-10-28
   images_per_short: 8
+  music:                          # своя музыка ElevenLabs под каждый шортс (настроение и уровень — от сценариста)
+    enabled: true
+    levels: {quiet: -29, soft: -25, present: -20}   # дБ до дакинга; под голосом ещё −4…6 дБ
   use_pexels: true                # только если задан PEXELS_API_KEY
 
 # Длинное: ОДНА картинка на всё видео + 10-секундная бесшовная анимация (старт = финиш), повторяется.

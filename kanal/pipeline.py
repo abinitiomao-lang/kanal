@@ -49,6 +49,14 @@ def fail(item_id: str, err: Exception, run_url: str = "") -> None:
                   [[("🔁 Повторить", f"D:{item_id}")]])
 
 
+def script_message(item_id: str) -> None:
+    """Сценарий целиком: английская озвучка, русские субтитры, музыка — чтобы владелец проверила текст."""
+    it = state.get_item(item_id)
+    ru = "\n".join(it.get("ru_subs") or []) or "—"
+    telegram.send(f"📝 <b>Сценарий {item_id}</b>\n\n🇬🇧 <b>Озвучка:</b>\n{html.escape(it.get('narration', ''))[:1800]}"
+                  f"\n\n🇷🇺 <b>Субтитры:</b>\n{html.escape(ru)[:1500]}\n\n🎵 {html.escape(it.get('music', '—'))}")
+
+
 def approval_message(item_id: str) -> None:
     it = state.get_item(item_id)
     kind = "Шортс" if it["kind"] == "short" else "Длинное видео"
@@ -103,12 +111,19 @@ def produce_short(item_id: str) -> None:
     fkey, fmt = style.get(item.get("format") or style.for_book(item.get("book")) or style.rotate(n_short))
     book = next((b for b in writer.load_series() if b["id"] == item.get("book")), None)
     fixed = item.get("narration_fixed", "")
+    if not fixed and not fmt.get("dialogue"):  # редакция: 3 черновика → редактор → финальный текст
+        fixed = writer.short_room(item["topic"], long_title, _feedback(item), fmt, book)
+        room = True
+    else:
+        room = False
     script = writer.short_script(item["topic"], long_title, _feedback(item), fmt, book, fixed)
     dialogue = bool(fmt.get("dialogue") and script.lines)
     if dialogue:  # сцена: реплики персонажей не правим, фактчек — только для отчёта (по словам ведущего)
         narration = " ".join(ln.text for ln in script.lines)
         issues = writer.fact_check(" ".join(ln.text for ln in script.lines if ln.role == "HOST") or narration)
         found = len(issues)
+    elif room:  # текст редакции: фактчек с исправлениями
+        narration, issues, found = writer.checked(fixed)
     elif fixed:  # готовый проверенный текст не переписываем — фактчек только для отчёта
         narration = fixed
         issues = writer.fact_check(fixed)
@@ -173,15 +188,30 @@ def produce_short(item_id: str) -> None:
         segs.append(seg)
 
     ru = ru_cfg = None
-    if fmt.get("ru_subs"):  # русские субтитры поверх английских — по тем же фразам и таймингам
+    ru_text = []
+    if fmt.get("ru_subs"):  # русские субтитры: перевод по предложениям + корректура, тайминги от озвучки
         ru_cfg = fmt["ru_subs"]
         try:
-            ru = writer.translate_ru([" ".join(w["word"] for w in g) for g in render.phrase_groups(words, 5)],
-                                     item.get("ru_glossary", ""))
+            groups = render.sentence_groups(words)
+            chunks = writer.ru_subtitles([" ".join(w["word"] for w in g) for g in groups],
+                                         item.get("ru_glossary", ""))
+            ru = render.ru_events(groups, chunks)
+            ru_text = [" ".join(c) for c in chunks]
         except Exception as e:
             print(f"WARN ru subs failed: {e}")
     ass = render.karaoke_ass(words, script.hook_text, W / "subs.ass", fmt["subs"], ru, ru_cfg)
-    amb = audio.ambient(W / "amb.wav", 20, seed=len(item_id))
+    M = S["music"]
+    level = script.music_level if script.music_level in M["levels"] else fmt.get("music_level", "soft")
+    bed_db = M["levels"][level] + fmt.get("music_offset_db", 0)
+    mood = script.music_mood or fmt.get("music", "")
+    try:  # своя музыка под историю: настроение от сценариста, громкость — по уровню
+        if not M["enabled"] or costs.over_budget(0.3):
+            raise RuntimeError("music disabled")
+        amb = audio.music(f"{fmt.get('music', '')}. This track: {mood}. No vocals, no drums intro, "
+                          "steady level, gentle ending.", int(dur) + 3, W / "music.mp3")
+    except Exception as e:
+        print(f"WARN short music: {e}")
+        amb, bed_db, mood = audio.ambient(W / "amb.wav", 20, seed=len(item_id)), CFG["long"]["ambient_db"] + 6, ""
     out = W / "short.mp4"
     template = None
     if framed:
@@ -194,7 +224,7 @@ def produce_short(item_id: str) -> None:
                                          W / "frame.png")
     render.assemble_short(segs, starts[1:], voice, ass, amb,
                           audio.whoosh(W / "whoosh.wav") if fmt["whoosh"] else None, out, W,
-                          template, fmt["frame"]["panel"]["y"] if framed else 0)
+                          template, fmt["frame"]["panel"]["y"] if framed else 0, bed_db)
 
     desc = script.description.strip()
     if long_url:
@@ -213,8 +243,10 @@ def produce_short(item_id: str) -> None:
     state.set_item(item_id, status="awaiting_approval", video_id=vid, title=script.title, description=desc,
                    format=fkey,
                    tags=script.tags, duration=audio.probe_duration(out), narration=narration,
+                   ru_subs=ru_text, music=f"{level} ({bed_db:+.0f} дБ): {mood}" if mood else "эмбиент",
                    factcheck=_issues_text([i.model_dump() for i in issues], found))
     telegram.send_document(out, f"▶️ Превью шортса {item_id}")
+    script_message(item_id)
     approval_message(item_id)
 
 
