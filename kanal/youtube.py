@@ -70,6 +70,12 @@ def set_thumbnail(video_id: str, image: Path) -> bool:
         return False
 
 
+def channel_info() -> dict:
+    yt = _yt()
+    return yt.channels().list(part="snippet,brandingSettings,status,statistics,contentDetails",
+                              mine=True).execute()["items"][0]
+
+
 def status(video_id: str) -> dict:
     items = _yt().videos().list(part="status,processingDetails", id=video_id).execute()["items"]
     return items[0] if items else {}
