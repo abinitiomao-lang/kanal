@@ -58,8 +58,9 @@ def approval_message(item_id: str) -> None:
            f"<b>{html.escape(it['title'])}</b>\n\n{html.escape(it['description'][:450])}…\n\n"
            f"🏷 {html.escape(', '.join(it['tags'][:12]))}\n⏱ {it['duration'] / 60:.1f} мин\n"
            f"{it.get('factcheck', '')}\n\n{costs.summary()}")
-    buttons = [[("✅ Опубликовать", f"P:{item_id}"), ("🗑 Отклонить", f"R:{item_id}")],
-               [("🔁 Переделать", f"D:{item_id}")]]
+    hour = CFG["shorts"]["publish_hour_ny"]
+    buttons = [[("✅ Опубликовать", f"P:{item_id}"), (f"⏰ В {hour}:00 NY", f"T:{item_id}")],
+               [("🔁 Переделать", f"D:{item_id}"), ("🗑 Отклонить", f"R:{item_id}")]]
     thumb = Path(it["thumb_path"]) if it.get("thumb_path") else None
     if thumb and thumb.exists():
         telegram.send_photo(thumb, cap, buttons)

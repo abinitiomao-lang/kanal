@@ -132,12 +132,18 @@ def on_pick(kind: str, pid: str, n: int, msg_id: int) -> str:
     return "Принято"
 
 
-def best_slot() -> str:
-    """Ближайшие publish_hour_ny:00 по Нью-Йорку — люди ложатся спать; в МСК для удобства."""
+def slot_dt() -> datetime:
+    """Ближайшие publish_hour_ny:00 по Нью-Йорку — люди ложатся спать."""
     ny = datetime.now(ZoneInfo("America/New_York"))
     slot = ny.replace(hour=CFG["shorts"]["publish_hour_ny"], minute=0, second=0, microsecond=0)
     if slot <= ny + timedelta(minutes=30):
         slot += timedelta(days=1)
+    return slot
+
+
+def best_slot() -> str:
+    """Слот публикации текстом, в МСК для удобства."""
+    slot = slot_dt()
     msk = slot.astimezone(ZoneInfo("Europe/Moscow"))
     return f"{slot:%d.%m %H:%M} по Нью-Йорку = {msk:%d.%m %H:%M} МСК"
 
@@ -150,6 +156,7 @@ def on_publish(item_id: str) -> str:
         privacy = youtube.make_public(it["video_id"])
         if privacy == "public":
             state.set_item(item_id, status="published", public_id=it["video_id"])
+            _drop_release(it)
             telegram.send(f"🚀 Опубликовано: https://youtu.be/{it['video_id']}")
             return "Опубликовано"
         telegram.send("⚠️ YouTube оставил видео приватным — похоже, проект API ещё не прошёл аудит. "
@@ -170,6 +177,28 @@ def on_publish(item_id: str) -> str:
         [[("✅ Загрузил вручную", f"M:{item_id}")]])
     state.update(lambda s: s.__setitem__("awaiting_link", item_id), "await link")
     return "Инструкция отправлена"
+
+
+def _drop_release(it: dict) -> None:
+    if it.get("release"):
+        subprocess.run(["gh", "release", "delete", it["release"], "-y", "--cleanup-tag"], check=False)
+
+
+def on_schedule(item_id: str) -> str:
+    it = state.get_item(item_id)
+    if it.get("status") != "awaiting_approval":
+        return f"Статус: {it.get('status')}"
+    if CFG["pre_audit_mode"] or not it.get("video_id"):
+        return on_publish(item_id)  # ручной режим: инструкция с подсказкой времени
+    when = slot_dt()
+    st = youtube.schedule(it["video_id"], when)
+    if not st.get("publishAt"):
+        telegram.send("⚠️ YouTube не принял время публикации — нажми «Опубликовать» или поставь время в Studio.")
+        return "Не вышло"
+    state.set_item(item_id, status="published", public_id=it["video_id"], publish_at=st["publishAt"])
+    _drop_release(it)
+    telegram.send(f"⏰ Запланировано на {best_slot()}: https://youtu.be/{it['video_id']}")
+    return "Запланировано"
 
 
 def on_manual_done(item_id: str, public_url: str | None = None) -> None:
@@ -262,6 +291,8 @@ def handle(u: dict) -> None:
                 res = "Новые темы"
             elif kind == "P":
                 res = on_publish(rest)
+            elif kind == "T":
+                res = on_schedule(rest)
             elif kind == "M":
                 on_manual_done(rest)
                 res = "Готово"

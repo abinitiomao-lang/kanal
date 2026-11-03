@@ -1,5 +1,6 @@
 """YouTube Data API v3. Квота (2026-10): videos.insert — отдельный лимит 100 вызовов/сутки;
 videos.update / thumbnails.set / videos.delete — по 50 ед. из 10 000 ед./сутки."""
+from datetime import timezone
 from pathlib import Path
 
 from google.oauth2.credentials import Credentials
@@ -81,6 +82,15 @@ def make_public(video_id: str) -> str:
     cur["privacyStatus"] = "public"
     yt.videos().update(part="status", body={"id": video_id, "status": cur}).execute()
     return yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]["privacyStatus"]
+
+
+def schedule(video_id: str, when) -> dict:
+    """Ставит отложенную публикацию: видео private до `when` (aware datetime), потом YouTube сам откроет."""
+    yt = _yt()
+    cur = yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
+    cur.update(privacyStatus="private", publishAt=when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
+    yt.videos().update(part="status", body={"id": video_id, "status": cur}).execute()
+    return yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
 
 
 def delete(video_id: str) -> None:
