@@ -6,7 +6,7 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import audio, classics, costs, images, llm, render, state, stock, style, telegram, writer, youtube
+from . import audio, classics, costs, images, llm, qc, render, state, stock, style, telegram, writer, youtube
 from .config import CFG, workdir
 
 DISCLOSURE = ("Narration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. "
@@ -226,6 +226,8 @@ def produce_short(item_id: str) -> None:
                           audio.whoosh(W / "whoosh.wav") if fmt["whoosh"] else None, out, W,
                           template, fmt["frame"]["panel"]["y"] if framed else 0, bed_db)
 
+    quality = qc.report(out, ru, W, fmt.get("label", fkey))
+    print(quality)
     desc = script.description.strip()
     if long_url:
         desc += f"\n\n🌙 Fall asleep learning more: {long_url}"
@@ -243,7 +245,7 @@ def produce_short(item_id: str) -> None:
     state.set_item(item_id, status="awaiting_approval", video_id=vid, title=script.title, description=desc,
                    format=fkey,
                    tags=script.tags, duration=audio.probe_duration(out), narration=narration,
-                   ru_subs=ru_text, music=f"{level} ({bed_db:+.0f} дБ): {mood}" if mood else "эмбиент",
+                   ru_subs=ru_text, qc=quality, music=f"{level} ({bed_db:+.0f} дБ): {mood}" if mood else "эмбиент",
                    factcheck=_issues_text([i.model_dump() for i in issues], found))
     telegram.send_document(out, f"▶️ Превью шортса {item_id}")
     script_message(item_id)

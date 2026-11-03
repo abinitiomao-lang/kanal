@@ -55,6 +55,21 @@ def json(prompt: str, schema: type[BaseModel], system: str = "", role: str = "wr
     return resp.parsed_output
 
 
+def json_content(content: list, schema: type[BaseModel], system: str = "", role: str = "checker",
+                 max_tokens: int = 4000) -> BaseModel:
+    """Как json(), но с произвольным содержимым сообщения (картинки + текст)."""
+    model = CFG["models"][role]
+    resp = client().messages.parse(
+        model=model, max_tokens=max_tokens, system=system,
+        output_config={"effort": CFG["models"][f"{role}_effort"]},
+        messages=[{"role": "user", "content": content}],
+        output_format=schema,
+    )
+    _track(model, resp.usage)
+    _check(resp)
+    return resp.parsed_output
+
+
 def flush(note: str) -> float:
     """Записывает накопленные расходы в state. Вызывать в конце job'а."""
     global _spent
