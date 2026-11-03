@@ -6,11 +6,13 @@ import re
 import subprocess
 from pathlib import Path
 
-from . import audio, costs, images, llm, render, state, stock, style, telegram, writer, youtube
+from . import audio, classics, costs, images, llm, render, state, stock, style, telegram, writer, youtube
 from .config import CFG, workdir
 
 DISCLOSURE = ("Narration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. "
               "Scripts are fact-checked, but if you spot a mistake, tell us in the comments.")
+CLASSIC_DISCLOSURE = ("Narration uses an AI voice; visuals are AI-generated. The text is read unabridged from a "
+                      "public-domain edition.")
 
 
 def _repo() -> str:
@@ -195,10 +197,16 @@ def long_prepare(item_id: str) -> Path:
     W = workdir("long", item_id)
     fb = _feedback(item)
     A = CFG["animation"]
-    book = writer.book_part(item["series"], item["part"]) if item.get("series") else None
-    outline = writer.long_outline(item["topic"], fb, book)
+    classic = (item.get("series") or "").startswith("classic:")
+    book = writer.book_part(item["series"], item["part"]) if item.get("series") and not classic else None
     chapters, all_issues, found = [], [], 0
-    for i in range(len(outline.chapters)):
+    if classic:  # дословное чтение: текст из assets/classics, LLM пишет только метаданные
+        cid = item["series"].split(":", 1)[1]
+        chapters = classics.chapters(cid, item["part"])
+        outline = writer.classic_meta(classics.get(cid), item["part"], len(classics.parts(cid)), chapters, fb)
+    else:
+        outline = writer.long_outline(item["topic"], fb, book)
+    for i in range(0 if classic else len(outline.chapters)):
         text, issues, f = writer.checked(writer.long_chapter(outline, i, fb))
         found += f
         all_issues += [x.model_dump() for x in issues]
@@ -206,7 +214,8 @@ def long_prepare(item_id: str) -> Path:
         print(f"chapter {i + 1}/{len(outline.chapters)}: {len(text.split())} words, issues {f}")
 
     try:  # материал для шортсов: они делаются только из уже рассказанного в длинных
-        state.set_item(item_id, short_facts=writer.short_facts(chapters))
+        if not classic:
+            state.set_item(item_id, short_facts=writer.short_facts(chapters))
     except Exception as e:
         print(f"WARN short facts failed: {e}")
 
@@ -234,11 +243,14 @@ def long_prepare(item_id: str) -> Path:
         print(f"WARN music failed, fallback ambient: {e}")
         music_ok = False
 
-    chapter_list = "\n".join(f"• {c['title']}" for c in chapters)
-    desc = f"{outline.description.strip()}\n\nIn this video:\n{chapter_list}\n\n{DISCLOSURE}"
+    chapter_list = "\n".join(f"• {c['title']}" for c in chapters if not (classic and " — " in c["title"]))
+    disclosure = CLASSIC_DISCLOSURE if classic else DISCLOSURE
+    desc = (f"{outline.description.strip()}\n\n" + (f"In this video:\n{chapter_list}\n\n" if chapter_list else "")
+            + disclosure)
     script = {"item_id": item_id, "title": outline.video_title, "description": desc, "tags": outline.tags,
               "chapters": chapters, "loop_len": loop_len, "animated": animated, "music": music_ok,
-              "factcheck": _issues_text(all_issues, found)}
+              "factcheck": "📜 Дословный текст классики — фактчек не нужен" if classic
+              else _issues_text(all_issues, found)}
     (W / "script.json").write_text(json.dumps(script, indent=1, ensure_ascii=False))
     lib.commit(item_id)
     llm.flush(item_id)

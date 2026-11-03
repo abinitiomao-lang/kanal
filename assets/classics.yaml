@@ -1,0 +1,35 @@
+# «Classics to Fall Asleep To»: дословное чтение книг в общественном достоянии (и оригинал, и английский перевод).
+# Тексты скачиваются с Project Gutenberg скриптом scripts/fetch_classics.py → assets/classics/<id>.txt
+# (без шапки и лицензии Gutenberg; в описании ролика — автор и переводчик, без упоминания Gutenberg).
+# Части режутся автоматически по ~target_minutes длинного видео, по границам глав.
+
+- id: siddhartha
+  title: "Siddhartha"
+  author: Hermann Hesse
+  translator: "Gunther Olesch, Anke Dreher, Amy Coulter, Stefan Langer and Semyon Chaichenets (public domain translation)"
+  year: 1922
+  gutenberg: 2500
+  start: "^FIRST PART$"
+  start_nth: 2                    # первое «FIRST PART» — в оглавлении
+  end: "^\\*\\*\\* END OF THE PROJECT"
+  mood: "a calm river in ancient India at dusk, lotus, ferry boat, banyan trees, soft golden light"
+
+- id: kohlhaas
+  title: "Michael Kohlhaas"
+  author: Heinrich von Kleist
+  translator: "Frances H. King (1914)"
+  year: 1810
+  gutenberg: 12060
+  start: "^Toward the middle of the sixteenth century"
+  end: "^THE PRINCE OF HOMBURG$"
+  mood: "a 16th-century German river landscape with a lone horseman, black horses, misty fields, old castles"
+
+- id: man-who-laughs
+  title: "The Man Who Laughs"
+  author: Victor Hugo
+  translator: "anonymous 19th-century English translation"
+  year: 1869
+  gutenberg: 12587
+  start: "^PRELIMINARY CHAPTER\\.$"
+  end: "^THE END\\.$"
+  mood: "17th-century England: a travelling showman's wooden caravan, a wolf, snowy night roads, the sea at Portland"

@@ -6,7 +6,7 @@ import time
 from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-from . import audio, costs, llm, state, telegram, writer, youtube
+from . import audio, classics, costs, llm, state, telegram, writer, youtube
 from .config import CFG
 
 HELP = ("Команды:\n/status — очередь и расходы\n/long — предложить темы длинного видео\n"
@@ -37,7 +37,7 @@ def propose_long() -> None:
     topics = writer.propose_mixed([i["topic"] for i in longs],
                                   {(i["series"], i["part"]) for i in longs if i.get("series")})
     pid = new_id("p")
-    icon = {writer.FREQ_SCIENCE: "🔭", writer.FREQ_MIND: "🧠"}
+    icon = {writer.FREQ_SCIENCE: "🔭", writer.FREQ_MIND: "🧠", classics.FREQ: "📜"}
     text = "🌙 <b>Следующее длинное видео</b> — выбери одно:\n\n" + "\n".join(
         f"{n + 1}. {icon.get(t.get('frequency'), '')} <b>{html.escape(t['topic'])}</b> — {html.escape(t['pitch'])}"
         + (f" 📚 <i>{html.escape(t['source'])}</i>" if t.get("source") else "") for n, t in enumerate(topics))

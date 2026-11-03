@@ -76,16 +76,18 @@ def propose_long(used: list[str]) -> list[Topic]:
 
 
 def propose_mixed(used: list[str], done: set[tuple[str, int]]) -> list[dict]:
-    """3 научные темы + 2 следующие части книг (≈60/40), каждая помечена своей «частотой».
+    """Научные темы + следующая часть классики + 2 части книг, каждая помечена своей «частотой».
 
     Книги с frequency: science (Sapiens) занимают место научной темы; из Mind-книг первыми идут
     те, по которым снято меньше частей, чтобы книги чередовались."""
+    from . import classics
     parts = next_book_parts(done, limit=99)
+    classic = classics.next_parts(done, limit=1)
     started = lambda b: sum(1 for s, _ in done if s == b["series"])
     mind = sorted((b for b in parts if b["frequency"] == FREQ_MIND), key=started)[:2]
     sci_books = [b for b in parts if b["frequency"] == FREQ_SCIENCE][:1]
     science = [{**t.model_dump(), "frequency": FREQ_SCIENCE} for t in propose_long(used)]
-    return sci_books + science[:5 - len(mind) - len(sci_books)] + mind
+    return sci_books + science[:5 - len(mind) - len(sci_books) - len(classic)] + classic + mind
 
 
 class ShortIdea(BaseModel):
@@ -258,6 +260,24 @@ def long_chapter(outline: Outline, idx: int, feedback: str = "") -> str:
         + "Output only the narration as plain paragraphs, no title."
         + (f" Owner feedback on previous version: {feedback}" if feedback else ""),
         system=CHANNEL_VOICE, max_tokens=20000)
+
+
+def classic_meta(c: dict, n: int, total: int, chapters: list[dict], feedback: str = "") -> Outline:
+    """Только метаданные для дословного чтения классики; chapters в Outline не используются."""
+    hours = round(CFG["long"]["target_minutes"] / 60, 1)
+    of = f" (Part {n} of {total})" if total > 1 else ""
+    sample = " ".join(ch["text"] for ch in chapters)[:9000]
+    return llm.json(
+        f"Metadata for a {hours}-hour unabridged bedtime reading of the public-domain classic '{c['title']}' by "
+        f"{c['author']}{of} on the YouTube channel {CFG['channel']['name']}. Title format: '{c['title']} by "
+        f"{c['author']}{of} | {math.ceil(hours)} Hours Classic Story to Fall Asleep To · Dark Screen' — at most "
+        f"100 characters, drop ' · Dark Screen' if it does not fit. Description: what happens in this part without "
+        f"spoilers of the ending, that this is the full original text read word for word, translation: "
+        f"{c['translator']}, original published {c['year']}, the text is in the public domain; mention that the "
+        f"screen slowly dims after 15 minutes. Visual mood for the single animated hero image: {c['mood']}. "
+        f"Return an empty chapters list. 15-25 tags.\n\nOpening of this part:\n{sample}"
+        + (f"\nOwner feedback on previous version: {feedback}" if feedback else ""),
+        Outline, system=CHANNEL_VOICE)
 
 
 # ---------- шортс ----------
