@@ -1373,7 +1373,7 @@
   "S11032237126a": {
    "kind": "short",
    "topic": "Philippa Perry suggests that your inner critic is a voice you can learn to notice and observe, instead of treating its harsh judgments as the truth.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-03T22:37:59+00:00",
    "long_ref": null,
    "series": null,
@@ -1381,8 +1381,24 @@
    "format": "tale",
    "book": "perry",
    "feedback": [],
-   "updated": "2026-11-03T22:55:17+00:00",
-   "error": null
+   "updated": "2026-11-03T22:57:25+00:00",
+   "error": null,
+   "video_id": "bsSvsV04CLE",
+   "title": "Philippa Perry: Your Inner Critic Is Just a Voice #psychology #sleep",
+   "description": "Based on How to Stay Sane by Philippa Perry, a psychotherapist's practical guide. The idea of noticing your inner critic as a voice to observe, rather than believing it, is her suggestion and a useful way of thinking, not settled science.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Philippa Perry",
+    "How to Stay Sane",
+    "inner critic",
+    "self-talk",
+    "psychology",
+    "sleep learning",
+    "mindfulness",
+    "educational"
+   ],
+   "duration": 27.7,
+   "narration": "Under the old anglerfish's lantern, every creature in Moonmere keeps a small grey voice in a jar. Luna's jar hums sourly on her windowsill. It mutters that her landing was wobbly, her scarf silly, her walk home too slow. Luna pauses, lets it talk, and watches it the way she watches moths. Philippa Perry, in How to Stay Sane, suggests we observe the inner critic as a voice, not as the truth. Luna lets the jar hum, then drifts off beneath the old anglerfish's lantern.",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S110322465ce1": {
    "kind": "short",
