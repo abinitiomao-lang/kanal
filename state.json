@@ -1278,7 +1278,7 @@
   "S110319572bd7": {
    "kind": "short",
    "topic": "Eric Berne's transactional analysis model proposes that each of us switches between three ego states, Parent, Adult and Child, and that this model is an influential therapy framework rather than a scientifically tested finding.",
-   "status": "awaiting_upload",
+   "status": "queued",
    "created": "2026-11-03T19:57:30+00:00",
    "long_ref": null,
    "series": null,
@@ -1305,7 +1305,7 @@
    "narration": "Three words. \"Can we talk?\" Her stomach drops. She is twelve again, outside the principal's office. Psychologists note that many adults feel this way. She has a mortgage and a pension. One short email still shrinks her. Berne's model would describe this as the Child ego state being activated. Berne's Transactional Analysis, popularized in Games People Play (1964), is a therapy model with limited empirical validation. Three little words, and, in Berne's terms, the Child ego state seems to take over.",
    "factcheck": "🔎 Фактчек: найдено 5, осталось 0",
    "publish_at": null,
-   "release": "short-S110319572bd7",
+   "release": null,
    "ru_subs": [
     "Три слова.",
     "«Нам надо поговорить»?",
