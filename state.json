@@ -670,6 +670,54 @@
     8
    ],
    "created": "2026-11-03T13:58:17+00:00"
+  },
+  "p11031956c114": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman describes anchoring: in a 1974 study with Amos Tversky, a random number people had just seen, even one obviously unrelated, pulled their numerical guesses toward it.",
+     "subject": "Anchoring and first numbers",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Eric Berne's transactional analysis model proposes that each of us switches between three ego states, Parent, Adult and Child, and that this model is an influential therapy framework rather than a scientifically tested finding.",
+     "subject": "Parent, Adult and Child ego states",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Barbara Sher's idea of a 'scanner' describes people with many interests who feel stuck or panicky when asked to pick just one, a concept from her coaching work rather than a psychological diagnosis.",
+     "subject": "Feeling pulled in many directions",
+     "related_long": -1,
+     "book": "sher",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Philippa Perry suggests that your inner critic is a voice you can learn to notice and observe, instead of treating its harsh judgments as the truth.",
+     "subject": "The inner critic",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Helen Fisher proposes that romantic love involves three brain systems, lust, romantic attraction and attachment, though this three-system model is partly speculative and based on small brain-scan studies.",
+     "subject": "Three systems of love",
+     "related_long": -1,
+     "book": "fisher",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 103,
+   "picked": [],
+   "created": "2026-11-03T19:56:15+00:00"
   }
  },
  "items": {
