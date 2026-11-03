@@ -1204,7 +1204,7 @@
   "S110319577761": {
    "kind": "short",
    "topic": "Helen Fisher proposes that romantic love involves three brain systems, lust, romantic attraction and attachment, though this three-system model is partly speculative and based on small brain-scan studies.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-03T19:57:19+00:00",
    "long_ref": null,
    "series": null,
@@ -1212,7 +1212,24 @@
    "format": "tale",
    "book": "fisher",
    "feedback": [],
-   "updated": "2026-11-03T19:59:01+00:00"
+   "updated": "2026-11-03T20:07:37+00:00",
+   "video_id": "Ncx2SbqYhPE",
+   "title": "Why Love Has Three Brain Systems - Helen Fisher #Psychology #Shorts",
+   "description": "Helen Fisher's book Why We Love proposes that romantic love runs on three brain systems: lust, romantic attraction, and attachment. Her brain-scan studies were small, and the three-system model is still partly speculative, so treat it as an idea under study rather than settled science.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Helen Fisher",
+    "Why We Love",
+    "romantic love",
+    "brain science",
+    "psychology",
+    "sleep learning",
+    "attachment",
+    "lust",
+    "neuroscience"
+   ],
+   "duration": 32.2,
+   "narration": "In Luna's world, every heart is lit by three lanterns. Luna sits on the garden wall, scarf tucked under her chin, as a moth gathers moonlight into a jar. Down at the pond, an old anglerfish swings his glowing lamp, and a swallow dips low, then soars away. Luna feels a flutter, then a pull, then a warmth that lingers. Helen Fisher calls these three brain systems: lust, attraction, and attachment, in her book Why We Love. Her brain-scan studies were small, so the model stays partly a story, and in Luna's world, every heart is lit by three lanterns.",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S110319572bd7": {
    "kind": "short",
