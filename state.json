@@ -719,7 +719,8 @@
    "picked": [
     4,
     1,
-    0
+    0,
+    2
    ],
    "created": "2026-11-03T19:56:15+00:00"
   }
@@ -1314,6 +1315,18 @@
    "part": null,
    "format": "series",
    "book": "kahneman",
+   "feedback": []
+  },
+  "S11032237c85d": {
+   "kind": "short",
+   "topic": "Barbara Sher's idea of a 'scanner' describes people with many interests who feel stuck or panicky when asked to pick just one, a concept from her coaching work rather than a psychological diagnosis.",
+   "status": "queued",
+   "created": "2026-11-03T22:37:55+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "tale",
+   "book": "sher",
    "feedback": []
   }
  },
