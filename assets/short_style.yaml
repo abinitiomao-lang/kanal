@@ -141,15 +141,15 @@ formats:
     subs:
       mode: neon                   # 1–2 слова КАПСОМ, цвет по говорящему, неоновое свечение
       font_name: "Anton"
-      size: 92
+      size: 108
       colors: ["7CFF4F", "FFE23D", "FF5A3D", "6FE3FF"]   # роли A, B, C…; ведущий — host_color
       host_color: "FFFFFF"
       glow_width: 9
       blur: 9
-      y: 0.62
+      y: 0.645
     ru_subs:
       <<: *ru
-      y: 1060
+      y: 985                       # над неоном, не перекрывает две строки
     script: >-
       Dramatise the idea as a tense, emotional scene between 2 (at most 3) people — like a moment cut from a
       family drama film: a mother and her teenage son, a couple, a boss and an employee, two sisters. 4-7 short
