@@ -716,7 +716,9 @@
     }
    ],
    "msg": 103,
-   "picked": [],
+   "picked": [
+    4
+   ],
    "created": "2026-11-03T19:56:15+00:00"
   }
  },
@@ -1197,6 +1199,18 @@
    "release": "video-L1103140530a9",
    "thumb_path": "/home/runner/work/kanal/kanal/work/long/L1103140530a9/thumb.jpg",
    "public_id": "sIZ7EIFJNKs"
+  },
+  "S110319577761": {
+   "kind": "short",
+   "topic": "Helen Fisher proposes that romantic love involves three brain systems, lust, romantic attraction and attachment, though this three-system model is partly speculative and based on small brain-scan studies.",
+   "status": "queued",
+   "created": "2026-11-03T19:57:19+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "tale",
+   "book": "fisher",
+   "feedback": []
   }
  },
  "images": [
