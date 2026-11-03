@@ -1093,7 +1093,7 @@
   "L1103140530a9": {
    "kind": "long",
    "topic": "The Desire Map, Part 1 of 2: Desire and Feelings",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-03T14:05:07+00:00",
    "long_ref": null,
    "series": "laporte",
@@ -1101,7 +1101,7 @@
    "format": null,
    "book": null,
    "feedback": [],
-   "updated": "2026-11-03T14:40:38+00:00",
+   "updated": "2026-11-03T19:45:52+00:00",
    "short_facts": [
     "A 2010 study by Matthew Killingsworth and Daniel Gilbert suggested people's minds were elsewhere a substantial part of their waking hours, and that this mind-wandering was linked with lower happiness, though researchers still debate how harmful it is.",
     "Early research comparing lottery winners with accident victims suggested the winners were not as happy as many expected, but later researchers have questioned the size and details of that effect.",
@@ -1147,7 +1147,8 @@
    "duration": 7340.998583,
    "factcheck": "🔎 Фактчек: найдено 3, осталось 0",
    "release": "video-L1103140530a9",
-   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L1103140530a9/thumb.jpg"
+   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L1103140530a9/thumb.jpg",
+   "public_id": null
   }
  },
  "images": [
