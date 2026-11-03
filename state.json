@@ -2070,6 +2070,12 @@
    "orient": "portrait",
    "style": "tale-7321be6c",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/d97bb6ec238e.jpg"
+  },
+  {
+   "id": "fe9945444423",
+   "prompt": "A single lotus flower floating on a calm river in ancient India at dusk, with a small wooden ferry boat drifting slowly nearby, banyan trees along the banks, soft golden light on the water, dark calm background, no text",
+   "orient": "landscape",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/fe9945444423.jpg"
   }
  ],
  "costs": {
