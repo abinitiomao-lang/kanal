@@ -1366,7 +1366,7 @@
   "S11032237eadc": {
    "kind": "short",
    "topic": "Daniel Kahneman describes anchoring: in a 1974 study with Amos Tversky, a random number people had just seen, even one obviously unrelated, pulled their numerical guesses toward it.",
-   "status": "awaiting_upload",
+   "status": "queued",
    "created": "2026-11-03T22:37:50+00:00",
    "long_ref": null,
    "series": null,
@@ -1395,7 +1395,7 @@
    "narration": "The seller says three hundred. You offer two twenty and feel clever. Psychologists note that the first number tends to influence the final outcome of a negotiation. In 1974, Tversky and Kahneman rigged a wheel to stop on 10 or 65. Then they asked what share of United Nations members were African. After 10, guesses ran lower. After 65, higher. The wheel meant nothing. Anchoring holds up, though the book's priming studies failed to replicate. Daniel Kahneman explains it in Thinking, Fast and Slow. Every haggle starts with someone's number, and researchers have replicated anchoring effects many times.",
    "factcheck": "🔎 Фактчек: найдено 3, осталось 0",
    "publish_at": null,
-   "release": "short-S11032237eadc",
+   "release": null,
    "ru_subs": [
     "Продавец называет цену: 300",
     "Вы предлагаете 220 и гордитесь своей хитростью",
