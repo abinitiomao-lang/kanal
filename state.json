@@ -1366,7 +1366,7 @@
   "S11032237eadc": {
    "kind": "short",
    "topic": "Daniel Kahneman describes anchoring: in a 1974 study with Amos Tversky, a random number people had just seen, even one obviously unrelated, pulled their numerical guesses toward it.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-03T22:37:50+00:00",
    "long_ref": null,
    "series": null,
@@ -1374,7 +1374,7 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-11-03T23:23:31+00:00",
+   "updated": "2026-11-03T23:24:22+00:00",
    "error": null,
    "video_id": null,
    "title": "Kahneman's anchoring: the first number wins #psychology #bias",
