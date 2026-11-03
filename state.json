@@ -1343,7 +1343,7 @@
   "S11032237c85d": {
    "kind": "short",
    "topic": "Barbara Sher's idea of a 'scanner' describes people with many interests who feel stuck or panicky when asked to pick just one, a concept from her coaching work rather than a psychological diagnosis.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-03T22:37:55+00:00",
    "long_ref": null,
    "series": null,
@@ -1351,8 +1351,24 @@
    "format": "tale",
    "book": "sher",
    "feedback": [],
-   "updated": "2026-11-03T22:55:28+00:00",
-   "error": null
+   "updated": "2026-11-03T22:57:15+00:00",
+   "error": null,
+   "video_id": "jozObj3Uca4",
+   "title": "Barbara Sher's scanner: why picking one thing feels hard #psychology",
+   "description": "A calm sleep-learning story about Barbara Sher's idea of the 'scanner', a person with many interests who feels stuck when asked to pick just one. The concept comes from her book Refuse to Choose! and her coaching work; it is not a psychological diagnosis.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Barbara Sher",
+    "Refuse to Choose",
+    "scanner",
+    "psychology",
+    "sleep learning",
+    "self improvement",
+    "bedtime story",
+    "education"
+   ],
+   "duration": 27.9,
+   "narration": "Through the moon garden, no creature is ever asked to pick one bloom. Luna sniffs silver roses, then violet moss, then a lantern-lit fern. The fairy gardener smiles and asks, which one will you keep? Luna's heart flutters, her red scarf snagging on a thorn. Barbara Sher called this a scanner, an idea from Refuse to Choose!, a coaching concept, not a diagnosis. So Luna drifts on, tasting every bloom, as the moon garden begins again.",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S11032237126a": {
    "kind": "short",
