@@ -1341,7 +1341,7 @@
   "S11032237126a": {
    "kind": "short",
    "topic": "Philippa Perry suggests that your inner critic is a voice you can learn to notice and observe, instead of treating its harsh judgments as the truth.",
-   "status": "producing",
+   "status": "failed",
    "created": "2026-11-03T22:37:59+00:00",
    "long_ref": null,
    "series": null,
@@ -1349,8 +1349,8 @@
    "format": "tale",
    "book": "perry",
    "feedback": [],
-   "updated": "2026-11-03T22:51:58+00:00",
-   "error": null
+   "updated": "2026-11-03T22:52:37+00:00",
+   "error": "fal.ai 403: {\"detail\":\"User is locked. Reason: TOP_UP.\"}"
   },
   "S110322465ce1": {
    "kind": "short",
