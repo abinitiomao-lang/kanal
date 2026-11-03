@@ -132,18 +132,22 @@ def on_pick(kind: str, pid: str, n: int, msg_id: int) -> str:
     return "Принято"
 
 
-def slot_dt() -> datetime:
-    """Ближайшие publish_hour_ny:00 по Нью-Йорку — люди ложатся спать."""
+def slot_dt(kind: str = "short") -> datetime:
+    """Ближайшие свободные publish_hour_ny:00 по Нью-Йорку (люди ложатся спать): один ролик своего вида на день."""
     ny = datetime.now(ZoneInfo("America/New_York"))
     slot = ny.replace(hour=CFG["shorts"]["publish_hour_ny"], minute=0, second=0, microsecond=0)
     if slot <= ny + timedelta(minutes=30):
         slot += timedelta(days=1)
+    taken = {datetime.fromisoformat(i["publish_at"].replace("Z", "+00:00")).astimezone(slot.tzinfo).date()
+             for i in state.load()["items"].values() if i.get("publish_at") and i.get("kind") == kind}
+    while slot.date() in taken:
+        slot += timedelta(days=1)
     return slot
 
 
-def best_slot() -> str:
+def best_slot(slot: datetime | None = None) -> str:
     """Слот публикации текстом, в МСК для удобства."""
-    slot = slot_dt()
+    slot = slot or slot_dt()
     msk = slot.astimezone(ZoneInfo("Europe/Moscow"))
     return f"{slot:%d.%m %H:%M} по Нью-Йорку = {msk:%d.%m %H:%M} МСК"
 
@@ -190,14 +194,14 @@ def on_schedule(item_id: str) -> str:
         return f"Статус: {it.get('status')}"
     if CFG["pre_audit_mode"] or not it.get("video_id"):
         return on_publish(item_id)  # ручной режим: инструкция с подсказкой времени
-    when = slot_dt()
+    when = slot_dt(it["kind"])
     st = youtube.schedule(it["video_id"], when)
     if not st.get("publishAt"):
         telegram.send("⚠️ YouTube не принял время публикации — нажми «Опубликовать» или поставь время в Studio.")
         return "Не вышло"
     state.set_item(item_id, status="published", public_id=it["video_id"], publish_at=st["publishAt"])
     _drop_release(it)
-    telegram.send(f"⏰ Запланировано на {best_slot()}: https://youtu.be/{it['video_id']}")
+    telegram.send(f"⏰ Запланировано на {best_slot(when)}: https://youtu.be/{it['video_id']}")
     return "Запланировано"
 
 

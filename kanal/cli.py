@@ -36,6 +36,9 @@ def main() -> None:
             e = os.environ
             youtube.edit(e["EDIT_MATCH"], e.get("EDIT_TITLE", ""), e.get("EDIT_DESC", ""),
                          [t.strip() for t in e.get("EDIT_TAGS", "").split(",") if t.strip()])
+        elif cmd == "schedule":
+            for item_id in args:
+                print(item_id, bot.on_schedule(item_id))
         elif cmd == "try-public":
             print(f"{args[0]}: privacyStatus после update = {youtube.make_public(args[0])}")
         elif cmd == "groups":
