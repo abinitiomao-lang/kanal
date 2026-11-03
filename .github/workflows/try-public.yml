@@ -1,0 +1,20 @@
+name: try-public
+# Ручной запуск: пробует сделать уже загруженное видео публичным через API (проверка лока до аудита).
+on:
+  workflow_dispatch:
+    inputs:
+      video_id: {description: "id видео", type: string, required: true}
+jobs:
+  try-public:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      KANAL_WORK: ${{ github.workspace }}/work
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      VIDEO_ID: ${{ inputs.video_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: python -m kanal.cli try-public "$VIDEO_ID"
