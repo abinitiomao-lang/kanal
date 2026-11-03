@@ -1830,7 +1830,9 @@
    "images": 107
   },
   "2026-11": {
-   "anthropic": 0.00451
+   "anthropic": 0.00451,
+   "fal": 1.17,
+   "images": 1
   }
  },
  "costs_log": [
@@ -2193,6 +2195,12 @@
    "service": "anthropic",
    "usd": 0.00154,
    "note": "proposals"
+  },
+  {
+   "ts": "2026-11-03T14:21:23+00:00",
+   "service": "fal",
+   "usd": 1.17,
+   "note": "L1103140530a9"
   }
  ],
  "awaiting_comment": null,
