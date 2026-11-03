@@ -234,7 +234,7 @@ def long_outline(topic: str, feedback: str = "", book: dict | None = None) -> Ou
                  f"Dark Screen' — at most 100 characters, drop ' · Dark Screen' if it does not fit.")
     return llm.json(
         f"Plan a {hours}-hour sleep-learning video for {CFG['channel']['name']}: {about} Mention in the "
-        "description that the screen slowly dims to near-black after 15 minutes. Exactly {CFG['long']['chapters']} chapters "
+        f"description that the screen slowly dims to near-black after 15 minutes. Exactly {CFG['long']['chapters']} chapters "
         f"that flow gently from simple to deeper, ending in a soft, reflective chapter. "
         f"15-25 tags.{(' Owner feedback on previous version: ' + feedback) if feedback else ''}",
         Outline, system=CHANNEL_VOICE)
@@ -291,6 +291,19 @@ class Scene(BaseModel):
     stock_query: str = Field(description="2-3 word stock video search query")
 
 
+class Role(BaseModel):
+    id: str = Field(description="A, B or C")
+    name: str
+    look: str = Field(description="fixed photographic description: age, face, hair, clothes, setting")
+    voice: str = Field(description="one of: woman, girl, man, boy, older_man")
+
+
+class Line(BaseModel):
+    role: str = Field(description="A, B, C or HOST")
+    text: str
+    emotion: str = Field(default="", description="e.g. annoyed, pleading, sarcastic, close to tears")
+
+
 class ShortScript(BaseModel):
     hook_text: str = Field(default="", description="on-screen hook for the first 1.5 s, max 6 words, ALL CAPS")
     narration: str = Field(description="full voiceover, starts with the hook sentence")
@@ -302,6 +315,8 @@ class ShortScript(BaseModel):
     character: str = Field(default="", description="tale format: fixed visual description of the protagonist")
     kicker: str = Field(default="", description="series format: tiny caps line above the title")
     header_title: str = Field(default="", description="series format: on-screen title, max 8 words")
+    cast: list[Role] = Field(default=[], description="scene format only")
+    lines: list[Line] = Field(default=[], description="scene format only: the dialogue in order")
 
 
 def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dict | None = None,

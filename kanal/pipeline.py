@@ -70,6 +70,28 @@ def approval_message(item_id: str) -> None:
 
 # ======================= ШОРТС =======================
 
+def _dialogue_voice(script, fmt: dict, W: Path) -> tuple[Path, float, list[dict]]:
+    """Каждая реплика — своим голосом; склейка с короткими паузами. У слов есть spk (индекс роли, -1 — ведущий)."""
+    roles = {r.id: r for r in script.cast}
+    order = [r.id for r in script.cast]
+    parts, words, t = [], [], 0.0
+    for i, ln in enumerate(script.lines):
+        host = ln.role == "HOST" or ln.role not in roles
+        vid = None if host else fmt["voices"].get(roles[ln.role].voice, fmt["voices"]["woman"])
+        raw = W / f"line_{i:02d}.mp3"
+        d, ws = audio.eleven(ln.text, raw, fmt["host_voice"] if host else fmt["voice"], vid)
+        gap = 0.6 if host else 0.22  # перед и после голоса ведущего — пауза побольше
+        wav = W / f"line_{i:02d}.wav"
+        render.ff("-i", str(raw), "-af", f"aresample=44100,apad=pad_dur={gap}", "-ac", "1", str(wav))
+        spk = -1 if host else order.index(ln.role)
+        words += [{**w, "start": w["start"] + t, "end": w["end"] + t, "spk": spk} for w in ws]
+        parts.append(wav)
+        t += d + gap
+    voice = W / "voice.wav"
+    render.concat(parts, voice)
+    return voice, audio.probe_duration(voice), words
+
+
 def produce_short(item_id: str) -> None:
     item = state.get_item(item_id)
     state.set_item(item_id, status="producing")
@@ -82,7 +104,12 @@ def produce_short(item_id: str) -> None:
     book = next((b for b in writer.load_series() if b["id"] == item.get("book")), None)
     fixed = item.get("narration_fixed", "")
     script = writer.short_script(item["topic"], long_title, _feedback(item), fmt, book, fixed)
-    if fixed:  # готовый проверенный текст не переписываем — фактчек только для отчёта
+    dialogue = bool(fmt.get("dialogue") and script.lines)
+    if dialogue:  # сцена: реплики персонажей не правим, фактчек — только для отчёта (по словам ведущего)
+        narration = " ".join(ln.text for ln in script.lines)
+        issues = writer.fact_check(" ".join(ln.text for ln in script.lines if ln.role == "HOST") or narration)
+        found = len(issues)
+    elif fixed:  # готовый проверенный текст не переписываем — фактчек только для отчёта
         narration = fixed
         issues = writer.fact_check(fixed)
         found = len(issues)
@@ -92,15 +119,18 @@ def produce_short(item_id: str) -> None:
     else:
         narration, issues, found = writer.checked(script.narration)
 
-    voice = W / "voice.mp3"
-    dur, words = audio.eleven(narration, voice, fmt["voice"])
+    if dialogue:
+        voice, dur, words = _dialogue_voice(script, fmt, W)
+    else:
+        voice = W / "voice.mp3"
+        dur, words = audio.eleven(narration, voice, fmt["voice"])
     if dur > S["max_seconds"]:  # слегка ускоряем, сохраняя тайминги слов
         k = min(dur / (S["max_seconds"] - 0.5), 1.15)
         sped = W / "voice_fast.mp3"
         render.ff("-i", str(voice), "-af", f"atempo={k:.4f}", str(sped))
         voice, dur = sped, dur / k
         words = [{**w, "start": w["start"] / k, "end": w["end"] / k} for w in words]
-    costs.add("elevenlabs", 0, item_id, eleven_chars=len(narration))
+    costs.add("elevenlabs", 0, item_id, eleven_chars=len(narration))  # у сцены столько же символов
 
     # тайминг сцен: пропорционально числу слов сцены, привязка к реальным словам озвучки
     counts = [max(1, len(sc.words.split())) for sc in script.scenes]

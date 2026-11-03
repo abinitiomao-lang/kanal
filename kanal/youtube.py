@@ -76,6 +76,18 @@ def channel_info() -> dict:
                               mine=True).execute()["items"][0]
 
 
+def channel_sync() -> dict:
+    """Ставит описание, ключевые слова и язык канала из config.yaml (название не трогает)."""
+    C = CFG["channel"]
+    yt = _yt()
+    ch = yt.channels().list(part="brandingSettings", id=C["id"]).execute()["items"][0]["brandingSettings"]["channel"]
+    ch.update(description=C["about"][:1000], defaultLanguage=C["language"],
+              keywords=" ".join(f'"{k}"' if " " in k else k for k in C["keywords"]))
+    out = yt.channels().update(part="brandingSettings",
+                               body={"id": C["id"], "brandingSettings": {"channel": ch}}).execute()
+    return out["brandingSettings"]["channel"]
+
+
 def status(video_id: str) -> dict:
     items = _yt().videos().list(part="status,processingDetails", id=video_id).execute()["items"]
     return items[0] if items else {}

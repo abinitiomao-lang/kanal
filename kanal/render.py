@@ -238,6 +238,43 @@ def _ru_lines(groups: list[list[dict]], ru: list[str], ru_cfg: dict) -> tuple[st
     return st, lines
 
 
+def _neon_ass(words: list[dict], out: Path, subs: dict, ru: list[str] | None, ru_cfg: dict | None) -> Path:
+    """Формат scene: 1–2 слова капсом, цвет по говорящему (spk), неоновое свечение — как в эдитах из фильмов."""
+    from .style import ass_color
+    S = CFG["shorts"]
+    x, y = S["width"] // 2, int(S["height"] * subs["y"])
+    head = _ass_head([f"Style: Neon,{subs['font_name']},{subs['size']},&H00FFFFFF,&H00FFFFFF,&H00000000,"
+                      "&H00000000,0,0,0,0,100,100,2,0,1,2,0,5,60,60,0,1"])
+    groups, cur = [], []
+    for wd in words:  # по 1–2 слова; новая группа на смене говорящего и после пунктуации
+        if cur and (len(cur) == 2 or cur[-1].get("spk") != wd.get("spk") or cur[-1]["word"][-1] in ".,!?;:—"
+                    or len(cur[-1]["word"]) > 7):
+            groups.append(cur)
+            cur = []
+        cur.append(wd)
+    if cur:
+        groups.append(cur)
+    lines = []
+    for gi, g in enumerate(groups):
+        end = groups[gi + 1][0]["start"] if gi + 1 < len(groups) else g[-1]["end"] + 0.4
+        end = min(end, g[-1]["end"] + 0.6)  # в паузах между репликами экран чистый
+        spk = g[0].get("spk", 0)
+        col = ass_color(subs["host_color"] if spk < 0 else subs["colors"][spk % len(subs["colors"])]) + "&"
+        text = " ".join(_clean(w["word"]) for w in g).upper()
+        t0, t1 = _ass_time(g[0]["start"]), _ass_time(max(end, g[0]["start"] + 0.2))
+        pop = "\\fscx108\\fscy108\\t(0,80,\\fscx100\\fscy100)"
+        lines.append(f"Dialogue: 0,{t0},{t1},Neon,,0,0,0,,{{\\pos({x},{y})\\1c{col}\\3c{col}"
+                     f"\\bord{subs['glow_width']}\\blur{subs['blur']}{pop}}}{text}")  # свечение
+        lines.append(f"Dialogue: 1,{t0},{t1},Neon,,0,0,0,,{{\\pos({x},{y})\\1c{col}\\3c&H00101010&"
+                     f"\\bord1.5\\blur0.6{pop}}}{text}")  # чёткая буква
+    if ru and ru_cfg:
+        st, ru_l = _ru_lines(phrase_groups(words, 5), ru, ru_cfg)
+        head = head.replace("\n\n[Events]", f"\n{st}\n\n[Events]")
+        lines += ru_l
+    out.write_text(head + "\n".join(lines) + "\n")
+    return out
+
+
 def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = None,
                 ru: list[str] | None = None, ru_cfg: dict | None = None) -> Path:
     """Субтитры шортса. subs (assets/short_style.yaml): mode word — по слову, мелко; phrase — фраза под панелью.
@@ -245,6 +282,8 @@ def karaoke_ass(words: list[dict], hook: str, out: Path, subs: dict | None = Non
     from .style import ass_color
     S = CFG["shorts"]
     W, H = S["width"], S["height"]
+    if subs and subs["mode"] == "neon":
+        return _neon_ass(words, out, subs, ru, ru_cfg)
     if subs and subs["mode"] in ("word", "phrase"):
         c, ol = ass_color(subs["color"]), ass_color(subs["outline"])
         lines = []

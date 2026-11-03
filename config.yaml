@@ -4,6 +4,20 @@ channel:
   id: "UCrfBMpzLf5jPt06IBmaGoZA"  # https://www.youtube.com/@SashaMao-e8i — загрузки только сюда
   name: "Night Nerd Radio"        # бренд (2026-11-03); в Studio канал переименовывается вручную
   greeting: "Good evening, nerds. Lights down, voices low. This is Night Nerd Radio."
+  # «О канале» — ставится в YouTube командой `python -m kanal.cli channel-sync` (workflow yt-status, аргумент channel-sync)
+  about: |-
+    Welcome to NightNerd Radio 🌌
+
+    Psychology, science and the ideas of great books, told in a calm, low voice to help you unwind and fall asleep.
+
+    🌙 Long episodes (2–3 hours): gentle book summaries and science to fall asleep to. The screen dims after 15 minutes.
+    ⚡ Shorts: one surprising idea from psychology in under a minute.
+
+    New videos in the evening, 9 PM New York time. Rest easy. You're in the right place. ✨
+
+    Narration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock.
+  keywords: ["sleep", "fall asleep", "sleep learning", "psychology", "book summary", "science to fall asleep to",
+             "bedtime stories for adults", "calm narration", "relaxing", "insomnia", "self help"]
   name_candidates:
     - "Night Nerd Radio"
     - "Sleepy Science"

@@ -60,11 +60,12 @@ def kokoro(text: str, out: Path) -> float:
     return len(audio) / SR
 
 
-def eleven(text: str, out: Path, settings: dict | None = None) -> tuple[float, list[dict]]:
+def eleven(text: str, out: Path, settings: dict | None = None,
+           voice_id: str | None = None) -> tuple[float, list[dict]]:
     """ElevenLabs Flash с таймингами. Возвращает (длительность, [{word,start,end}])."""
     S = CFG["shorts"]
     r = requests.post(
-        f"https://api.elevenlabs.io/v1/text-to-speech/{S['eleven_voice_id']}/with-timestamps",
+        f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id or S['eleven_voice_id']}/with-timestamps",
         params={"output_format": "mp3_44100_128"},
         headers={"xi-api-key": secret("ELEVENLABS_API_KEY")},
         json={"text": text, "model_id": S["eleven_model"],

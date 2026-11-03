@@ -17,7 +17,7 @@ def get(key: str | None) -> tuple[str, dict]:
     if key not in d["formats"]:
         key = d["rotation"][0]
     fmt = dict(d["formats"][key])
-    fmt["image"] = f"{fmt['image']}, {d['art']}"
+    fmt["image"] = f"{fmt['image']}, {fmt.get('art') or d['art']}"  # свой стиль формата важнее общего
     return key, fmt
 
 

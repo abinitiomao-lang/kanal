@@ -9,7 +9,7 @@
 book_formats:
   kahneman: series
   drive: series
-  berne: series
+  berne: scene                    # первый пробный «Сцена» — по Берну (2026-11-03)
   litvak: series
   flow: tale
   fisher: tale
@@ -17,7 +17,7 @@ book_formats:
   perry: tale
   laporte: tale
   sher: tale
-rotation: [tale, series]          # для фактов не из книг — по очереди
+rotation: [tale, series, scene]   # для фактов не из книг — по очереди
 
 # Общая рисовка обоих форматов (дописывается к промпту формата).
 art: >-
@@ -113,3 +113,52 @@ formats:
       the opening. Give `kicker` (max 5 words, e.g. "A DOCUMENTARY
       FROM THE YEAR 2126") and `header_title` (max 8 words, the hook, e.g. "Historians are confused by
       this 2020s habit").
+
+  # C. Сцена: эмоциональный диалог как кадр из фильма (референс — эдит «Элегия Хиллбилли»):
+  # крупные планы лиц, 2–3 голоса, неоновые субтитры по 1–2 слова, цвет по говорящему.
+  scene:
+    label: "🎭 Сцена"
+    layout: full
+    orient: portrait
+    art: >-
+      cinematic film still from a 2000s family drama, photorealistic, 35mm film grain, shallow depth of field,
+      warm tungsten practical lights, emotional close-up of a face filling the frame, natural skin texture,
+      real home interior softly blurred behind, absolutely no text, no letters, no captions, no watermark
+    image: >-
+      vertical 9:16 close-up, the face in the upper two thirds of the frame
+    motion: dynamic
+    animate_hook: true
+    whoosh: false
+    dialogue: true
+    voice: {stability: 0.3, similarity_boost: 0.75, style: 0.6, speed: 1.0}
+    host_voice: {stability: 0.5, similarity_boost: 0.75, style: 0.25, speed: 1.0}
+    voices:                        # стандартные голоса ElevenLabs (проверены в selftest voices)
+      woman: "cgSgspJ2msm6clMCkdW9"      # Jessica
+      girl: "FGY2WhTYpPnrIDTdsKH5"       # Laura
+      man: "nPczCjzI2devNBz1zQrb"        # Brian
+      boy: "TX3LPaxmHKxFdv7VOQHJ"        # Liam
+      older_man: "iP95p4xoKVk53GoZ742B"  # Chris
+    subs:
+      mode: neon                   # 1–2 слова КАПСОМ, цвет по говорящему, неоновое свечение
+      font_name: "Anton"
+      size: 92
+      colors: ["7CFF4F", "FFE23D", "FF5A3D", "6FE3FF"]   # роли A, B, C…; ведущий — host_color
+      host_color: "FFFFFF"
+      glow_width: 9
+      blur: 9
+      y: 0.62
+    ru_subs:
+      <<: *ru
+      y: 1060
+    script: >-
+      Dramatise the idea as a tense, emotional scene between 2 (at most 3) people — like a moment cut from a
+      family drama film: a mother and her teenage son, a couple, a boss and an employee, two sisters. 4-7 short
+      spoken lines in natural everyday English (sarcasm, interrupting, raw feeling; mild language only), 10-60
+      words of dialogue in total, so the viewer instantly recognises the situation from their own life. The
+      characters never explain the psychology. Then the HOST adds 1-2 calm lines that name the idea and credit
+      the author and book (e.g. "That's the game Eric Berne called 'Why Don't You — Yes, But'."). Fill `cast`
+      (role ids A, B, C with name, a fixed photographic look — age, hair, clothes, setting — and voice) and
+      `lines` (role A/B/C/HOST, text, emotion). `narration` = all line texts joined in order. Write exactly one
+      scene per non-host line, its `words` = that line's text, its `visual` = an emotional close-up of the
+      speaking character (repeat their full look) reacting with that emotion; for the HOST lines use one quiet
+      final shot of both characters apart in the same room.

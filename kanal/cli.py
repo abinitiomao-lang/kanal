@@ -41,7 +41,8 @@ def main() -> None:
                 print(item_id, bot.on_schedule(item_id))
         elif cmd == "yt-status":
             for v in args:
-                print(v, youtube.channel_info() if v == "channel" else youtube.status(v))
+                print(v, youtube.channel_info() if v == "channel" else
+                      youtube.channel_sync() if v == "channel-sync" else youtube.status(v))
         elif cmd == "try-public":
             print(f"{args[0]}: privacyStatus после update = {youtube.make_public(args[0])}")
         elif cmd == "groups":
