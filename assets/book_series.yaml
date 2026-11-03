@@ -123,3 +123,30 @@
       points: [the good soldier Švejk method, agreeing instead of fighting, communication and illness, ego states in conflict, accepting criticism calmly]
     - title: "Aikido at Home and at Work"
       points: [difficult bosses, family conflicts, raising children, business arguments, keeping your energy, everyday practice]
+
+- id: sapiens
+  book: "Sapiens"
+  author: Yuval Noah Harari
+  frequency: science              # видео идут в «Science to Sleep To» (история человечества), а не в Mind
+  evidence: "a big-picture history; core facts are mainstream, but many interpretations are Harari's own and debated by historians (e.g. 'history's biggest fraud', happiness claims) — present those as his arguments"
+  parts:
+    - title: "The Cognitive Revolution"
+      points: [many human species, the cost of a big brain, fire and cooking, the meeting with Neanderthals, gossip and the language of fiction, shared myths and large-scale cooperation, the life of foragers, the first wave of extinctions]
+    - title: "The Agricultural Revolution"
+      points: [domesticated by wheat, the luxury trap, the first villages, the fate of farm animals, imagined orders, writing and bookkeeping, hierarchies and their myths, men and women in history]
+    - title: "The Unification of Humankind"
+      points: [the direction of history, money as universal trust, cowry shells and coins, empires and their legacy, the rise of universal religions, the paradox of the believer, hindsight and chance in history]
+    - title: "The Scientific Revolution"
+      points: [the discovery of ignorance, the blank map, science, empire and the voyages of discovery, credit and the belief in growth, the capitalist creed, the industrial revolution and energy]
+    - title: "Happily Ever After?"
+      points: [a permanent revolution, the collapse of family and community, the state and the market, the peace of our times, does progress make us happier, biology and happiness, the end of Homo sapiens, the animal that became a god]
+
+- id: frankl
+  book: "Man's Search for Meaning"
+  author: Viktor Frankl
+  evidence: "a first-hand memoir by a psychiatrist; his conclusions are personal and philosophical (logotherapy), not experimental research. Tell it gently and with dignity: no graphic detail of violence, focus on inner life, love, hope and meaning — this is bedtime listening"
+  parts:
+    - title: "Life in the Camp"
+      points: [why a psychiatrist wrote this account, arrival and the first shock, the delusion of reprieve, apathy as a shield, dreams and hunger, retreat into the inner life, the image of a loved one, a sunset seen through barbed wire, art and humour in the darkest place]
+    - title: "Inner Freedom and Meaning"
+      points: [the last of the human freedoms, choosing one's attitude, suffering as a task, having a 'why' to live, the future goal, a timely word, the guards were human too, liberation and learning to feel again, the meaning of life as a question life asks us]

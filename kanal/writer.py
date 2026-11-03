@@ -50,8 +50,9 @@ def next_book_parts(done: set[tuple[str, int]], limit: int = 10) -> list[dict]:
         for n, part in enumerate(b["parts"], 1):
             if (b["id"], n) not in done:
                 total = len(b["parts"])
-                out.append({"topic": f"{b['book']}, Part {n} of {total}: {part['title']}", "subject": "psychology",
-                            "frequency": FREQ_MIND,
+                sci = b.get("frequency") == "science"
+                out.append({"topic": f"{b['book']}, Part {n} of {total}: {part['title']}",
+                            "subject": "history" if sci else "psychology", "frequency": FREQ_SCIENCE if sci else FREQ_MIND,
                             "pitch": ", ".join(part["points"][:4]) + "…", "source": f"{b['book']} by {b['author']}",
                             "series": b["id"], "part": n, "button": f"{b['author'].split()[-1]} {n}/{total}: {part['title']}"})
                 break
@@ -75,10 +76,16 @@ def propose_long(used: list[str]) -> list[Topic]:
 
 
 def propose_mixed(used: list[str], done: set[tuple[str, int]]) -> list[dict]:
-    """3 научные темы + 2 следующие части книг (≈60/40), каждая помечена своей «частотой»."""
-    books = next_book_parts(done, limit=2)
+    """3 научные темы + 2 следующие части книг (≈60/40), каждая помечена своей «частотой».
+
+    Книги с frequency: science (Sapiens) занимают место научной темы; из Mind-книг первыми идут
+    те, по которым снято меньше частей, чтобы книги чередовались."""
+    parts = next_book_parts(done, limit=99)
+    started = lambda b: sum(1 for s, _ in done if s == b["series"])
+    mind = sorted((b for b in parts if b["frequency"] == FREQ_MIND), key=started)[:2]
+    sci_books = [b for b in parts if b["frequency"] == FREQ_SCIENCE][:1]
     science = [{**t.model_dump(), "frequency": FREQ_SCIENCE} for t in propose_long(used)]
-    return science[:5 - len(books)] + books
+    return sci_books + science[:5 - len(mind) - len(sci_books)] + mind
 
 
 class ShortIdea(BaseModel):
@@ -216,7 +223,7 @@ def long_outline(topic: str, feedback: str = "", book: dict | None = None) -> Ou
                  f"How to present the evidence: {book['evidence']}. Retell the ideas in your own words with your own "
                  f"examples; never reproduce the book's text. Title format: '<the everyday psychological question "
                  f"this part answers, e.g. Why Your Brain Overthinks at Night> | {math.ceil(hours)} Hours of "
-                 f"Psychology to Fall Asleep To' — at most 100 characters; do NOT put the book title in the video "
+                 f"{'History' if book.get('frequency') == 'science' else 'Psychology'} to Fall Asleep To' — at most 100 characters; do NOT put the book title in the video "
                  f"title. The description must credit the book: 'Based on ideas from {book['book']} by "
                  f"{book['author']} (Part {book['n']} of {book['total']}), retold in our own words.'")
     else:
