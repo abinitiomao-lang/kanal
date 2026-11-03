@@ -19,7 +19,7 @@ channel:
 # До прохождения аудита YouTube API все загрузки залочены как private.
 # true  => «Опубликовать» = бот отдаёт файл + метаданные для ручной загрузки в Studio.
 # false => «Опубликовать» = videos.update privacyStatus=public.
-pre_audit_mode: true
+pre_audit_mode: false
 
 subjects: [physics, chemistry, biology, history, geography, astronomy, earth science, human body, ancient civilizations, oceans, psychology]
 
