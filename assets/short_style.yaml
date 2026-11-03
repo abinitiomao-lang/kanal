@@ -37,7 +37,7 @@ formats:
     image: >-
       vertical 9:16 composition, the main subject large and in the upper two thirds
     motion: dynamic                # заметный наезд + сдвиг, без тряски (владелец: «динамичное видео»)
-    animate_hook: true             # первый кадр оживляется Kling на 5 с, если позволяет бюджет
+    animate_hook: false            # экономный режим (владелец 2026-11-03): без Kling в шортсах, ~$5/мес на fal
     whoosh: false
     voice: {stability: 0.55, similarity_boost: 0.75, style: 0.2, speed: 1.0}
     subs:
@@ -81,7 +81,7 @@ formats:
       horizontal composition, one big subject close-up filling most of the picture, drawn as a whimsical
       character or creature rather than a plain object
     motion: dynamic
-    animate_hook: true
+    animate_hook: false            # экономный режим (владелец 2026-11-03): без Kling в шортсах, ~$5/мес на fal
     whoosh: false
     voice: {stability: 0.45, similarity_boost: 0.75, style: 0.3, speed: 1.0}
     frame:
@@ -127,7 +127,7 @@ formats:
     image: >-
       vertical 9:16 close-up, the face in the upper two thirds of the frame
     motion: dynamic
-    animate_hook: true
+    animate_hook: false            # экономный режим (владелец 2026-11-03): без Kling в шортсах, ~$5/мес на fal
     whoosh: false
     dialogue: true
     voice: {stability: 0.3, similarity_boost: 0.75, style: 0.6, speed: 1.0}
