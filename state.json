@@ -2168,6 +2168,55 @@
    "prompt": "A single lotus flower floating on a calm river in ancient India at dusk, with a small wooden ferry boat drifting slowly nearby, banyan trees along the banks, soft golden light on the water, dark calm background, no text",
    "orient": "landscape",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/fe9945444423.jpg"
+  },
+  {
+   "id": "160b5e114ea7",
+   "prompt": "a painted fortune wheel slowing to a stop, its pointer settling on one segment, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/160b5e114ea7.jpg"
+  },
+  {
+   "id": "3be3763c306b",
+   "prompt": "a woman's hand reaching toward a price tag on a wooden shop shelf, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/3be3763c306b.jpg"
+  },
+  {
+   "id": "1a921afb74ab",
+   "prompt": "a man leaning over a desk, pencil hovering over a blank sheet, then slowly moving down, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/1a921afb74ab.jpg"
+  },
+  {
+   "id": "4db3e3fe881a",
+   "prompt": "a gloved archivist pulling an old paper folder from a tall metal cabinet in a quiet archive room",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4db3e3fe881a.jpg"
+  },
+  {
+   "id": "dc21e114f585",
+   "prompt": "an auctioneer's hand raising a bidding paddle in a crowded room, medium shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/dc21e114f585.jpg"
+  },
+  {
+   "id": "9590c2605956",
+   "prompt": "a closed hardcover book being slid across a wooden desk by a hand, close-up",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/9590c2605956.jpg"
+  },
+  {
+   "id": "83488c490a4a",
+   "prompt": "a small group of visitors in a museum gallery tilting their heads in puzzlement before a glass case, wide shot",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/83488c490a4a.jpg"
   }
  ],
  "costs": {
