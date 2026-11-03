@@ -54,7 +54,8 @@ def script_message(item_id: str) -> None:
     it = state.get_item(item_id)
     ru = "\n".join(it.get("ru_subs") or []) or "—"
     telegram.send(f"📝 <b>Сценарий {item_id}</b>\n\n🇬🇧 <b>Озвучка:</b>\n{html.escape(it.get('narration', ''))[:1800]}"
-                  f"\n\n🇷🇺 <b>Субтитры:</b>\n{html.escape(ru)[:1500]}\n\n🎵 {html.escape(it.get('music', '—'))}")
+                  f"\n\n🇷🇺 <b>Субтитры:</b>\n{html.escape(ru)[:1500]}\n\n🎵 {html.escape(it.get('music', '—'))}"
+                  f"\n\n{html.escape(it.get('qc', ''))}")
 
 
 def approval_message(item_id: str) -> None:
