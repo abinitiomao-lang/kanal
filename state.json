@@ -1093,14 +1093,15 @@
   "L1103140530a9": {
    "kind": "long",
    "topic": "The Desire Map, Part 1 of 2: Desire and Feelings",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-03T14:05:07+00:00",
    "long_ref": null,
    "series": "laporte",
    "part": 1,
    "format": null,
    "book": null,
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-11-03T14:05:51+00:00"
   }
  },
  "images": [
