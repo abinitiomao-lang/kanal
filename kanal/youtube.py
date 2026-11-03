@@ -89,13 +89,12 @@ def schedule(video_id: str, when) -> dict:
     yt = _yt()
     cur = yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
     cur.update(privacyStatus="private", publishAt=when.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"))
-    print(f"schedule {video_id}: send {cur}")
-    try:
-        yt.videos().update(part="status", body={"id": video_id, "status": cur}).execute()
+    try:  # берём ответ update: videos.list сразу после него отдаёт устаревший статус
+        out = yt.videos().update(part="status", body={"id": video_id, "status": cur}).execute()["status"]
     except HttpError as e:
         print(f"WARN schedule {video_id}: {e}")
-    out = yt.videos().list(part="status", id=video_id).execute()["items"][0]["status"]
-    print(f"schedule {video_id}: got {out}")
+        return {}
+    print(f"schedule {video_id}: {out.get('privacyStatus')} until {out.get('publishAt')}")
     return out
 
 
