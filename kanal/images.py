@@ -56,11 +56,12 @@ class Library:
             r = requests.get(hit["url"], timeout=120)
             r.raise_for_status()
             out.write_bytes(r.content)
-            return out
+            if not _is_blank(out):  # в библиотеку раньше попадали чёрные кадры фильтра fal
+                return out
         return self.generate(prompt, orient, out, style=style)
 
     def generate(self, prompt: str, orient: str, out: Path, model: str | None = None,
-                 usd: float | None = None, style: tuple[str, str] | None = None) -> Path:
+                 usd: float | None = None, style: tuple[str, str] | None = None, _retry: int = 0) -> Path:
         w, h = SIZES[orient]
         full = f"{prompt}. {style[1] if style else CFG['images']['style']}"
         r = requests.post(
@@ -75,8 +76,14 @@ class Library:
         img_url = r.json()["images"][0]["url"]
         img = Image.open(io.BytesIO(requests.get(img_url, timeout=120).content)).convert("RGB")
         img.save(out, "JPEG", quality=92)
-        self.last_url = img_url
         self.spent += CFG["images"]["usd_per_image"] if usd is None else usd
+        if _is_blank(out):  # фильтр безопасности fal отдаёт чёрный кадр — перерисовываем мягче
+            if _retry >= 2:
+                raise RuntimeError("fal.ai: картинка чёрная (фильтр безопасности) 3 раза подряд")
+            print(f"WARN blank image, retry {_retry + 1}: {prompt[:80]}")
+            return self.generate(f"{prompt}, wholesome gentle storybook scene", orient, out, model, usd, style,
+                                 _retry + 1)
+        self.last_url = img_url
         entry = {"id": uuid.uuid4().hex[:12], "prompt": prompt, "orient": orient}
         if style:
             entry["style"] = style[0]
@@ -114,6 +121,13 @@ class Library:
             st["images"].extend(e for e, _ in self.new)
         state.update(fn, f"library +{len(self.new)}")
         self.new = []
+
+
+def _is_blank(path: Path) -> bool:
+    """Почти однотонный тёмный кадр (так fal.ai отдаёт картинки, заблокированные фильтром)."""
+    from PIL import ImageStat
+    st = ImageStat.Stat(Image.open(path).convert("L").resize((64, 64)))
+    return st.mean[0] < 12 and st.stddev[0] < 6
 
 
 def _kling(payload: dict, out: Path) -> None:

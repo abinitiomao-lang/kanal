@@ -57,7 +57,7 @@ formats:
       glow: "FF2BB0"               # розовая неоновая подсветка вокруг
       glow_width: 7
       blur: 6
-      y: 1150                      # верх строки, px (над английскими; безопасная полоса 1050–1320)
+      y: 1125                      # верх строки, px (над английскими с зазором ~30 px; безопасная полоса 1050–1320)
     script: >-
       Tell this idea as a 15-40 second micro-story (40-95 words) — an allegory, not a lecture.
       The protagonist is ALWAYS our recurring hero Luna (see `hero`), living a new chapter of her life;
@@ -107,7 +107,7 @@ formats:
       y: 1262                      # верх блока субтитров, px
     ru_subs:
       <<: *ru
-      y: 1205
+      y: 1182
     script: >-
       Frame this idea with a playful narrative device and keep it for the whole Short: e.g. a documentary
       from the year 2126 where historians study our strange habits, an alien anthropologist's field notes,

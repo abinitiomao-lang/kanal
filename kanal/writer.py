@@ -181,7 +181,13 @@ def _fix(text: str, issues: list[Issue], extra: str = "") -> str:
     return fixed if len(fixed.split()) <= limit * 1.3 else text
 
 
-def checked(text: str, rounds: int = 2) -> tuple[str, list[Issue], int]:
+SHORT_FIX = ("This is a finished Short script: fix each problem INSIDE the story's own voice by softening or "
+             "rewording the claim (e.g. 'Kahneman argues', 'in Berne's model'). Never add generic filler such as "
+             "'Psychologists note', 'Studies show', 'limited empirical validation' or citations with years; keep "
+             "the rhythm, the hook and the final line. ")
+
+
+def checked(text: str, rounds: int = 2, extra: str = "") -> tuple[str, list[Issue], int]:
     """Возвращает (исправленный текст, неисправленные проблемы, всего найдено)."""
     found = 0
     issues: list[Issue] = []
@@ -190,7 +196,7 @@ def checked(text: str, rounds: int = 2) -> tuple[str, list[Issue], int]:
         found += len(issues)
         if not issues:
             break
-        text = _fix(text, issues)
+        text = _fix(text, issues, extra)
     else:
         issues = fact_check(text)
     return text, issues, found

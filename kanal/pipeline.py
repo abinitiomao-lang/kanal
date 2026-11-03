@@ -123,8 +123,8 @@ def produce_short(item_id: str) -> None:
         narration = " ".join(ln.text for ln in script.lines)
         issues = writer.fact_check(" ".join(ln.text for ln in script.lines if ln.role == "HOST") or narration)
         found = len(issues)
-    elif room:  # текст редакции: фактчек с исправлениями
-        narration, issues, found = writer.checked(fixed)
+    elif room:  # текст редакции: фактчек с исправлениями в голосе сценария
+        narration, issues, found = writer.checked(fixed, extra=writer.SHORT_FIX)
     elif fixed:  # готовый проверенный текст не переписываем — фактчек только для отчёта
         narration = fixed
         issues = writer.fact_check(fixed)
@@ -164,7 +164,8 @@ def produce_short(item_id: str) -> None:
     look = (f"{fkey}-{hashlib.sha1(fmt['image'].encode()).hexdigest()[:8]}", fmt["image"])
     framed = fmt["layout"] == "framed"
     panel = (S["width"], fmt["frame"]["panel"]["h"]) if framed else None
-    hero = f"{script.character}. " if script.character else ""  # один и тот же герой во всех кадрах
+    # один и тот же герой во всех кадрах; имя из промпта убираем — иначе модель рисует его буквами
+    hero = re.sub(r"\bLuna\b[,:]?\s*", "", f"{script.character}. ") if script.character else ""
     lib = images.Library()
     segs = []
     for i in range(len(starts)):
@@ -176,7 +177,7 @@ def produce_short(item_id: str) -> None:
             is_video = src is not None
         if src is None:
             # с героем библиотеку не переиспользуем: он должен быть тем же самым в этом ролике
-            src = lib.get(hero + sc.visual, fmt["orient"], W / f"img_{i}.jpg",
+            src = lib.get(re.sub(r"\bLuna\b('s)?", "the cat", hero + sc.visual), fmt["orient"], W / f"img_{i}.jpg",
                           allow_reuse=not hero and i > 0, style=look)
             if i == 0 and fmt.get("animate_hook") and seconds <= 5 and not costs.over_budget(0.6 + lib.spent):
                 try:  # первый кадр — живое видео: решает, листнут ли шортс
