@@ -2459,8 +2459,8 @@
   },
   "2026-11": {
    "anthropic": 0.36803,
-   "fal": 3.712,
-   "images": 44,
+   "fal": 3.766,
+   "images": 53,
    "elevenlabs": 0,
    "eleven_chars": 8831
   }
@@ -3035,6 +3035,12 @@
    "service": "elevenlabs",
    "usd": 0,
    "note": "S11032237c85d"
+  },
+  {
+   "ts": "2026-11-03T23:17:31+00:00",
+   "service": "fal",
+   "usd": 0.054,
+   "note": "S103006509760"
   }
  ],
  "awaiting_comment": null,
