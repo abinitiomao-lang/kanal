@@ -2692,8 +2692,8 @@
   },
   "2026-11": {
    "anthropic": 0.69451,
-   "fal": 3.922,
-   "images": 79,
+   "fal": 3.976,
+   "images": 88,
    "elevenlabs": 0,
    "eleven_chars": 9334
   }
@@ -3316,6 +3316,12 @@
    "service": "fal",
    "usd": 0.054,
    "note": "S110319572bd7"
+  },
+  {
+   "ts": "2026-11-03T23:19:17+00:00",
+   "service": "fal",
+   "usd": 0.054,
+   "note": "S11032237c85d"
   }
  ],
  "awaiting_comment": null,
