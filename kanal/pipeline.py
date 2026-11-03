@@ -233,24 +233,59 @@ def produce_short(item_id: str) -> None:
     if long_url:
         desc += f"\n\n🌙 Fall asleep learning more: {long_url}"
     desc += f"\n\n{DISCLOSURE}"
+    release = None
     try:
         vid = youtube.upload(out, script.title, desc, script.tags)
-    except Exception as e:  # дневной лимит загрузок — ролик не теряем, публикуем вручную
+    except Exception as e:  # дневной лимит загрузок — файл в черновик релиза, бот догрузит сам
         if "uploadLimitExceeded" not in str(e):
             raise
         print(f"WARN upload: {e}")
-        vid = None
+        vid, release = None, park_upload(item_id, out, script.title)
 
     lib.commit(item_id)
     llm.flush(item_id)
-    state.set_item(item_id, status="awaiting_approval", video_id=vid, title=script.title, description=desc,
+    state.set_item(item_id, status="awaiting_approval" if vid else "awaiting_upload", video_id=vid, release=release,
+                   title=script.title, description=desc,
                    format=fkey,
                    tags=script.tags, duration=audio.probe_duration(out), narration=narration,
                    ru_subs=ru_text, qc=quality, music=f"{level} ({bed_db:+.0f} дБ): {mood}" if mood else "эмбиент",
                    factcheck=_issues_text([i.model_dump() for i in issues], found))
     telegram.send_document(out, f"▶️ Превью шортса {item_id}")
     script_message(item_id)
-    approval_message(item_id)
+    if vid:
+        approval_message(item_id)
+    else:
+        telegram.send(f"⏳ {item_id}: YouTube упёрся в дневной лимит загрузок. Загружу сам, как только лимит "
+                      "сбросится, и пришлю кнопки.")
+
+
+def park_upload(item_id: str, video: Path, title: str) -> str:
+    """Кладёт готовый ролик в черновик релиза — бот загрузит его на YouTube позже (retry_uploads)."""
+    release = f"short-{item_id}"
+    subprocess.run(["gh", "release", "create", release, "--draft", "--title", title[:100],
+                    "--notes", "pending YouTube upload", str(video)], check=True)
+    return release
+
+
+def retry_uploads() -> None:
+    """Догружает ролики, упёршиеся в дневной лимит. Вызывается ботом не чаще раза в час."""
+    import tempfile
+    for item_id, it in state.load()["items"].items():
+        if it.get("status") != "awaiting_upload" or not it.get("release"):
+            continue
+        with tempfile.TemporaryDirectory() as d:
+            subprocess.run(["gh", "release", "download", it["release"], "-D", d, "-p", "*.mp4"], check=True)
+            video = next(Path(d).glob("*.mp4"))
+            try:
+                vid = youtube.upload(video, it["title"], it["description"], it["tags"])
+            except Exception as e:
+                if "uploadLimitExceeded" in str(e):
+                    print("upload limit still active")
+                    return
+                raise
+        subprocess.run(["gh", "release", "delete", it["release"], "-y", "--cleanup-tag"], check=False)
+        state.set_item(item_id, status="awaiting_approval", video_id=vid, release=None)
+        approval_message(item_id)
 
 
 # ======================= ДЛИННОЕ =======================

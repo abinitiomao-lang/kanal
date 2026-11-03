@@ -341,7 +341,23 @@ def handle(u: dict) -> None:
         telegram.send(HELP)
 
 
+def _retry_uploads() -> None:
+    st = state.load()
+    last = st.get("last_upload_retry")
+    if not any(i.get("status") == "awaiting_upload" for i in st["items"].values()):
+        return
+    if last and datetime.now(timezone.utc) - datetime.fromisoformat(last) < timedelta(hours=1):
+        return
+    state.update(lambda s: s.__setitem__("last_upload_retry", state.now()), "upload retry")
+    from . import pipeline
+    try:
+        pipeline.retry_uploads()
+    except Exception as e:
+        print(f"WARN retry uploads: {e}")
+
+
 def poll(seconds: int) -> None:
+    _retry_uploads()
     deadline = time.time() + seconds
     while time.time() < deadline:
         offset = state.load()["tg_offset"]
