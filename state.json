@@ -1315,7 +1315,7 @@
   "S11032237eadc": {
    "kind": "short",
    "topic": "Daniel Kahneman describes anchoring: in a 1974 study with Amos Tversky, a random number people had just seen, even one obviously unrelated, pulled their numerical guesses toward it.",
-   "status": "awaiting_approval",
+   "status": "queued",
    "created": "2026-11-03T22:37:50+00:00",
    "long_ref": null,
    "series": null,
@@ -1325,7 +1325,7 @@
    "feedback": [],
    "updated": "2026-11-03T23:14:51+00:00",
    "error": null,
-   "video_id": "1UeNxqJKhiw",
+   "video_id": null,
    "title": "Kahneman: random numbers steer your guesses #psychology #science",
    "description": "Daniel Kahneman, with Amos Tversky, described anchoring in a 1974 study where a rigged wheel of fortune pulled people's estimates toward an unrelated number. The book is Thinking, Fast and Slow by Daniel Kahneman, and anchoring has replicated widely, unlike some priming studies he cited later that failed to replicate.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
@@ -1341,7 +1341,8 @@
    "duration": 24.5,
    "narration": "You just saw a random number. Now you must guess a price. Your guess drifts toward it, even though it means nothing. Archivists of 2126 will file this under habit. They will find it at auctions, on price tags and in dinner-table bets. Psychologists Amos Tversky and Daniel Kahneman identified it in 1974. Kahneman later popularized it in Thinking, Fast and Slow. Modern experiments document this bias well.",
    "factcheck": "🔎 Фактчек: найдено 2, осталось 0",
-   "publish_at": null
+   "publish_at": null,
+   "release": null
   },
   "S11032237c85d": {
    "kind": "short",
