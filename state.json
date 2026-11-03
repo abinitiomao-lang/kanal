@@ -2373,7 +2373,7 @@
    "fal": 3.658,
    "images": 35,
    "elevenlabs": 0,
-   "eleven_chars": 6220
+   "eleven_chars": 6707
   }
  },
  "costs_log": [
@@ -2903,6 +2903,12 @@
    "ts": "2026-11-03T22:57:24+00:00",
    "service": "anthropic",
    "usd": 0.00527,
+   "note": "S11032237126a"
+  },
+  {
+   "ts": "2026-11-03T23:08:56+00:00",
+   "service": "elevenlabs",
+   "usd": 0,
    "note": "S11032237126a"
   }
  ],
