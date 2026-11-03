@@ -522,6 +522,54 @@
    "msg": 87,
    "picked": [],
    "created": "2026-11-02T15:25:28+00:00"
+  },
+  "p11031358e18a": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "In the bat-and-ball puzzle, a bat and ball cost $1.10 together and the bat costs $1.00 more than the ball, so most people's quick answer of 10 cents is wrong; Daniel Kahneman uses this to show how the fast, intuitive System 1 offers an answer that the slower System 2 should check.",
+     "subject": "Daniel Kahneman and the bat-and-ball puzzle",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Eric Berne proposed that we speak from three inner ego states, Parent, Adult and Child, and that switching between them shapes many everyday conversations; this is Berne's model, not a tested scientific finding.",
+     "subject": "Eric Berne's ego states",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi described flow, the state where a challenge matches your skill so closely that hours can seem to pass in minutes, and he studied it by asking ordinary people to record what they were doing and feeling throughout the day.",
+     "subject": "Csikszentmihalyi and flow",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink reports that in the candle problem experiments, offering bigger rewards for solving the puzzle often made people slower, a finding he uses to argue that rewards can narrow thinking.",
+     "subject": "Daniel Pink and the candle problem",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Philippa Perry cites the Nun Study, in which the wording of nuns' autobiographies written in their early twenties was linked to their later cognitive health, a striking but observational finding that does not prove writing itself causes better brains.",
+     "subject": "Philippa Perry and the Nun Study",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 89,
+   "picked": [],
+   "created": "2026-11-03T13:58:12+00:00"
   }
  },
  "items": {
@@ -2014,7 +2062,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-10-31",
- "last_short_proposal": "2026-11-02",
+ "last_short_proposal": "2026-11-03",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
