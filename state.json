@@ -1327,7 +1327,7 @@
   "S11032237c85d": {
    "kind": "short",
    "topic": "Barbara Sher's idea of a 'scanner' describes people with many interests who feel stuck or panicky when asked to pick just one, a concept from her coaching work rather than a psychological diagnosis.",
-   "status": "failed",
+   "status": "queued",
    "created": "2026-11-03T22:37:55+00:00",
    "long_ref": null,
    "series": null,
@@ -1335,8 +1335,8 @@
    "format": "tale",
    "book": "sher",
    "feedback": [],
-   "updated": "2026-11-03T22:43:32+00:00",
-   "error": "fal.ai 403: {\"detail\":\"User is locked. Reason: TOP_UP.\"}"
+   "updated": "2026-11-03T22:51:06+00:00",
+   "error": null
   },
   "S11032237126a": {
    "kind": "short",
