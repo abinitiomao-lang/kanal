@@ -20,6 +20,10 @@ CHANNEL_VOICE = (
     "Retell books in your own words with your own examples; never reproduce their text or long quotes."
 )
 
+# Длинные видео выходят «частотами» радио: научные темы (основная) и психология по книгам владельца.
+FREQ_SCIENCE = "Science to Sleep To"
+FREQ_MIND = "Mind Frequency"
+
 
 # ---------- темы ----------
 
@@ -47,6 +51,7 @@ def next_book_parts(done: set[tuple[str, int]], limit: int = 10) -> list[dict]:
             if (b["id"], n) not in done:
                 total = len(b["parts"])
                 out.append({"topic": f"{b['book']}, Part {n} of {total}: {part['title']}", "subject": "psychology",
+                            "frequency": FREQ_MIND,
                             "pitch": ", ".join(part["points"][:4]) + "…", "source": f"{b['book']} by {b['author']}",
                             "series": b["id"], "part": n, "button": f"{b['author'].split()[-1]} {n}/{total}: {part['title']}"})
                 break
@@ -60,12 +65,20 @@ def book_part(series: str, n: int) -> dict:
 
 def propose_long(used: list[str]) -> list[Topic]:
     prompt = (
-        f"Propose 5 topics for a 2-3 hour 'fall asleep learning' video. Each must be broad enough for "
-        f"{CFG['long']['chapters']} calm chapters, evergreen, searchable (people search e.g. 'fall asleep "
-        f"learning about the ocean'). Mix subjects from: {', '.join(CFG['subjects'])}.\n"
+        f"Propose 5 topics for a 2-3 hour 'science to fall asleep to' video. Each must be broad enough for "
+        f"{CFG['long']['chapters']} calm chapters, evergreen and with proven search demand: big, wonder-filled "
+        f"subjects people already search for at bedtime ('the entire history of the ocean', 'how the universe "
+        f"ends', 'strange creatures of the deep sea'). Mix subjects from: {', '.join(CFG['subjects'])}.\n"
         f"Do NOT repeat or closely overlap these already used topics: {used[-60:] or 'none'}."
     )
     return llm.json(prompt, Topics, system=CHANNEL_VOICE).topics[:5]
+
+
+def propose_mixed(used: list[str], done: set[tuple[str, int]]) -> list[dict]:
+    """3 научные темы + 2 следующие части книг (≈60/40), каждая помечена своей «частотой»."""
+    books = next_book_parts(done, limit=2)
+    science = [{**t.model_dump(), "frequency": FREQ_SCIENCE} for t in propose_long(used)]
+    return science[:5 - len(books)] + books
 
 
 class ShortIdea(BaseModel):
@@ -182,7 +195,8 @@ class ChapterPlan(BaseModel):
 
 
 class Outline(BaseModel):
-    video_title: str = Field(description="e.g. 'Fall Asleep Learning: The Deep Ocean | 3 Hours of Calm Science Facts'")
+    video_title: str = Field(description="e.g. 'The Entire History of the Ocean | 3 Hours of Science to Fall "
+                             "Asleep To · Dark Screen'")
     description: str = Field(description="YouTube description, 3 short paragraphs, calm, no hashtags spam")
     tags: list[str]
     thumbnail_text: str = Field(description="2-4 words for the thumbnail")
@@ -200,14 +214,18 @@ def long_outline(topic: str, feedback: str = "", book: dict | None = None) -> Ou
         about = (f"part {book['n']} of {book['total']} of a calm retelling of the book '{book['book']}' by "
                  f"{book['author']}: '{book['title']}'. Cover, in order: {'; '.join(book['points'])}. "
                  f"How to present the evidence: {book['evidence']}. Retell the ideas in your own words with your own "
-                 f"examples; never reproduce the book's text. Title format: 'Fall Asleep to {book['book']} by "
-                 f"{book['author']} (Part {book['n']} of {book['total']}): <Part title> | {math.ceil(hours)} Hours "
-                 f"Calm Book Summary' — at most 100 characters, shorten the book title if needed.")
+                 f"examples; never reproduce the book's text. Title format: '<the everyday psychological question "
+                 f"this part answers, e.g. Why Your Brain Overthinks at Night> | {math.ceil(hours)} Hours of "
+                 f"Psychology to Fall Asleep To' — at most 100 characters; do NOT put the book title in the video "
+                 f"title. The description must credit the book: 'Based on ideas from {book['book']} by "
+                 f"{book['author']} (Part {book['n']} of {book['total']}), retold in our own words.'")
     else:
         about = (f"{topic}. Title format: "
-                 f"'Fall Asleep Learning: <Topic> | {math.ceil(hours)} Hours of Calm Science Facts'.")
+                 f"'<The Topic, as people search it> | {math.ceil(hours)} Hours of Science to Fall Asleep To · "
+                 f"Dark Screen' — at most 100 characters, drop ' · Dark Screen' if it does not fit.")
     return llm.json(
-        f"Plan a {hours}-hour sleep-learning video: {about} Exactly {CFG['long']['chapters']} chapters "
+        f"Plan a {hours}-hour sleep-learning video for {CFG['channel']['name']}: {about} Mention in the "
+        "description that the screen slowly dims to near-black after 15 minutes. Exactly {CFG['long']['chapters']} chapters "
         f"that flow gently from simple to deeper, ending in a soft, reflective chapter. "
         f"15-25 tags.{(' Owner feedback on previous version: ' + feedback) if feedback else ''}",
         Outline, system=CHANNEL_VOICE)
@@ -227,7 +245,8 @@ def long_chapter(outline: Outline, idx: int, feedback: str = "") -> str:
         "Style: slow, warm, soothing bedtime narration. Second person ('imagine...'). Long flowing sentences, "
         "gentle transitions, no exclamation marks, no questions to the viewer that demand attention, no "
         "lists or headings, no sudden excitement. Explain each fact clearly as a good teacher would. "
-        + ("Open with a short calm welcome inviting the listener to get comfortable. " if first else "")
+        + (f"Open with the channel's ritual greeting, word for word: '{CFG['channel']['greeting']}' — then a "
+           "short calm welcome inviting the listener to get comfortable. " if first else "")
         + ("End by slowly winding down, wishing the listener restful sleep. " if last else "")
         + "Output only the narration as plain paragraphs, no title."
         + (f" Owner feedback on previous version: {feedback}" if feedback else ""),
@@ -275,8 +294,8 @@ def short_script(fact: str, long_title: str | None, feedback: str = "", fmt: dic
     return llm.json(
         f"Write a YouTube Short about this idea: {fact}\n{src}\n{how}\n"
         "Funny or moving is good; wrong is not — every claim must be true. "
-        + (f"End by mentioning the full calm 'fall asleep learning' video on this topic on our channel ('{long_title}'). "
-           if long_title else "")
+        + (f"End with one short line inviting viewers to the full bedtime broadcast on this topic on "
+           f"{CFG['channel']['name']} ('{long_title}'). " if long_title else "")
         + f"Split into {n - 2}-{n + 2} scenes (about 2-4 seconds each), each visual showing exactly what is "
         "said at that moment, with action and movement in the frame."
         + (f" Owner feedback on previous version: {feedback}" if feedback else ""),

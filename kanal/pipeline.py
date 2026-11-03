@@ -222,7 +222,7 @@ def long_prepare(item_id: str) -> Path:
         print(f"WARN animation failed, static fallback: {e}")
         animated = False
         loop_len = render.prepare_loop(hero, W / "loop.mp4", is_video=False)
-    render.thumbnail(hero, outline.thumbnail_text, "FALL ASLEEP LEARNING", W / "thumb.jpg")
+    render.thumbnail(hero, outline.thumbnail_text, "FALL ASLEEP · DARK SCREEN", W / "thumb.jpg")
 
     L = CFG["long"]
     music_ok = True

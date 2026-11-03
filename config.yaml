@@ -2,8 +2,10 @@
 
 channel:
   id: "UCrfBMpzLf5jPt06IBmaGoZA"  # https://www.youtube.com/@SashaMao-e8i — загрузки только сюда
-  name: "Sleepy Science"          # обновится после выбора в боте
+  name: "Night Nerd Radio"        # бренд (2026-11-03); в Studio канал переименовывается вручную
+  greeting: "Good evening, nerds. Lights down, voices low. This is Night Nerd Radio."
   name_candidates:
+    - "Night Nerd Radio"
     - "Sleepy Science"
     - "Drift & Learn"
     - "The Quiet Classroom"
@@ -56,8 +58,13 @@ long:
     rhythmic pulse from muted hand drums or a deep low heartbeat-like percussion, and a slow repeating arpeggio
     of soft plucked tones. Calm, hypnotic, steady, spacious reverb, no vocals, no sudden loud changes
   fade_out_seconds: 30
+  dim_after_minutes: 15           # «Dark Screen»: картинка плавно гаснет, чтобы не светить в спальне
+  dim_fade_seconds: 60
+  dim_brightness: -0.22           # eq brightness итоговой тёмной петли (почти чёрный, слабое свечение)
+  dim_saturation: 0.6
 
 shorts:
+  publish_hour_ny: 21             # подсказка «Запланировать» в боте: 21:00 по Нью-Йорку, время отхода ко сну
   per_day: 2                      # 1–2 в день стабильно (против «mass-produced»; хватает на Kling-хук)
   min_seconds: 10
   max_seconds: 45               # владелец: шортсы 10–45 с

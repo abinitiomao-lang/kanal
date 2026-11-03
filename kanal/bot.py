@@ -3,7 +3,8 @@ import html
 import secrets
 import subprocess
 import time
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from . import audio, costs, llm, state, telegram, writer, youtube
 from .config import CFG
@@ -33,12 +34,12 @@ def _budget_ok(extra: float) -> bool:
 def propose_long() -> None:
     st = state.load()
     longs = [i for i in st["items"].values() if i["kind"] == "long" and i["status"] != "rejected"]
-    topics = writer.next_book_parts({(i["series"], i["part"]) for i in longs if i.get("series")})
-    if not topics:  # все книги сняты — обычные научные темы
-        topics = [t.model_dump() for t in writer.propose_long([i["topic"] for i in longs])]
+    topics = writer.propose_mixed([i["topic"] for i in longs],
+                                  {(i["series"], i["part"]) for i in longs if i.get("series")})
     pid = new_id("p")
+    icon = {writer.FREQ_SCIENCE: "🔭", writer.FREQ_MIND: "🧠"}
     text = "🌙 <b>Следующее длинное видео</b> — выбери одно:\n\n" + "\n".join(
-        f"{n + 1}. <b>{html.escape(t['topic'])}</b> — {html.escape(t['pitch'])}"
+        f"{n + 1}. {icon.get(t.get('frequency'), '')} <b>{html.escape(t['topic'])}</b> — {html.escape(t['pitch'])}"
         + (f" 📚 <i>{html.escape(t['source'])}</i>" if t.get("source") else "") for n, t in enumerate(topics))
     rows = [[(f"{n + 1}. {t.get('button', t['topic'])[:42]}", f"L:{pid}:{n}")] for n, t in enumerate(topics)]
     rows.append([("🔄 Другие темы", f"X:{pid}:long")])
@@ -131,6 +132,16 @@ def on_pick(kind: str, pid: str, n: int, msg_id: int) -> str:
     return "Принято"
 
 
+def best_slot() -> str:
+    """Ближайшие publish_hour_ny:00 по Нью-Йорку — люди ложатся спать; в МСК для удобства."""
+    ny = datetime.now(ZoneInfo("America/New_York"))
+    slot = ny.replace(hour=CFG["shorts"]["publish_hour_ny"], minute=0, second=0, microsecond=0)
+    if slot <= ny + timedelta(minutes=30):
+        slot += timedelta(days=1)
+    msk = slot.astimezone(ZoneInfo("Europe/Moscow"))
+    return f"{slot:%d.%m %H:%M} по Нью-Йорку = {msk:%d.%m %H:%M} МСК"
+
+
 def on_publish(item_id: str) -> str:
     it = state.get_item(item_id)
     if it.get("status") != "awaiting_approval":
@@ -154,6 +165,7 @@ def on_publish(item_id: str) -> str:
         f"<b>Описание:</b>\n<code>{html.escape(it['description'][:3000])}</code>\n\n"
         f"<b>Теги:</b>\n<code>{html.escape(', '.join(it['tags']))}</code>\n\n"
         "В Studio: категория Education, «Не для детей», Altered content → Yes.\n"
+        f"⏰ Не публикуй сразу — «Запланировать» на <b>{best_slot()}</b>.\n"
         "После загрузки пришли ссылку на видео ответом или нажми кнопку.",
         [[("✅ Загрузил вручную", f"M:{item_id}")]])
     state.update(lambda s: s.__setitem__("awaiting_link", item_id), "await link")

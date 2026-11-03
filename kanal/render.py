@@ -92,8 +92,8 @@ def music_bed(tracks: list[Path], out: Path) -> Path:
 def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambient: Path, out: Path,
                   work: Path, bed_db: float | None = None) -> float:
     """ambient — музыкальная подложка (music_bed) или запасной эмбиент; bed_db — её громкость."""
-    """Петля повторяется на всю длину озвучки. Перекодируются только вступление (проявление из темноты)
-    и концовка (затухание), остальное — копия. Голос сводится с эмбиентом. Возвращает длительность."""
+    """Петля повторяется на всю длину озвучки. Перекодируются только вступление (проявление из темноты),
+    переход в тёмную петлю (Dark Screen) и концовка (затухание), остальное — копия. Голос сводится с эмбиентом. Возвращает длительность."""
     L = CFG["long"]
     voice = work / "voice_all.flac"
     lst = work / "voice_all.txt"  # FLAC перекодируем: при copy в заголовке остаётся длина первой главы
@@ -104,17 +104,31 @@ def assemble_long(loop: Path, loop_len: float, chapter_audio: list[Path], ambien
     fo = L["fade_out_seconds"]
     n = math.ceil(dur / loop_len)
     k_out = min(n - 1, math.ceil((fo + 2) / loop_len))
+    gop = str(int(loop_len * L["fps"]))
     intro = work / "intro.mp4"
-    ff("-i", str(loop), "-vf", "fade=t=in:st=0:d=4", *_long_enc(), "-g", str(int(loop_len * L["fps"])), str(intro))
+    ff("-i", str(loop), "-vf", "fade=t=in:st=0:d=4", *_long_enc(), "-g", gop, str(intro))
+    middle, tail = [loop] * (n - 1 - k_out), loop
+    a = max(1, math.ceil(L["dim_after_minutes"] * 60 / loop_len))  # петель до начала затемнения (с intro)
+    m = max(1, math.ceil(L["dim_fade_seconds"] / loop_len))
+    if a - 1 + m < len(middle):  # «Dark Screen»: плавный переход в тёмную петлю, дальше снова копия
+        b, sat, f = L["dim_brightness"], L["dim_saturation"], m * loop_len
+        dark, trans_raw, trans = work / "loop_dark.mp4", work / "dim_raw.mp4", work / "dim.mp4"
+        ff("-i", str(loop), "-vf", f"eq=brightness={b}:saturation={sat}", *_long_enc(), "-g", gop, str(dark))
+        concat([loop] * m, trans_raw)
+        k = f"min(t/{f:.2f},1)"
+        ff("-i", str(trans_raw), "-vf", f"eq=eval=frame:brightness='{b}*{k}':saturation='1+({sat}-1)*{k}'",
+           *_long_enc(), "-g", gop, str(trans))
+        middle = [loop] * (a - 1) + [trans] + [dark] * (len(middle) - (a - 1) - m)
+        tail = dark
     outro_raw = work / "outro_raw.mp4"
-    concat([loop] * k_out, outro_raw)
+    concat([tail] * k_out, outro_raw)
     t0 = (n - k_out) * loop_len
     fade_end = dur - t0
     outro = work / "outro.mp4"
     ff("-i", str(outro_raw), "-vf", f"fade=t=out:st={max(0.0, fade_end - fo):.2f}:d={fo}",
-       *_long_enc(), "-g", str(int(loop_len * L["fps"])), str(outro))
+       *_long_enc(), "-g", gop, str(outro))
     video = work / "video_only.mp4"
-    concat([intro] + [loop] * (n - 1 - k_out) + [outro], video)
+    concat([intro] + middle + [outro], video)
     graph = (
         "[1:a]aresample=48000,pan=stereo|c0=c0|c1=c0,acompressor=threshold=-20dB:ratio=2.5,"
         "highshelf=f=6000:g=-4,apad[vo];"
