@@ -7,7 +7,7 @@ on:
 jobs:
   try-public:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 30
     env:
       KANAL_WORK: ${{ github.workspace }}/work
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
