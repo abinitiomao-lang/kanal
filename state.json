@@ -1089,7 +1089,7 @@
   "S103006509760": {
    "kind": "short",
    "topic": "Eric Berne claimed that many people unconsciously follow a childhood-made life plan he called a script, and that this plan can quietly shape their relationships and choices; this is Berne's model, not a tested scientific finding.",
-   "status": "awaiting_upload",
+   "status": "queued",
    "created": "2026-10-30T06:50:59+00:00",
    "long_ref": null,
    "series": null,
@@ -1118,7 +1118,7 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "pvU6CcQgGtU",
    "publish_at": null,
-   "release": "short-S103006509760",
+   "release": null,
    "ru_subs": [
     "Десять пакетов с продуктами.",
     "За один заход.",
