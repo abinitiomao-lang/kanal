@@ -2462,7 +2462,7 @@
    "fal": 3.712,
    "images": 44,
    "elevenlabs": 0,
-   "eleven_chars": 8374
+   "eleven_chars": 8831
   }
  },
  "costs_log": [
@@ -3029,6 +3029,12 @@
    "service": "elevenlabs",
    "usd": 0,
    "note": "S11032237eadc"
+  },
+  {
+   "ts": "2026-11-03T23:17:18+00:00",
+   "service": "elevenlabs",
+   "usd": 0,
+   "note": "S11032237c85d"
   }
  ],
  "awaiting_comment": null,
