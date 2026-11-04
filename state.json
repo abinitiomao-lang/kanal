@@ -1137,7 +1137,7 @@
   "S103006509760": {
    "kind": "short",
    "topic": "Eric Berne claimed that many people unconsciously follow a childhood-made life plan he called a script, and that this plan can quietly shape their relationships and choices; this is Berne's model, not a tested scientific finding.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-10-30T06:50:59+00:00",
    "long_ref": null,
    "series": null,
@@ -1145,7 +1145,7 @@
    "format": "series",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-04T17:34:48+00:00",
+   "updated": "2026-11-04T17:36:46+00:00",
    "video_id": "V_Wu-rP21CM",
    "title": "Eric Berne's 'until script': why rest never comes #psychology #ericberne",
    "description": "A tongue-in-cheek look from 2126 at the habit of postponing rest until the work is done. Based on Eric Berne's idea of life scripts, described in 'What Do You Say After You Say Hello?' (a companion to 'Games People Play'). It is Berne's model from transactional analysis, not proven science.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
@@ -1164,8 +1164,8 @@
    "duration": 25.8,
    "narration": "He will relax once the inbox is empty. The inbox is never empty. Exhibit fourteen, year 2126. The subject postpones rest, joy, and sleep until the work is finished. Eric Berne called this an until script: a life plan a child may pick up early, then follow without noticing. It is his model, not proven science. But the inbox refills by morning. Berne described it in What Do You Say After You Say Hello? And historians are still confused.",
    "factcheck": "✅ Фактчек: замечаний нет",
-   "public_id": "pvU6CcQgGtU",
-   "publish_at": null,
+   "public_id": "V_Wu-rP21CM",
+   "publish_at": "2026-11-06T02:00:00Z",
    "release": null,
    "ru_subs": [
     "Он расслабится, как только разберёт почту.",
