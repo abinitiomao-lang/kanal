@@ -33,6 +33,21 @@ def _issues_text(issues: list[dict], found: int) -> str:
     return s
 
 
+def _yt_upload(path: Path, title: str, description: str, tags: list[str], capped: bool = True) -> str:
+    """youtube.upload с суточным лимитом из config (shorts.max_uploads_24h): иначе YouTube
+    на свежем канале банит загрузки на сутки. Сверх лимита — та же ошибка, что и у YouTube."""
+    from datetime import datetime, timedelta, timezone
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=24)
+    recent = [t for t in state.load().get("uploads", []) if datetime.fromisoformat(t) > cutoff]
+    if capped and len(recent) >= CFG["shorts"]["max_uploads_24h"]:
+        raise RuntimeError(f"uploadLimitExceeded (свой лимит: {len(recent)} за 24 ч)")
+    vid = youtube.upload(path, title, description, tags)
+    state.update(lambda st: st.__setitem__("uploads", [t for t in st.get("uploads", [])
+                                                       if datetime.fromisoformat(t) > cutoff] + [state.now()]),
+                 "upload log")
+    return vid
+
+
 def _long_link(item: dict) -> tuple[str | None, str | None]:
     """Длинное видео той же темы для отсылки из шортса: (заголовок, url)."""
     ref = item.get("long_ref")
@@ -236,7 +251,7 @@ def produce_short(item_id: str) -> None:
     desc += f"\n\n{DISCLOSURE}"
     release = None
     try:
-        vid = youtube.upload(out, script.title, desc, script.tags)
+        vid = _yt_upload(out, script.title, desc, script.tags)
     except Exception as e:  # дневной лимит загрузок — файл в черновик релиза, бот догрузит сам
         if "uploadLimitExceeded" not in str(e):
             raise
@@ -278,7 +293,7 @@ def retry_uploads() -> None:
             subprocess.run(["gh", "release", "download", it["release"], "-D", d, "-p", "*.mp4"], check=True)
             video = next(Path(d).glob("*.mp4"))
             try:
-                vid = youtube.upload(video, it["title"], it["description"], it["tags"])
+                vid = _yt_upload(video, it["title"], it["description"], it["tags"])
             except Exception as e:
                 if "uploadLimitExceeded" in str(e):
                     print("upload limit still active")
@@ -395,7 +410,7 @@ def long_assemble(item_id: str) -> None:
     dur = render.assemble_long(W / "loop.mp4", script["loop_len"], voices, bed, out, W, bed_db)
     # в заголовке — фактическая длительность, а не плановая
     script["title"] = re.sub(r"\d+(\.\d+)? Hours?", f"{max(1, round(dur / 3600))} Hours", script["title"])
-    vid = youtube.upload(out, script["title"], script["description"], script["tags"])
+    vid = _yt_upload(out, script["title"], script["description"], script["tags"], capped=False)
     thumb_ok = youtube.set_thumbnail(vid, W / "thumb.jpg")
     release = None
     if CFG["pre_audit_mode"]:
