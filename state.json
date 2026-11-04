@@ -3136,6 +3136,48 @@
    "orient": "portrait",
    "style": "tale-7321be6c",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/dbf588d805c0.jpg"
+  },
+  {
+   "id": "591e7f120681",
+   "prompt": "Close-up of Maya, a 34-year-old woman with shoulder-length dark brown hair, tired green eyes and a loose grey knit sweater, in a small cluttered kitchen, gripping a coffee mug and glaring sideways with bitter resentment as she speaks.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/591e7f120681.jpg"
+  },
+  {
+   "id": "2915efe4c78c",
+   "prompt": "Close-up of Daniel, a 36-year-old man with short black hair, stubble and a navy work shirt with rolled sleeves, in a small cluttered kitchen, spreading his open hands toward her with a hurt, pleading look.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/2915efe4c78c.jpg"
+  },
+  {
+   "id": "3eac0fe3ff2d",
+   "prompt": "Close-up of Maya, a 34-year-old woman with shoulder-length dark brown hair, tired green eyes and a loose grey knit sweater, in a small cluttered kitchen, crossing her arms and turning her face away defensively.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/3eac0fe3ff2d.jpg"
+  },
+  {
+   "id": "c381e29427a7",
+   "prompt": "Close-up of Daniel, a 36-year-old man with short black hair, stubble and a navy work shirt with rolled sleeves, in a small cluttered kitchen, holding up a set of car keys and looking at her with quiet, steady sadness.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/c381e29427a7.jpg"
+  },
+  {
+   "id": "8ee1c4377665",
+   "prompt": "Close-up of Maya, a 34-year-old woman with shoulder-length dark brown hair, tired green eyes and a loose grey knit sweater, in a small cluttered kitchen, eyes filling with tears, lips trembling as she looks down at her hands.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/8ee1c4377665.jpg"
+  },
+  {
+   "id": "8ea2a70c7c42",
+   "prompt": "Wide quiet shot of a small cluttered kitchen where Maya stands at the sink with her back turned and Daniel sits at the far end of the table, both silent and apart, his hand resting beside the car keys.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/8ea2a70c7c42.jpg"
   }
  ],
  "costs": {
