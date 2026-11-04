@@ -1507,7 +1507,7 @@
   },
   "S110322465ce1": {
    "kind": "short",
-   "status": "producing",
+   "status": "awaiting_upload",
    "created": "2026-11-03T22:46:20+00:00",
    "topic": "Eric Berne described the game 'If It Weren't for You': a person blames their partner for holding them back, while secretly relying on that excuse to avoid the thing they fear.",
    "long_ref": null,
@@ -1516,11 +1516,44 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-04T12:35:44+00:00",
+   "updated": "2026-11-04T12:37:49+00:00",
    "error": "fal.ai 403: {\"detail\":\"User is locked. Reason: TOP_UP.\"}",
    "publish_at": null,
    "video_id": null,
-   "release": null
+   "release": "short-S110322465ce1",
+   "title": "Eric Berne's 'If It Weren't for You' game #psychology #relationships",
+   "description": "A tense couple scene dramatising the game 'If It Weren't for You', as described by psychiatrist Eric Berne in his book Games People Play. This is Berne's transactional analysis model, an influential therapeutic idea rather than proven science.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Eric Berne",
+    "Games People Play",
+    "transactional analysis",
+    "If It Weren't for You",
+    "psychology",
+    "relationships",
+    "blame",
+    "fear of failure",
+    "psychology shorts"
+   ],
+   "duration": 24.481,
+   "narration": "I'd have finished my novel by now, if it weren't for you. Me? I've begged you to write for months. Go. Take the weekend. You know I can't just leave you with everything. I booked the cabin. It's paid for. Your laptop is in the car. Well... it's not that simple. That's the game Eric Berne called 'If It Weren't for You'. In his book Games People Play, he suggested that blaming a partner can protect us from a fear we would have to face if they stepped aside.",
+   "ru_subs": [
+    "Я бы уже закончила роман, если бы не ты.",
+    "Я?",
+    "Я месяцами умоляю тебя писать.",
+    "Давай, езжай.",
+    "Возьми выходные.",
+    "Ты же знаешь, я не могу бросить тебя со всем этим.",
+    "Я забронировала домик.",
+    "Всё уже оплачено.",
+    "Твой ноутбук в машине.",
+    "Ну…",
+    "Всё не так просто.",
+    "Эрик Берн назвал эту игру «Если бы не ты».",
+    "В книге «Игры, в которые играют люди» он писал: обвиняя партнёра, мы защищаем себя от страха, с которым пришлось бы столкнуться, если бы партнёр отошёл в сторону."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 3: русский титр «Я забронировала домик.» наложен прямо на ключи в руке мужчины и частично перекрывает их, из-за чего важная деталь кадра закрыта текстом.\n⚠️ Кадр 2: у мужчины на переднем плане неестественные, деформированные руки: пальцы слишком крупные и искажённые, а левая рука огромная из-за перспективы. Это сразу бросается в глаза.\n⚠️ Кадр 4: английский субтитр «GAME ERIC» стоит в неверном порядке слов и не соответствует русской фразе «Эрик Берн назвал эту игру», поэтому выглядит как бессмыслица.\n⚠️ Кадр 2: английский субтитр «GO.» жёлтого цвета на тёмной рубашке расположен далеко от русского титра, два вида субтитров разбросаны по кадру и воспринимаются как несвязанные.\n⚠️ Кадр 1: английский титр «MY NOVEL» ядовито-зелёного цвета с сильным свечением плохо сочетается с кадром, а русская строка стоит на уровне шеи и свитера, из-за чего читается хуже.",
+   "music": "quiet (-31 дБ): emotional cinematic film score: sparse piano, low cello swells, intimate and tense, slow",
+   "factcheck": "✅ Фактчек: замечаний нет"
   }
  },
  "images": [
