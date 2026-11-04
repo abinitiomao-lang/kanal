@@ -1318,7 +1318,7 @@
   "S110319572bd7": {
    "kind": "short",
    "topic": "Eric Berne's transactional analysis model proposes that each of us switches between three ego states, Parent, Adult and Child, and that this model is an influential therapy framework rather than a scientifically tested finding.",
-   "status": "awaiting_upload",
+   "status": "awaiting_approval",
    "created": "2026-11-03T19:57:30+00:00",
    "long_ref": null,
    "series": null,
@@ -1326,8 +1326,8 @@
    "format": "series",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-03T23:26:57+00:00",
-   "video_id": null,
+   "updated": "2026-11-04T17:35:09+00:00",
+   "video_id": "RvzWXqu_tEU",
    "title": "Eric Berne's 3 ego states explain why mom's call shrinks you #psychology #transactionalanalysis",
    "description": "A playful look from the year 2126 at why a grown adult can feel fifteen again after a call from a parent. It retells the Parent, Adult and Child model from Eric Berne's book Games People Play, which is an influential therapy framework rather than tested science.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
@@ -1346,7 +1346,7 @@
    "narration": "Forty years old. Runs a department. His mother calls, and he is fifteen again. Shrugging. Mumbling \"fine.\" Documentary, year 2126. Our subject commands forty employees, yet one phone call shrinks him by twenty-five years. Historians note a theory. Psychiatrist Eric Berne proposed in his book Games People Play that we switch between three states: Parent, Adult and Child. A caution: this is a therapy model, not tested science. Still, it explains the man. And historians are still confused.",
    "factcheck": "✅ Фактчек: замечаний нет",
    "publish_at": null,
-   "release": "short-S110319572bd7",
+   "release": null,
    "ru_subs": [
     "Сорок лет.",
     "Руководит отделом.",
