@@ -724,6 +724,54 @@
     3
    ],
    "created": "2026-11-03T19:56:15+00:00"
+  },
+  "p11041412f9a3": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle: a bat and ball cost $1.10 together, and the bat costs $1 more than the ball, so most people's instant answer of 10 cents is wrong, and the correct answer is 5 cents.",
+     "subject": "Psychology",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi used an experience sampling method, asking people to write down what they were doing and feeling when a pager went off at random moments, and he argues this reveals absorbed, flow-like moments that people rarely notice in daily life.",
+     "subject": "Psychology",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Eric Berne's model describes everyday small talk, like asking how someone is doing, as a ritual that structures time and keeps social contact safe, rather than as a real exchange of information; this is Berne's model, not a tested scientific finding.",
+     "subject": "Psychology",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Daniel Pink describes a candle-problem study in which people offered bigger cash rewards for solving the puzzle quickly were often slower to solve it, which he uses to argue that rewards can narrow thinking.",
+     "subject": "Psychology",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Viktor Frankl, a psychiatrist writing about his own time in Nazi concentration camps, argued that even when outer freedom is taken away, a person can still choose their attitude toward their circumstances; this is his philosophical conclusion, not experimental research.",
+     "subject": "Philosophy and psychology",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 177,
+   "picked": [],
+   "created": "2026-11-04T14:12:51+00:00"
   }
  },
  "items": {
@@ -3978,7 +4026,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-03",
- "last_short_proposal": "2026-11-03",
+ "last_short_proposal": "2026-11-04",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
