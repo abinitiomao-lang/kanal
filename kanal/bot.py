@@ -356,8 +356,22 @@ def _retry_uploads() -> None:
         print(f"WARN retry uploads: {e}")
 
 
+def _sync_playlists() -> None:
+    """Раскладывает по плейлистам новые опубликованные видео (только если такие появились)."""
+    st = state.load()
+    pub = sorted(i["public_id"] for i in st["items"].values() if i.get("status") == "published" and i.get("public_id"))
+    if pub == st.get("playlists_synced"):
+        return
+    try:
+        youtube.playlists_sync(st["items"])
+        state.update(lambda s: s.__setitem__("playlists_synced", pub), "playlists synced")
+    except Exception as e:
+        print(f"WARN playlists: {e}")
+
+
 def poll(seconds: int) -> None:
     _retry_uploads()
+    _sync_playlists()
     deadline = time.time() + seconds
     while time.time() < deadline:
         offset = state.load()["tg_offset"]

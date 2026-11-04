@@ -139,6 +139,82 @@ def list_all() -> list[dict]:
             return out
 
 
+def playlists_list() -> list[dict]:
+    """Все плейлисты канала (включая private) с числом видео."""
+    yt = _yt()
+    check_channel(yt)
+    out, token = [], None
+    while True:
+        r = yt.playlists().list(part="snippet,status,contentDetails", mine=True, maxResults=50,
+                                pageToken=token).execute()
+        out += [{"id": p["id"], "title": p["snippet"]["title"], "privacy": p["status"]["privacyStatus"],
+                 "count": p["contentDetails"]["itemCount"]} for p in r["items"]]
+        token = r.get("nextPageToken")
+        if not token:
+            return out
+
+
+def _playlist_videos(yt, pid: str) -> set[str]:
+    out, token = set(), None
+    while True:
+        r = yt.playlistItems().list(part="contentDetails", playlistId=pid, maxResults=50, pageToken=token).execute()
+        out |= {i["contentDetails"]["videoId"] for i in r["items"]}
+        token = r.get("nextPageToken")
+        if not token:
+            return out
+
+
+def _wanted_playlists(items: dict) -> list[dict]:
+    """Плейлисты из config + по одному на многочастную серию длинных видео; у каждого — список videoId."""
+    from . import classics, writer
+    names = {b["id"]: b["book"] for b in writer.load_series()}
+    names |= {f"classic:{b['id']}": b["title"] for b in classics.load()}
+    pub = sorted((it for it in items.values() if it.get("status") == "published" and it.get("public_id")),
+                 key=lambda it: it.get("created", ""))
+    out = []
+    for p in CFG.get("playlists", []):
+        def ok(it, p=p):
+            ser = it.get("series") or ""
+            return (it.get("kind") == p["kind"]
+                    and (not p.get("books") or it.get("book") in p["books"])
+                    and (not p.get("series_prefix") or ser.startswith(p["series_prefix"]))
+                    and not (p.get("exclude_series_prefix") and ser.startswith(p["exclude_series_prefix"])))
+        out.append({"title": p["title"], "description": p["description"],
+                    "videos": [it["public_id"] for it in pub if ok(it)]})
+    for ser in sorted({it["series"] for it in pub if it.get("kind") == "long" and it.get("series")}):
+        vids = [it["public_id"] for it in pub if it.get("series") == ser]
+        if len(vids) < 2:  # плейлист серии — когда вышла хотя бы вторая часть
+            continue
+        book = names.get(ser, ser)
+        out.append({"title": f"{book} — Full Series (Fall Asleep Learning)"[:150],
+                    "description": f"All parts of {book}, in order. Calm narration to fall asleep to.",
+                    "videos": vids})
+    return out
+
+
+def playlists_sync(items: dict) -> None:
+    """Создаёт недостающие плейлисты (public) и добавляет в них опубликованные видео. Ничего не удаляет."""
+    yt = _yt()
+    check_channel(yt)
+    have = {p["title"]: p["id"] for p in playlists_list()}
+    for p in _wanted_playlists(items):
+        if not p["videos"]:
+            continue
+        pid = have.get(p["title"])
+        if not pid:
+            pid = yt.playlists().insert(part="snippet,status", body={
+                "snippet": {"title": p["title"], "description": p["description"],
+                            "defaultLanguage": CFG["channel"]["language"]},
+                "status": {"privacyStatus": "public"}}).execute()["id"]
+            print(f"создан плейлист {pid}: {p['title']}")
+        present = _playlist_videos(yt, pid)
+        for v in p["videos"]:
+            if v not in present:
+                yt.playlistItems().insert(part="snippet", body={"snippet": {
+                    "playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": v}}}).execute()
+                print(f"  + {v} → {p['title']}")
+
+
 def wipe(really: bool) -> None:
     """Печатает все видео канала; при really=True удаляет их и снимает их с очереди в state."""
     from . import state

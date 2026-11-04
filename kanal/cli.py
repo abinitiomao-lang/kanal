@@ -46,7 +46,9 @@ def main() -> None:
         elif cmd == "yt-status":
             for v in args:
                 print(v, youtube.channel_info() if v == "channel" else
-                      youtube.channel_sync() if v == "channel-sync" else youtube.status(v))
+                      youtube.channel_sync() if v == "channel-sync" else
+                      youtube.playlists_list() if v == "playlists" else
+                      youtube.playlists_sync(state.load()["items"]) if v == "playlists-sync" else youtube.status(v))
         elif cmd == "try-public":
             print(f"{args[0]}: privacyStatus после update = {youtube.make_public(args[0])}")
         elif cmd == "groups":
