@@ -1,5 +1,6 @@
 """YouTube Data API v3. Квота (2026-10): videos.insert — отдельный лимит 100 вызовов/сутки;
 videos.update / thumbnails.set / videos.delete — по 50 ед. из 10 000 ед./сутки."""
+import time
 from datetime import timezone
 from pathlib import Path
 
@@ -207,11 +208,19 @@ def playlists_sync(items: dict) -> None:
                             "defaultLanguage": CFG["channel"]["language"]},
                 "status": {"privacyStatus": "public"}}).execute()["id"]
             print(f"создан плейлист {pid}: {p['title']}")
-        present = _playlist_videos(yt, pid)
+            time.sleep(10)  # свежий плейлист API отдаёт не сразу (404 playlistNotFound)
+        present = _playlist_videos(yt, pid) if p["title"] in have else set()
         for v in p["videos"]:
             if v not in present:
-                yt.playlistItems().insert(part="snippet", body={"snippet": {
-                    "playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": v}}}).execute()
+                body = {"snippet": {"playlistId": pid, "resourceId": {"kind": "youtube#video", "videoId": v}}}
+                for attempt in range(5):
+                    try:
+                        yt.playlistItems().insert(part="snippet", body=body).execute()
+                        break
+                    except HttpError as e:
+                        if e.status_code != 404 or attempt == 4:
+                            raise
+                        time.sleep(15)
                 print(f"  + {v} → {p['title']}")
 
 

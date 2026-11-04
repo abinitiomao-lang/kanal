@@ -114,28 +114,20 @@ images:
 bot:
   poll_seconds: 240               # сколько job бота слушает Telegram за один запуск
 
-# Плейлисты канала: `python -m kanal.cli playlists` (workflow yt-status, аргумент playlists-sync) создаёт
-# недостающие (по точному названию — существующие с тем же названием переиспользуются) и раскладывает
-# опубликованные видео. kind: short/long; books — id из book_series.yaml; series_prefix — для classic:<id>.
-# Плюс автоматически — плейлист на каждую многочастную серию длинных видео («<книга> — Full Series»).
+# Плейлисты канала: бот после публикаций (и `python -m kanal.cli yt-status playlists-sync`) создаёт
+# недостающие (по точному названию — существующие, в т.ч. созданные владельцем в Studio, переиспользуются)
+# и раскладывает опубликованные видео. kind: short/long; books — id из book_series.yaml.
+# Плюс автоматически — плейлист на каждую серию длинных видео, когда вышла 2-я часть.
+# Пустые плейлисты YouTube не показывает на странице канала — это не баг.
 playlists:
-  - title: "Fall Asleep to Great Books — Book Summaries for Sleep"
+  - title: "Science to Fall Asleep To"          # создан владельцем 2026-11-03
     description: "Calm, low-voice retellings of the key ideas of great psychology and science books. Dim screen, gentle music. Press play and drift off."
     kind: long
     exclude_series_prefix: "classic:"
+  - title: "Shorts: Psychology"                 # создан владельцем 2026-11-03
+    description: "One surprising idea from psychology and great books — in under a minute."
+    kind: short
   - title: "Classic Stories Read Aloud — Fall Asleep to Literature"
     description: "Public-domain classics read unabridged in a calm voice, to help you unwind and fall asleep."
     kind: long
     series_prefix: "classic:"
-  - title: "Psychology of Relationships & Love — Shorts"
-    description: "One surprising idea about love, communication and the games people play — in under a minute."
-    kind: short
-    books: [berne, fisher, nvc, perry, litvak]
-  - title: "How Your Mind Decides — Thinking & Biases Shorts"
-    description: "Cognitive biases, intuition and the two systems of thinking — one idea at a time."
-    kind: short
-    books: [kahneman, sapiens]
-  - title: "Motivation, Flow & Meaning — Shorts"
-    description: "What really drives us: flow, motivation, desire and meaning, from the best books on the topic."
-    kind: short
-    books: [flow, drive, sher, laporte, frankl]
