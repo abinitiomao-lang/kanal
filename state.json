@@ -1458,7 +1458,7 @@
   "S11032237eadc": {
    "kind": "short",
    "topic": "Daniel Kahneman describes anchoring: in a 1974 study with Amos Tversky, a random number people had just seen, even one obviously unrelated, pulled their numerical guesses toward it.",
-   "status": "awaiting_upload",
+   "status": "awaiting_approval",
    "created": "2026-11-03T22:37:50+00:00",
    "long_ref": null,
    "series": null,
@@ -1466,9 +1466,9 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-11-03T23:27:14+00:00",
+   "updated": "2026-11-05T17:58:08+00:00",
    "error": null,
-   "video_id": null,
+   "video_id": "8sHXbE4wN1I",
    "title": "Kahneman's rigged wheel and anchoring #psychology #bias",
    "description": "In 1974, Daniel Kahneman and Amos Tversky showed that even a meaningless number can pull our guesses toward it. The idea comes from Kahneman's book Thinking, Fast and Slow, which also includes priming studies that later failed to replicate.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
@@ -1487,7 +1487,7 @@
    "narration": "Humans once let a spinning wheel decide their answers. Museum label, 2126. In 1974, Kahneman and Tversky rigged a wheel to stop on 10 or 65. Volunteers guessed what share of United Nations members were African countries. After 10, the average guess was about 25 percent. After 65, about 45. They knew the wheel meant nothing. It pulled them anyway. This effect, anchoring, has held up. Some priming studies from the same book have not. Daniel Kahneman tells it in Thinking, Fast and Slow.",
    "factcheck": "🔎 Фактчек: найдено 1, осталось 0",
    "publish_at": null,
-   "release": "short-S11032237eadc",
+   "release": null,
    "ru_subs": [
     "Когда-то люди позволяли вращающемуся колесу решать за них",
     "Табличка в музее, 2126 год",
