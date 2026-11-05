@@ -1555,7 +1555,7 @@
   "S11032237126a": {
    "kind": "short",
    "topic": "Philippa Perry suggests that your inner critic is a voice you can learn to notice and observe, instead of treating its harsh judgments as the truth.",
-   "status": "awaiting_upload",
+   "status": "awaiting_approval",
    "created": "2026-11-03T22:37:59+00:00",
    "long_ref": null,
    "series": null,
@@ -1563,9 +1563,9 @@
    "format": "tale",
    "book": "perry",
    "feedback": [],
-   "updated": "2026-11-03T23:12:16+00:00",
+   "updated": "2026-11-05T17:58:29+00:00",
    "error": null,
-   "video_id": null,
+   "video_id": "vOHUQ5bN9Lk",
    "title": "Philippa Perry's Inner Critic Trick: Just an Echo? #innercritic #selfcompassion",
    "description": "A gentle story about Luna and the voice in the old well, inspired by an idea from Philippa Perry's book How to Stay Sane: your inner critic is a voice you can notice and observe, rather than a truth you must obey. Retold in our own words.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
    "tags": [
@@ -1584,7 +1584,7 @@
    "narration": "Every night, a voice lives at the bottom of the old well. Luna leans over the edge. \"You're clumsy,\" it says, in her own voice. \"You always get it wrong.\" For years, she believes it. Tonight, a moth settles on her scarf. \"Listen,\" he whispers. \"It's only an echo.\" She listens again. The words still sting, but they are sounds on stone. Philippa Perry suggests your inner critic is a voice to notice, not a truth to obey. It's an idea from How to Stay Sane. Luna walks home, knowing that",
    "factcheck": "✅ Фактчек: замечаний нет",
    "publish_at": null,
-   "release": "short-S11032237126a",
+   "release": null,
    "ru_subs": [
     "Каждую ночь на дне старого колодца живёт голос.",
     "Луна склоняется над краем.",
