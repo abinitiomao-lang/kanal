@@ -772,6 +772,54 @@
    "msg": 177,
    "picked": [],
    "created": "2026-11-04T14:12:51+00:00"
+  },
+  "p11051428e503": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman describes 'what you see is all there is': the mind builds a confident story from whatever information is at hand and quietly ignores what it does not know, which is why we often feel sure of conclusions based on very little.",
+     "subject": "Kahneman's What You See Is All There Is",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi used an experience sampling method, asking people to note what they were doing and feeling when a signal went off at random moments, so that everyday experience could be studied as it happened.",
+     "subject": "Csikszentmihalyi's experience sampling",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Viktor Frankl argued, from his own experience in Nazi camps, that even when we cannot control our circumstances we can still choose the attitude we take toward them, which he saw as one of the last human freedoms.",
+     "subject": "Frankl's choosing one's attitude",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "In the 1940s the psychologist Harry Harlow reported that monkeys solved puzzles again and again with no food or other reward, suggesting that the satisfaction of mastering a puzzle can be motivation in itself, as Daniel Pink presents it in Drive.",
+     "subject": "Harlow's monkeys and puzzles",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Yuval Noah Harari argues in Sapiens that for most of history several human species, including Neanderthals, shared the planet with Homo sapiens, a mainstream finding that he uses to reflect on how unusual our own survival as the last one was.",
+     "subject": "Harari's many human species",
+     "related_long": -1,
+     "book": "sapiens",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 184,
+   "picked": [],
+   "created": "2026-11-05T14:28:48+00:00"
   }
  },
  "items": {
@@ -4033,7 +4081,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-03",
- "last_short_proposal": "2026-11-04",
+ "last_short_proposal": "2026-11-05",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
