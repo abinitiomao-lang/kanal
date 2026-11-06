@@ -868,6 +868,61 @@
    "msg": 188,
    "picked": [],
    "created": "2026-11-06T14:04:53+00:00"
+  },
+  "p110614058d4d": {
+   "kind": "long",
+   "topics": [
+    {
+     "topic": "Sapiens, Part 1 of 5: The Cognitive Revolution",
+     "subject": "history",
+     "frequency": "Science to Sleep To",
+     "pitch": "many human species, the cost of a big brain, fire and cooking, the meeting with Neanderthals…",
+     "source": "Sapiens by Yuval Noah Harari",
+     "series": "sapiens",
+     "part": 1,
+     "button": "Harari 1/5: The Cognitive Revolution"
+    },
+    {
+     "topic": "How the Universe Might End",
+     "subject": "astronomy",
+     "pitch": "You will learn the main scientific scenarios for the far future of the universe, such as heat death, the Big Crunch and the Big Rip, and why each one depends on how dark energy behaves.",
+     "source": "",
+     "frequency": "Science to Sleep To"
+    },
+    {
+     "topic": "Siddhartha by Hermann Hesse, Part 2 of 2",
+     "subject": "literature",
+     "frequency": "Classics to Fall Asleep To",
+     "pitch": "дословное чтение классики (общественное достояние)",
+     "source": "",
+     "series": "classic:siddhartha",
+     "part": 2,
+     "button": "📜 Siddhartha 2/2"
+    },
+    {
+     "topic": "Thinking, Fast and Slow, Part 1 of 5: Two Systems",
+     "subject": "psychology",
+     "frequency": "Mind Frequency",
+     "pitch": "System 1 and System 2, the bat-and-ball puzzle, the lazy controller and mental effort, cognitive ease…",
+     "source": "Thinking, Fast and Slow by Daniel Kahneman",
+     "series": "kahneman",
+     "part": 1,
+     "button": "Kahneman 1/5: Two Systems"
+    },
+    {
+     "topic": "Flow: The Psychology of Optimal Experience, Part 1 of 4: Happiness and the Control of Consciousness",
+     "subject": "psychology",
+     "frequency": "Mind Frequency",
+     "pitch": "happiness revisited, the roots of discontent, the experience sampling method, attention as psychic energy…",
+     "source": "Flow: The Psychology of Optimal Experience by Mihaly Csikszentmihalyi",
+     "series": "flow",
+     "part": 1,
+     "button": "Csikszentmihalyi 1/4: Happiness and the Control of Consciousness"
+    }
+   ],
+   "msg": 189,
+   "picked": [],
+   "created": "2026-11-06T14:05:04+00:00"
   }
  },
  "items": {
@@ -4140,7 +4195,7 @@
  ],
  "awaiting_comment": null,
  "channel_name": null,
- "last_long_proposal": "2026-11-03",
+ "last_long_proposal": "2026-11-06",
  "last_short_proposal": "2026-11-06",
  "budget_warned": null,
  "name_options": [
