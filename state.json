@@ -820,6 +820,54 @@
    "msg": 184,
    "picked": [],
    "created": "2026-11-05T14:28:48+00:00"
+  },
+  "p110614046289": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle shows how System 1 blurts out 10 cents for a bat and ball costing $1.10 together, when the careful System 2 answer is 5 cents.",
+     "subject": "System 1 and System 2 thinking",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Eric Berne's model says we fill our days with withdrawal, rituals, pastimes, games and intimacy, and much of everyday small talk is a pastime rather than real closeness; this is Berne's model, not a tested scientific finding.",
+     "subject": "Structuring time",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Viktor Frankl wrote that even in a Nazi camp, a person could still choose their attitude, which he called the last of the human freedoms; this is his personal philosophy, not an experiment.",
+     "subject": "Choosing one's attitude",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling method pinged people at random moments of their day, and the most absorbing moments they reported came when challenge and skill were both high.",
+     "subject": "Flow and challenge",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Philippa Perry points to the Nun Study, where the emotional tone of autobiographies nuns wrote in early adulthood was linked with later health and lifespan, a correlation that shows how our personal stories may matter but does not prove cause.",
+     "subject": "Personal narratives",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 188,
+   "picked": [],
+   "created": "2026-11-06T14:04:53+00:00"
   }
  },
  "items": {
@@ -4087,7 +4135,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-03",
- "last_short_proposal": "2026-11-05",
+ "last_short_proposal": "2026-11-06",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
