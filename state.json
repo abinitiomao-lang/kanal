@@ -923,6 +923,54 @@
    "msg": 189,
    "picked": [],
    "created": "2026-11-06T14:05:04+00:00"
+  },
+  "p11071248d9f0": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle: a bat and ball cost $1.10 together, and the bat costs $1.00 more than the ball, so the quick answer of 10 cents is wrong and the correct answer is 5 cents.",
+     "subject": "Quick intuitions can feel obviously right and still be wrong",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's model of flow suggests that when a task is much harder than your skills you feel anxious, and when it is much easier you feel bored, so deep absorption tends to appear when challenge and skill are both high and fairly well matched; this is his model, though it has been widely studied.",
+     "subject": "Why some tasks absorb us completely",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink describes research on the overjustification effect, where paying people for a task they already enjoy can make them less interested in it afterward, a pattern that psychologists have studied in several experiments.",
+     "subject": "When rewards can backfire",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Marshall Rosenberg taught that saying 'you never listen to me' is an evaluation dressed up as an observation, while saying 'you arrived twenty minutes after we agreed' is easier for others to hear; this is Rosenberg's communication approach, not a scientific finding.",
+     "subject": "Why criticism gets ignored",
+     "related_long": -1,
+     "book": "nvc",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Viktor Frankl, writing from his own time in Nazi concentration camps, concluded that even when circumstances cannot be chosen, a person can still choose their attitude toward them; this is his personal philosophy of logotherapy rather than experimental research.",
+     "subject": "Choosing your attitude when you cannot choose your circumstances",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "tale"
+    }
+   ],
+   "msg": 190,
+   "picked": [],
+   "created": "2026-11-07T12:48:41+00:00"
   }
  },
  "items": {
@@ -4203,7 +4251,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-06",
- "last_short_proposal": "2026-11-06",
+ "last_short_proposal": "2026-11-07",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
