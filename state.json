@@ -1019,7 +1019,9 @@
     }
    ],
    "msg": 192,
-   "picked": [],
+   "picked": [
+    4
+   ],
    "created": "2026-11-07T15:20:34+00:00"
   }
  },
@@ -1864,6 +1866,18 @@
    "part": 2,
    "format": null,
    "book": null,
+   "feedback": []
+  },
+  "S1107152034d7": {
+   "kind": "short",
+   "topic": "Eric Berne's model says people crave 'strokes', small units of recognition, and will even accept a scolding over being ignored, though this is Berne's model rather than a scientifically tested finding.",
+   "status": "queued",
+   "created": "2026-11-07T15:20:48+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "scene",
+   "book": "berne",
    "feedback": []
   }
  },
