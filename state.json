@@ -1859,14 +1859,15 @@
   "L11071520229a": {
    "kind": "long",
    "topic": "Siddhartha by Hermann Hesse, Part 2 of 2",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-07T15:20:12+00:00",
    "long_ref": null,
    "series": "classic:siddhartha",
    "part": 2,
    "format": null,
    "book": null,
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-11-07T15:20:52+00:00"
   },
   "S1107152034d7": {
    "kind": "short",
