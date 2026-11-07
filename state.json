@@ -921,7 +921,9 @@
     }
    ],
    "msg": 189,
-   "picked": [],
+   "picked": [
+    2
+   ],
    "created": "2026-11-06T14:05:04+00:00"
   },
   "p11071248d9f0": {
@@ -1803,6 +1805,18 @@
    "music": "quiet (-31 дБ): emotional cinematic film score: sparse piano, low cello swells, intimate and tense, slow",
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "AjmTxqkLGvc"
+  },
+  "L11071520229a": {
+   "kind": "long",
+   "topic": "Siddhartha by Hermann Hesse, Part 2 of 2",
+   "status": "queued",
+   "created": "2026-11-07T15:20:12+00:00",
+   "long_ref": null,
+   "series": "classic:siddhartha",
+   "part": 2,
+   "format": null,
+   "book": null,
+   "feedback": []
   }
  },
  "images": [
