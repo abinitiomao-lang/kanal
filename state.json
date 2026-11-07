@@ -1873,7 +1873,7 @@
   "S1107152034d7": {
    "kind": "short",
    "topic": "Eric Berne's model says people crave 'strokes', small units of recognition, and will even accept a scolding over being ignored, though this is Berne's model rather than a scientifically tested finding.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-07T15:20:48+00:00",
    "long_ref": null,
    "series": null,
@@ -1881,7 +1881,40 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-07T15:21:34+00:00"
+   "updated": "2026-11-07T15:23:33+00:00",
+   "video_id": "VfxB_9fs1iY",
+   "release": null,
+   "title": "Berne's strokes: scolded beats ignored? #psychology #relationships",
+   "description": "A tense family moment illustrates Eric Berne's idea of 'strokes', small units of recognition, and his claim that people may prefer a scolding to being ignored. This comes from Berne's book 'Games People Play'. Transactional analysis is an influential therapeutic model, not empirically validated science.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Eric Berne",
+    "Games People Play",
+    "transactional analysis",
+    "strokes",
+    "psychology",
+    "recognition",
+    "family drama",
+    "parenting",
+    "relationships"
+   ],
+   "duration": 20.302,
+   "narration": "You got suspended again? Seriously, Jake? Yeah. Go ahead. Shout. What do you want me to say? Anything! You haven't looked at me all week. I thought you wanted me to leave you alone. Eric Berne, in his book Games People Play, called small bits of recognition 'strokes'. In his model, even a scolding can beat being ignored, though that's his theory, not proven science.",
+   "ru_subs": [
+    "Тебя опять отстранили?",
+    "Серьёзно, Джейк?",
+    "Ага.",
+    "Давай, начинай.",
+    "Кричи.",
+    "И что мне сказать?",
+    "Хоть что-нибудь!",
+    "Ты всю неделю на меня не смотришь.",
+    "Я думал, ты хочешь, чтобы я оставил тебя в покое.",
+    "Эрик Берн в книге «Игры, в которые играют люди» называл крошечные знаки внимания «поглаживаниями».",
+    "В его модели даже нагоняй лучше, чем игнор, но это лишь его теория, а не доказанная наука."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: у женщины на переднем плане деформированные руки и пальцы — лишние или неестественно изогнутые, левая рука у края кадра обрезана и выглядит уродливо; лист бумаги искажён.\n⚠️ Кадр 2: руки подростка сложены неестественно, пальцы слипаются и выглядят как комок, анатомия нарушена.\n⚠️ Кадр 3: русский титр «на меня не смотришь.» расположен прямо поверх рта и подбородка героя, закрывает лицо; английское «WEEK.» не соответствует смыслу русской фразы и висит на шее, в кадре 3 из 4 русский титр перекрывает лицо.\n⚠️ Кадр 1: русский титр «Тебя опять отстранили?» лежит на подбородке и шее женщины, а «SUSPENDED» наложено на грудь; в целом текст стоит в середине кадра поверх персонажей.\n⚠️ Кадр 4: русский титр «Игры, в которые играют люди» шире центральной зоны и почти упирается в края кадра, при этом перекрывает фигуру и картину на стене; английское «BOOK GAMES» не совпадает по смыслу и по форме с русской строкой.\n⚠️ Кадр 4: на женщине и столе в кадре нет явной ошибки, но рука на столе с растопыренными пальцами выглядит слегка искажённой.",
+   "music": "quiet (-31 дБ): emotional cinematic film score: sparse piano, low cello swells, intimate and tense, slow",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S11071521335c": {
    "kind": "short",
