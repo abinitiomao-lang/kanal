@@ -973,6 +973,54 @@
    "msg": 190,
    "picked": [],
    "created": "2026-11-07T12:48:41+00:00"
+  },
+  "p110715205274": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle: a bat and ball cost $1.10 together, and the bat costs $1.00 more than the ball, so the quick answer of 10 cents is wrong, and the ball actually costs 5 cents, which shows how System 1 answers before System 2 checks.",
+     "subject": "Quick answers that feel obvious are often wrong",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi used the experience sampling method, having people carry pagers that beeped at random times so they could note what they were doing and how they felt, which is how he studied moments of flow in everyday life.",
+     "subject": "Flow shows up in ordinary days, not just special ones",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink reports that in a classic experiment, people offered a bigger cash reward for solving the candle problem fast took longer than those offered less, suggesting money can narrow thinking on creative tasks.",
+     "subject": "Why bigger rewards can make creative work worse",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Philippa Perry, citing the Nun Study, notes that the linguistic richness of autobiographies written by some sisters in their early twenties was linked to how their health and memory fared decades later, though the study is correlational.",
+     "subject": "The stories we tell about our lives may matter",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Eric Berne's model says people crave 'strokes', small units of recognition, and will even accept a scolding over being ignored, though this is Berne's model rather than a scientifically tested finding.",
+     "subject": "Why we sometimes prefer negative attention to none",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    }
+   ],
+   "msg": 192,
+   "picked": [],
+   "created": "2026-11-07T15:20:34+00:00"
   }
  },
  "items": {
