@@ -1919,7 +1919,7 @@
   "S11071521335c": {
    "kind": "short",
    "topic": "Daniel Pink reports that in a classic experiment, people offered a bigger cash reward for solving the candle problem fast took longer than those offered less, suggesting money can narrow thinking on creative tasks.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-07T15:21:01+00:00",
    "long_ref": null,
    "series": null,
@@ -1927,7 +1927,41 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-07T15:21:43+00:00"
+   "updated": "2026-11-07T15:24:54+00:00",
+   "video_id": "vCono09cG4g",
+   "release": null,
+   "title": "Pink's candle problem: why big prizes hurt ideas #psychology #drive",
+   "description": "A museum label from the future on the candle problem, an experiment Daniel Pink retells in his book Drive: The Surprising Truth About What Motivates Us. In the classic study, people promised a reward took longer to find the answer. Pink's wider claims about motivation are debated, so treat them as his reading of the research.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Daniel Pink",
+    "Drive",
+    "candle problem",
+    "motivation",
+    "psychology",
+    "Sam Glucksberg",
+    "creativity",
+    "functional fixedness",
+    "sleep learning",
+    "educational"
+   ],
+   "duration": 37.689,
+   "narration": "Offer a big prize for a good idea, and the idea can sometimes get worse. Museum label, exhibit twelve. In the 1930s, Karl Duncker devised the candle problem. In 1962, Sam Glucksberg tested it on volunteers. The task: attach the candle to a cork wall so the wax doesn't drip. Most saw the box as only a container. The answer was a shelf. Those offered a reward took longer on the standard version, though faster when the box was empty. Daniel Pink retells this in his book Drive. The prize seemed to narrow their focus. The reward finding is influential, but its broad application to creativity at work is debated.",
+   "ru_subs": [
+    "Пообещайте крупный приз за хорошую идею — и идея порой станет хуже",
+    "Табличка в музее, экспонат номер 12.",
+    "В 1930-х годах Карл Дункер придумал задачу о свече.",
+    "В 1962 году Сэм Глаксберг проверил её на добровольцах.",
+    "Задача: прикрепить свечу к пробковой стене так, чтобы воск не капал.",
+    "Большинство видели в коробке лишь контейнер.",
+    "Решением была полка.",
+    "Тем, кому обещали награду, обычный вариант давался дольше, но с пустой коробкой — быстрее.",
+    "Дэниел Пинк пересказывает это в книге «Драйв».",
+    "Награда будто сужала их фокус внимания.",
+    "Вывод о наградах влиятелен, но его применение к творчеству на работе — предмет споров."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: русский титр «Пообещайте крупный приз» стоит вплотную к нижней линии рамки иллюстрации и почти касается её, а над ним рука с кубком и бумажные комки упираются в рамку.\n⚠️ Кадр 1: на иллюстрации чрезмерно крупная рука с кубком, обрезанная краем кадра, выглядит нарочито странно; лицо мужчины за столом выражает недовольство и не соответствует «призу», что затрудняет понимание.\n⚠️ Кадр 2: русский титр «придумал задачу о свече.» налезает на нижнюю рамку картинки, а мелкие звёзды и край рисунка перекрываются неоновым свечением.\n⚠️ Кадр 3: иллюстрация (крупный план оплывающей свечи) не показывает коробку, о которой говорит титр «видели в коробке», смысл рисунка и текста расходится; изображение слишком абстрактное.\n⚠️ Кадр 4: на банкнотах в руках девушки видны нечитаемые мусорные надписи и цифры; у часов цифры искажены, в углу рисунка лишняя подпись «74».\n⚠️ Кадр 4: иллюстрация (девушка с деньгами и часами) не соотносится с текстом «Дэниел Пинк пересказывает это» и задачей о свече; русский титр частично закрывает нижние звёзды рисунка.\n⚠️ Английский и русский субтитры разнесены по смыслу: в кадре 4 английская строка «was empty. Daniel Pink retells» и русская «Дэниел Пинк пересказывает это» не совпадают по тексту, что выглядит рассинхроном для зрителя.",
+   "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
+   "factcheck": "🔎 Фактчек: найдено 5, осталось 0"
   }
  },
  "images": [
