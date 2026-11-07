@@ -1020,7 +1020,8 @@
    ],
    "msg": 192,
    "picked": [
-    4
+    4,
+    2
    ],
    "created": "2026-11-07T15:20:34+00:00"
   }
@@ -1879,6 +1880,18 @@
    "part": null,
    "format": "scene",
    "book": "berne",
+   "feedback": []
+  },
+  "S11071521335c": {
+   "kind": "short",
+   "topic": "Daniel Pink reports that in a classic experiment, people offered a bigger cash reward for solving the candle problem fast took longer than those offered less, suggesting money can narrow thinking on creative tasks.",
+   "status": "queued",
+   "created": "2026-11-07T15:21:01+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "drive",
    "feedback": []
   }
  },
