@@ -1024,6 +1024,54 @@
     2
    ],
    "created": "2026-11-07T15:20:34+00:00"
+  },
+  "p11081307b135": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman calls it 'what you see is all there is': your mind builds a confident story from the information in front of it and rarely notices the facts it never saw.",
+     "subject": "Hidden information and overconfidence",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi found that people in deep absorption, which he called flow, often lost track of time, so an hour could feel like ten minutes or the reverse.",
+     "subject": "Losing track of time",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Philippa Perry suggests the personal stories we tell about our lives shape how we act, so rewriting an old story can change what we do next, though she presents this as a practical approach rather than a proven result.",
+     "subject": "The stories we tell about ourselves",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Viktor Frankl wrote that even when we cannot change our circumstances, we can still choose the attitude we take toward them, a view he developed as a personal philosophy called logotherapy.",
+     "subject": "Choosing your attitude",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Daniel Pink describes Harry Harlow's 1949 work with rhesus monkeys, which showed they kept solving puzzles even with no food reward, suggesting curiosity and satisfaction can be strong motivators on their own.",
+     "subject": "Doing things for their own sake",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    }
+   ],
+   "msg": 206,
+   "picked": [],
+   "created": "2026-11-08T13:07:53+00:00"
   }
  },
  "items": {
@@ -4610,7 +4658,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-06",
- "last_short_proposal": "2026-11-07",
+ "last_short_proposal": "2026-11-08",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
