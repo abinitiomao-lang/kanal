@@ -1120,6 +1120,61 @@
    "msg": 207,
    "picked": [],
    "created": "2026-11-09T15:52:19+00:00"
+  },
+  "p110915527204": {
+   "kind": "long",
+   "topics": [
+    {
+     "topic": "Sapiens, Part 1 of 5: The Cognitive Revolution",
+     "subject": "history",
+     "frequency": "Science to Sleep To",
+     "pitch": "many human species, the cost of a big brain, fire and cooking, the meeting with Neanderthals…",
+     "source": "Sapiens by Yuval Noah Harari",
+     "series": "sapiens",
+     "part": 1,
+     "button": "Harari 1/5: The Cognitive Revolution"
+    },
+    {
+     "topic": "The Entire History of the Ocean",
+     "subject": "Oceans and Earth history",
+     "pitch": "You will learn how Earth's oceans formed, how their salt and shapes changed over billions of years, and how life first arose in the water.",
+     "source": "",
+     "frequency": "Science to Sleep To"
+    },
+    {
+     "topic": "Michael Kohlhaas by Heinrich von Kleist, Part 1 of 2",
+     "subject": "literature",
+     "frequency": "Classics to Fall Asleep To",
+     "pitch": "дословное чтение классики (общественное достояние)",
+     "source": "",
+     "series": "classic:kohlhaas",
+     "part": 1,
+     "button": "📜 Michael Kohlhaas 1/2"
+    },
+    {
+     "topic": "Thinking, Fast and Slow, Part 1 of 5: Two Systems",
+     "subject": "psychology",
+     "frequency": "Mind Frequency",
+     "pitch": "System 1 and System 2, the bat-and-ball puzzle, the lazy controller and mental effort, cognitive ease…",
+     "source": "Thinking, Fast and Slow by Daniel Kahneman",
+     "series": "kahneman",
+     "part": 1,
+     "button": "Kahneman 1/5: Two Systems"
+    },
+    {
+     "topic": "Flow: The Psychology of Optimal Experience, Part 1 of 4: Happiness and the Control of Consciousness",
+     "subject": "psychology",
+     "frequency": "Mind Frequency",
+     "pitch": "happiness revisited, the roots of discontent, the experience sampling method, attention as psychic energy…",
+     "source": "Flow: The Psychology of Optimal Experience by Mihaly Csikszentmihalyi",
+     "series": "flow",
+     "part": 1,
+     "button": "Csikszentmihalyi 1/4: Happiness and the Control of Consciousness"
+    }
+   ],
+   "msg": 208,
+   "picked": [],
+   "created": "2026-11-09T15:52:30+00:00"
   }
  },
  "items": {
@@ -4717,7 +4772,7 @@
  ],
  "awaiting_comment": null,
  "channel_name": null,
- "last_long_proposal": "2026-11-06",
+ "last_long_proposal": "2026-11-09",
  "last_short_proposal": "2026-11-09",
  "budget_warned": null,
  "name_options": [
