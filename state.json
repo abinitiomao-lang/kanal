@@ -1072,6 +1072,54 @@
    "msg": 206,
    "picked": [],
    "created": "2026-11-08T13:07:53+00:00"
+  },
+  "p11091552f247": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman's bat-and-ball puzzle: a bat and ball cost $1.10 together, and the bat costs $1.00 more than the ball, so many people instantly say 10 cents, but the ball actually costs 5 cents.",
+     "subject": "The bat-and-ball puzzle and fast, intuitive thinking",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Viktor Frankl wrote that in a labor camp he found comfort by picturing his wife's face, and he argued that inner life can stay free even when outer life is controlled.",
+     "subject": "Inner freedom and the image of a loved one",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Marshall Rosenberg's approach says 'you're always late' is an evaluation dressed up as an observation, and that describing what actually happened makes conversations far less defensive.",
+     "subject": "Observations versus evaluations",
+     "related_long": -1,
+     "book": "nvc",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling method gave people pagers that beeped at random times, and they wrote down what they were doing and how they felt in that moment.",
+     "subject": "The experience sampling method",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Yuval Noah Harari argues that gossip let early humans hold together in groups far larger than grooming alone could sustain; this is his argument, and historians debate how much it explains.",
+     "subject": "Gossip and the size of early human groups",
+     "related_long": -1,
+     "book": "sapiens",
+     "long_ref": null,
+     "format": "scene"
+    }
+   ],
+   "msg": 207,
+   "picked": [],
+   "created": "2026-11-09T15:52:19+00:00"
   }
  },
  "items": {
@@ -4664,7 +4712,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-06",
- "last_short_proposal": "2026-11-08",
+ "last_short_proposal": "2026-11-09",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
