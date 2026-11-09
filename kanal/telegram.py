@@ -18,6 +18,12 @@ def _call(method: str, files=None, http_timeout=60, **params):
         # текст исключения содержит URL с токеном — не пробрасываем его в лог
         raise RuntimeError(f"Telegram {method}: network error {type(e).__name__}") from None
     body = r.json()
+    if not body.get("ok") and "can't parse entities" in str(body.get("description")) and params.get("parse_mode"):
+        # неэкранированный текст (например, ошибка вида <HTTPError ...>) — шлём как обычный текст, а не теряем
+        params.pop("parse_mode")
+        for f in (files or {}).values():
+            f.seek(0)
+        return _call(method, files=files, http_timeout=http_timeout, **params)
     if not body.get("ok"):
         # не печатаем url — в нём токен
         raise RuntimeError(f"Telegram {method}: {body.get('description')}")
