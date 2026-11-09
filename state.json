@@ -3866,7 +3866,7 @@
    "images": 107
   },
   "2026-11": {
-   "anthropic": 1.7207,
+   "anthropic": 1.7223,
    "fal": 5.53,
    "images": 153,
    "elevenlabs": 0,
@@ -4706,6 +4706,12 @@
    "ts": "2026-11-08T13:07:55+00:00",
    "service": "anthropic",
    "usd": 0.00141,
+   "note": "proposals"
+  },
+  {
+   "ts": "2026-11-09T15:52:20+00:00",
+   "service": "anthropic",
+   "usd": 0.0016,
    "note": "proposals"
   }
  ],
