@@ -1175,6 +1175,54 @@
    "msg": 208,
    "picked": [],
    "created": "2026-11-09T15:52:30+00:00"
+  },
+  "p11101442c906": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Daniel Kahneman describes a simple puzzle: a bat and a ball cost $1.10 together, and the bat costs $1.00 more than the ball, so the instant answer of 10 cents is wrong and the ball actually costs 5 cents, a mistake even many well-educated people make.",
+     "subject": "Bat-and-ball puzzle",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling method asked people to note what they were doing and how they felt whenever a pager beeped at random times during the day, a way of studying everyday experience as it happens.",
+     "subject": "Experience sampling",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Philippa Perry points to the Nun Study, in which the way elderly sisters wrote in their early twenties was linked with their later memory health, a correlation that shows how early life may relate to later outcomes without deciding anyone's future.",
+     "subject": "The Nun Study",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink retells Edward Deci's 1971 experiment, in which students paid to solve puzzles seemed to lose interest in them afterward, a pattern he presents as a sign that rewards can undermine inner motivation, though later research shows this depends on the situation.",
+     "subject": "Paying people for interesting tasks",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Viktor Frankl, writing from his years in Nazi concentration camps, argued that even when almost everything else is taken away, a person can still choose their own attitude; this is his personal philosophy of logotherapy rather than a laboratory finding.",
+     "subject": "Choosing one's attitude",
+     "related_long": -1,
+     "book": "frankl",
+     "long_ref": null,
+     "format": "scene"
+    }
+   ],
+   "msg": 209,
+   "picked": [],
+   "created": "2026-11-10T14:42:02+00:00"
   }
  },
  "items": {
@@ -4779,7 +4827,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-09",
- "last_short_proposal": "2026-11-09",
+ "last_short_proposal": "2026-11-10",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
