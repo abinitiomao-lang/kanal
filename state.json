@@ -1647,7 +1647,7 @@
    "qc": "🧪 Контроль качества:\n⚠️ Русский титр «Он расслабится,» в первом кадре наезжает на нижнюю границу рамки иллюстрации: розовое свечение перекрывает линию рамки и касается рисунка.\n⚠️ Русские титры в кадрах 2 и 3 тоже стоят вплотную к нижней линии рамки и частично её перекрывают, из-за чего выглядят зажатыми.\n⚠️ Русские и английские субтитры не совпадают по смыслу: в первом кадре «Он расслабится» и «He will relax once the», в четвёртом «почта снова полна» и «morning. Berne described it in». Зритель увидит рассинхрон между двумя строками.\n⚠️ На рисунках видны посторонние значки и подписи: в первом кадре подпись художника «Alwy» слева внизу, во втором кадре маленький знак «KO» у окна. Это выглядит как мусорный текст.\n⚠️ В кадре 2 справа обрезан предмет на комоде (у края виден фрагмент белого абажура), слева обрезана гитара. Композиция выглядит неаккуратно.\n⚠️ Лицо героя в первом кадре выглядит искажённо: непропорциональная голова, при этом рука на клавиатуре схематична.",
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "stats": {
-    "views": 37,
+    "views": 39,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -1855,7 +1855,7 @@
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "public_id": "RvzWXqu_tEU",
    "stats": {
-    "views": 30,
+    "views": 31,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -1960,7 +1960,7 @@
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "public_id": "8sHXbE4wN1I",
    "stats": {
-    "views": 15,
+    "views": 16,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2178,8 +2178,8 @@
    "thumb_path": "/home/runner/work/kanal/kanal/work/long/L11071520229a/thumb.jpg",
    "public_id": "SSI4u1zBBhY",
    "stats": {
-    "views": 2,
-    "likes": 0,
+    "views": 3,
+    "likes": 2,
     "comments": 0,
     "privacy": "public"
    }
@@ -2351,7 +2351,13 @@
    "duration": 11924.012583,
    "factcheck": "🔎 Фактчек: найдено 4, осталось 0",
    "release": null,
-   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L111018301f93/thumb.jpg"
+   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L111018301f93/thumb.jpg",
+   "stats": {
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "privacy": "private"
+   }
   }
  },
  "images": [
@@ -5047,7 +5053,7 @@
   "vCono09cG4g",
   "vOHUQ5bN9Lk"
  ],
- "last_yt_sync": "2026-11-10T18:30:55+00:00",
+ "last_yt_sync": "2026-11-10T23:39:42+00:00",
  "dups_reported": [
   "daniel pink's late fee experiment backfired #psychology #shorts",
   "short"
