@@ -2296,7 +2296,7 @@
   "L111018301f93": {
    "kind": "long",
    "topic": "Sapiens, Part 1 of 5: The Cognitive Revolution",
-   "status": "producing",
+   "status": "rendering",
    "created": "2026-11-10T18:30:59+00:00",
    "long_ref": null,
    "series": "sapiens",
@@ -2305,7 +2305,7 @@
    "book": null,
    "feedback": [],
    "voice": "af_nicole",
-   "updated": "2026-11-10T18:39:45+00:00",
+   "updated": "2026-11-10T18:47:54+00:00",
    "short_facts": [
     "Harari's Sapiens presents the Cognitive Revolution around seventy thousand years ago as his interpretation, and many scholars read the evidence more gradually.",
     "Fire use is very ancient and predates our species, though the exact start of controlled fire is still debated.",
@@ -2322,7 +2322,8 @@
     "Neanderthals disappeared from the fossil record roughly 40,000 years ago, and the causes are still not settled, with climate, competition, disease and interbreeding all proposed.",
     "Many large Australian and American animals disappeared after human arrival, but scientists still debate whether climate change, hunting, or both caused the losses.",
     "Madagascar's giant lemurs and elephant birds, and New Zealand's moa, vanished within a relatively short span after human settlement, making island extinctions especially clear."
-   ]
+   ],
+   "title": "Why Do We Believe Stories We Never Saw With Our Own Eyes? | 3 Hours of History to Fall Asleep To"
   }
  },
  "images": [
