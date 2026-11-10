@@ -10,7 +10,7 @@ from . import audio, classics, costs, llm, state, telegram, writer, youtube
 from .config import CFG
 
 HELP = ("Команды:\n/status — очередь и расходы\n/long — предложить темы длинного видео\n"
-        "/shorts — предложить темы шортсов\n/names — выбрать название канала\n/help")
+        "/shorts — предложить темы шортсов\n/report — отчёт по просмотрам\n/names — выбрать название канала\n/help")
 
 
 def new_id(prefix: str) -> str:
@@ -305,6 +305,9 @@ def handle(u: dict) -> None:
                 res = on_reject(rest)
             elif kind == "D":
                 res = on_redo(rest)
+            elif kind == "Y":
+                telegram.edit_markup(msg_id)
+                res = on_delete_dup(rest)
             elif kind == "N":
                 telegram.edit_markup(msg_id)
                 res = on_name(int(rest))
@@ -331,6 +334,8 @@ def handle(u: dict) -> None:
             propose_shorts()
         elif cmd == "/names":
             propose_names()
+        elif cmd == "/report":
+            weekly_report()
         else:
             telegram.send(HELP)
     elif st.get("awaiting_comment"):
@@ -369,13 +374,209 @@ def _sync_playlists() -> None:
         print(f"WARN playlists: {e}")
 
 
+def _hours_since(ts: str | None) -> float:
+    if not ts:
+        return 1e9
+    return (datetime.now(timezone.utc) - datetime.fromisoformat(ts.replace("Z", "+00:00"))).total_seconds() / 3600
+
+
+def sync_youtube(force: bool = False) -> None:
+    """Раз в час сверяет state с YouTube: открытые вручную видео → published, пропавшие id ищет по названию,
+    сообщает о дублях; кладёт просмотры в item['stats'] (для еженедельного отчёта)."""
+    st = state.load()
+    if not force and _hours_since(st.get("last_yt_sync")) < 1:
+        return
+    try:
+        uploads = youtube.list_all()
+        by_id = {v["id"]: v for v in uploads}
+        nums = youtube.stats(list(by_id))
+    except Exception as e:
+        print(f"WARN youtube sync: {e}")
+        return
+    by_title: dict[str, list[str]] = {}
+    for v in uploads:
+        by_title.setdefault(v["title"].strip().casefold(), []).append(v["id"])
+    tracked = {it.get("public_id") or it.get("video_id") for it in st["items"].values()}
+    fixes, notes = {}, []
+    for k, it in st["items"].items():
+        if it.get("status") not in ("published", "awaiting_approval"):
+            continue
+        vid = it.get("public_id") or it.get("video_id")
+        if vid not in by_id:
+            # id устарел (перезалили / удалили копию) — ищем единственное неучтённое видео с тем же названием
+            cands = [x for x in by_title.get((it.get("title") or "").strip().casefold(), []) if x not in tracked]
+            if len(cands) != 1:
+                continue
+            vid = cands[0]
+            tracked.add(vid)
+            fixes[k] = {"public_id": vid}
+            notes.append(f"🔗 {k}: на YouTube нашёлся по названию → {vid}")
+        if it["status"] == "awaiting_approval" and by_id[vid]["privacy"] == "public":
+            fixes.setdefault(k, {}).update(status="published", public_id=vid)
+            _drop_release(it)
+            notes.append(f"✅ {k} уже открыт на YouTube — отметил опубликованным")
+    dups = {t: ids for t, ids in by_title.items() if len(ids) > 1}
+    new_dups = sorted(set(dups) - set(st.get("dups_reported") or []))
+
+    def fn(s):
+        s["last_yt_sync"] = state.now()
+        s["dups_reported"] = sorted(set(s.get("dups_reported") or []) | set(dups))
+        for k, f in fixes.items():
+            s["items"][k].update(f, updated=state.now())
+        for it in s["items"].values():
+            vid = it.get("public_id") or it.get("video_id")
+            if vid in nums:
+                it["stats"] = nums[vid]
+    state.update(fn, "youtube sync")
+    if notes:
+        telegram.send("🔄 <b>Сверка с YouTube</b>\n" + "\n".join(notes))
+    for t in new_dups:
+        ids = sorted(dups[t], key=lambda v: nums.get(v, {}).get("views", 0), reverse=True)
+        title = by_id[ids[0]]["title"]
+        telegram.send(f"👯 <b>Дубль на канале</b>: «{html.escape(title)}»\n" + "\n".join(
+            f"• https://youtu.be/{v} — {nums.get(v, {}).get('views', 0)} просм., {by_id[v]['privacy']}" for v in ids)
+            + "\nОставить самый просматриваемый, остальные удалить?",
+            [[(f"🗑 Удалить {v}", f"Y:{v}")] for v in ids[1:]])
+
+
+def on_delete_dup(video_id: str) -> str:
+    youtube.delete(video_id)
+
+    def fn(s):
+        for it in s["items"].values():
+            if it.get("public_id") == video_id:
+                it["public_id"] = None
+            if it.get("video_id") == video_id:
+                it["video_id"] = None
+    state.update(fn, f"delete dup {video_id}")
+    return "Удалено"
+
+
+def weekly_report() -> None:
+    """Отчёт за неделю: прирост просмотров по видео, средние по форматам и книгам, вывод что делать больше."""
+    from . import style
+    sync_youtube(force=True)
+    st = state.load()
+    prev = st.get("report_snapshot") or {}
+    pub = [it for it in st["items"].values() if it.get("status") == "published" and it.get("stats")]
+    if not pub:
+        return
+    for it in pub:
+        vid = it.get("public_id") or it.get("video_id")
+        it["_vid"], it["_gain"] = vid, it["stats"]["views"] - prev.get(vid, 0)
+    try:
+        ch = youtube.channel_stats()
+        head = f"👥 {ch['subs']} подписчиков · 👁 {ch['views']} просмотров всего · 🎬 {ch['videos']} видео"
+    except Exception as e:
+        head = f"(статистика канала недоступна: {str(e)[:80]})"
+    period = "за неделю" if prev else "за всё время"
+
+    def line(it):
+        return (f"{it['_gain']:>4} · {'🌙' if it['kind'] == 'long' else '⚡️'} "
+                f"<a href=\"https://youtu.be/{it['_vid']}\">{html.escape((it.get('title') or it['topic'])[:55])}</a>")
+
+    def avg(group):
+        return sum(i["_gain"] for i in group) / len(group)
+
+    top = sorted(pub, key=lambda i: i["_gain"], reverse=True)
+    shorts = [i for i in pub if i["kind"] == "short"]
+    longs = [i for i in pub if i["kind"] == "long"]
+    fmts, books = {}, {}
+    for i in shorts:
+        fmts.setdefault(i.get("format") or "?", []).append(i)
+        if i.get("book"):
+            books.setdefault(i["book"], []).append(i)
+    labels = style.load()["formats"]
+    fmt_rows = sorted(((avg(g), f, len(g)) for f, g in fmts.items()), reverse=True)
+    book_rows = sorted(((avg(g), b, len(g)) for b, g in books.items() if len(g) >= 2), reverse=True)
+    parts = [f"📈 <b>Отчёт канала</b> ({period})\n{head}",
+             "<b>Топ:</b>\n" + "\n".join(line(i) for i in top[:5]),
+             "<b>Слабее всех:</b>\n" + "\n".join(line(i) for i in top[-3:]) if len(top) > 6 else "",
+             "<b>В среднем на видео:</b> " + " · ".join(
+                 ([f"шортс {avg(shorts):.0f}"] if shorts else []) + ([f"длинное {avg(longs):.0f}"] if longs else [])),
+             "<b>Форматы шортсов:</b> " + ", ".join(
+                 f"{labels.get(f, {}).get('label', f)} {a:.0f} ({n})" for a, f, n in fmt_rows) if fmt_rows else "",
+             "<b>Книги (от 2 шортсов):</b> " + ", ".join(f"{b} {a:.0f} ({n})" for a, b, n in book_rows)
+             if book_rows else ""]
+    advice = []
+    if len(fmt_rows) > 1 and fmt_rows[0][0] >= 1.5 * max(fmt_rows[-1][0], 1):
+        advice.append(f"формат «{fmt_rows[0][1]}» заметно сильнее «{fmt_rows[-1][1]}» — "
+                      f"переводить книги из «{fmt_rows[-1][1]}» (assets/short_style.yaml → book_formats)")
+    if len(book_rows) > 1:
+        advice.append(f"больше шортсов по «{book_rows[0][1]}», меньше по «{book_rows[-1][1]}»")
+    if longs and shorts and avg(longs) < avg(shorts) / 3:
+        advice.append("длинные почти не находят зрителя: брать темы с поисковым спросом и ставить «Похожее видео» "
+                      "в шортсах на длинное (Studio, вручную)")
+    if advice:
+        parts.append("💡 <b>Что делать:</b>\n" + "\n".join(f"• {a}" for a in advice))
+    telegram.send("\n\n".join(p for p in parts if p))
+
+    def fn(s):
+        s["report_snapshot"] = {i["_vid"]: i["stats"]["views"] for i in pub}
+        s["last_report"] = date.today().isoformat()
+    state.update(fn, "weekly report")
+
+
+def _auto_rank(t: dict) -> int:
+    """Порядок автовыбора шортсов: игры Берна, потом форматы по силе (scene > series > tale)."""
+    return 0 if t.get("book") == "berne" else {"scene": 1, "series": 2}.get(t.get("format"), 3)
+
+
+def autopilot() -> None:
+    """Если владелец молчит: через N ч берёт темы сам, а готовое видео ставит в план (21:00 NY) с кнопкой «снять»."""
+    A = CFG.get("autopilot") or {}
+    if not A.get("enabled"):
+        return
+    st = state.load()
+    for kind in ("long", "short"):
+        props = sorted(((pid, p) for pid, p in st["proposals"].items() if p["kind"] == kind),
+                       key=lambda kv: kv[1].get("created", ""))
+        if not props:
+            continue
+        pid, p = props[-1]
+        if p.get("picked") or p.get("auto") or _hours_since(p.get("created")) < A["pick_after_hours"]:
+            continue
+        state.update(lambda s, pid=pid: s["proposals"][pid].__setitem__("auto", True), f"autopilot {pid}")
+        n = 1 if kind == "long" else CFG["shorts"]["per_day"]
+        order = list(range(len(p["topics"])))
+        if kind == "short":
+            order.sort(key=lambda i: _auto_rank(p["topics"][i]))
+        telegram.send(f"🤖 Автопилот: тему не выбрали за {A['pick_after_hours']} ч — выбираю сам.")
+        for i in order[:n]:
+            on_pick(kind, pid, i, p["msg"])
+    for k, it in st["items"].items():
+        if it.get("status") != "awaiting_approval" or it.get("auto_tried"):
+            continue
+        if _hours_since(it.get("updated") or it.get("created")) < A["approve_after_hours"]:
+            continue
+        state.set_item(k, auto_tried=True)
+        try:
+            res = on_schedule(k)
+        except Exception as e:
+            res = str(e)[:200]
+        if res == "Запланировано":
+            telegram.send(f"🤖 Автопилот: <b>{html.escape(it.get('title') or k)}</b> ждал решения "
+                          f"{A['approve_after_hours']} ч — поставил в план. До выхода можно снять:",
+                          [[("🗑 Снять и удалить", f"R:{k}")]])
+        else:
+            telegram.send(f"⏳ {k} ждёт решения, автопилот не смог поставить в план: {html.escape(res)}")
+
+
 def poll(seconds: int) -> None:
     _retry_uploads()
     _sync_playlists()
+    sync_youtube()
+    autopilot()
     deadline = time.time() + seconds
     while time.time() < deadline:
         offset = state.load()["tg_offset"]
-        ups = telegram.updates(offset, timeout=min(50, max(1, int(deadline - time.time()))))
+        try:
+            ups = telegram.updates(offset, timeout=min(50, max(1, int(deadline - time.time()))))
+        except RuntimeError as e:
+            if "Conflict" not in str(e):  # параллельный getUpdates (будильник проверяет очередь) — не страшно
+                raise
+            time.sleep(3)
+            continue
         for u in ups:
             # сначала сдвигаем offset — чтобы сбой обработки не зациклил бота
             state.update(lambda s, uid=u["update_id"]: s.__setitem__("tg_offset", uid + 1), "tg offset")
@@ -396,6 +597,9 @@ def daily() -> None:
     last = st.get("last_long_proposal")
     if not last or (today - date.fromisoformat(last)).days >= CFG["long"]["every_days"]:
         propose_long()
+    rep = st.get("last_report")
+    if not rep or (today - date.fromisoformat(rep)).days >= 7:
+        weekly_report()
     total, _ = costs.month_total()
     limit = CFG["budget"]["monthly_usd"]
     if total >= limit * CFG["budget"]["warn_at"] and st.get("budget_warned") != costs.month():

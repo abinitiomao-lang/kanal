@@ -6,18 +6,22 @@
 # Цвета — RGB hex; шрифты — файлы из assets/fonts, font_name — имя семейства для субтитров (libass).
 
 # Одна книга — один формат: вся серия шортсов по книге выглядит одинаково.
+# 2026-11-10 по просмотрам (scene 121, tale 0–11): scene ~50%, series ~35%, tale ~15%.
+# Диалоговые книги → scene, остальные tale → series; tale оставлен у Flow и Desire Map.
 book_formats:
   kahneman: series
   drive: series
-  berne: scene                    # первый пробный «Сцена» — по Берну (2026-11-03)
-  litvak: series
+  berne: scene                    # лучший формат и тема канала; «Игры Берна» — каждый день
+  litvak: scene                   # психологическое айкидо — это диалоги
+  nvc: scene                      # ненасильственное общение — диалоги
+  perry: scene
+  fisher: series
+  sher: series
+  sapiens: series
+  frankl: series
   flow: tale
-  fisher: tale
-  nvc: tale
-  perry: tale
   laporte: tale
-  sher: tale
-rotation: [tale, series, scene]   # для фактов не из книг — по очереди
+rotation: [scene, series, scene, series, tale]   # для фактов не из книг: ~40/40/20
 
 # Общая рисовка обоих форматов (дописывается к промпту формата).
 art: >-

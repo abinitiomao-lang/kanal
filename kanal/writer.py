@@ -115,7 +115,8 @@ def propose_shorts(longs: list[dict], used_facts: list[str]) -> list[ShortIdea]:
         "counter-intuitive findings, things viewers recognise in themselves. Rephrase each as one punchy sentence "
         "that names the author, keep it accurate, and when it is an author's model rather than research, say so "
         "(e.g. 'Eric Berne claimed...'). Set book to the book id (or related_long to the video number). "
-        "Use 5 different books.\n"
+        "Use 5 different books. Idea 1 is always from book id=berne: one game, script or concept from Games People "
+        "Play (our daily 'Berne's Games' series) — pick one we have not used yet.\n"
         f"Avoid these already used ideas: {used_facts[-80:] or 'none'}."
     )
     return llm.json(prompt, ShortIdeas, system=CHANNEL_VOICE).ideas[:5]

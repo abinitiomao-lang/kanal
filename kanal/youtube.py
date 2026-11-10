@@ -140,6 +140,25 @@ def list_all() -> list[dict]:
             return out
 
 
+def stats(ids: list[str]) -> dict[str, dict]:
+    """Просмотры, лайки, комментарии и приватность по videoId (батчами по 50; удалённых в ответе нет)."""
+    yt = _yt()
+    out = {}
+    for i in range(0, len(ids), 50):
+        r = yt.videos().list(part="statistics,status", id=",".join(ids[i:i + 50])).execute()
+        for v in r["items"]:
+            s = v.get("statistics", {})
+            out[v["id"]] = {"views": int(s.get("viewCount", 0)), "likes": int(s.get("likeCount", 0)),
+                            "comments": int(s.get("commentCount", 0)), "privacy": v["status"]["privacyStatus"]}
+    return out
+
+
+def channel_stats() -> dict:
+    s = _yt().channels().list(part="statistics", id=CFG["channel"]["id"]).execute()["items"][0]["statistics"]
+    return {"subs": int(s.get("subscriberCount", 0)), "views": int(s.get("viewCount", 0)),
+            "videos": int(s.get("videoCount", 0))}
+
+
 def playlists_list() -> list[dict]:
     """Все плейлисты канала (включая private) с числом видео."""
     yt = _yt()
