@@ -4091,6 +4091,12 @@
    "prompt": "A calm river in ancient India at dusk, with a single lotus floating on still water, a simple wooden ferry boat resting near the bank, tall banyan trees along the shore, and soft golden light reflecting off the water, dark calm sky, no text, an original illustration",
    "orient": "landscape",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/9e85f2f16cd9.jpg"
+  },
+  {
+   "id": "c7a2f4064f34",
+   "prompt": "A single small campfire flame burning in a dark forest clearing, with faint starlight above and soft shadows of distant trees, no text, dark calm background",
+   "orient": "landscape",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/c7a2f4064f34.jpg"
   }
  ],
  "costs": {
