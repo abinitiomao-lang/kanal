@@ -2296,7 +2296,7 @@
   "L111018301f93": {
    "kind": "long",
    "topic": "Sapiens, Part 1 of 5: The Cognitive Revolution",
-   "status": "rendering",
+   "status": "awaiting_approval",
    "created": "2026-11-10T18:30:59+00:00",
    "long_ref": null,
    "series": "sapiens",
@@ -2305,7 +2305,7 @@
    "book": null,
    "feedback": [],
    "voice": "af_nicole",
-   "updated": "2026-11-10T18:47:54+00:00",
+   "updated": "2026-11-10T19:16:31+00:00",
    "short_facts": [
     "Harari's Sapiens presents the Cognitive Revolution around seventy thousand years ago as his interpretation, and many scholars read the evidence more gradually.",
     "Fire use is very ancient and predates our species, though the exact start of controlled fire is still debated.",
@@ -2323,7 +2323,35 @@
     "Many large Australian and American animals disappeared after human arrival, but scientists still debate whether climate change, hunting, or both caused the losses.",
     "Madagascar's giant lemurs and elephant birds, and New Zealand's moa, vanished within a relatively short span after human settlement, making island extinctions especially clear."
    ],
-   "title": "Why Do We Believe Stories We Never Saw With Our Own Eyes? | 3 Hours of History to Fall Asleep To"
+   "title": "Why Do We Believe Stories We Never Saw With Our Own Eyes? | 3 Hours of History to Fall Asleep To",
+   "video_id": "J1ETUSC7iTM",
+   "description": "A slow, calm history of how our species, Homo sapiens, grew from one of several human kinds into the only one left. Settle in and let the story unfold at a sleepy pace: many human relatives sharing the land, the strange cost of a big brain, the first controlled fires, meetings with Neanderthals, and the idea that gossip and shared stories helped people work together in larger groups. Yuval Noah Harari's book Sapiens offers many of these ideas, and some are his own arguments that historians still debate. We present them as his views, alongside the more widely accepted facts from archaeology and genetics.\n\nBased on ideas from Sapiens by Yuval Noah Harari (Part 1 of 5), retold in our own words. Every example here is our own. Nothing is meant to be read as settled truth where scholars disagree, and the chapters move from simple facts to deeper questions so you can drift off whenever you like.\n\nFor sleep-friendly viewing, the screen slowly dims to near-black after 15 minutes, so you can keep listening without the light. Take it slow, and feel free to pause or come back to any part another night.\n\nIn this video:\n• Welcome and How to Listen\n• Many Human Species\n• The Cost of a Big Brain\n• Fire and Cooking\n• Meeting the Neanderthals\n• Gossip and the Language of Fiction\n• Shared Myths and Large-Scale Cooperation\n• The Life of Foragers\n• The First Wave of Extinctions\n• How Historians Argue About These Ideas\n• What These Stories Teach Us Today\n• A Quiet Reflection Before Sleep\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "sleep learning",
+    "history for sleep",
+    "Night Nerd Radio",
+    "calm narration",
+    "Sapiens",
+    "Yuval Noah Harari",
+    "cognitive revolution",
+    "human evolution",
+    "Neanderthals",
+    "Homo sapiens",
+    "early humans",
+    "hunter gatherers",
+    "fire and cooking",
+    "megafauna extinction",
+    "human history",
+    "dark screen",
+    "bedtime history",
+    "educational sleep video",
+    "anthropology",
+    "prehistory"
+   ],
+   "duration": 11924.012583,
+   "factcheck": "🔎 Фактчек: найдено 4, осталось 0",
+   "release": null,
+   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L111018301f93/thumb.jpg"
   }
  },
  "images": [
