@@ -2296,14 +2296,16 @@
   "L111018301f93": {
    "kind": "long",
    "topic": "Sapiens, Part 1 of 5: The Cognitive Revolution",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-10T18:30:59+00:00",
    "long_ref": null,
    "series": "sapiens",
    "part": 1,
    "format": null,
    "book": null,
-   "feedback": []
+   "feedback": [],
+   "voice": "af_nicole",
+   "updated": "2026-11-10T18:32:26+00:00"
   }
  },
  "images": [
