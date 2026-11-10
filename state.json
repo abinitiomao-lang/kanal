@@ -2245,7 +2245,7 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-07T15:24:54+00:00",
+   "updated": "2026-11-10T15:15:55+00:00",
    "video_id": "vCono09cG4g",
    "release": null,
    "title": "Pink's candle problem: why big prizes hurt ideas #psychology #drive",
@@ -2285,7 +2285,8 @@
     "likes": 0,
     "comments": 0,
     "privacy": "private"
-   }
+   },
+   "auto_tried": true
   }
  },
  "images": [
