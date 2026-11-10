@@ -52,7 +52,8 @@ def kokoro(text: str, out: Path) -> float:
     pieces = []
     for para in [p for p in text.split("\n") if p.strip()]:
         for chunk in _chunks(para):
-            samples, sr = model.create(chunk, voice=L["kokoro_voice"], speed=L["kokoro_speed"], lang="en-us")
+            samples, sr = model.create(chunk, voice=L["kokoro_voice"], speed=L["kokoro_speed"],
+                                         lang="en-gb" if L["kokoro_voice"][0] == "b" else "en-us")
             pieces += [samples, np.zeros(int(sr * 0.45), dtype=np.float32)]
         pieces.append(np.zeros(int(SR * 1.0), dtype=np.float32))
     audio = np.concatenate(pieces)

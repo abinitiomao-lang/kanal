@@ -62,17 +62,17 @@ long:
   height: 1080
   video_bitrate: "1100k"          # 3 ч ≈ 1.9 ГБ — влезает в лимит 2 ГБ релиза для ручной загрузки
   audio_bitrate: "128k"
-  kokoro_voice: "af_heart"
+  kokoro_voice: "bm_george"       # 2026-11-10 проба: спокойный британский мужской (было af_heart)
   kokoro_speed: 0.85
   ambient_db: -30                 # запасной генерируемый эмбиент, если музыка не сгенерировалась
-  music_db: -21                   # фоновая музыка под голосом
+  music_db: -24                   # фоновая музыка под голосом (2026-11-10: тише и легче, было −21)
   music_tracks: 2                 # треков на видео, чередуются
   music_seconds: 180              # ~900 кредитов ElevenLabs за минуту → 2×3 мин ≈ 5400 кредитов
   music_style: >-
-    meditative sleep music in 432 Hz tuning, around 60 BPM. Warm evolving synth pads as the base, with clearly
-    audible soft wind chimes, crystal singing bowls and gentle bell tones ringing out regularly, a slow soft
-    rhythmic pulse from muted hand drums or a deep low heartbeat-like percussion, and a slow repeating arpeggio
-    of soft plucked tones. Calm, hypnotic, steady, spacious reverb, no vocals, no sudden loud changes
+    light, airy sleep music in 432 Hz tuning, very slow, around 50 BPM. Soft floating pads like a warm breeze,
+    a few gentle wind chimes and a quiet crystal singing bowl now and then, sparse soft piano or harp notes with
+    long silences between them. No drums, no beat, no bass pulse. Delicate, weightless, spacious reverb,
+    no vocals, no sudden loud changes
   fade_out_seconds: 30
   dim_after_minutes: 15           # «Dark Screen»: картинка плавно гаснет, чтобы не светить в спальне
   dim_fade_seconds: 60
@@ -112,14 +112,14 @@ images:
     gentle glow, calm, dreamy, cinematic lighting, no text, no letters, no watermark
 
 bot:
-  poll_seconds: 240
+  poll_seconds: 480               # сколько job бота слушает Telegram за один запуск (будит wake/)
 
 # Автопилот (2026-11-10): если владелец молчит — тема берётся сама, готовое видео уходит в план на 21:00 NY
 # с кнопкой «Снять и удалить». Отключить: enabled: false.
 autopilot:
   enabled: true
   pick_after_hours: 24            # предложение тем без выбора → берём лучшие (шортсы: Берн и scene вперёд)
-  approve_after_hours: 24         # видео ждёт апрува → в план               # сколько job бота слушает Telegram за один запуск
+  approve_after_hours: 24         # видео ждёт апрува → в план
 
 # Плейлисты канала: бот после публикаций (и `python -m kanal.cli yt-status playlists-sync`) создаёт
 # недостающие (по точному названию — существующие, в т.ч. созданные владельцем в Studio, переиспользуются)
