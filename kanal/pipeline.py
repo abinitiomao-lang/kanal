@@ -310,7 +310,11 @@ def long_prepare(item_id: str) -> Path:
     """Сценарий по главам + фактчек, одна главная картинка + её бесшовная анимация, превью.
     Результат — work/long/<id>/ (уходит артефактом в следующие job'ы)."""
     item = state.get_item(item_id)
-    state.set_item(item_id, status="producing")
+    voices = CFG["long"]["kokoro_voices"]
+    if item.get("voice") not in voices:  # голоса чередуются по видео (переделка оставляет свой)
+        n = sum(1 for i in state.load()["items"].values() if i.get("kind") == "long" and i.get("voice") in voices)
+        item["voice"] = voices[n % len(voices)]
+    state.set_item(item_id, status="producing", voice=item["voice"])
     W = workdir("long", item_id)
     fb = _feedback(item)
     A = CFG["animation"]
@@ -384,11 +388,12 @@ def long_render(item_id: str, group: int, groups: int) -> None:
     """Озвучка глав group, group+groups, … (параллельные job'ы матрицы)."""
     W = workdir("long", item_id)
     script = json.loads((W / "script.json").read_text())
+    voice = state.get_item(item_id).get("voice")
     for ci, ch in enumerate(script["chapters"]):
         if ci % groups != group:
             continue
         raw = workdir("long", item_id, f"ch{ci:02d}") / "voice.wav"
-        seconds = audio.kokoro(ch["text"], raw) + 2.0
+        seconds = audio.kokoro(ch["text"], raw, voice) + 2.0
         render.pad_audio(raw, seconds, W / f"chapter_{ci:02d}.flac")
         print(f"chapter {ci}: {seconds / 60:.1f} min")
 

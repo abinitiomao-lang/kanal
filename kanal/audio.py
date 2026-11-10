@@ -45,15 +45,16 @@ def _chunks(paragraph: str, limit: int = 350) -> list[str]:
     return out
 
 
-def kokoro(text: str, out: Path) -> float:
+def kokoro(text: str, out: Path, voice: str | None = None) -> float:
     """Синтез длинного текста. Паузы: 0.45 c между фразами, 1.4 c между абзацами. Возвращает длительность."""
     L = CFG["long"]
+    voice = voice or L["kokoro_voices"][0]
     model = _kokoro_model()
     pieces = []
     for para in [p for p in text.split("\n") if p.strip()]:
         for chunk in _chunks(para):
-            samples, sr = model.create(chunk, voice=L["kokoro_voice"], speed=L["kokoro_speed"],
-                                         lang="en-gb" if L["kokoro_voice"][0] == "b" else "en-us")
+            samples, sr = model.create(chunk, voice=voice, speed=L["kokoro_speed"],
+                                         lang="en-gb" if voice[0] == "b" else "en-us")
             pieces += [samples, np.zeros(int(sr * 0.45), dtype=np.float32)]
         pieces.append(np.zeros(int(SR * 1.0), dtype=np.float32))
     audio = np.concatenate(pieces)

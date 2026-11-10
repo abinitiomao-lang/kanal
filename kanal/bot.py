@@ -498,6 +498,12 @@ def weekly_report() -> None:
                  f"{labels.get(f, {}).get('label', f)} {a:.0f} ({n})" for a, f, n in fmt_rows) if fmt_rows else "",
              "<b>Книги (от 2 шортсов):</b> " + ", ".join(f"{b} {a:.0f} ({n})" for a, b, n in book_rows)
              if book_rows else ""]
+    voices = {}
+    for i in longs:
+        voices.setdefault(i.get("voice") or "af_heart", []).append(i)
+    if len(voices) > 1:
+        parts.append("<b>Голоса длинных:</b> " + ", ".join(
+            f"{v} {avg(g):.0f} ({len(g)})" for v, g in sorted(voices.items(), key=lambda kv: -avg(kv[1]))))
     advice = []
     if len(fmt_rows) > 1 and fmt_rows[0][0] >= 1.5 * max(fmt_rows[-1][0], 1):
         advice.append(f"формат «{fmt_rows[0][1]}» заметно сильнее «{fmt_rows[-1][1]}» — "
