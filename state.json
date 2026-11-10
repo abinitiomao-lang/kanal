@@ -2237,7 +2237,7 @@
   "S11071521335c": {
    "kind": "short",
    "topic": "Daniel Pink reports that in a classic experiment, people offered a bigger cash reward for solving the candle problem fast took longer than those offered less, suggesting money can narrow thinking on creative tasks.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-07T15:21:01+00:00",
    "long_ref": null,
    "series": null,
@@ -2245,7 +2245,7 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-10T15:15:55+00:00",
+   "updated": "2026-11-10T15:15:58+00:00",
    "video_id": "vCono09cG4g",
    "release": null,
    "title": "Pink's candle problem: why big prizes hurt ideas #psychology #drive",
@@ -2286,7 +2286,9 @@
     "comments": 0,
     "privacy": "private"
    },
-   "auto_tried": true
+   "auto_tried": true,
+   "public_id": "vCono09cG4g",
+   "publish_at": "2026-11-11T02:00:00Z"
   }
  },
  "images": [
