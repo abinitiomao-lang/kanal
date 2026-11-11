@@ -1224,7 +1224,9 @@
     }
    ],
    "msg": 209,
-   "picked": [],
+   "picked": [
+    4
+   ],
    "created": "2026-11-10T14:42:02+00:00",
    "auto": true
   }
@@ -2359,6 +2361,18 @@
     "comments": 0,
     "privacy": "private"
    }
+  },
+  "S11111757c498": {
+   "kind": "short",
+   "topic": "Viktor Frankl, writing from his years in Nazi concentration camps, argued that even when almost everything else is taken away, a person can still choose their own attitude; this is his personal philosophy of logotherapy rather than a laboratory finding.",
+   "status": "queued",
+   "created": "2026-11-11T17:57:57+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "scene",
+   "book": "frankl",
+   "feedback": []
   }
  },
  "images": [
