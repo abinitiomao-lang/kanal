@@ -1225,7 +1225,8 @@
    ],
    "msg": 209,
    "picked": [
-    4
+    4,
+    0
    ],
    "created": "2026-11-10T14:42:02+00:00",
    "auto": true
@@ -2372,6 +2373,18 @@
    "part": null,
    "format": "scene",
    "book": "frankl",
+   "feedback": []
+  },
+  "S11111758d42e": {
+   "kind": "short",
+   "topic": "Daniel Kahneman describes a simple puzzle: a bat and a ball cost $1.10 together, and the bat costs $1.00 more than the ball, so the instant answer of 10 cents is wrong and the ball actually costs 5 cents, a mistake even many well-educated people make.",
+   "status": "queued",
+   "created": "2026-11-11T17:58:01+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "kahneman",
    "feedback": []
   }
  },
