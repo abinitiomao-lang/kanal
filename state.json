@@ -2366,7 +2366,7 @@
   "S11111757c498": {
    "kind": "short",
    "topic": "Viktor Frankl, writing from his years in Nazi concentration camps, argued that even when almost everything else is taken away, a person can still choose their own attitude; this is his personal philosophy of logotherapy rather than a laboratory finding.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-11T17:57:57+00:00",
    "long_ref": null,
    "series": null,
@@ -2374,7 +2374,39 @@
    "format": "scene",
    "book": "frankl",
    "feedback": [],
-   "updated": "2026-11-11T17:58:43+00:00"
+   "updated": "2026-11-11T18:01:02+00:00",
+   "video_id": "MZwmd18cZiw",
+   "release": null,
+   "title": "Frankl's Last Freedom: Choosing Your Attitude #Frankl #logotherapy",
+   "description": "A tense moment between a couple dramatises an idea from Viktor Frankl's memoir Man's Search for Meaning: that even when almost everything is taken away, a person can still choose their attitude. Frankl wrote from his years in Nazi camps; this is his personal philosophy of logotherapy, not a laboratory finding.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Viktor Frankl",
+    "Man's Search for Meaning",
+    "logotherapy",
+    "psychology",
+    "meaning",
+    "resilience",
+    "sleep learning",
+    "bedtime learning"
+   ],
+   "duration": 28.379,
+   "narration": "You haven't opened the curtains in a week. Why would I? Everything's gone, Maya. The job, the plan, all of it. Not everything. I'm standing right here. That's not the same, and you know it. No. But how you face it is still yours. Psychiatrist Viktor Frankl, in his book Man's Search for Meaning, wrote that even when nearly everything is taken away, a person can still choose their attitude. He wrote this from his own years in Nazi camps, and it is his personal philosophy, called logotherapy, not a laboratory finding.",
+   "ru_subs": [
+    "Ты целую неделю не раздвигала шторы.",
+    "Зачем мне это?",
+    "Всё пропало, Майя.",
+    "Работа, план — всё рухнуло.",
+    "Не всё.",
+    "Я стою прямо здесь.",
+    "Это не одно и то же, и ты это знаешь.",
+    "Нет.",
+    "Но как ты это встретишь — по-прежнему решать тебе.",
+    "Психиатр Виктор Франкл написал в книге «Человек в поисках смысла»: даже когда отнято почти всё, человек может выбирать своё отношение.",
+    "Он писал это, пройдя через нацистские лагеря. Это его личная философия — логотерапия, а не лабораторное открытие."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: русский титр «Ты целую неделю» и английский «YOU HAVEN'T» наложены прямо на лицо и шею героини, закрывая важную часть кадра.\n⚠️ Кадр 2: титры «Не всё.» и «NOT EVERYTHING.» расположены на шее и груди героини, у подбородка и воротника, отвлекают от лица.\n⚠️ Кадр 3: на кадре с крупным планом английский «STILL YOURS.» не совпадает по смыслу с русским «по-прежнему решать тебе.», зритель видит рассинхрон двух строк.\n⚠️ Кадр 4: белый английский титр «ATTITUDE.» на светлой кофте и светлом окне слабо контрастирует и читается хуже остальных, к тому же его стиль (белый, без зелёного свечения) отличается от других кадров.\n⚠️ Кадры 1 и 3: руки героини выглядят неестественно — пальцы на кадре 1 слипаются в непонятную форму, на кадре 3 пальцы вытянуты и деформированы.\n⚠️ Кадр 3: внешность героини отличается от других кадров (рыжеватые волосы вместо тёмных, другое лицо), нарушена непрерывность персонажа.",
+   "music": "quiet (-31 дБ): sparse piano with low cello swells, intimate, tense and slow, like a quiet film score",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S11111758d42e": {
    "kind": "short",
