@@ -2411,7 +2411,7 @@
   "S11111758d42e": {
    "kind": "short",
    "topic": "Daniel Kahneman describes a simple puzzle: a bat and a ball cost $1.10 together, and the bat costs $1.00 more than the ball, so the instant answer of 10 cents is wrong and the ball actually costs 5 cents, a mistake even many well-educated people make.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-11T17:58:01+00:00",
    "long_ref": null,
    "series": null,
@@ -2419,7 +2419,41 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-11-11T17:59:02+00:00"
+   "updated": "2026-11-11T18:01:48+00:00",
+   "video_id": "4tQ92JyYR4E",
+   "release": null,
+   "title": "Kahneman's bat and ball puzzle fools smart people #psychology #kahneman",
+   "description": "A 2126 documentary looks back at the famous bat and ball puzzle from Daniel Kahneman's book Thinking, Fast and Slow. Kahneman uses it to show how our quick intuition can mislead us. Some priming studies he cited later failed to replicate, but this puzzle has held up.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Daniel Kahneman",
+    "Thinking Fast and Slow",
+    "bat and ball puzzle",
+    "cognitive bias",
+    "psychology",
+    "System 1 and System 2",
+    "brain teaser",
+    "sleep learning",
+    "educational"
+   ],
+   "duration": 32.394,
+   "narration": "Ten cents. The human said it instantly. It was wrong. Welcome to 2126, where historians study this puzzle. A bat and a ball cost a dollar ten together. The bat costs a dollar more than the ball. So ten cents would make the total a dollar twenty. The ball costs five cents. Even many university students blurt the wrong answer. Some priming studies Kahneman cited failed to replicate, but this puzzle held up. Daniel Kahneman describes it in Thinking, Fast and Slow. And historians are still confused.",
+   "ru_subs": [
+    "Десять центов.",
+    "Человек выпалил это мгновенно.",
+    "Ответ был неверным.",
+    "Добро пожаловать в 2126 год, где историки изучают эту загадку.",
+    "Бита и мяч вместе стоят 1,10 доллара.",
+    "Бита стоит на доллар дороже мяча.",
+    "Значит, если мяч стоит 10 центов, выйдет 1,20 доллара.",
+    "Мяч стоит пять центов.",
+    "Даже многие студенты университетов выпаливают неверный ответ.",
+    "Часть опытов по прайминг-эффекту, на которые ссылался Канеман, не удалось повторить, но эта загадка устояла.",
+    "Дэниел Канеман описывает её в книге «Думай медленно… решай быстро».",
+    "А историки всё ещё в замешательстве."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: русский титр «Десять центов.» стоит на самой нижней границе иллюстрации и частично накладывается на линию рамки и рисунок, при этом английский субтитр «Ten cents. The human said» говорит о другом и ощутимо расходится с русским текстом.\n⚠️ Кадр 1: на монете нечитаемая бессмысленная надпись («ITEEN TONS», «OF VOLD SIAS») — мусорный текст на картинке.\n⚠️ Кадр 2: русский титр «эту загадку.» накладывается на нижнюю линию рамки иллюстрации и частично на рисунок, читается хуже остальных.\n⚠️ Кадр 2: в углу картинки нечитаемая подпись «2044», которая спорит с заявленным 2126 годом; на листке в руке тоже мелкий мусорный текст.\n⚠️ Кадр 3: на купюре и монетах нечитаемые символы и буквы, на банкноте странный знак «B» — мусорный текст; рука с купюрой анатомически неубедительна (пальцы слипшиеся).\n⚠️ Кадр 3: английский субтитр «the total a dollar twenty» не согласуется с русским «10 центов, выйдет» — тексты не совпадают по смыслу в момент показа.\n⚠️ Кадр 4: русский титр «Часть опытов по прайминг-эффекту,» наползает на нижнюю часть иллюстрации (линия рамки пересекает текст) и занимает почти всю ширину кадра, слишком близко к краям.\n⚠️ Кадр 4: на листках в мусорной корзине и у предмета на листе нечитаемые каракули, лицо учёного с красными пятнами вокруг глаз выглядит неаккуратно.",
+   "music": "soft (-25 дБ): witty documentary underscore with pizzicato strings, marimba and light clarinet, curious and playful, mid tempo",
+   "factcheck": "✅ Фактчек: замечаний нет"
   }
  },
  "images": [
