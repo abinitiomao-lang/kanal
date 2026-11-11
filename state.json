@@ -4162,6 +4162,48 @@
    "prompt": "A single small campfire flame burning in a dark forest clearing, with faint starlight above and soft shadows of distant trees, no text, dark calm background",
    "orient": "landscape",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/c7a2f4064f34.jpg"
+  },
+  {
+   "id": "84ea6eb0e803",
+   "prompt": "Close-up of Maya, a 38-year-old woman with shoulder-length dark brown hair, soft brown eyes and a cream knit cardigan, standing in a dim living room, pulling at a heavy closed curtain with a worried, tired expression, dust drifting in a thin gap of daylight.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/84ea6eb0e803.jpg"
+  },
+  {
+   "id": "cf624ff9b99c",
+   "prompt": "Close-up of Daniel, a 40-year-old man with short untidy black hair, stubble and a rumpled grey sweatshirt, slumped on a sofa in a dim living room, bitterly shaking his head and staring at the floor, hollow and bitter.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/cf624ff9b99c.jpg"
+  },
+  {
+   "id": "363b059ed200",
+   "prompt": "Close-up of Maya, a 38-year-old woman with shoulder-length dark brown hair, soft brown eyes and a cream knit cardigan, stepping toward the sofa in a dim living room with a hand over her heart, gentle and pleading, eyes glistening.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/363b059ed200.jpg"
+  },
+  {
+   "id": "52fc6be248d2",
+   "prompt": "Close-up of Daniel, a 40-year-old man with short untidy black hair, stubble and a rumpled grey sweatshirt, turning his face away on a dim living room sofa, jaw tight, hand rubbing his tired eyes, defensive and raw.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/52fc6be248d2.jpg"
+  },
+  {
+   "id": "6db901006bac",
+   "prompt": "Close-up of Maya, a 38-year-old woman with shoulder-length dark brown hair, soft brown eyes and a cream knit cardigan, drawing the curtain open slowly with one hand as warm daylight spills across her face, quiet and tender, tears in her eyes.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/6db901006bac.jpg"
+  },
+  {
+   "id": "0f7ad603acaf",
+   "prompt": "Quiet wide shot of the same living room: Maya, a woman in a cream knit cardigan, stands by the open window with daylight on her, while Daniel, a man in a grey sweatshirt, sits apart on the sofa across the room, looking up slowly toward the light.",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/0f7ad603acaf.jpg"
   }
  ],
  "costs": {
