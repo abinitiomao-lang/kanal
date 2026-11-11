@@ -14,8 +14,11 @@ ROOT = Path(__file__).resolve().parent.parent
 HEADING = re.compile(r"^(?:[IVXLC]+\.?|[A-Z][A-Z0-9 ,.;:'’\-—()]{2,70}|BOOK THE .*|PART [IVX]+\.?)$")
 
 
-def clean(raw: str, start: str, end: str, nth: int = 1) -> str:
-    """nth — какое по счёту совпадение start считать началом (первое часто стоит в оглавлении)."""
+def clean(raw: str, start: str, end: str, nth: int = 1, hyphen: bool = False) -> str:
+    """nth — какое по счёту совпадение start считать началом (первое часто стоит в оглавлении);
+    hyphen — «--» между буквами это дефис (self--evident), а не тире."""
+    if hyphen:
+        raw = re.sub(r"(?<=[A-Za-z])--(?=[a-z])", "-", raw)
     lines = raw.replace("\r", "").split("\n")
     i = [n for n, l in enumerate(lines) if re.search(start, l.strip())][nth - 1]
     j = next(n for n, l in enumerate(lines[i + 1:], i + 1) if re.search(end, l.strip()))
@@ -43,7 +46,7 @@ def main(ids: list[str]) -> None:
             continue
         url = f"https://www.gutenberg.org/cache/epub/{c['gutenberg']}/pg{c['gutenberg']}.txt"
         raw = urllib.request.urlopen(url, timeout=60).read().decode("utf-8-sig")
-        text = clean(raw, c["start"], c["end"], c.get("start_nth", 1))
+        text = clean(raw, c["start"], c["end"], c.get("start_nth", 1), c.get("hyphen", False))
         (ROOT / "assets" / "classics" / f"{c['id']}.txt").write_text(text)
         print(f"{c['id']}: {len(text.split())} words, {text.count('## ')} headings")
 

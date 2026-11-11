@@ -150,3 +150,67 @@
       points: [why a psychiatrist wrote this account, arrival and the first shock, the delusion of reprieve, apathy as a shield, dreams and hunger, retreat into the inner life, the image of a loved one, a sunset seen through barbed wire, art and humour in the darkest place]
     - title: "Inner Freedom and Meaning"
       points: [the last of the human freedoms, choosing one's attitude, suffering as a task, having a 'why' to live, the future goal, a timely word, the guards were human too, liberation and learning to feel again, the meaning of life as a question life asks us]
+
+- id: cameron
+  book: "The Artist's Way"
+  author: Julia Cameron
+  evidence: "the author's 12-week method for creative recovery, not research; daily free writing echoes expressive-writing studies by James Pennebaker, but the spiritual framing ('the Creator') is her personal belief — present it as hers"
+  parts:
+    - title: "Morning Pages and the Inner Censor"
+      points: [creativity as a natural flow that gets blocked, morning pages — three pages by hand every morning, the inner Censor and how to talk back to it, the artist date with yourself, shadow artists who stand near the art they want to make, crazymakers who steal your time, skepticism and the first weeks]
+    - title: "Anger, Shame and Integrity"
+      points: [anger as a map pointing at what you want, synchronicity and paying attention, shame after showing your work, criticism that wounds and criticism that helps, detective work on your old dreams, the 'it's too late' excuse, the virtue trap of being too nice]
+    - title: "Possibility, Abundance and Connection"
+      points: [limits we set for ourselves, money and the fear of wanting, time as an excuse, listening instead of forcing, perfectionism as a block, risk and jealousy as a teacher, the archaeology of early dreams]
+    - title: "Strength, Compassion and Faith"
+      points: [survival of creative losses, age and time, fear disguised as laziness, enthusiasm as fuel, the creative U-turn after a success, workaholism and burnout, autonomy, trust and keeping the practice for life]
+
+- id: shaughnessy
+  book: "How to Be a Graphic Designer Without Losing Your Soul"
+  author: Adrian Shaughnessy
+  evidence: "practical advice from a working designer and studio owner, drawn from experience — present it as his view, not research"
+  parts:
+    - title: "Skills, Jobs and Freelance Life"
+      points: [the qualities a modern designer needs, curiosity and self-doubt as tools, professional skills beyond software, the portfolio and the interview, finding the first job, freelance or your own studio, the loneliness and freedom of working alone]
+    - title: "Clients, Ideas and the Creative Process"
+      points: [running a studio without losing joy, winning work without selling out, why clients are not the enemy, presenting work and saying no, the brief behind the brief, fees and value, the creative process from blank page to idea, staying true to your work]
+
+- id: rand
+  book: "The Fountainhead"
+  author: Ayn Rand
+  evidence: "a copyrighted novel: NEVER retell its plot, scenes or dialogue and never use its characters (Roark, Keating, Toohey, Wynand, Dominique) as actors — invent your own modern characters and talk about Rand's IDEAS; at most one short quote with credit. Her philosophy (Objectivism) is controversial — present it as her view and mention common criticisms"
+  parts:
+    - title: "The Creator and the Second-Hander"
+      points: [the creator who works for the work itself, the second-hander who lives through others' opinions, originality vs imitation, integrity as a single unbroken line, why approval can become a trap, the cost of independence]
+    - title: "Selfishness, Altruism and Power"
+      points: [Rand's provocative defence of 'selfishness', her attack on self-sacrifice, power over others vs power over your work, collectivism and the crowd, why critics call her view cold, the novel's influence on architects, founders and readers]
+
+- id: adorno
+  book: "Dialectic of Enlightenment"
+  author: Theodor Adorno and Max Horkheimer
+  evidence: "a classic of philosophy and social critique (Frankfurt School), not empirical research; present it as the authors' argument. Skip the chapter on the Marquis de Sade; treat the chapter on antisemitism only as a calm, respectful explanation of how prejudice works"
+  parts:
+    - title: "Myth, Reason and Odysseus"
+      points: [why reason can turn into a new myth, knowledge as power over nature, numbers and the disenchanted world, Odysseus tied to the mast, the rowers with wax in their ears, cunning as the first form of reason, the price of self-control]
+    - title: "The Culture Industry"
+      points: [entertainment made like factory goods, the same formula with new labels, fun as a continuation of work, stars and the illusion that anyone can make it, advertising and culture merging, why we keep watching what bores us, the culture industry in the age of feeds and algorithms]
+    - title: "Prejudice and Fragments"
+      points: [how prejudice is built and spread, false projection, the stereotype as thinking that stops halfway, against know-it-alls, isolation through communication, the price of progress, the authors' hope for reason that understands itself]
+
+- id: kierkegaard-fear
+  book: "Fear and Trembling"
+  author: Søren Kierkegaard
+  evidence: "a philosophical-religious essay written under the pen name Johannes de Silentio; present it as his reflection. Tell the Abraham and Isaac story gently and symbolically, never as violence — this is bedtime listening"
+  parts:
+    - title: "Four Versions of Abraham"
+      points: [the pen name 'Johannes de Silentio', why going further than faith is a joke, the story of Abraham retold four different ways, the eulogy to Abraham, the knight of infinite resignation, the knight of faith who looks like a tax collector, the leap]
+    - title: "Three Problems and the Silence"
+      points: [is there a suspension of the ethical, the tragic hero vs the man of faith, Agamemnon, Jephthah and Brutus, is there an absolute duty to God, may one stay silent, why Abraham cannot explain himself, the epilogue — every generation starts from the beginning]
+
+- id: kierkegaard-irony
+  book: "On the Concept of Irony"
+  author: Søren Kierkegaard
+  evidence: "a philosophical dissertation; the owner's edition contains only its closing sections (romantic irony after Fichte and 'mastered irony') — keep to those, and do not put invented words in Socrates' mouth"
+  parts:
+    - title: "Romantic Irony and Mastered Irony"
+      points: [irony as a stance toward life, Fichte and the self that creates its world, Schlegel and living ironically, Tieck and Solger, why total irony empties life, mastered irony as a controlled moment, irony as the beginning of a personal life]

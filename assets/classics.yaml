@@ -33,3 +33,14 @@
   start: "^PRELIMINARY CHAPTER\\.$"
   end: "^THE END\\.$"
   mood: "17th-century England: a travelling showman's wooden caravan, a wolf, snowy night roads, the sea at Portland"
+
+- id: spinoza-ethics
+  title: "Ethics"
+  author: Benedict de Spinoza
+  translator: "R. H. M. Elwes (1883)"
+  year: 1677
+  gutenberg: 3800
+  hyphen: true                    # в этом издании «self--evident» = дефис
+  start: "^PART I\\. CONCERNING GOD\\.$"
+  end: "^\\*\\*\\* END OF THE PROJECT"
+  mood: "a 17th-century Amsterdam lens-grinder's workshop at night, a candle, glass lenses, a quiet canal outside the window"

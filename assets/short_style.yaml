@@ -21,6 +21,12 @@ book_formats:
   frankl: series
   flow: tale
   laporte: tale
+  cameron: scene                  # ты против внутреннего Цензора, «безумцы»
+  shaughnessy: scene              # диалоги дизайнер ↔ клиент
+  rand: scene                     # только свои персонажи, без сюжета романа
+  adorno: scene                   # Одиссей и гребцы, зритель и лента
+  kierkegaard-fear: series
+  kierkegaard-irony: series
 rotation: [scene, series, scene, series, tale]   # для фактов не из книг: ~40/40/20
 
 # Общая рисовка обоих форматов (дописывается к промпту формата).
