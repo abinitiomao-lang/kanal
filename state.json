@@ -1651,7 +1651,7 @@
    "qc": "🧪 Контроль качества:\n⚠️ Русский титр «Он расслабится,» в первом кадре наезжает на нижнюю границу рамки иллюстрации: розовое свечение перекрывает линию рамки и касается рисунка.\n⚠️ Русские титры в кадрах 2 и 3 тоже стоят вплотную к нижней линии рамки и частично её перекрывают, из-за чего выглядят зажатыми.\n⚠️ Русские и английские субтитры не совпадают по смыслу: в первом кадре «Он расслабится» и «He will relax once the», в четвёртом «почта снова полна» и «morning. Berne described it in». Зритель увидит рассинхрон между двумя строками.\n⚠️ На рисунках видны посторонние значки и подписи: в первом кадре подпись художника «Alwy» слева внизу, во втором кадре маленький знак «KO» у окна. Это выглядит как мусорный текст.\n⚠️ В кадре 2 справа обрезан предмет на комоде (у края виден фрагмент белого абажура), слева обрезана гитара. Композиция выглядит неаккуратно.\n⚠️ Лицо героя в первом кадре выглядит искажённо: непропорциональная голова, при этом рука на клавиатуре схематична.",
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "stats": {
-    "views": 39,
+    "views": 41,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -1803,7 +1803,7 @@
    "qc": "🧪 Контроль качества:\n⚠️ Кадр 3: на открытой книге нечитаемый псевдотекст-«абракадабра» (искажённые английские слова вроде «Tale jannet and tie beat», «Belaim af gaiisug»), зритель увидит мусорные надписи на картинке.\n⚠️ Кадр 4: в правом нижнем углу виден посторонний рукописный водяной знак/подпись («Cailiunst») и мелкие каракули у правой рамы, которые выглядят как мусорный текст.\n⚠️ Кадр 4: на свитке у шеи кошки нарисован мелкий значок-мозг, а русский титр частично перекрывает свиток и тело кошки, из-за чего картинка выглядит загромождённой.\n⚠️ Кадр 2: русский титр проходит прямо по звёздочкам и ёлке на картинке, а английское «only» стоит поверх яркого окна, из-за чего глаз цепляется за смешение текста и деталей.\n⚠️ Кадр 1: английский титр «in» теряется на красном шарфе и хвосте кошки, плохо читается и выглядит случайным.\n⚠️ Кадр 3: русский титр «Почему мы любим» налезает на лапы кошки и край книги, а английское «Love,» стоит прямо на книге, и текст конфликтует с нарисованными надписями на страницах.",
    "music": "soft (-25 дБ): soft storybook lullaby: music box, celesta, warm felt piano and light strings, slow, tender, dreamy",
    "stats": {
-    "views": 11,
+    "views": 12,
     "likes": 1,
     "comments": 0,
     "privacy": "public"
@@ -2019,7 +2019,7 @@
    "music": "soft (-25 дБ): soft storybook lullaby: music box, celesta, warm felt piano and light strings, slow, tender, dreamy",
    "public_id": "ApHq1i8cCDc",
    "stats": {
-    "views": 3,
+    "views": 5,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2133,7 +2133,7 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "AjmTxqkLGvc",
    "stats": {
-    "views": 32,
+    "views": 35,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2235,8 +2235,8 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "VfxB_9fs1iY",
    "stats": {
-    "views": 121,
-    "likes": 3,
+    "views": 123,
+    "likes": 4,
     "comments": 0,
     "privacy": "public"
    }
@@ -2288,7 +2288,7 @@
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "factcheck": "🔎 Фактчек: найдено 5, осталось 0",
    "stats": {
-    "views": 9,
+    "views": 10,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2300,7 +2300,7 @@
   "L111018301f93": {
    "kind": "long",
    "topic": "Sapiens, Part 1 of 5: The Cognitive Revolution",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-10T18:30:59+00:00",
    "long_ref": null,
    "series": "sapiens",
@@ -2309,7 +2309,7 @@
    "book": null,
    "feedback": [],
    "voice": "af_nicole",
-   "updated": "2026-11-10T19:16:31+00:00",
+   "updated": "2026-11-11T23:57:03+00:00",
    "short_facts": [
     "Harari's Sapiens presents the Cognitive Revolution around seventy thousand years ago as his interpretation, and many scholars read the evidence more gradually.",
     "Fire use is very ancient and predates our species, though the exact start of controlled fire is still debated.",
@@ -2357,16 +2357,17 @@
    "release": null,
    "thumb_path": "/home/runner/work/kanal/kanal/work/long/L111018301f93/thumb.jpg",
    "stats": {
-    "views": 0,
-    "likes": 0,
+    "views": 2,
+    "likes": 1,
     "comments": 0,
-    "privacy": "private"
-   }
+    "privacy": "public"
+   },
+   "public_id": "J1ETUSC7iTM"
   },
   "S11111757c498": {
    "kind": "short",
    "topic": "Viktor Frankl, writing from his years in Nazi concentration camps, argued that even when almost everything else is taken away, a person can still choose their own attitude; this is his personal philosophy of logotherapy rather than a laboratory finding.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-11T17:57:57+00:00",
    "long_ref": null,
    "series": null,
@@ -2374,7 +2375,7 @@
    "format": "scene",
    "book": "frankl",
    "feedback": [],
-   "updated": "2026-11-11T18:01:02+00:00",
+   "updated": "2026-11-11T23:57:03+00:00",
    "video_id": "MZwmd18cZiw",
    "release": null,
    "title": "Frankl's Last Freedom: Choosing Your Attitude #Frankl #logotherapy",
@@ -2406,12 +2407,19 @@
    ],
    "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: русский титр «Ты целую неделю» и английский «YOU HAVEN'T» наложены прямо на лицо и шею героини, закрывая важную часть кадра.\n⚠️ Кадр 2: титры «Не всё.» и «NOT EVERYTHING.» расположены на шее и груди героини, у подбородка и воротника, отвлекают от лица.\n⚠️ Кадр 3: на кадре с крупным планом английский «STILL YOURS.» не совпадает по смыслу с русским «по-прежнему решать тебе.», зритель видит рассинхрон двух строк.\n⚠️ Кадр 4: белый английский титр «ATTITUDE.» на светлой кофте и светлом окне слабо контрастирует и читается хуже остальных, к тому же его стиль (белый, без зелёного свечения) отличается от других кадров.\n⚠️ Кадры 1 и 3: руки героини выглядят неестественно — пальцы на кадре 1 слипаются в непонятную форму, на кадре 3 пальцы вытянуты и деформированы.\n⚠️ Кадр 3: внешность героини отличается от других кадров (рыжеватые волосы вместо тёмных, другое лицо), нарушена непрерывность персонажа.",
    "music": "quiet (-31 дБ): sparse piano with low cello swells, intimate, tense and slow, like a quiet film score",
-   "factcheck": "✅ Фактчек: замечаний нет"
+   "factcheck": "✅ Фактчек: замечаний нет",
+   "public_id": "MZwmd18cZiw",
+   "stats": {
+    "views": 9,
+    "likes": 0,
+    "comments": 0,
+    "privacy": "public"
+   }
   },
   "S11111758d42e": {
    "kind": "short",
    "topic": "Daniel Kahneman describes a simple puzzle: a bat and a ball cost $1.10 together, and the bat costs $1.00 more than the ball, so the instant answer of 10 cents is wrong and the ball actually costs 5 cents, a mistake even many well-educated people make.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-11T17:58:01+00:00",
    "long_ref": null,
    "series": null,
@@ -2419,7 +2427,7 @@
    "format": "series",
    "book": "kahneman",
    "feedback": [],
-   "updated": "2026-11-11T18:01:48+00:00",
+   "updated": "2026-11-11T23:57:03+00:00",
    "video_id": "4tQ92JyYR4E",
    "release": null,
    "title": "Kahneman's bat and ball puzzle fools smart people #psychology #kahneman",
@@ -2453,7 +2461,14 @@
    ],
    "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: русский титр «Десять центов.» стоит на самой нижней границе иллюстрации и частично накладывается на линию рамки и рисунок, при этом английский субтитр «Ten cents. The human said» говорит о другом и ощутимо расходится с русским текстом.\n⚠️ Кадр 1: на монете нечитаемая бессмысленная надпись («ITEEN TONS», «OF VOLD SIAS») — мусорный текст на картинке.\n⚠️ Кадр 2: русский титр «эту загадку.» накладывается на нижнюю линию рамки иллюстрации и частично на рисунок, читается хуже остальных.\n⚠️ Кадр 2: в углу картинки нечитаемая подпись «2044», которая спорит с заявленным 2126 годом; на листке в руке тоже мелкий мусорный текст.\n⚠️ Кадр 3: на купюре и монетах нечитаемые символы и буквы, на банкноте странный знак «B» — мусорный текст; рука с купюрой анатомически неубедительна (пальцы слипшиеся).\n⚠️ Кадр 3: английский субтитр «the total a dollar twenty» не согласуется с русским «10 центов, выйдет» — тексты не совпадают по смыслу в момент показа.\n⚠️ Кадр 4: русский титр «Часть опытов по прайминг-эффекту,» наползает на нижнюю часть иллюстрации (линия рамки пересекает текст) и занимает почти всю ширину кадра, слишком близко к краям.\n⚠️ Кадр 4: на листках в мусорной корзине и у предмета на листе нечитаемые каракули, лицо учёного с красными пятнами вокруг глаз выглядит неаккуратно.",
    "music": "soft (-25 дБ): witty documentary underscore with pizzicato strings, marimba and light clarinet, curious and playful, mid tempo",
-   "factcheck": "✅ Фактчек: замечаний нет"
+   "factcheck": "✅ Фактчек: замечаний нет",
+   "public_id": "4tQ92JyYR4E",
+   "stats": {
+    "views": 0,
+    "likes": 0,
+    "comments": 0,
+    "privacy": "public"
+   }
   }
  },
  "images": [
@@ -5299,7 +5314,7 @@
   "vCono09cG4g",
   "vOHUQ5bN9Lk"
  ],
- "last_yt_sync": "2026-11-11T17:57:53+00:00",
+ "last_yt_sync": "2026-11-11T23:57:03+00:00",
  "dups_reported": [
   "daniel pink's late fee experiment backfired #psychology #shorts",
   "short"
