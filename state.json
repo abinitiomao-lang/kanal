@@ -4414,7 +4414,7 @@
    "images": 107
   },
   "2026-11": {
-   "anthropic": 2.14449,
+   "anthropic": 2.14638,
    "fal": 6.796,
    "images": 170,
    "elevenlabs": 0,
@@ -5321,6 +5321,12 @@
    "service": "anthropic",
    "usd": 0.10279,
    "note": "S11111758d42e"
+  },
+  {
+   "ts": "2026-11-12T14:58:27+00:00",
+   "service": "anthropic",
+   "usd": 0.00189,
+   "note": "proposals"
   }
  ],
  "awaiting_comment": null,
