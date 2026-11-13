@@ -1331,7 +1331,9 @@
     }
    ],
    "msg": 233,
-   "picked": [],
+   "picked": [
+    0
+   ],
    "created": "2026-11-12T14:58:36+00:00",
    "auto": true
   },
@@ -2621,6 +2623,18 @@
     "comments": 0,
     "privacy": "public"
    }
+  },
+  "L1113164779ce": {
+   "kind": "long",
+   "topic": "Sapiens, Part 2 of 5: The Agricultural Revolution",
+   "status": "queued",
+   "created": "2026-11-13T16:47:17+00:00",
+   "long_ref": null,
+   "series": "sapiens",
+   "part": 2,
+   "format": null,
+   "book": null,
+   "feedback": []
   }
  },
  "images": [
