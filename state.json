@@ -2627,7 +2627,7 @@
   "L1113164779ce": {
    "kind": "long",
    "topic": "Sapiens, Part 2 of 5: The Agricultural Revolution",
-   "status": "rendering",
+   "status": "awaiting_approval",
    "created": "2026-11-13T16:47:17+00:00",
    "long_ref": null,
    "series": "sapiens",
@@ -2636,7 +2636,7 @@
    "book": null,
    "feedback": [],
    "voice": "am_michael",
-   "updated": "2026-11-13T17:02:21+00:00",
+   "updated": "2026-11-13T17:23:35+00:00",
    "short_facts": [
     "Archaeologists have found that people in several separate regions, including the Fertile Crescent, East Asia, Mesoamerica and the Andes, began cultivating plants and domesticating animals at different times and largely independently of one another.",
     "In Mesoamerica, people developed maize from a wild grass called teosinte through many generations of careful selection.",
@@ -2654,7 +2654,35 @@
     "Robin Dunbar has suggested a rough limit of around 150 people for stable social relationships, an estimate rather than a law of nature.",
     "Harari uses the example of a paper banknote to show that money works because of a shared expectation across a society, not because of the paper itself."
    ],
-   "title": "Why Does Having More Never Feel Like Enough? | 3 Hours of History to Fall Asleep To"
+   "title": "Why Does Having More Never Feel Like Enough? | 2 Hours of History to Fall Asleep To",
+   "video_id": "Z-OFUWbC_zg",
+   "description": "A slow, calm retelling of how farming began, how villages, writing, and hierarchies grew out of it, and what historians still argue about. This is part 2 of a five-part series, and the narration moves gently from simple facts to bigger questions. Based on ideas from Sapiens by Yuval Noah Harari (Part 2 of 5), retold in our own words. Where the ideas are the author's own arguments, they are presented as his views and many historians debate them.\n\nTake your time, breathe slowly, and let the story drift past. The screen slowly dims to near-black after 15 minutes, so you can listen without the glow, and the audio keeps playing through the night.\n\nNo need to follow every detail. Pick up the thread again whenever you wake, and enjoy the quiet of the long history of human settlement.\n\nIn this video:\n• Quiet Fields at the Edge of Memory\n• How Wheat Won Over Humans\n• The Luxury Trap\n• The First Permanent Villages\n• Storage, Surplus and Unequal Shares\n• Animals Under the Plow\n• Shared Stories That Hold Strangers Together\n• The Clay Tablets of Accounting\n• Ranks, Crowns, and the Myths That Hold Them Up\n• Roles of Men and Women in Early Societies\n• Was Farming History's Biggest Fraud?\n• A Quiet Look Back Before Sleep\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "sleep learning",
+    "history for sleep",
+    "agricultural revolution",
+    "sapiens",
+    "yuval noah harari",
+    "neolithic history",
+    "first farmers",
+    "history documentary",
+    "calm narration",
+    "dark screen",
+    "bedtime history",
+    "ancient history",
+    "night nerd radio",
+    "fall asleep to history",
+    "wheat domestication",
+    "early villages",
+    "mesopotamia",
+    "history podcast",
+    "relaxing voice",
+    "long history audio"
+   ],
+   "duration": 8202.021417,
+   "factcheck": "🔎 Фактчек: найдено 14, осталось 0",
+   "release": null,
+   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L1113164779ce/thumb.jpg"
   }
  },
  "images": [
