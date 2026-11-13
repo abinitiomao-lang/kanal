@@ -2013,7 +2013,7 @@
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "public_id": "RvzWXqu_tEU",
    "stats": {
-    "views": 34,
+    "views": 37,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2287,7 +2287,7 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "AjmTxqkLGvc",
    "stats": {
-    "views": 38,
+    "views": 40,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2618,7 +2618,7 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "4tQ92JyYR4E",
    "stats": {
-    "views": 16,
+    "views": 18,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -2627,7 +2627,7 @@
   "L1113164779ce": {
    "kind": "long",
    "topic": "Sapiens, Part 2 of 5: The Agricultural Revolution",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-13T16:47:17+00:00",
    "long_ref": null,
    "series": "sapiens",
@@ -2636,7 +2636,7 @@
    "book": null,
    "feedback": [],
    "voice": "am_michael",
-   "updated": "2026-11-13T17:23:35+00:00",
+   "updated": "2026-11-13T22:14:06+00:00",
    "short_facts": [
     "Archaeologists have found that people in several separate regions, including the Fertile Crescent, East Asia, Mesoamerica and the Andes, began cultivating plants and domesticating animals at different times and largely independently of one another.",
     "In Mesoamerica, people developed maize from a wild grass called teosinte through many generations of careful selection.",
@@ -2682,7 +2682,14 @@
    "duration": 8202.021417,
    "factcheck": "🔎 Фактчек: найдено 14, осталось 0",
    "release": null,
-   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L1113164779ce/thumb.jpg"
+   "thumb_path": "/home/runner/work/kanal/kanal/work/long/L1113164779ce/thumb.jpg",
+   "public_id": "Z-OFUWbC_zg",
+   "stats": {
+    "views": 1,
+    "likes": 0,
+    "comments": 0,
+    "privacy": "public"
+   }
   }
  },
  "images": [
@@ -5565,7 +5572,7 @@
   "vCono09cG4g",
   "vOHUQ5bN9Lk"
  ],
- "last_yt_sync": "2026-11-13T16:47:12+00:00",
+ "last_yt_sync": "2026-11-13T22:14:06+00:00",
  "dups_reported": [
   "daniel pink's late fee experiment backfired #psychology #shorts",
   "short"
