@@ -2627,14 +2627,16 @@
   "L1113164779ce": {
    "kind": "long",
    "topic": "Sapiens, Part 2 of 5: The Agricultural Revolution",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-13T16:47:17+00:00",
    "long_ref": null,
    "series": "sapiens",
    "part": 2,
    "format": null,
    "book": null,
-   "feedback": []
+   "feedback": [],
+   "voice": "am_michael",
+   "updated": "2026-11-13T16:48:13+00:00"
   }
  },
  "images": [
