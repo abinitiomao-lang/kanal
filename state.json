@@ -1333,6 +1333,54 @@
    "msg": 233,
    "picked": [],
    "created": "2026-11-12T14:58:36+00:00"
+  },
+  "p11131424c5c6": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Eric Berne described 'pastimes' as the safe, sociable small talk about weather, traffic or sports that fills time without much real closeness; this is his model of social life, not a tested scientific finding.",
+     "subject": "Eric Berne's pastimes",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Daniel Kahneman describes a 'lazy controller': the slow, effortful part of your mind often accepts the quick answer that intuition offers instead of checking it, a central idea in his System 1 and System 2 framework.",
+     "subject": "The lazy controller",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi, using experience sampling, reported that people absorbed in flow often lose track of time, so an hour can feel like a few minutes.",
+     "subject": "Flow and time",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink argues that tasks work best in a 'Goldilocks' zone, neither too easy nor too hard, a simplified summary of self-determination research that he presents as his own synthesis.",
+     "subject": "Goldilocks tasks",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Julia Cameron's morning pages ask you to handwrite three pages every morning, a practice she presents as her own method; it echoes expressive-writing studies by James Pennebaker, while her spiritual framing is her personal belief.",
+     "subject": "Morning pages",
+     "related_long": -1,
+     "book": "cameron",
+     "long_ref": null,
+     "format": "scene"
+    }
+   ],
+   "msg": 236,
+   "picked": [],
+   "created": "2026-11-13T14:24:51+00:00"
   }
  },
  "items": {
@@ -5393,7 +5441,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-12",
- "last_short_proposal": "2026-11-12",
+ "last_short_proposal": "2026-11-13",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
