@@ -2742,7 +2742,7 @@
   "S111412304287": {
    "kind": "short",
    "topic": "Daniel Pink argues that tasks work best in a 'Goldilocks' zone, neither too easy nor too hard, a simplified summary of self-determination research that he presents as his own synthesis.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-14T12:30:39+00:00",
    "long_ref": null,
    "series": null,
@@ -2750,7 +2750,7 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-14T12:34:05+00:00",
+   "updated": "2026-11-14T12:37:24+00:00",
    "video_id": "3a97K2zpl3w",
    "release": null,
    "title": "Daniel Pink's Goldilocks zone of motivation, explained #motivation #drive",
@@ -2784,7 +2784,8 @@
    ],
    "qc": "🧪 Контроль качества:\n⚠️ Кадр 3: на карте и на табличке справа мусорный нечитаемый текст-«кракозябры» (зеркальные символы «P.», «L597…», «RIIIM9») — артефакты генерации.\n⚠️ Кадр 1: русский титр «Девять раз он уже» стоит вплотную к нижней линии рамки иллюстрации и почти касается картинки, а розовое свечение сливается с рисунком; выглядит тесно.\n⚠️ Кадр 2: на картинке справа, на экране и на красной табличке, мелкие детали выглядят как бессмысленные значки; рука/ступня персонажа внизу нарисована странно и нечётко.\n⚠️ Кадр 4: рука, держащая книгу, анатомически неестественная (пальцы разной формы и цвета, вытянутые), выглядит как артефакт ИИ.\n⚠️ Русские титры на всех кадрах накладываются на нижний край иллюстрации, а не лежат в чистой зоне, что мешает восприятию границы кадра.",
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
-   "factcheck": "🔎 Фактчек: найдено 1, осталось 0"
+   "factcheck": "🔎 Фактчек: найдено 1, осталось 0",
+   "public_id": "3a97K2zpl3w"
   }
  },
  "images": [
