@@ -4708,6 +4708,55 @@
    "orient": "landscape",
    "style": "series-1bad1887",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4504b3fe3286.jpg"
+  },
+  {
+   "id": "5c74dad77857",
+   "prompt": "Close-up of Nora, a woman of about 38 with shoulder-length dark brown hair, tired hazel eyes, a grey knit cardigan, sitting at a small kitchen table in a dim apartment kitchen, forcing a casual voice while her fingers nervously turn a coffee mug, eyes avoiding the camera",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/5c74dad77857.jpg"
+  },
+  {
+   "id": "4341ea0f30f9",
+   "prompt": "Close-up of Dan, a man of about 40 with short messy dark blond hair, stubble, a rumpled blue work shirt with rolled sleeves, sitting at a small kitchen table in a dim apartment kitchen, glancing at the window and then down, stiffly nodding as he speaks, a folded envelope under his hand",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4341ea0f30f9.jpg"
+  },
+  {
+   "id": "a06fcd290523",
+   "prompt": "Close-up of Nora, a woman of about 38 with shoulder-length dark brown hair, tired hazel eyes, a grey knit cardigan, in a dim apartment kitchen, leaning forward and pushing an opened envelope across the table with a trembling hand, her eyes fixed on him, tense and pleading",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/a06fcd290523.jpg"
+  },
+  {
+   "id": "7ec2e2024e3c",
+   "prompt": "Close-up of Dan, a man of about 40 with short messy dark blond hair, stubble, a rumpled blue work shirt, in a dim apartment kitchen, forcing a weak smile and looking away from the envelope, leaning back in his chair as if to escape, eyes darting, desperate to change the subject",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7ec2e2024e3c.jpg"
+  },
+  {
+   "id": "b8ad4d2cb7b7",
+   "prompt": "Close-up of Nora, a woman of about 38 with shoulder-length dark brown hair, tired hazel eyes, a grey knit cardigan, in a dim apartment kitchen, pushing her chair back sharply and standing up, eyes wet with angry disbelief, one hand pressed against the table",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/b8ad4d2cb7b7.jpg"
+  },
+  {
+   "id": "45e90dd925b6",
+   "prompt": "Close-up of Dan, a man of about 40 with short messy dark blond hair, stubble, a rumpled blue work shirt, in a dim apartment kitchen, finally lifting his gaze, eyes filling with tears, his jaw trembling and his hand covering his mouth",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/45e90dd925b6.jpg"
+  },
+  {
+   "id": "3b7f51b4b3d6",
+   "prompt": "Quiet wide shot of a dim apartment kitchen at night, Nora, a woman with shoulder-length dark brown hair in a grey cardigan, standing by the counter on one side, and Dan, a man with short messy dark blond hair in a rumpled blue shirt, sitting at the table on the other side, silent and apart, the unopened letter lying between them",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/3b7f51b4b3d6.jpg"
   }
  ],
  "costs": {
