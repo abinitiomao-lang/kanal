@@ -2710,7 +2710,7 @@
   "S111412304287": {
    "kind": "short",
    "topic": "Daniel Pink argues that tasks work best in a 'Goldilocks' zone, neither too easy nor too hard, a simplified summary of self-determination research that he presents as his own synthesis.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-14T12:30:39+00:00",
    "long_ref": null,
    "series": null,
@@ -2718,7 +2718,41 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-14T12:31:37+00:00"
+   "updated": "2026-11-14T12:34:05+00:00",
+   "video_id": "3a97K2zpl3w",
+   "release": null,
+   "title": "Daniel Pink's Goldilocks zone of motivation, explained #motivation #drive",
+   "description": "A tongue-in-cheek look from the year 2126 at why we love challenges that are neither too easy nor too hard. Based on Daniel Pink's book Drive: The Surprising Truth About What Motivates Us, where he presents the Goldilocks zone as his own synthesis of motivation research.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Daniel Pink",
+    "Drive",
+    "Goldilocks zone",
+    "motivation",
+    "self-determination theory",
+    "psychology",
+    "flow",
+    "book summary",
+    "shorts"
+   ],
+   "duration": 25.196,
+   "narration": "He has failed this level nine times. He is muttering. He is starting a tenth. This is footage from the 2020s. Note the oddity. He skipped the easy levels. He skipped the impossible ones. Humans of this era paid money to be almost beaten. Too easy bores them. Too hard defeats them. Daniel Pink, in his book Drive, borrows the phrase Goldilocks zone for that middle, an idea tracing back to Mihaly Csikszentmihalyi's flow theory. And historians are still confused.",
+   "ru_subs": [
+    "Девять раз он уже провалил этот уровень.",
+    "Он бормочет себе под нос.",
+    "И начинает десятую попытку.",
+    "Это кадры 2020-х годов.",
+    "Обратите внимание на странность.",
+    "Лёгкие уровни он пропустил.",
+    "Невозможные тоже пропустил.",
+    "Люди той эпохи платили, чтобы их почти победили.",
+    "Слишком просто — им скучно.",
+    "Слишком сложно — они сдаются.",
+    "Дэниел Пинк в книге «Драйв» называет эту золотую середину «зоной Златовласки», а сама идея восходит к теории потока Михая Чиксентмихайи.",
+    "А историки до сих пор в недоумении."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 3: на карте и на табличке справа мусорный нечитаемый текст-«кракозябры» (зеркальные символы «P.», «L597…», «RIIIM9») — артефакты генерации.\n⚠️ Кадр 1: русский титр «Девять раз он уже» стоит вплотную к нижней линии рамки иллюстрации и почти касается картинки, а розовое свечение сливается с рисунком; выглядит тесно.\n⚠️ Кадр 2: на картинке справа, на экране и на красной табличке, мелкие детали выглядят как бессмысленные значки; рука/ступня персонажа внизу нарисована странно и нечётко.\n⚠️ Кадр 4: рука, держащая книгу, анатомически неестественная (пальцы разной формы и цвета, вытянутые), выглядит как артефакт ИИ.\n⚠️ Русские титры на всех кадрах накладываются на нижний край иллюстрации, а не лежат в чистой зоне, что мешает восприятию границы кадра.",
+   "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
+   "factcheck": "🔎 Фактчек: найдено 1, осталось 0"
   }
  },
  "images": [
