@@ -2697,7 +2697,7 @@
   "S1114123011f3": {
    "kind": "short",
    "topic": "Eric Berne described 'pastimes' as the safe, sociable small talk about weather, traffic or sports that fills time without much real closeness; this is his model of social life, not a tested scientific finding.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-14T12:30:37+00:00",
    "long_ref": null,
    "series": null,
@@ -2705,7 +2705,7 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-14T12:34:17+00:00",
+   "updated": "2026-11-14T12:35:53+00:00",
    "video_id": "ExWR0JGpQOs",
    "release": null,
    "title": "Berne's pastimes: small talk as a hiding place #psychology #Berne",
@@ -2736,7 +2736,8 @@
    ],
    "qc": "🧪 Контроль качества:\n⚠️ Кадр 3: русский титр отображается как «Hopa.» с латинской буквой H и латинскими «p», «a» вместо кириллического «Нора.» — латиница в русском тексте, слово выглядит с ошибкой.\n⚠️ Кадр 3: английский титр «NORA.» не совпадает с ожидаемым русским «Нора.» и визуально расходится с розовой строкой «Hopa.», что подчёркивает путаницу в написании.\n⚠️ Кадр 1: русская фраза «Опять жуткие пробки.» и английская «AWFUL AGAIN.» стоят близко друг к другу в центре, при этом русский титр лежит прямо на шее и свитере героини, а английский на её руке/кружке — субтитры закрывают важные части картинки.\n⚠️ Кадр 2: английский титр «CATCH THE» накладывается на руку и конверт, а русский «Ты вчера смотрел» лежит на самом конверте — тексты закрывают ключевой предмет сцены.\n⚠️ Кадр 3: оба титра перекрывают лицо и руку героя — розовый «Hopa.» лежит на пальцах у рта, жёлтый «NORA.» на кисти руки.\n⚠️ Кадр 4: английский титр «SPORTS THAT» не связан по смыслу с русской строкой и сценой (письмо, женщина у двери), выглядит случайным мусорным текстом.",
    "music": "quiet (-31 дБ): sparse piano and low cello swells, intimate and tense, slow emotional film score",
-   "factcheck": "✅ Фактчек: замечаний нет"
+   "factcheck": "✅ Фактчек: замечаний нет",
+   "public_id": "ExWR0JGpQOs"
   },
   "S111412304287": {
    "kind": "short",
