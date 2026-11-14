@@ -4611,6 +4611,69 @@
    "prompt": "A single ripening golden wheat stalk rising from the bottom edge of a dark, calm background, softly lit, with a faint warm glow around the grain heads and no text, wholesome gentle storybook scene",
    "orient": "landscape",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/b7e7e1e17871.jpg"
+  },
+  {
+   "id": "97092c34f48d",
+   "prompt": "A man on a sofa gripping a game controller, frowning at a TV, muttering under his breath, thumbs jabbing at the buttons",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/97092c34f48d.jpg"
+  },
+  {
+   "id": "592f48ae25fc",
+   "prompt": "Close-up of a thumb pressing the restart button on a game controller as the man leans forward with determination",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/592f48ae25fc.jpg"
+  },
+  {
+   "id": "20c537cbf9ed",
+   "prompt": "A futuristic historian in a pale tunic peering at a floating holographic screen showing the gamer on the sofa, tilting their head curiously",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/20c537cbf9ed.jpg"
+  },
+  {
+   "id": "a6d5c2ae45e2",
+   "prompt": "A hand swiping past a row of simple, brightly colored game level icons on a screen, flicking them away",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/a6d5c2ae45e2.jpg"
+  },
+  {
+   "id": "215d391fe3ee",
+   "prompt": "A man looking at a towering, steep, jagged mountain of stacked game cartridges, shaking his head and stepping away",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/215d391fe3ee.jpg"
+  },
+  {
+   "id": "2b67c3eabbe2",
+   "prompt": "A man handing over a credit card at a shop counter to buy a boxed video game, grinning slyly",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/2b67c3eabbe2.jpg"
+  },
+  {
+   "id": "22200b3ac146",
+   "prompt": "Split scene: a yawning man slumped over an easy puzzle on the left, a man tearing his hair out over a tangled mess of a puzzle on the right",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/22200b3ac146.jpg"
+  },
+  {
+   "id": "7e9e66484398",
+   "prompt": "A hand placing a thick paperback book on a desk beside three bowls of porridge, one steaming, one frosty, one just right with a spoon in it",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7e9e66484398.jpg"
+  },
+  {
+   "id": "4504b3fe3286",
+   "prompt": "The futuristic historian scratching their head in front of the hologram of the gamer who is triumphantly raising both fists as the screen flashes",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4504b3fe3286.jpg"
   }
  ],
  "costs": {
