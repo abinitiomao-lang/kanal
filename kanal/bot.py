@@ -574,6 +574,7 @@ def poll(seconds: int) -> None:
     sync_youtube()
     autopilot()
     deadline = time.time() + seconds
+    conflicts = 0
     while time.time() < deadline:
         offset = state.load()["tg_offset"]
         try:
@@ -581,6 +582,9 @@ def poll(seconds: int) -> None:
         except RuntimeError as e:
             if "Conflict" not in str(e):  # параллельный getUpdates (будильник проверяет очередь) — не страшно
                 raise
+            conflicts += 1
+            if conflicts in (1, 20):  # webhook или чужой поллер съедает нажатия — должно быть видно в логе
+                print(f"WARN getUpdates: {e}")
             time.sleep(3)
             continue
         for u in ups:
