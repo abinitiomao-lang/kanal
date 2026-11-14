@@ -2697,14 +2697,15 @@
   "S1114123011f3": {
    "kind": "short",
    "topic": "Eric Berne described 'pastimes' as the safe, sociable small talk about weather, traffic or sports that fills time without much real closeness; this is his model of social life, not a tested scientific finding.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-14T12:30:37+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "scene",
    "book": "berne",
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-11-14T12:32:00+00:00"
   },
   "S111412304287": {
    "kind": "short",
