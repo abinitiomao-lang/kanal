@@ -1383,7 +1383,8 @@
    ],
    "msg": 236,
    "picked": [
-    0
+    0,
+    3
    ],
    "created": "2026-11-13T14:24:51+00:00"
   }
@@ -2703,6 +2704,18 @@
    "part": null,
    "format": "scene",
    "book": "berne",
+   "feedback": []
+  },
+  "S111412304287": {
+   "kind": "short",
+   "topic": "Daniel Pink argues that tasks work best in a 'Goldilocks' zone, neither too easy nor too hard, a simplified summary of self-determination research that he presents as his own synthesis.",
+   "status": "queued",
+   "created": "2026-11-14T12:30:39+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "drive",
    "feedback": []
   }
  },
