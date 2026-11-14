@@ -2697,7 +2697,7 @@
   "S1114123011f3": {
    "kind": "short",
    "topic": "Eric Berne described 'pastimes' as the safe, sociable small talk about weather, traffic or sports that fills time without much real closeness; this is his model of social life, not a tested scientific finding.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-14T12:30:37+00:00",
    "long_ref": null,
    "series": null,
@@ -2705,7 +2705,38 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-14T12:32:00+00:00"
+   "updated": "2026-11-14T12:34:17+00:00",
+   "video_id": "ExWR0JGpQOs",
+   "release": null,
+   "title": "Berne's pastimes: small talk as a hiding place #psychology #Berne",
+   "description": "Psychiatrist Eric Berne described 'pastimes' in his book Games People Play: safe, sociable small talk about weather, traffic or sports that fills time without much closeness. This is Berne's model of social life from transactional analysis, an influential therapy approach rather than a tested scientific finding.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Eric Berne",
+    "Games People Play",
+    "transactional analysis",
+    "pastimes",
+    "small talk",
+    "psychology",
+    "communication",
+    "relationships"
+   ],
+   "duration": 28.045,
+   "narration": "Traffic was awful again. It always is. Rain tomorrow, they say. Dan, the letter from the bank is on the table. Did you catch the game last night? Seriously? We're talking about sports now? I don't know how to say it, Nora. That's what Eric Berne, in his book Games People Play, called a pastime: safe small talk about weather, traffic or sports that fills time without real closeness. It's his model of social life, not a tested scientific finding.",
+   "ru_subs": [
+    "Опять жуткие пробки.",
+    "Они всегда такие.",
+    "Завтра, говорят, будет дождь.",
+    "Дэн, письмо из банка лежит на столе.",
+    "Ты вчера смотрел матч?",
+    "Серьёзно?",
+    "Мы теперь о спорте говорим?",
+    "Не знаю, как сказать, Нора.",
+    "Эрик Берн в книге «Игры, в которые играют люди» назвал это времяпрепровождением: безопасной болтовнёй о погоде, пробках или спорте, которая заполняет время без настоящей близости.",
+    "Это его модель общественной жизни, а не проверенный научный факт."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 3: русский титр отображается как «Hopa.» с латинской буквой H и латинскими «p», «a» вместо кириллического «Нора.» — латиница в русском тексте, слово выглядит с ошибкой.\n⚠️ Кадр 3: английский титр «NORA.» не совпадает с ожидаемым русским «Нора.» и визуально расходится с розовой строкой «Hopa.», что подчёркивает путаницу в написании.\n⚠️ Кадр 1: русская фраза «Опять жуткие пробки.» и английская «AWFUL AGAIN.» стоят близко друг к другу в центре, при этом русский титр лежит прямо на шее и свитере героини, а английский на её руке/кружке — субтитры закрывают важные части картинки.\n⚠️ Кадр 2: английский титр «CATCH THE» накладывается на руку и конверт, а русский «Ты вчера смотрел» лежит на самом конверте — тексты закрывают ключевой предмет сцены.\n⚠️ Кадр 3: оба титра перекрывают лицо и руку героя — розовый «Hopa.» лежит на пальцах у рта, жёлтый «NORA.» на кисти руки.\n⚠️ Кадр 4: английский титр «SPORTS THAT» не связан по смыслу с русской строкой и сценой (письмо, женщина у двери), выглядит случайным мусорным текстом.",
+   "music": "quiet (-31 дБ): sparse piano and low cello swells, intimate and tense, slow emotional film score",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S111412304287": {
    "kind": "short",
