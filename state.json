@@ -1387,6 +1387,54 @@
     3
    ],
    "created": "2026-11-13T14:24:51+00:00"
+  },
+  "p111413209b68": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Eric Berne's model describes a game called 'Kick Me', in which a person keeps setting up situations where they get criticized, then feels hurt by it, though this is Berne's model rather than a tested scientific finding.",
+     "subject": "Berne's Games: Kick Me",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Daniel Kahneman's cold-hand experiment found that people chose to repeat a longer cold-water trial that ended with slightly less discomfort, suggesting memory keeps the peak and the ending of an experience more than its total length.",
+     "subject": "The peak-end rule",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling method beeped people at random times through the day and asked what they were doing and feeling, a way of measuring how often they were in flow.",
+     "subject": "Experience sampling and flow",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Julia Cameron's method, which she calls morning pages, asks you to write three pages by hand every morning; this is her creative practice, and it echoes expressive-writing studies by James Pennebaker.",
+     "subject": "Morning pages",
+     "related_long": -1,
+     "book": "cameron",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Edward Deci's 1971 puzzle experiment found that students who were paid for solving puzzles later spent less free time on them, which Daniel Pink presents as a warning that rewards can dull interest, though later research finds the effect is narrower than it first appeared.",
+     "subject": "Rewards and intrinsic interest",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    }
+   ],
+   "msg": 249,
+   "picked": [],
+   "created": "2026-11-14T13:20:23+00:00"
   }
  },
  "items": {
@@ -5779,7 +5827,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-12",
- "last_short_proposal": "2026-11-13",
+ "last_short_proposal": "2026-11-14",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
