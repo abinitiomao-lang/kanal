@@ -1435,6 +1435,54 @@
    "msg": 249,
    "picked": [],
    "created": "2026-11-14T13:20:23+00:00"
+  },
+  "p111513483a26": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Eric Berne described a social game called 'Kick Me', in which a person sets up situations that invite criticism or rejection, then feels hurt when it arrives; this is Berne's model, not a tested scientific finding.",
+     "subject": "Berne's Games: Kick Me",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Daniel Kahneman calls the halo effect the tendency for one strong first impression, such as someone seeming attractive or confident, to color our judgment of their other qualities, even ones we have not actually observed.",
+     "subject": "The halo effect",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "In a 1949 study, psychologist Harry Harlow found that monkeys worked at puzzles even with no food or other reward, which Daniel Pink uses to argue that some motivation comes from the task itself.",
+     "subject": "Harlow's monkeys and puzzles",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi used the experience sampling method, having people note what they were doing and feeling each time a pager beeped at random moments, so they could see how their days really felt rather than how they remembered them.",
+     "subject": "The experience sampling method",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Philippa Perry suggests that many of our habits of thought are learned from early relationships, and that noticing our own patterns, rather than assuming they are simply who we are, is the first step toward changing them.",
+     "subject": "Self-observation",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "scene"
+    }
+   ],
+   "msg": 250,
+   "picked": [],
+   "created": "2026-11-15T13:48:26+00:00"
   }
  },
  "items": {
@@ -5845,7 +5893,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-12",
- "last_short_proposal": "2026-11-14",
+ "last_short_proposal": "2026-11-15",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
