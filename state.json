@@ -1536,7 +1536,9 @@
     }
    ],
    "msg": 251,
-   "picked": [],
+   "picked": [
+    0
+   ],
    "created": "2026-11-15T13:48:41+00:00",
    "auto": true
   },
@@ -2998,6 +3000,18 @@
     "comments": 0,
     "privacy": "public"
    }
+  },
+  "L111615324245": {
+   "kind": "long",
+   "topic": "Sapiens, Part 3 of 5: The Unification of Humankind",
+   "status": "queued",
+   "created": "2026-11-16T15:32:56+00:00",
+   "long_ref": null,
+   "series": "sapiens",
+   "part": 3,
+   "format": null,
+   "book": null,
+   "feedback": []
   }
  },
  "images": [
