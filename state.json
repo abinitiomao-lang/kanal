@@ -3007,7 +3007,7 @@
   "L111615324245": {
    "kind": "long",
    "topic": "Sapiens, Part 3 of 5: The Unification of Humankind",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-16T15:32:56+00:00",
    "long_ref": null,
    "series": "sapiens",
@@ -3016,7 +3016,7 @@
    "book": null,
    "feedback": [],
    "voice": "af_nicole",
-   "updated": "2026-11-16T16:15:38+00:00",
+   "updated": "2026-11-16T18:13:30+00:00",
    "short_facts": [
     "Fossil evidence found in Morocco suggests Homo sapiens was already around roughly 300,000 years ago, older than many textbooks from a few decades earlier said.",
     "Archaeological evidence for symbolic objects does not cluster at one moment, so many researchers favor a gradual model of change over a single sudden leap rather than Harari's Cognitive Revolution timing.",
@@ -3070,7 +3070,8 @@
     "likes": 0,
     "comments": 0,
     "privacy": "private"
-   }
+   },
+   "public_id": "uWm54nc7gxI"
   },
   "S111615336599": {
    "kind": "short",
