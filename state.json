@@ -1538,6 +1538,54 @@
    "msg": 251,
    "picked": [],
    "created": "2026-11-15T13:48:41+00:00"
+  },
+  "p11161528e5f0": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Eric Berne described a game he called 'Kick Me', in which a person keeps setting up situations that bring criticism and then feels hurt by the result; this is Berne's model, not a tested scientific finding.",
+     "subject": "Berne's games: Kick Me",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Daniel Kahneman describes flight instructors who noticed that praise after an excellent landing was often followed by a weaker one, while harsh scolding after a poor landing was often followed by improvement, a pattern he explains mostly through regression to the mean.",
+     "subject": "Regression to the mean",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's experience sampling method had people carry pagers and record what they were doing and feeling whenever they were beeped at random times, a way of catching ordinary experience as it happened.",
+     "subject": "Experience sampling method",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Marshall Rosenberg's Nonviolent Communication, as his approach, separates observations from evaluations, so that 'You interrupted me three times in this meeting' is easier to hear than 'You never listen'.",
+     "subject": "Observations vs evaluations",
+     "related_long": -1,
+     "book": "nvc",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Yuval Noah Harari argues in Sapiens that people quickly adjust to comforts, so yesterday's luxury becomes today's necessity, a pattern he calls the luxury trap; this is his interpretation rather than a settled historical law.",
+     "subject": "The luxury trap",
+     "related_long": -1,
+     "book": "sapiens",
+     "long_ref": null,
+     "format": "series"
+    }
+   ],
+   "msg": 252,
+   "picked": [],
+   "created": "2026-11-16T15:28:31+00:00"
   }
  },
  "items": {
@@ -5960,7 +6008,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-15",
- "last_short_proposal": "2026-11-15",
+ "last_short_proposal": "2026-11-16",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
