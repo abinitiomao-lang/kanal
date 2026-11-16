@@ -2944,7 +2944,7 @@
    "factcheck": "✅ Фактчек: замечаний нет",
    "public_id": "ExWR0JGpQOs",
    "stats": {
-    "views": 20,
+    "views": 22,
     "likes": 0,
     "comments": 0,
     "privacy": "public"
@@ -3069,14 +3069,14 @@
     "views": 0,
     "likes": 0,
     "comments": 0,
-    "privacy": "private"
+    "privacy": "public"
    },
    "public_id": "uWm54nc7gxI"
   },
   "S111615336599": {
    "kind": "short",
    "topic": "Eric Berne described a game he called 'Kick Me', in which a person keeps setting up situations that bring criticism and then feels hurt by the result; this is Berne's model, not a tested scientific finding.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-16T15:33:04+00:00",
    "long_ref": null,
    "series": null,
@@ -3084,7 +3084,7 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-16T15:36:36+00:00",
+   "updated": "2026-11-16T19:50:05+00:00",
    "video_id": "SfW6ZWpTauc",
    "release": null,
    "title": "Eric Berne's 'Kick Me' game: why we invite criticism #psychology #ericberne",
@@ -3119,11 +3119,12 @@
    "music": "quiet (-31 дБ): sparse piano with low cello swells, intimate and tense, slow cinematic film score",
    "factcheck": "✅ Фактчек: замечаний нет",
    "stats": {
-    "views": 0,
+    "views": 4,
     "likes": 0,
     "comments": 0,
-    "privacy": "private"
-   }
+    "privacy": "public"
+   },
+   "public_id": "SfW6ZWpTauc"
   },
   "S11161533edd4": {
    "kind": "short",
@@ -3170,10 +3171,10 @@
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
    "factcheck": "🔎 Фактчек: найдено 1, осталось 0",
    "stats": {
-    "views": 0,
+    "views": 3,
     "likes": 0,
     "comments": 0,
-    "privacy": "private"
+    "privacy": "public"
    },
    "public_id": "bMCy5M5zxU8"
   }
@@ -6391,7 +6392,7 @@
   "vCono09cG4g",
   "vOHUQ5bN9Lk"
  ],
- "last_yt_sync": "2026-11-16T18:07:35+00:00",
+ "last_yt_sync": "2026-11-16T19:50:05+00:00",
  "dups_reported": [
   "daniel pink's late fee experiment backfired #psychology #shorts",
   "short"
