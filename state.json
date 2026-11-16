@@ -5129,6 +5129,62 @@
    "orient": "portrait",
    "style": "scene-badca626",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/1e60ba19fffc.jpg"
+  },
+  {
+   "id": "44394e59a6ea",
+   "prompt": "Close-up of a hand flipping a plain white wall light switch in a dim living room, finger pressing it down firmly",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/44394e59a6ea.jpg"
+  },
+  {
+   "id": "981d5187b530",
+   "prompt": "Same hand flipping the wall switch again and again in a dark room, a candle flame flickering faintly in the background",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/981d5187b530.jpg"
+  },
+  {
+   "id": "299758f83a27",
+   "prompt": "A glass museum display case holding an old wall light switch plate on a velvet stand, a curator's gloved hand adjusting it, no writing visible",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/299758f83a27.jpg"
+  },
+  {
+   "id": "f86e3f34bf38",
+   "prompt": "A person in a dark kitchen with a puzzled, patient face, pressing a wall switch once more while holding a phone flashlight",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/f86e3f34bf38.jpg"
+  },
+  {
+   "id": "fff72c879636",
+   "prompt": "An old-fashioned glowing filament bulb being switched on in a dark room, a crowd of wide-eyed people in old-fashioned clothes leaning in to stare at it",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/fff72c879636.jpg"
+  },
+  {
+   "id": "4b57cf3284b8",
+   "prompt": "A modern family standing in a dark hallway looking annoyed, a father squinting at a fuse box, children holding their arms out",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4b57cf3284b8.jpg"
+  },
+  {
+   "id": "bb1156f845e0",
+   "prompt": "A historian in a tweed jacket tilting his head and raising one eyebrow while looking at a thick book, thoughtful",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/bb1156f845e0.jpg"
+  },
+  {
+   "id": "170a8ef7999e",
+   "prompt": "A group of future researchers in white coats gathered around a wall switch on a lab table, scratching their heads and leaning in to inspect it",
+   "orient": "landscape",
+   "style": "series-1bad1887",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/170a8ef7999e.jpg"
   }
  ],
  "costs": {
