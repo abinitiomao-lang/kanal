@@ -1588,7 +1588,8 @@
    ],
    "msg": 252,
    "picked": [
-    0
+    0,
+    4
    ],
    "created": "2026-11-16T15:28:31+00:00"
   }
@@ -3025,6 +3026,18 @@
    "part": null,
    "format": "scene",
    "book": "berne",
+   "feedback": []
+  },
+  "S11161533edd4": {
+   "kind": "short",
+   "topic": "Yuval Noah Harari argues in Sapiens that people quickly adjust to comforts, so yesterday's luxury becomes today's necessity, a pattern he calls the luxury trap; this is his interpretation rather than a settled historical law.",
+   "status": "queued",
+   "created": "2026-11-16T15:33:11+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "sapiens",
    "feedback": []
   }
  },
