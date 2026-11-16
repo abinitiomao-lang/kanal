@@ -3007,14 +3007,16 @@
   "L111615324245": {
    "kind": "long",
    "topic": "Sapiens, Part 3 of 5: The Unification of Humankind",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-16T15:32:56+00:00",
    "long_ref": null,
    "series": "sapiens",
    "part": 3,
    "format": null,
    "book": null,
-   "feedback": []
+   "feedback": [],
+   "voice": "af_nicole",
+   "updated": "2026-11-16T15:34:02+00:00"
   },
   "S111615336599": {
    "kind": "short",
