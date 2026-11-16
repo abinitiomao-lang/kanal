@@ -3021,14 +3021,15 @@
   "S111615336599": {
    "kind": "short",
    "topic": "Eric Berne described a game he called 'Kick Me', in which a person keeps setting up situations that bring criticism and then feels hurt by the result; this is Berne's model, not a tested scientific finding.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-16T15:33:04+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "scene",
    "book": "berne",
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-11-16T15:34:16+00:00"
   },
   "S11161533edd4": {
    "kind": "short",
