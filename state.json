@@ -3021,7 +3021,7 @@
   "S111615336599": {
    "kind": "short",
    "topic": "Eric Berne described a game he called 'Kick Me', in which a person keeps setting up situations that bring criticism and then feels hurt by the result; this is Berne's model, not a tested scientific finding.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-16T15:33:04+00:00",
    "long_ref": null,
    "series": null,
@@ -3029,7 +3029,40 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-16T15:34:16+00:00"
+   "updated": "2026-11-16T15:36:36+00:00",
+   "video_id": "SfW6ZWpTauc",
+   "release": null,
+   "title": "Eric Berne's 'Kick Me' game: why we invite criticism #psychology #ericberne",
+   "description": "A tense workplace moment that shows what Eric Berne called the 'Kick Me' game, where someone keeps setting up criticism and then feels hurt by it. It comes from Eric Berne's book Games People Play. This is Berne's model from transactional analysis, an influential therapeutic idea, not a tested scientific finding.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Eric Berne",
+    "Games People Play",
+    "Kick Me game",
+    "transactional analysis",
+    "psychology",
+    "self-sabotage",
+    "workplace psychology",
+    "psychology facts"
+   ],
+   "duration": 23.537,
+   "narration": "Tom, this is the third report you've handed in late. Go ahead. Say it. I'm useless, right? I didn't say that. You didn't have to. Everyone already thinks it. Then why did you skip the review I offered? See? Nobody here ever gives me a chance. That's the game Eric Berne called 'Kick Me', from his book Games People Play. It's Berne's model, an influential idea about repeating patterns, not a tested scientific finding.",
+   "ru_subs": [
+    "Том, это уже третий отчёт, который ты сдаёшь с опозданием.",
+    "Давай, говори.",
+    "Скажи это.",
+    "Я ни на что не гожусь, да?",
+    "Я такого не говорил.",
+    "Тебе и не нужно было.",
+    "Все и так так думают.",
+    "Тогда почему ты пропустил разбор, который я предлагал?",
+    "Видишь?",
+    "Мне здесь никто никогда не даёт шанса.",
+    "Эрик Берн назвал это игрой «Ударь меня» в книге «Игры, в которые играют люди».",
+    "Это модель Берна — влиятельная идея о повторяющихся сценариях, а не проверенный научный факт."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: на листе в руках героини читается надпись «KAREN REPORT» — это лишний англоязычный текст на картинке, к тому же он не совпадает с русским контекстом («третий отчёт»), зритель это заметит\n⚠️ Кадр 2: розовый титр «да?» стоит прямо на носу героя, закрывает центр лица, а мелкий текст рядом с жёлтым «RIGHT?» трудно прочитать; русская реплика слишком маленькая по сравнению с другими кадрами\n⚠️ Кадр 2: огромный палец на переднем плане выглядит деформированным и перекрывает кадр, рука искажена\n⚠️ Кадр 3: пальцы поднятой руки героини неестественно согнуты, кисть выглядит уродливо\n⚠️ Кадр 4: лицо героя в профиль искажённое и размытое, с артефактами ИИ; стеклянная вертикальная полоса слева режет кадр\n⚠️ Кадр 4: русский титр «Удар�� меня» в книге оказался посреди кадра на лице/плече, а английское «'KICK ME'» с тёмной обводкой на тёмном пиджаке читается слабо",
+   "music": "quiet (-31 дБ): sparse piano with low cello swells, intimate and tense, slow cinematic film score",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S11161533edd4": {
    "kind": "short",
