@@ -5047,6 +5047,55 @@
    "orient": "portrait",
    "style": "scene-badca626",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/3b7f51b4b3d6.jpg"
+  },
+  {
+   "id": "7562fb2d186a",
+   "prompt": "Close-up of Karen, a woman of about 45 with a sleek dark bob, sharp hazel eyes and a charcoal blazer over a white blouse, in a glass-walled office, holding up a stapled report in one hand and looking at it with a tired, controlled frown",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/7562fb2d186a.jpg"
+  },
+  {
+   "id": "b0a3dbe11869",
+   "prompt": "Close-up of Tom, a man of about 30 with messy short brown hair, stubble, tired green eyes and a rumpled blue shirt with the sleeves rolled up, in a glass-walled office, jaw tight, his arms spreading open in bitter sarcasm as he leans forward",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/b0a3dbe11869.jpg"
+  },
+  {
+   "id": "8049371b310a",
+   "prompt": "Close-up of Karen, a woman of about 45 with a sleek dark bob, sharp hazel eyes and a charcoal blazer over a white blouse, in a glass-walled office, shaking her head slowly with a stunned, exasperated look and lowering the report to the desk",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/8049371b310a.jpg"
+  },
+  {
+   "id": "c020bc1eba48",
+   "prompt": "Close-up of Tom, a man of about 30 with messy short brown hair, stubble, tired green eyes and a rumpled blue shirt with the sleeves rolled up, in a glass-walled office, eyes glistening and hurt, glancing sideways toward the open-plan desks beyond the glass",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/c020bc1eba48.jpg"
+  },
+  {
+   "id": "d065573e3833",
+   "prompt": "Close-up of Karen, a woman of about 45 with a sleek dark bob, sharp hazel eyes and a charcoal blazer over a white blouse, in a glass-walled office, leaning in over her desk with a pleading, confused expression, one hand open in a questioning gesture",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/d065573e3833.jpg"
+  },
+  {
+   "id": "274692bee849",
+   "prompt": "Close-up of Tom, a man of about 30 with messy short brown hair, stubble, tired green eyes and a rumpled blue shirt with the sleeves rolled up, in a glass-walled office, looking down with a wounded half-smile, shoulders sagging as he picks up his laptop bag",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/274692bee849.jpg"
+  },
+  {
+   "id": "1e60ba19fffc",
+   "prompt": "Wide quiet shot of the glass-walled office: Karen, a woman of about 45 with a sleek dark bob and a charcoal blazer, sits motionless at her desk on one side, while Tom, a man of about 30 with messy brown hair and a rumpled blue shirt, stands by the door on the far side with his back half turned, the empty room silent between them",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/1e60ba19fffc.jpg"
   }
  ],
  "costs": {
