@@ -3067,7 +3067,7 @@
   "S11161533edd4": {
    "kind": "short",
    "topic": "Yuval Noah Harari argues in Sapiens that people quickly adjust to comforts, so yesterday's luxury becomes today's necessity, a pattern he calls the luxury trap; this is his interpretation rather than a settled historical law.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-16T15:33:11+00:00",
    "long_ref": null,
    "series": null,
@@ -3075,7 +3075,39 @@
    "format": "series",
    "book": "sapiens",
    "feedback": [],
-   "updated": "2026-11-16T15:34:44+00:00"
+   "updated": "2026-11-16T15:37:28+00:00",
+   "video_id": "bMCy5M5zxU8",
+   "release": null,
+   "title": "Yuval Noah Harari's luxury trap in Sapiens #history #psychology",
+   "description": "A playful look from the year 2126 at why we keep flipping a dead light switch. In Sapiens, Yuval Noah Harari argues that yesterday's luxury becomes today's necessity, which he calls the luxury trap. It's his interpretation, not a settled law of history.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Sapiens",
+    "Yuval Noah Harari",
+    "luxury trap",
+    "history",
+    "psychology",
+    "book summary",
+    "sleep learning",
+    "habits"
+   ],
+   "duration": 32.162,
+   "narration": "A human flips a light switch. The power is out. It flips it again. Museum label, year 2126. The human knows the switch is dead. It tries anyway. Electric light was once a wonder. Within a few generations, a dark house felt like a fault. In Sapiens, Yuval Noah Harari calls this the luxury trap: yesterday's luxury becomes today's necessity. That's his argument, not a law of history. ...and historians continue to debate how quickly and unevenly electric lighting reshaped daily life.",
+   "ru_subs": [
+    "Человек щёлкает выключателем.",
+    "Света нет.",
+    "Щёлкает снова.",
+    "Табличка в музее, 2126 год.",
+    "Человек знает: выключатель мёртв.",
+    "Но всё равно пробует.",
+    "Когда-то электрический свет был настоящим чудом.",
+    "Через несколько поколений тёмный дом стал казаться неисправностью.",
+    "В книге «Сапиенс» Юваль Ной Харари называет это ловушкой роскоши: вчерашняя роскошь становится необходимостью.",
+    "Это его мнение, а не закон истории.",
+    "…а историки до сих пор спорят, как быстро и неравномерно электрическое освещение изменило повседневную жизнь."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: розовый русский титр «Человек щёлкает выключателем.» налезает на нижнюю границу иллюстрации и перекрывает пальцы и кисть руки, так как стоит прямо на линии рамки.\n⚠️ Кадр 4: на развороте книги текст — бессмысленная псевдо-латиница с искажёнными словами, которые зритель заметит как мусорный текст. Рука вверху выглядит неестественно.\n⚠️ Кадр 4: титр «вчерашняя роскошь» налезает на нижнюю кромку иллюстрации и закрывает часть книги.\n⚠️ Кадр 3: на электрощитке и стенах мелкие нечитаемые значки и «звёздочки», рисунок плохо читается; титр сидит вплотную к нижней линии картинки.\n⚠️ Кадр 2: английский субтитр «is dead. It tries anyway.» не совпадает с русским «выключатель мёртв.», а русский титр обрезан с краю рамки иллюстрации и частично на ней.",
+   "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
+   "factcheck": "🔎 Фактчек: найдено 1, осталось 0"
   }
  },
  "images": [
