@@ -3277,7 +3277,7 @@
   "S111723178263": {
    "kind": "short",
    "topic": "Daniel Pink reports Edward Deci's experiments suggesting that paying people for something they already enjoy can make them lose interest in it once the payment stops, a pattern researchers call the overjustification effect.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-17T23:17:24+00:00",
    "long_ref": null,
    "series": null,
@@ -3285,7 +3285,41 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-17T23:18:28+00:00"
+   "updated": "2026-11-17T23:21:23+00:00",
+   "video_id": "KU_3vIgbxyk",
+   "release": null,
+   "title": "Daniel Pink's Drive: Why Paid Fun Stops Being Fun #psychology #motivation",
+   "description": "Based on Daniel Pink's book Drive: The Surprising Truth About What Motivates Us, which describes Edward Deci's 1970s puzzle experiments and the overjustification effect. Pink's account simplifies some of the wider research, but the core finding is well studied in self-determination theory.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Daniel Pink",
+    "Drive",
+    "Edward Deci",
+    "overjustification effect",
+    "motivation",
+    "psychology",
+    "intrinsic motivation",
+    "self-determination theory",
+    "sleep learning"
+   ],
+   "duration": 31.28,
+   "narration": "She bakes bread every Sunday. For fun. Then a friend says, \"You should sell these.\" Soon, Sundays feel like work. Footage from the 2020s. Psychologists study this habit closely. Turn a joy into a job, then wonder where the joy went. In the 1970s, psychologist Edward Deci paid people to do a puzzle they already enjoyed. When the pay stopped, many played with it less. Researchers call it the overjustification effect. Daniel Pink explains it in his book, Drive. ...and historians are still confused.",
+   "ru_subs": [
+    "Каждое воскресенье она печёт хлеб.",
+    "Просто ради удовольствия.",
+    "Но однажды подруга говорит: «Тебе стоит продавать выпечку».",
+    "Скоро воскресенья превращаются в работу.",
+    "Кадры из 2020-х годов.",
+    "Психологи внимательно изучают эту привычку.",
+    "Превратите радость в работу, а потом гадайте, куда она делась.",
+    "В 1970-х психолог Эдвард Деси платил людям за решение головоломки, которая и так им нравилась.",
+    "Когда платить перестали, многие стали играть в неё реже.",
+    "Учёные называют это эффектом сверхоправдания.",
+    "Дэниел Пинк объясняет это в своей книге «Драйв».",
+    "…а историки до сих пор в замешательстве."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ В кадре 2 русский титр «Скоро воскресенья» грамматически неверен и не соответствует английскому «Soon, Sundays feel like work.»: нужно «Скоро воскресенья станут работой» или похожая фраза. Сейчас предложение обрывается и читается как бессмыслица.\n⚠️ В кадре 4 английские субтитры бледные, полупрозрачные и плохо читаются («stopped, many played with it»), хотя остальные кадры контрастные.\n⚠️ В кадре 3 английская строка «job, then wonder where the» и русская «а потом гадайте,» не совпадают по смыслу и обе обрываются, поэтому зрителю трудно понять фразу.\n⚠️ В кадре 4 на табличке в руках существа мусорный, нечитаемый текст «AM15», а часы показывают другое время. Это выглядит как случайный артефакт генерации.\n⚠️ В кадре 2 на рисунке есть мелкая нечитаемая подпись художника в углу, похожая на мусорный текст.\n⚠️ В кадре 3 лицо героини обрезано рамкой, видны только рука и волосы, а рука у щеки выглядит неестественно. Рисунок не передаёт эмоцию, о которой говорит текст.",
+   "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
+   "factcheck": "🔎 Фактчек: найдено 1, осталось 0"
   }
  },
  "images": [
