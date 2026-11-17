@@ -1592,6 +1592,54 @@
     4
    ],
    "created": "2026-11-16T15:28:31+00:00"
+  },
+  "p111715495c7e": {
+   "kind": "short",
+   "topics": [
+    {
+     "fact": "Eric Berne described a game called 'Ain't It Awful', in which people bond by trading complaints about bosses, weather or other people, and he saw it as a way to feel close without really changing anything; this is Berne's model, not a tested finding.",
+     "subject": "Berne's Games: Ain't It Awful",
+     "related_long": -1,
+     "book": "berne",
+     "long_ref": null,
+     "format": "scene"
+    },
+    {
+     "fact": "Daniel Kahneman's 'what you see is all there is' describes how our minds build a confident story from the facts in front of us and rarely pause to ask what information is missing.",
+     "subject": "Missing information",
+     "related_long": -1,
+     "book": "kahneman",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Mihaly Csikszentmihalyi's flow model suggests we slip into deep absorption when the challenge in front of us matches our skill, while boredom appears when a task is too easy and anxiety when it is too hard.",
+     "subject": "Flow and challenge",
+     "related_long": -1,
+     "book": "flow",
+     "long_ref": null,
+     "format": "tale"
+    },
+    {
+     "fact": "Daniel Pink reports Edward Deci's experiments suggesting that paying people for something they already enjoy can make them lose interest in it once the payment stops, a pattern researchers call the overjustification effect.",
+     "subject": "Rewards and interest",
+     "related_long": -1,
+     "book": "drive",
+     "long_ref": null,
+     "format": "series"
+    },
+    {
+     "fact": "Philippa Perry explains that the brain keeps reshaping its connections through life, a property called neuroplasticity, so habits and patterns of thought can change well into adulthood.",
+     "subject": "Neuroplasticity",
+     "related_long": -1,
+     "book": "perry",
+     "long_ref": null,
+     "format": "scene"
+    }
+   ],
+   "msg": 268,
+   "picked": [],
+   "created": "2026-11-17T15:49:56+00:00"
   }
  },
  "items": {
@@ -6353,7 +6401,7 @@
  "awaiting_comment": null,
  "channel_name": null,
  "last_long_proposal": "2026-11-15",
- "last_short_proposal": "2026-11-16",
+ "last_short_proposal": "2026-11-17",
  "budget_warned": null,
  "name_options": [
   "Sleepy Science",
