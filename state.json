@@ -3232,7 +3232,7 @@
   "S111723178257": {
    "kind": "short",
    "topic": "Eric Berne described a game called 'Ain't It Awful', in which people bond by trading complaints about bosses, weather or other people, and he saw it as a way to feel close without really changing anything; this is Berne's model, not a tested finding.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-17T23:17:22+00:00",
    "long_ref": null,
    "series": null,
@@ -3240,7 +3240,7 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-17T23:20:06+00:00",
+   "updated": "2026-11-17T23:34:35+00:00",
    "video_id": "tzt7vxmFRDU",
    "release": null,
    "title": "Eric Berne's 'Ain't It Awful' Game #psychology #communication",
@@ -3272,7 +3272,8 @@
    ],
    "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: руки изображены некорректно — пальцы вытянуты и деформированы, а белый бумажный стаканчик в левой руке выглядит неестественно сложенным и сплющенным.\n⚠️ Кадр 1: русская строка «Представляешь, он опять» и английский титр «BELIEVE HE» расположены близко друг к другу в центре кадра, а зелёный неон английского текста на тёмном пиджаке читается хуже розового.\n⚠️ Кадр 2: русский титр «на свете.» и жёлтый «EVER.» стоят прямо на лице и шее героини, закрывая рот и подбородок.\n⚠️ Кадр 3: розовая строка «будем болтать за обедом?» пересекает нижнюю часть лица героини, а на кадре видна рука с неестественно вытянутыми пальцами.\n⚠️ Кадр 4: розовый титр «в книге «Игры, в которые» мелкий, тонкий и малоконтрастный на светлом фоне, а белый «GAMES PEOPLE» плохо читается на светлой стене и блузке.",
    "music": "quiet (-31 дБ): sparse piano and low cello swells, intimate and tense, slow emotional cinematic film score",
-   "factcheck": "✅ Фактчек: замечаний нет"
+   "factcheck": "✅ Фактчек: замечаний нет",
+   "public_id": "tzt7vxmFRDU"
   },
   "S111723178263": {
    "kind": "short",
