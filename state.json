@@ -3232,7 +3232,7 @@
   "S111723178257": {
    "kind": "short",
    "topic": "Eric Berne described a game called 'Ain't It Awful', in which people bond by trading complaints about bosses, weather or other people, and he saw it as a way to feel close without really changing anything; this is Berne's model, not a tested finding.",
-   "status": "producing",
+   "status": "awaiting_approval",
    "created": "2026-11-17T23:17:22+00:00",
    "long_ref": null,
    "series": null,
@@ -3240,7 +3240,39 @@
    "format": "scene",
    "book": "berne",
    "feedback": [],
-   "updated": "2026-11-17T23:18:08+00:00"
+   "updated": "2026-11-17T23:20:06+00:00",
+   "video_id": "tzt7vxmFRDU",
+   "release": null,
+   "title": "Eric Berne's 'Ain't It Awful' Game #psychology #communication",
+   "description": "A short scene about the game Eric Berne called 'Ain't It Awful': bonding by trading complaints without changing anything. From 'Games People Play' by Eric Berne. This is Berne's model from transactional analysis, not a tested scientific finding.\n\nNarration uses an AI voice; visuals are AI-generated illustrations and royalty-free stock. Scripts are fact-checked, but if you spot a mistake, tell us in the comments.",
+   "tags": [
+    "Eric Berne",
+    "Games People Play",
+    "transactional analysis",
+    "Ain't It Awful",
+    "psychology",
+    "complaining",
+    "relationships",
+    "workplace"
+   ],
+   "duration": 22.574,
+   "narration": "Can you believe he cancelled the raise again? Unbelievable. Same as last year. Worst boss ever. I'm going to talk to him tomorrow. Oh, come on. Don't. Then what would we talk about at lunch? Maybe that's the problem, Rachel. That's the game Eric Berne called 'Ain't It Awful' in his book Games People Play: trading complaints to feel close, without changing anything. It's Berne's model, not a tested finding.",
+   "ru_subs": [
+    "Представляешь, он опять отменил повышение?",
+    "Невероятно.",
+    "Как и в прошлом году.",
+    "Худший начальник на свете.",
+    "Завтра поговорю с ним.",
+    "Да ладно тебе.",
+    "Не надо.",
+    "О чём же мы тогда будем болтать за обедом?",
+    "Может, в этом и проблема, Рэйчел.",
+    "Эрик Берн назвал это игрой «Разве не ужасно?» в книге «Игры, в которые играют люди»: мы жалуемся друг другу, чтобы сблизиться и ничего не меняем.",
+    "Но это модель Берна, а не проверенный факт."
+   ],
+   "qc": "🧪 Контроль качества:\n⚠️ Кадр 1: руки изображены некорректно — пальцы вытянуты и деформированы, а белый бумажный стаканчик в левой руке выглядит неестественно сложенным и сплющенным.\n⚠️ Кадр 1: русская строка «Представляешь, он опять» и английский титр «BELIEVE HE» расположены близко друг к другу в центре кадра, а зелёный неон английского текста на тёмном пиджаке читается хуже розового.\n⚠️ Кадр 2: русский титр «на свете.» и жёлтый «EVER.» стоят прямо на лице и шее героини, закрывая рот и подбородок.\n⚠️ Кадр 3: розовая строка «будем болтать за обедом?» пересекает нижнюю часть лица героини, а на кадре видна рука с неестественно вытянутыми пальцами.\n⚠️ Кадр 4: розовый титр «в книге «Игры, в которые» мелкий, тонкий и малоконтрастный на светлом фоне, а белый «GAMES PEOPLE» плохо читается на светлой стене и блузке.",
+   "music": "quiet (-31 дБ): sparse piano and low cello swells, intimate and tense, slow emotional cinematic film score",
+   "factcheck": "✅ Фактчек: замечаний нет"
   },
   "S111723178263": {
    "kind": "short",
