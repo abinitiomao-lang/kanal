@@ -3232,14 +3232,15 @@
   "S111723178257": {
    "kind": "short",
    "topic": "Eric Berne described a game called 'Ain't It Awful', in which people bond by trading complaints about bosses, weather or other people, and he saw it as a way to feel close without really changing anything; this is Berne's model, not a tested finding.",
-   "status": "queued",
+   "status": "producing",
    "created": "2026-11-17T23:17:22+00:00",
    "long_ref": null,
    "series": null,
    "part": null,
    "format": "scene",
    "book": "berne",
-   "feedback": []
+   "feedback": [],
+   "updated": "2026-11-17T23:18:08+00:00"
   },
   "S111723178263": {
    "kind": "short",
