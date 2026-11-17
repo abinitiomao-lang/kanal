@@ -5369,6 +5369,48 @@
    "prompt": "A single cowry shell resting at the center of a dark, still pool of water, its glossy surface catching a soft warm light, with a faint blue haze fading into the near-black background and no text",
    "orient": "landscape",
    "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/a0f72f8c03e2.jpg"
+  },
+  {
+   "id": "477f059ce67a",
+   "prompt": "Close-up of Dana, a woman in her mid-30s with shoulder-length dark brown hair, navy blazer, tired eyes, in an office break room with a coffee machine behind her, slamming her paper cup onto the counter, jaw tight, eyes blazing with frustration",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/477f059ce67a.jpg"
+  },
+  {
+   "id": "9d7a5b30923f",
+   "prompt": "Close-up of Rachel, a woman in her late 30s with curly reddish-blonde hair tied back, green cardigan, in an office break room, shaking her head and rolling her eyes with eager, bitter agreement, leaning in toward the other person",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/9d7a5b30923f.jpg"
+  },
+  {
+   "id": "cf41fb6a96cb",
+   "prompt": "Close-up of Dana, a woman in her mid-30s with shoulder-length dark brown hair, navy blazer, tired eyes, in an office break room with a coffee machine behind her, straightening her shoulders and lifting her chin, steady determined gaze",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/cf41fb6a96cb.jpg"
+  },
+  {
+   "id": "4aeeb406eaac",
+   "prompt": "Close-up of Rachel, a woman in her late 30s with curly reddish-blonde hair tied back, green cardigan, in an office break room, forcing a nervous half-laugh, fingers fidgeting with her coffee cup, eyes darting away anxiously",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/4aeeb406eaac.jpg"
+  },
+  {
+   "id": "d39a87a27438",
+   "prompt": "Close-up of Dana, a woman in her mid-30s with shoulder-length dark brown hair, navy blazer, tired eyes, in an office break room with a coffee machine behind her, looking down then slowly up at the other person, eyes glistening, hurt and quiet",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/d39a87a27438.jpg"
+  },
+  {
+   "id": "584715a63afc",
+   "prompt": "Wide quiet shot of Dana, a woman in her mid-30s with dark brown hair and navy blazer, and Rachel, a woman in her late 30s with curly reddish-blonde hair and green cardigan, standing apart at opposite ends of the same office break room, neither moving, coffee machine humming between them",
+   "orient": "portrait",
+   "style": "scene-badca626",
+   "url": "https://github.com/abinitiomao-lang/kanal/releases/download/library/584715a63afc.jpg"
   }
  ],
  "costs": {
