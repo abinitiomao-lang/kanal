@@ -3277,7 +3277,7 @@
   "S111723178263": {
    "kind": "short",
    "topic": "Daniel Pink reports Edward Deci's experiments suggesting that paying people for something they already enjoy can make them lose interest in it once the payment stops, a pattern researchers call the overjustification effect.",
-   "status": "awaiting_approval",
+   "status": "published",
    "created": "2026-11-17T23:17:24+00:00",
    "long_ref": null,
    "series": null,
@@ -3285,7 +3285,7 @@
    "format": "series",
    "book": "drive",
    "feedback": [],
-   "updated": "2026-11-17T23:21:23+00:00",
+   "updated": "2026-11-17T23:31:58+00:00",
    "video_id": "KU_3vIgbxyk",
    "release": null,
    "title": "Daniel Pink's Drive: Why Paid Fun Stops Being Fun #psychology #motivation",
@@ -3319,7 +3319,8 @@
    ],
    "qc": "🧪 Контроль качества:\n⚠️ В кадре 2 русский титр «Скоро воскресенья» грамматически неверен и не соответствует английскому «Soon, Sundays feel like work.»: нужно «Скоро воскресенья станут работой» или похожая фраза. Сейчас предложение обрывается и читается как бессмыслица.\n⚠️ В кадре 4 английские субтитры бледные, полупрозрачные и плохо читаются («stopped, many played with it»), хотя остальные кадры контрастные.\n⚠️ В кадре 3 английская строка «job, then wonder where the» и русская «а потом гадайте,» не совпадают по смыслу и обе обрываются, поэтому зрителю трудно понять фразу.\n⚠️ В кадре 4 на табличке в руках существа мусорный, нечитаемый текст «AM15», а часы показывают другое время. Это выглядит как случайный артефакт генерации.\n⚠️ В кадре 2 на рисунке есть мелкая нечитаемая подпись художника в углу, похожая на мусорный текст.\n⚠️ В кадре 3 лицо героини обрезано рамкой, видны только рука и волосы, а рука у щеки выглядит неестественно. Рисунок не передаёт эмоцию, о которой говорит текст.",
    "music": "soft (-25 дБ): witty documentary underscore: pizzicato strings, marimba, light clarinet, curious and playful, mid tempo",
-   "factcheck": "🔎 Фактчек: найдено 1, осталось 0"
+   "factcheck": "🔎 Фактчек: найдено 1, осталось 0",
+   "public_id": "KU_3vIgbxyk"
   }
  },
  "images": [
