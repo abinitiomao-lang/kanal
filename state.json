@@ -1639,7 +1639,8 @@
    ],
    "msg": 268,
    "picked": [
-    0
+    0,
+    3
    ],
    "created": "2026-11-17T15:49:56+00:00"
   }
@@ -3238,6 +3239,18 @@
    "part": null,
    "format": "scene",
    "book": "berne",
+   "feedback": []
+  },
+  "S111723178263": {
+   "kind": "short",
+   "topic": "Daniel Pink reports Edward Deci's experiments suggesting that paying people for something they already enjoy can make them lose interest in it once the payment stops, a pattern researchers call the overjustification effect.",
+   "status": "queued",
+   "created": "2026-11-17T23:17:24+00:00",
+   "long_ref": null,
+   "series": null,
+   "part": null,
+   "format": "series",
+   "book": "drive",
    "feedback": []
   }
  },
